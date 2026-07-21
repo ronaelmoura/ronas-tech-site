@@ -1,6 +1,7 @@
 import { siteConfig } from '../config/siteConfig'
 
 const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim()
+const hasValidMeasurementId = /^G-[A-Z0-9]+$/.test(measurementId || '')
 const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}`
 
 const externalLinks = {
@@ -11,7 +12,7 @@ const externalLinks = {
 
 export function initializeAnalytics() {
   if (
-    !measurementId ||
+    !hasValidMeasurementId ||
     typeof window === 'undefined' ||
     typeof document === 'undefined' ||
     window.__ronasAnalyticsInitialized
@@ -40,7 +41,7 @@ export function initializeAnalytics() {
 }
 
 export function trackEvent(eventName, eventParameters = {}) {
-  if (!measurementId || typeof window === 'undefined' || !window.gtag) return
+  if (!hasValidMeasurementId || typeof window === 'undefined' || !window.gtag) return
 
   window.gtag('event', eventName, eventParameters)
 }
