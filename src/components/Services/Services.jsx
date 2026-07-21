@@ -2,53 +2,77 @@ import styles from './Services.module.css'
 
 const services = [
   {
-    title: 'Sites profissionais',
+    title: 'Landing Pages',
     description:
-      'Sites modernos, responsivos e rápidos para fortalecer a presença digital da sua empresa e gerar novas oportunidades.',
+      'Crie páginas focadas em conversão para captar leads, vender mais e gerar resultado rápido.',
     highlights: [
-      'Design responsivo',
-      'Integração com WhatsApp',
-      'SEO básico',
-      'Formulário de contato',
+      'Objetivo claro e direto',
+      'Layout pensado para conversão',
+      'Entrega rápida',
+      'Boa presença para campanhas',
     ],
-    icon: 'website',
+    icon: 'landing',
     featured: true,
   },
   {
-    title: 'Landing Pages',
+    title: 'Sites Institucionais',
     description:
-      'Páginas estratégicas e focadas em conversão para campanhas, produtos, serviços e captação de clientes.',
+      'Apresente sua empresa com um site profissional, moderno e confiável para gerar confiança.',
     highlights: [
-      'Foco em conversão',
-      'Carregamento rápido',
-      'Layout personalizado',
-      'Integração com campanhas',
+      'Visual profissional',
+      'Estrutura clara para comunicação',
+      'Responsivo em qualquer tela',
+      'Foco em reputação da marca',
     ],
-    icon: 'landing',
+    icon: 'website',
   },
   {
-    title: 'Sistemas Web',
+    title: 'Sites Empresariais',
     description:
-      'Sistemas personalizados para organizar clientes, atendimentos, estoque, financeiro e processos internos.',
+      'Tenha um site organizado para apresentar serviços, contatos, diferenciais e oportunidades de negócio.',
     highlights: [
-      'Desenvolvimento sob medida',
-      'Painel administrativo',
-      'Controle de usuários',
-      'Banco de dados',
+      'Mais credibilidade',
+      'Melhor comunicação com clientes',
+      'Estrutura para crescimento',
+      'Experiência profissional online',
     ],
     icon: 'system',
   },
   {
-    title: 'APIs e integrações',
+    title: 'Manutenção de Sites',
     description:
-      'Conectamos sistemas e automatizamos tarefas por meio de APIs e integrações personalizadas.',
+      'Mantenha seu site atualizado, estável e funcionando bem para evitar perda de clientes.',
     highlights: [
-      'APIs REST',
-      'Integração entre sistemas',
-      'Automação de processos',
-      'Integração com serviços externos',
+      'Correções e melhorias',
+      'Mais segurança',
+      'Atualizações constantes',
+      'Site sempre funcionando',
     ],
     icon: 'api',
+  },
+  {
+    title: 'Correção de Bugs',
+    description:
+      'Resolva problemas de funcionamento com atenção rápida e soluções práticas para o seu negócio.',
+    highlights: [
+      'Mais estabilidade',
+      'Menos interrupções',
+      'Melhor experiência de uso',
+      'Ajustes com foco em resultado',
+    ],
+    icon: 'api',
+  },
+  {
+    title: 'Sistemas Web Simples',
+    description:
+      'Automatize processos simples e organize seu trabalho com uma solução prática e eficiente.',
+    highlights: [
+      'Menos trabalho manual',
+      'Processos mais organizados',
+      'Mais produtividade',
+      'Solução adaptada ao seu dia a dia',
+    ],
+    icon: 'system',
   },
 ]
 
@@ -105,12 +129,12 @@ function Services() {
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Nossos serviços</p>
           <h2 id="services-title">
-            Soluções digitais para transformar o seu negócio
+            Soluções práticas para vender mais e operar melhor
           </h2>
           <p className={styles.subtitle}>
-            Desenvolvemos sites, sistemas e aplicações sob medida para empresas
-            que desejam modernizar processos, fortalecer sua presença digital e
-            crescer com tecnologia.
+            Podemos ajudar sua empresa com landing pages, sites institucionais,
+            sites empresariais, manutenção e sistemas simples para melhorar sua
+            presença online e facilitar o dia a dia do negócio.
           </p>
         </header>
 
