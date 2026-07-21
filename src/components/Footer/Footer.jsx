@@ -8,19 +8,8 @@ import styles from './Footer.module.css'
 const navigationLinks = [
   { label: 'Início', href: '#inicio' },
   { label: 'Serviços', href: '#servicos' },
-  { label: 'Processo', href: '#processo' },
-  { label: 'Tecnologias', href: '#tecnologias' },
   { label: 'Projetos', href: '#projetos' },
-  { label: 'Sobre', href: '#sobre' },
   { label: 'Contato', href: '#contato' },
-]
-
-const serviceLinks = [
-  { label: 'Sites profissionais', href: '#servicos' },
-  { label: 'Landing Pages', href: '#servicos' },
-  { label: 'Sistemas Web', href: '#servicos' },
-  { label: 'APIs e integrações', href: '#servicos' },
-  { label: 'Manutenção e melhorias', href: '#contato' },
 ]
 
 const socialLinks = [
@@ -94,7 +83,7 @@ function Footer() {
               <strong>{siteConfig.companyName}</strong>
             </a>
             <p>
-              Desenvolvimento de Sites, Sistemas Web e Soluções Digitais.
+              Sites, Sistemas Web e Soluções Digitais.
             </p>
             <div className={styles.socials} aria-label="Redes sociais">
               {socialLinks.map(({ label, href, icon }) => (
@@ -118,11 +107,6 @@ function Footer() {
             <LinkList links={navigationLinks} />
           </nav>
 
-          <nav className={styles.column} aria-labelledby="footer-services">
-            <h2 id="footer-services">Serviços</h2>
-            <LinkList links={serviceLinks} />
-          </nav>
-
           <div className={`${styles.column} ${styles.contactColumn}`}>
             <h2>Contato</h2>
             <address>
@@ -139,8 +123,6 @@ function Footer() {
                 <span>E-mail</span>
                 {siteConfig.email}
               </a>
-              <p><span>Localização</span>{siteConfig.location}</p>
-              <p>Atendimento online para todo o Brasil</p>
             </address>
             <a className={styles.cta} href="#contato">
               Solicitar orçamento <span aria-hidden="true">→</span>

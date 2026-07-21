@@ -8,19 +8,19 @@ import styles from './Contact.module.css'
 
 const initialFormData = {
   name: '',
-  email: '',
+  business: '',
   phone: '',
   projectType: '',
   message: '',
 }
 
 const projectTypes = [
-  'Site profissional',
   'Landing Page',
-  'Sistema Web',
-  'API ou integração',
-  'Manutenção ou melhoria',
-  'Outro',
+  'Site Institucional',
+  'Site Empresarial',
+  'Manutenção de Site',
+  'Correção de Bugs',
+  'Sistema Web Simples',
 ]
 
 const directWhatsappMessage =
@@ -65,32 +65,32 @@ function ContactIcon({ name }) {
 
 function validateForm(formData) {
   const errors = {}
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
   if (!formData.name.trim()) errors.name = 'Informe seu nome.'
-
-  if (!formData.email.trim()) {
-    errors.email = 'Informe seu e-mail.'
-  } else if (!emailPattern.test(formData.email.trim())) {
-    errors.email = 'Informe um e-mail válido.'
+  if (!formData.business.trim()) {
+    errors.business = 'Informe a empresa ou negócio.'
   }
 
   if (!formData.phone.trim()) errors.phone = 'Informe seu WhatsApp.'
-  if (!formData.projectType) errors.projectType = 'Selecione o tipo de projeto.'
-  if (!formData.message.trim()) errors.message = 'Conte um pouco sobre o projeto.'
+  if (!formData.projectType) {
+    errors.projectType = 'Selecione o tipo de serviço.'
+  }
+  if (!formData.message.trim()) {
+    errors.message = 'Descreva o projeto em uma frase curta.'
+  }
 
   return errors
 }
 
 function createWhatsAppMessage(formData) {
   return [
-    'Olá! Gostaria de solicitar um orçamento pela Ronas Tech.',
+    'Olá! Gostaria de solicitar um orçamento sem compromisso pela Ronas Tech.',
     '',
     `Nome: ${formData.name.trim()}`,
-    `E-mail: ${formData.email.trim()}`,
+    `Empresa/Negócio: ${formData.business.trim()}`,
     `WhatsApp: ${formData.phone.trim()}`,
-    `Tipo de projeto: ${formData.projectType}`,
-    `Mensagem: ${formData.message.trim()}`,
+    `Tipo de serviço: ${formData.projectType}`,
+    `Descrição do projeto: ${formData.message.trim()}`,
   ].join('\n')
 }
 
@@ -162,11 +162,10 @@ function Contact() {
       <div className={styles.container}>
         <div className={styles.information}>
           <p className={styles.eyebrow}>Entre em contato</p>
-          <h2 id="contact-title">Vamos tirar seu projeto do papel?</h2>
+          <h2 id="contact-title">Pronto para colocar seu projeto no ar?</h2>
           <p className={styles.subtitle}>
-            Conte um pouco sobre a sua ideia, necessidade ou desafio. A Ronas
-            Tech entrará em contato para entender o projeto e apresentar a melhor
-            solução.
+            Fale com a Ronas Tech e receba uma proposta personalizada para o
+            seu negócio.
           </p>
 
           <address className={styles.contactList}>
@@ -211,8 +210,8 @@ function Contact() {
           </address>
 
           <p className={styles.supportText}>
-            Atendimento próximo, comunicação clara e soluções desenvolvidas de
-            acordo com a necessidade de cada negócio.
+            Atendimento rápido pelo WhatsApp, com comunicação clara e soluções
+            pensadas para ajudar seu negócio a crescer.
           </p>
 
           <a
@@ -230,9 +229,9 @@ function Contact() {
 
         <div className={styles.formCard}>
           <header className={styles.formHeader}>
-            <span>Orçamento personalizado</span>
-            <h3>Conte sobre o seu projeto</h3>
-            <p>Preencha os campos abaixo. Retornaremos o contato em breve.</p>
+            <span>Orçamento sem compromisso</span>
+            <h3>Descreva seu projeto</h3>
+            <p>Preencha os campos abaixo e vamos conversar pelo WhatsApp.</p>
           </header>
 
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
@@ -258,22 +257,21 @@ function Contact() {
               </div>
 
               <div className={styles.field}>
-                <label htmlFor="contact-email">E-mail</label>
+                <label htmlFor="contact-business">Empresa ou negócio</label>
                 <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
+                  id="contact-business"
+                  name="business"
+                  type="text"
+                  value={formData.business}
                   onChange={handleChange}
-                  autoComplete="email"
-                  inputMode="email"
-                  placeholder="voce@empresa.com"
-                  className={errors.email ? styles.invalid : ''}
-                  {...fieldAccessibility('email')}
+                  autoComplete="organization"
+                  placeholder="Nome da empresa"
+                  className={errors.business ? styles.invalid : ''}
+                  {...fieldAccessibility('business')}
                 />
-                {errors.email && (
-                  <span id="email-error" className={styles.error}>
-                    {errors.email}
+                {errors.business && (
+                  <span id="business-error" className={styles.error}>
+                    {errors.business}
                   </span>
                 )}
               </div>
@@ -281,7 +279,7 @@ function Contact() {
 
             <div className={styles.fieldRow}>
               <div className={styles.field}>
-                <label htmlFor="contact-phone">WhatsApp</label>
+                <label htmlFor="contact-phone">Telefone / WhatsApp</label>
                 <input
                   id="contact-phone"
                   name="phone"
@@ -302,7 +300,7 @@ function Contact() {
               </div>
 
               <div className={styles.field}>
-                <label htmlFor="contact-projectType">Tipo de projeto</label>
+                <label htmlFor="contact-projectType">Tipo de serviço</label>
                 <select
                   id="contact-projectType"
                   name="projectType"
@@ -329,14 +327,14 @@ function Contact() {
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="contact-message">Mensagem</label>
+              <label htmlFor="contact-message">Descrição do projeto</label>
               <textarea
                 id="contact-message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="5"
-                placeholder="Descreva sua ideia, necessidade ou desafio..."
+                placeholder="Descreva sua necessidade, objetivo ou desafio..."
                 className={errors.message ? styles.invalid : ''}
                 {...fieldAccessibility('message')}
               />
@@ -354,13 +352,13 @@ function Contact() {
             )}
 
             <button className={styles.submitButton} type="submit">
-              Solicitar orçamento
+              Solicitar orçamento pelo WhatsApp
               <span aria-hidden="true">→</span>
             </button>
 
             <p className={styles.privacyNote}>
-              Seus dados são utilizados somente para responder à sua solicitação
-              de contato.
+              Seu pedido é enviado pelo WhatsApp e pode ser respondido sem
+              compromisso.
             </p>
           </form>
         </div>
