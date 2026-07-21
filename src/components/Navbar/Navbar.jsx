@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { siteConfig } from '../../config/siteConfig'
 import styles from './Navbar.module.css'
 
 const navigationItems = [
@@ -60,7 +61,7 @@ function Navbar() {
           <span className={styles.logo} aria-hidden="true">
             RT
           </span>
-          <span className={styles.brandName}>Ronas Tech</span>
+          <span className={styles.brandName}>{siteConfig.companyName}</span>
         </a>
 
         <div

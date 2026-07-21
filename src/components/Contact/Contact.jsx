@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { siteConfig } from '../../config/siteConfig'
 import styles from './Contact.module.css'
 
 const initialFormData = {
@@ -18,9 +19,9 @@ const projectTypes = [
   'Outro',
 ]
 
-const whatsappNumber = '5599988577134'
-const directWhatsappUrl =
-  'https://wa.me/5599988577134?text=Ol%C3%A1%21%20Conheci%20a%20Ronas%20Tech%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.'
+const directWhatsappMessage =
+  'Olá! Conheci a Ronas Tech pelo site e gostaria de conversar sobre um projeto.'
+const directWhatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(directWhatsappMessage)}`
 
 const contactIcons = {
   whatsapp: (
@@ -122,7 +123,7 @@ function Contact() {
     }
 
     const message = createWhatsAppMessage(formData)
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`
     const whatsappWindow = window.open(whatsappUrl, '_blank')
 
     if (!whatsappWindow) {
@@ -174,12 +175,12 @@ function Contact() {
               </span>
               <span>
                 <small>WhatsApp</small>
-                <strong>(99) 98857-7134</strong>
+                <strong>{siteConfig.whatsappDisplay}</strong>
               </span>
             </a>
 
             <a
-              href="mailto:ronaelmoura240@gmail.com"
+              href={`mailto:${siteConfig.email}`}
               className={styles.contactItem}
             >
               <span className={styles.contactIcon}>
@@ -187,7 +188,7 @@ function Contact() {
               </span>
               <span>
                 <small>E-mail</small>
-                <strong>ronaelmoura240@gmail.com</strong>
+                <strong>{siteConfig.email}</strong>
               </span>
             </a>
 
@@ -197,7 +198,7 @@ function Contact() {
               </span>
               <span>
                 <small>Localização</small>
-                <strong>Tianguá, Ceará — Atendimento online para todo o Brasil</strong>
+                <strong>{siteConfig.location} — Atendimento online para todo o Brasil</strong>
               </span>
             </div>
           </address>

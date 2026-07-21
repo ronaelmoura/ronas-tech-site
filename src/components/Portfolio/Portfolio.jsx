@@ -1,3 +1,4 @@
+import { siteConfig } from '../../config/siteConfig'
 import styles from './Portfolio.module.css'
 
 const projects = [
@@ -15,7 +16,7 @@ const projects = [
       'Integração com banco de dados',
     ],
     status: 'Em desenvolvimento',
-    codeUrl: 'https://github.com/ronaelmoura/ronas-desk',
+    codeUrl: `${siteConfig.github}/ronas-desk`,
     featured: true,
     visual: 'dashboard',
   },
@@ -33,8 +34,8 @@ const projects = [
       'Layout responsivo',
     ],
     status: 'Publicado',
-    projectUrl: 'https://ronaelmoura.github.io/portfolio-ronas-tech/',
-    codeUrl: 'https://github.com/ronaelmoura/portfolio-ronas-tech',
+    projectUrl: siteConfig.portfolio,
+    codeUrl: `${siteConfig.github}/portfolio-ronas-tech`,
     visual: 'portfolio',
   },
 ]

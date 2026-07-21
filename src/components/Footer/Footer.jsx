@@ -1,3 +1,4 @@
+import { siteConfig } from '../../config/siteConfig'
 import styles from './Footer.module.css'
 
 const navigationLinks = [
@@ -19,16 +20,16 @@ const serviceLinks = [
 ]
 
 const socialLinks = [
-  { label: 'GitHub', href: 'https://github.com/ronaelmoura', icon: 'github' },
+  { label: 'GitHub', href: siteConfig.github, icon: 'github' },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/ronael-moura',
+    href: siteConfig.linkedin,
     icon: 'linkedin',
   },
   // Adicionar o YouTube quando a URL oficial do canal estiver definida.
   {
     label: 'Portfólio',
-    href: 'https://ronaelmoura.github.io/portfolio-ronas-tech/',
+    href: siteConfig.portfolio,
     icon: 'portfolio',
   },
 ]
@@ -78,7 +79,7 @@ function Footer() {
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.brandColumn}>
-            <a className={styles.brand} href="#inicio" aria-label="Ronas Tech — início">
+            <a className={styles.brand} href="#inicio" aria-label={`${siteConfig.companyName} — início`}>
               <span aria-hidden="true">R</span>
               Ronas <strong>Tech</strong>
             </a>
@@ -115,15 +116,15 @@ function Footer() {
           <div className={`${styles.column} ${styles.contactColumn}`}>
             <h2>Contato</h2>
             <address>
-              <a href="https://wa.me/5599988577134" target="_blank" rel="noopener noreferrer">
+              <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer">
                 <span>WhatsApp</span>
-                (99) 98857-7134
+                {siteConfig.whatsappDisplay}
               </a>
-              <a href="mailto:ronaelmoura240@gmail.com">
+              <a href={`mailto:${siteConfig.email}`}>
                 <span>E-mail</span>
-                ronaelmoura240@gmail.com
+                {siteConfig.email}
               </a>
-              <p><span>Localização</span>Tianguá, Ceará</p>
+              <p><span>Localização</span>{siteConfig.location}</p>
               <p>Atendimento online para todo o Brasil</p>
             </address>
             <a className={styles.cta} href="#contato">
@@ -133,11 +134,11 @@ function Footer() {
         </div>
 
         <div className={styles.bottomBar}>
-          <p>© {currentYear} Ronas Tech. Todos os direitos reservados.</p>
+          <p>© {currentYear} {siteConfig.companyName}. Todos os direitos reservados.</p>
           <p>
             Desenvolvido por{' '}
             <a
-              href="https://ronaelmoura.github.io/portfolio-ronas-tech/"
+              href={siteConfig.portfolio}
               target="_blank"
               rel="noopener noreferrer"
             >
