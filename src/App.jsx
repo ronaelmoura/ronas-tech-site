@@ -18,8 +18,8 @@ function App() {
         <Industries />
         <Services />
         <Process />
-        <About />
         <Technologies />
+        <About />
         <Portfolio />
         <Contact />
       </main>

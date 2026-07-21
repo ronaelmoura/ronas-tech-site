@@ -1,0 +1,239 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 112px 0 120px;
+  background: #0b1016;
+}
+
+.section::before {
+  position: absolute;
+  top: -220px;
+  right: -180px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgb(34 211 238 / 6%), transparent 70%);
+  content: '';
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  width: min(100% - 48px, 1200px);
+  margin-inline: auto;
+}
+
+.heading {
+  max-width: 740px;
+  margin-bottom: 58px;
+}
+
+.eyebrow {
+  margin: 0 0 13px;
+  color: #60a5fa;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.heading h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+.subtitle {
+  max-width: 680px;
+  margin: 20px 0 0;
+  color: #9ca3af;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.group {
+  min-width: 0;
+  padding: 30px;
+  background: #111820;
+  border: 1px solid rgb(148 163 184 / 11%);
+  border-radius: 17px;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgb(148 163 184 / 10%);
+}
+
+.groupHeader h3 {
+  margin: 0;
+  color: #f9fafb;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+}
+
+.groupHeader p {
+  margin: 6px 0 0;
+  color: #768191;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.groupHeader > span {
+  display: grid;
+  width: 33px;
+  height: 27px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: #60a5fa;
+  background: rgb(37 99 235 / 9%);
+  border: 1px solid rgb(96 165 250 / 15%);
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.technologyList {
+  display: grid;
+  padding: 22px 0 0;
+  margin: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+}
+
+.technology {
+  display: flex;
+  min-width: 0;
+  min-height: 66px;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 13px;
+  padding: 11px 14px;
+  background: rgb(255 255 255 / 2%);
+  border: 1px solid rgb(148 163 184 / 9%);
+  border-radius: 12px;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.technology:hover {
+  background: rgb(37 99 235 / 6%);
+  border-color: rgb(37 99 235 / 45%);
+  box-shadow:
+    0 12px 28px rgb(0 0 0 / 18%),
+    0 0 22px rgb(34 211 238 / 6%);
+  transform: translateY(-3px);
+}
+
+.icon {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: #60a5fa;
+  background: rgb(37 99 235 / 9%);
+  border: 1px solid rgb(96 165 250 / 14%);
+  border-radius: 10px;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.technology:hover .icon {
+  color: #67e8f9;
+  background: rgb(34 211 238 / 8%);
+  border-color: rgb(34 211 238 / 22%);
+}
+
+.name {
+  overflow: hidden;
+  color: #d7dce3;
+  font-size: 13px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 840px) {
+  .group {
+    padding: 24px;
+  }
+
+  .technologyList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 80px 0 88px;
+  }
+
+  .container {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .heading {
+    margin-bottom: 40px;
+  }
+
+  .heading h2 {
+    font-size: clamp(30px, 9vw, 39px);
+  }
+
+  .subtitle {
+    margin-top: 17px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .groups {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .technologyList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 390px) {
+  .group {
+    padding: 21px;
+  }
+
+  .technologyList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .technology,
+  .icon {
+    transition-duration: 0.01ms;
+  }
+}
