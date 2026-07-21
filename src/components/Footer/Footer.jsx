@@ -1,7 +1,5 @@
 import styles from './Footer.module.css'
 
-const YOUTUBE_URL = '#'
-
 const navigationLinks = [
   { label: 'Início', href: '#inicio' },
   { label: 'Serviços', href: '#servicos' },
@@ -10,7 +8,6 @@ const navigationLinks = [
   { label: 'Projetos', href: '#projetos' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Contato', href: '#contato' },
-  { label: 'FAQ', href: '#faq' },
 ]
 
 const serviceLinks = [
@@ -28,7 +25,7 @@ const socialLinks = [
     href: 'https://www.linkedin.com/in/ronael-moura',
     icon: 'linkedin',
   },
-  { label: 'YouTube', href: YOUTUBE_URL, icon: 'youtube' },
+  // Adicionar o YouTube quando a URL oficial do canal estiver definida.
   {
     label: 'Portfólio',
     href: 'https://ronaelmoura.github.io/portfolio-ronas-tech/',
@@ -43,12 +40,6 @@ const icons = {
   linkedin: (
     <>
       <path d="M6.3 8.2H3.5V20h2.8V8.2ZM4.9 3.5a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM20.5 13.2c0-3.6-1.9-5.3-4.5-5.3-2.1 0-3 1.1-3.5 1.9V8.2H9.7V20h2.8v-5.8c0-1.5.3-3 2.2-3 1.9 0 1.9 1.8 1.9 3.1V20h2.8l1.1-6.8Z" />
-    </>
-  ),
-  youtube: (
-    <>
-      <path d="M21.2 7.1a2.4 2.4 0 0 0-1.7-1.7C18 5 12 5 12 5s-6 0-7.5.4a2.4 2.4 0 0 0-1.7 1.7A25 25 0 0 0 2.4 12c0 1.6.1 3.3.4 4.9a2.4 2.4 0 0 0 1.7 1.7C6 19 12 19 12 19s6 0 7.5-.4a2.4 2.4 0 0 0 1.7-1.7c.3-1.6.4-3.3.4-4.9s-.1-3.3-.4-4.9Z" />
-      <path d="m10 15 5-3-5-3v6Z" className={styles.iconCutout} />
     </>
   ),
   portfolio: (
@@ -96,24 +87,18 @@ function Footer() {
               personalizadas para empresas que desejam crescer com tecnologia.
             </p>
             <div className={styles.socials} aria-label="Redes sociais">
-              {socialLinks.map(({ label, href, icon }) => {
-                const isExternal = href !== '#'
-
-                return (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    title={label}
-                    {...(isExternal && {
-                      target: '_blank',
-                      rel: 'noopener noreferrer',
-                    })}
-                  >
-                    <SocialIcon name={icon} />
-                  </a>
-                )
-              })}
+              {socialLinks.map(({ label, href, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  title={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <SocialIcon name={icon} />
+                </a>
+              ))}
             </div>
           </div>
 

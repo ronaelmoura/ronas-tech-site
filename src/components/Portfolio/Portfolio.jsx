@@ -3,7 +3,7 @@ import styles from './Portfolio.module.css'
 const projects = [
   {
     title: 'Ronas Desk',
-    category: 'Sistema Web Full Stack',
+    category: 'Sistema Web full stack',
     description:
       'Sistema de gestão de clientes e chamados desenvolvido para organizar atendimentos, centralizar informações e acompanhar o andamento dos serviços.',
     technologies: ['React', 'Node.js', 'Express', 'MySQL'],
@@ -21,7 +21,7 @@ const projects = [
   },
   {
     title: 'Portfólio Ronas Tech',
-    category: 'Portfólio Profissional',
+    category: 'Portfólio profissional',
     description:
       'Portfólio desenvolvido para apresentar projetos, habilidades, tecnologias e a trajetória profissional de Ronael Moura como Desenvolvedor Full Stack.',
     technologies: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages'],

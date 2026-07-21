@@ -2,7 +2,7 @@ import styles from './Services.module.css'
 
 const services = [
   {
-    title: 'Sites Profissionais',
+    title: 'Sites profissionais',
     description:
       'Sites modernos, responsivos e rápidos para fortalecer a presença digital da sua empresa e gerar novas oportunidades.',
     highlights: [
@@ -39,7 +39,7 @@ const services = [
     icon: 'system',
   },
   {
-    title: 'APIs e Integrações',
+    title: 'APIs e integrações',
     description:
       'Conectamos sistemas e automatizamos tarefas por meio de APIs e integrações personalizadas.',
     highlights: [

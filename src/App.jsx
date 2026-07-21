@@ -12,8 +12,11 @@ import Footer from './components/Footer/Footer'
 function App() {
   return (
     <>
+      <a className="skip-link" href="#conteudo-principal">
+        Pular para o conteúdo principal
+      </a>
       <Navbar />
-      <main>
+      <main id="conteudo-principal" tabIndex="-1">
         <Hero />
         <Industries />
         <Services />

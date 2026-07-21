@@ -168,7 +168,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 840px) {
   .navbar {
     width: min(100% - 32px, 1200px);
   }

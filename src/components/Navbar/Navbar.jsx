@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './Navbar.module.css'
 
 const navigationItems = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Sobre', href: '#sobre' },
   { label: 'Serviços', href: '#servicos' },
+  { label: 'Processo', href: '#processo' },
   { label: 'Projetos', href: '#projetos' },
+  { label: 'Sobre', href: '#sobre' },
   { label: 'Contato', href: '#contato' },
 ]
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuButtonRef = useRef(null)
+  const firstLinkRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 16)
@@ -23,13 +26,28 @@ function Navbar() {
   }, [])
 
   useEffect(() => {
+    if (!isMenuOpen) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    firstLinkRef.current?.focus()
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [isMenuOpen])
+
+  useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') setIsMenuOpen(false)
+      if (event.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
     }
 
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  }, [isMenuOpen])
 
   const closeMenu = () => setIsMenuOpen(false)
 
@@ -56,9 +74,14 @@ function Navbar() {
           className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}
         >
           <ul className={styles.links}>
-            {navigationItems.map(({ label, href }) => (
+            {navigationItems.map(({ label, href }, index) => (
               <li key={href}>
-                <a className={styles.link} href={href} onClick={closeMenu}>
+                <a
+                  ref={index === 0 ? firstLinkRef : undefined}
+                  className={styles.link}
+                  href={href}
+                  onClick={closeMenu}
+                >
                   {label}
                 </a>
               </li>
@@ -71,6 +94,7 @@ function Navbar() {
         </div>
 
         <button
+          ref={menuButtonRef}
           className={`${styles.menuButton} ${isMenuOpen ? styles.open : ''}`}
           type="button"
           aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
