@@ -1,0 +1,31 @@
+.page {
+  composes: page from './PrivacyPolicy.module.css';
+}
+
+.header {
+  composes: header from './PrivacyPolicy.module.css';
+}
+
+.brand {
+  composes: brand from './PrivacyPolicy.module.css';
+}
+
+.backLink {
+  composes: backLink from './PrivacyPolicy.module.css';
+}
+
+.main {
+  composes: main from './PrivacyPolicy.module.css';
+}
+
+.introduction {
+  composes: introduction from './PrivacyPolicy.module.css';
+}
+
+.content {
+  composes: content from './PrivacyPolicy.module.css';
+}
+
+.pageFooter {
+  composes: pageFooter from './PrivacyPolicy.module.css';
+}

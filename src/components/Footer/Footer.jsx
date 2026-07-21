@@ -145,6 +145,10 @@ function Footer() {
 
         <div className={styles.bottomBar}>
           <p>© {currentYear} {siteConfig.companyName}. Todos os direitos reservados.</p>
+          <nav className={styles.legalLinks} aria-label="Links legais">
+            <a href="/politica-de-privacidade">Política de Privacidade</a>
+            <a href="/termos-de-uso">Termos de Uso</a>
+          </nav>
           <p>
             Desenvolvido por{' '}
             <a

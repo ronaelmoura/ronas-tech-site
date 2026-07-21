@@ -214,6 +214,17 @@
   font-weight: 500;
 }
 
+.legalLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.legalLinks a {
+  white-space: nowrap;
+}
+
 .brand:focus-visible,
 .socials a:focus-visible,
 .linkList a:focus-visible,
@@ -248,6 +259,12 @@
 
   .bottomBar {
     padding: 22px 0;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .legalLinks {
     align-items: flex-start;
     flex-direction: column;
     gap: 7px;
