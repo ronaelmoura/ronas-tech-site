@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import { siteConfig } from '../../config/siteConfig'
+import {
+  trackContactFormSubmit,
+  trackWhatsAppClick,
+} from '../../utils/analytics'
 import styles from './Contact.module.css'
 
 const initialFormData = {
@@ -134,6 +138,8 @@ function Contact() {
     }
 
     whatsappWindow.opener = null
+    trackWhatsAppClick('contact_form')
+    trackContactFormSubmit(formData.projectType)
     setFormData(initialFormData)
     setErrors({})
   }
@@ -169,6 +175,7 @@ function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contactItem}
+              onClick={() => trackWhatsAppClick('contact')}
             >
               <span className={styles.contactIcon}>
                 <ContactIcon name="whatsapp" />
@@ -213,6 +220,7 @@ function Contact() {
             href={directWhatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('contact')}
           >
             <ContactIcon name="whatsapp" />
             Falar pelo WhatsApp
@@ -351,8 +359,8 @@ function Contact() {
             </button>
 
             <p className={styles.privacyNote}>
-              Ao enviar, seus dados serão usados somente para responder à sua
-              solicitação.
+              Seus dados são utilizados somente para responder à sua solicitação
+              de contato.
             </p>
           </form>
         </div>

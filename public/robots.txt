@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: URL_DO_SITE/sitemap.xml
+# Adicionar a URL absoluta do sitemap quando o domínio oficial for definido.

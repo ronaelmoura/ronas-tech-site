@@ -1,4 +1,5 @@
 import { siteConfig } from '../../config/siteConfig'
+import { trackExternalLink } from '../../utils/analytics'
 import styles from './Portfolio.module.css'
 
 const projects = [
@@ -179,6 +180,9 @@ function Portfolio() {
                       href={project.projectUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        trackExternalLink('portfolio', project.projectUrl)
+                      }
                     >
                       Acessar projeto
                       <ExternalIcon />
@@ -194,6 +198,7 @@ function Portfolio() {
                     href={project.codeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackExternalLink('github', project.codeUrl)}
                   >
                     <CodeIcon />
                     Ver código

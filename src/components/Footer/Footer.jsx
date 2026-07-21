@@ -1,4 +1,8 @@
 import { siteConfig } from '../../config/siteConfig'
+import {
+  trackExternalLink,
+  trackWhatsAppClick,
+} from '../../utils/analytics'
 import styles from './Footer.module.css'
 
 const navigationLinks = [
@@ -96,6 +100,7 @@ function Footer() {
                   title={label}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackExternalLink(label.toLowerCase())}
                 >
                   <SocialIcon name={icon} />
                 </a>
@@ -116,7 +121,12 @@ function Footer() {
           <div className={`${styles.column} ${styles.contactColumn}`}>
             <h2>Contato</h2>
             <address>
-              <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer">
+              <a
+                href={`https://wa.me/${siteConfig.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('footer')}
+              >
                 <span>WhatsApp</span>
                 {siteConfig.whatsappDisplay}
               </a>
@@ -141,6 +151,7 @@ function Footer() {
               href={siteConfig.portfolio}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackExternalLink('portfolio')}
             >
               Ronael Moura
             </a>
