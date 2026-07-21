@@ -1,5 +1,4 @@
 import styles from './Hero.module.css'
-import { siteConfig } from '../../config/siteConfig'
 
 function Hero() {
   return (
@@ -8,13 +7,6 @@ function Hero() {
 
       <div className={styles.container}>
         <div className={styles.content}>
-          <img
-            className={styles.heroLogo}
-            src={siteConfig.logoPath}
-            alt=""
-            width="52"
-            height="49"
-          />
           <p className={styles.eyebrow}>
             <span aria-hidden="true" />
             Tecnologia para o seu negócio

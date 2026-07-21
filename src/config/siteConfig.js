@@ -1,6 +1,6 @@
 export const siteConfig = {
   companyName: 'Ronas Tech',
-  logoPath: '/logo.png',
+  logoPath: '/logo-ronas-tech.png',
   siteUrl: 'URL_DO_SITE',
   email: 'ronaelmoura240@gmail.com',
   whatsappDisplay: '(99) 98857-7134',
