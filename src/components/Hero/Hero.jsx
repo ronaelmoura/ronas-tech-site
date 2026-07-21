@@ -9,26 +9,29 @@ function Hero() {
         <div className={styles.content}>
           <p className={styles.eyebrow}>
             <span aria-hidden="true" />
-            Tecnologia para o seu negócio
+            Landing Pages, Sites Institucionais e Sistemas Web
           </p>
 
           <h1 id="hero-title" className={styles.title}>
-            Transformamos ideias em{' '}
-            <span>soluções de software.</span>
+            Transforme sua presença online em uma máquina de{' '}
+            <span>atração e conversão de clientes.</span>
           </h1>
 
           <p className={styles.description}>
-            Desenvolvemos sistemas web, sites profissionais e aplicações sob
-            medida para empresas que desejam crescer com tecnologia.
+            Desenvolvemos landing pages com foco em conversão, sites
+            institucionais profissionais e sistemas web sob medida para
+            empresas que querem vender mais, ganhar autoridade e crescer com
+            tecnologia.
           </p>
 
           <div className={styles.actions}>
             <a className={styles.primaryButton} href="#contato">
-              Solicitar Orçamento
+              Solicitar uma proposta
               <span aria-hidden="true">→</span>
             </a>
-            <a className={styles.secondaryButton} href="#projetos">
-              Conhecer Projetos
+
+            <a className={styles.secondaryButton} href="#servicos">
+              Ver serviços
             </a>
           </div>
         </div>
@@ -41,12 +44,13 @@ function Hero() {
                 <span />
                 <span />
               </div>
-              <div className={styles.addressBar}>app.ronastech.dev</div>
+
+              <div className={styles.addressBar}>projeto.ronastech.com.br</div>
             </div>
 
             <div className={styles.dashboardBody}>
               <aside className={styles.sidebar}>
-                <div className={styles.sidebarLogo}>R</div>
+                <div className={styles.sidebarLogo}>RT</div>
                 <span className={styles.activeIcon} />
                 <span />
                 <span />
@@ -56,35 +60,39 @@ function Hero() {
               <div className={styles.panel}>
                 <div className={styles.panelHeader}>
                   <div>
-                    <span className={styles.label}>Visão geral</span>
-                    <strong>Dashboard</strong>
+                    <span className={styles.label}>Projeto digital</span>
+                    <strong>Seu negócio online</strong>
                   </div>
-                  <span className={styles.status}>Online</span>
+
+                  <span className={styles.status}>Publicado</span>
                 </div>
 
                 <div className={styles.metrics}>
                   <div className={styles.metricCard}>
-                    <span>Receita</span>
-                    <strong>R$ 84,2k</strong>
-                    <small>+12,5%</small>
+                    <span>Presença digital</span>
+                    <strong>Profissional</strong>
+                    <small>Site moderno</small>
                   </div>
+
                   <div className={styles.metricCard}>
-                    <span>Projetos</span>
-                    <strong>24</strong>
-                    <small>+4 este mês</small>
+                    <span>Dispositivos</span>
+                    <strong>100%</strong>
+                    <small>Responsivo</small>
                   </div>
+
                   <div className={styles.metricCard}>
-                    <span>Conversão</span>
-                    <strong>8,7%</strong>
-                    <small>+2,1%</small>
+                    <span>Atendimento</span>
+                    <strong>WhatsApp</strong>
+                    <small>Contato rápido</small>
                   </div>
                 </div>
 
                 <div className={styles.chartCard}>
                   <div className={styles.chartHeader}>
-                    <span>Crescimento</span>
-                    <small>Últimos 6 meses</small>
+                    <span>Crescimento digital</span>
+                    <small>Presença online</small>
                   </div>
+
                   <div className={styles.chart}>
                     <span style={{ '--height': '30%' }} />
                     <span style={{ '--height': '46%' }} />
@@ -99,11 +107,13 @@ function Hero() {
           </div>
 
           <div className={styles.codeCard}>
-            <span className={styles.codeLabel}>deploy.js</span>
+            <span className={styles.codeLabel}>ronas-tech</span>
+
             <code>
-              <span>const</span> status = <em>&apos;success&apos;</em>;
+              <span>const</span> projeto = <em>&apos;online&apos;</em>;
             </code>
-            <small>✓ Deploy concluído</small>
+
+            <small>✓ Projeto publicado</small>
           </div>
         </div>
       </div>
