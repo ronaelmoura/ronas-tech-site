@@ -19,7 +19,7 @@ function TermsOfUse() {
     <div className={styles.page}>
       <header className={styles.header}>
         <a className={styles.brand} href="/" aria-label={`${siteConfig.companyName} — página inicial`}>
-          <span aria-hidden="true">RT</span>
+          <img src={siteConfig.logoPath} alt="" width="41" height="38" />
           {siteConfig.companyName}
         </a>
         <a className={styles.backLink} href="/">← Voltar para o site</a>

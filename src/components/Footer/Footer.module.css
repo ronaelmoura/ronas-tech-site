@@ -41,21 +41,16 @@
   text-decoration: none;
 }
 
-.brand > span {
-  display: grid;
-  width: 31px;
-  height: 31px;
-  place-items: center;
-  color: #fff;
-  background: linear-gradient(145deg, #2563eb, #0891b2);
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 700;
+.brand img {
+  display: block;
+  width: auto;
+  height: 46px;
+  object-fit: contain;
 }
 
 .brand strong {
-  color: #60a5fa;
-  font-weight: 600;
+  color: #f8fafc;
+  font-weight: 700;
 }
 
 .brandColumn > p {
@@ -236,6 +231,10 @@
 }
 
 @media (max-width: 900px) {
+  .brand img {
+    height: 42px;
+  }
+
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 48px 64px;
@@ -243,6 +242,10 @@
 }
 
 @media (max-width: 560px) {
+  .brand img {
+    height: 38px;
+  }
+
   .container {
     width: min(100% - 32px, 1200px);
   }

@@ -58,9 +58,14 @@ function Navbar() {
     >
       <nav className={styles.navbar} aria-label="Navegação principal">
         <a className={styles.brand} href="#inicio" onClick={closeMenu}>
-          <span className={styles.logo} aria-hidden="true">
-            RT
-          </span>
+          <img
+            className={styles.logo}
+            src={siteConfig.logoPath}
+            alt=""
+            width="47"
+            height="44"
+            loading="eager"
+          />
           <span className={styles.brandName}>{siteConfig.companyName}</span>
         </a>
 

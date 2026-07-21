@@ -84,12 +84,17 @@ function Footer() {
         <div className={styles.grid}>
           <div className={styles.brandColumn}>
             <a className={styles.brand} href="#inicio" aria-label={`${siteConfig.companyName} — início`}>
-              <span aria-hidden="true">R</span>
-              Ronas <strong>Tech</strong>
+              <img
+                src={siteConfig.logoPath}
+                alt=""
+                width="47"
+                height="44"
+                loading="lazy"
+              />
+              <strong>{siteConfig.companyName}</strong>
             </a>
             <p>
-              Desenvolvimento de sites, sistemas web e soluções digitais
-              personalizadas para empresas que desejam crescer com tecnologia.
+              Desenvolvimento de Sites, Sistemas Web e Soluções Digitais.
             </p>
             <div className={styles.socials} aria-label="Redes sociais">
               {socialLinks.map(({ label, href, icon }) => (

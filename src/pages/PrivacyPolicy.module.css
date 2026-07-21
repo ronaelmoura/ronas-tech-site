@@ -25,15 +25,11 @@
   text-decoration: none;
 }
 
-.brand span {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  color: #fff;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  border-radius: 10px;
-  font-size: 12px;
+.brand img {
+  display: block;
+  width: auto;
+  height: 42px;
+  object-fit: contain;
 }
 
 .backLink {
@@ -187,9 +183,8 @@
     font-size: 15px;
   }
 
-  .brand span {
-    width: 34px;
-    height: 34px;
+  .brand img {
+    height: 38px;
   }
 
   .backLink {

@@ -38,24 +38,15 @@
 }
 
 .logo {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  color: #fff;
-  background: linear-gradient(135deg, #3b82f6, #2563eb 58%, #1d4ed8);
-  border: 1px solid rgb(255 255 255 / 20%);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgb(37 99 235 / 32%);
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  display: block;
+  width: auto;
+  height: 46px;
+  object-fit: contain;
+  transition: transform 200ms ease;
 }
 
 .brand:hover .logo {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgb(37 99 235 / 45%);
 }
 
 .brandName {
@@ -169,6 +160,10 @@
 }
 
 @media (max-width: 840px) {
+  .logo {
+    height: 42px;
+  }
+
   .navbar {
     width: min(100% - 32px, 1200px);
   }
@@ -279,6 +274,12 @@
     width: 100%;
     min-height: 48px;
     box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 38px;
   }
 }
 
