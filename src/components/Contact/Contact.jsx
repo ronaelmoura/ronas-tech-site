@@ -18,9 +18,9 @@ const projectTypes = [
   'Outro',
 ]
 
-const whatsappNumber = '55889998857134'
+const whatsappNumber = '5599988567134'
 const directWhatsappUrl =
-  'https://wa.me/55889998857134?text=Ol%C3%A1%21%20Conheci%20a%20Ronas%20Tech%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.'
+  'https://wa.me/5599988567134?text=Ol%C3%A1%21%20Conheci%20a%20Ronas%20Tech%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.'
 
 const contactIcons = {
   whatsapp: (
@@ -174,7 +174,7 @@ function Contact() {
               </span>
               <span>
                 <small>WhatsApp</small>
-                <strong>(88) 99988-57134</strong>
+                <strong>(99) 98856-7134</strong>
               </span>
             </a>
 
