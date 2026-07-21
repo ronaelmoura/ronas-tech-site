@@ -19,8 +19,8 @@ function App() {
         <Services />
         <Process />
         <Technologies />
-        <About />
         <Portfolio />
+        <About />
         <Contact />
       </main>
       <Footer />
