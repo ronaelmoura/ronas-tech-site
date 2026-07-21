@@ -115,9 +115,9 @@ function Footer() {
           <div className={`${styles.column} ${styles.contactColumn}`}>
             <h2>Contato</h2>
             <address>
-              <a href="https://wa.me/5599988567134" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5599988577134" target="_blank" rel="noopener noreferrer">
                 <span>WhatsApp</span>
-                (99) 98856-7134
+                (99) 98857-7134
               </a>
               <a href="mailto:ronaelmoura240@gmail.com">
                 <span>E-mail</span>
