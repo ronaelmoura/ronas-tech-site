@@ -18,15 +18,16 @@ const projects = [
   },
   {
     title: 'Site da Ronas Tech',
-    category: 'Site institucional / portfolio profissional',
+    category: 'Site institucional / portfólio profissional',
     need:
       'Apresentar a empresa e seus serviços de forma clara, profissional e com foco em conversão de clientes.',
     solution:
       'Foi criado um site institucional com comunicação objetiva, navegação simples e estrutura voltada para captar leads e apresentar a proposta da empresa.',
     technologies: ['React', 'Vite', 'CSS Modules', 'Google Analytics'],
     status: 'Publicado',
-    projectUrl: siteConfig.portfolio,
-    codeUrl: `${siteConfig.github}/portfolio-ronas-tech`,
+    projectUrl: siteConfig.siteUrl,
+    codeUrl: `${siteConfig.github}/ronas-tech-site`,
+    featured: true,
     visual: 'portfolio',
   },
 ]
@@ -74,7 +75,7 @@ function ProjectVisual({ type }) {
             <span />
           </div>
         </div>
-        <div className={styles.floatingStatus}>12 chamados ativos</div>
+        <div className={styles.floatingStatus}>Painel de chamados</div>
       </div>
     )
   }
@@ -126,7 +127,7 @@ function Portfolio() {
             >
               <div className={styles.visual}>
                 {project.featured && (
-                  <span className={styles.featuredBadge}>Projeto principal</span>
+                  <span className={styles.featuredBadge}>Projeto em destaque</span>
                 )}
                 <ProjectVisual type={project.visual} />
               </div>
@@ -181,7 +182,7 @@ function Portfolio() {
                     </a>
                   ) : (
                     <button className={styles.disabledButton} type="button" disabled>
-                      Projeto demonstrativo
+                      Projeto em desenvolvimento
                     </button>
                   )}
 

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Adicionar a URL oficial quando o domínio definitivo for definido. -->
+  <url>
+    <loc>https://ronas-tech-site.vercel.app/</loc>
+  </url>
+  <url>
+    <loc>https://ronas-tech-site.vercel.app/politica-de-privacidade</loc>
+  </url>
+  <url>
+    <loc>https://ronas-tech-site.vercel.app/termos-de-uso</loc>
+  </url>
 </urlset>

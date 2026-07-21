@@ -1,7 +1,7 @@
 export const siteConfig = {
   companyName: 'Ronas Tech',
   logoPath: '/logo-ronas-tech.png',
-  siteUrl: 'URL_DO_SITE',
+  siteUrl: 'https://ronas-tech-site.vercel.app/',
   email: 'ronaelmoura240@gmail.com',
   whatsappDisplay: '(99) 98857-7134',
   whatsappNumber: '5599988577134',

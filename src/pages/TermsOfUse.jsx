@@ -83,8 +83,8 @@ function TermsOfUse() {
           <section>
             <h2>6. Projetos apresentados</h2>
             <p>
-              Os projetos exibidos no portfólio possuem finalidade demonstrativa
-              e podem estar em desenvolvimento ou passar por modificações.
+              Os projetos exibidos no portfólio são projetos próprios e podem
+              estar em desenvolvimento ou passar por modificações.
             </p>
           </section>
 

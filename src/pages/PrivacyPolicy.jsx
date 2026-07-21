@@ -118,7 +118,7 @@ function PrivacyPolicy() {
             <h2>9. Links externos</h2>
             <p>
               O site possui links para plataformas externas, como WhatsApp,
-              GitHub, LinkedIn, YouTube e portfólio. Cada plataforma possui sua
+              GitHub, LinkedIn e portfólio. Cada plataforma possui sua
               própria política de privacidade e é responsável por suas práticas.
             </p>
           </section>

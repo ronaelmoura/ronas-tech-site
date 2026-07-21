@@ -245,6 +245,7 @@ function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   autoComplete="name"
+                  required
                   placeholder="Seu nome"
                   className={errors.name ? styles.invalid : ''}
                   {...fieldAccessibility('name')}
@@ -265,6 +266,7 @@ function Contact() {
                   value={formData.business}
                   onChange={handleChange}
                   autoComplete="organization"
+                  required
                   placeholder="Nome da empresa"
                   className={errors.business ? styles.invalid : ''}
                   {...fieldAccessibility('business')}
@@ -288,6 +290,7 @@ function Contact() {
                   onChange={handleChange}
                   autoComplete="tel"
                   inputMode="tel"
+                  required
                   placeholder="(00) 0 0000-0000"
                   className={errors.phone ? styles.invalid : ''}
                   {...fieldAccessibility('phone')}
@@ -306,6 +309,7 @@ function Contact() {
                   name="projectType"
                   value={formData.projectType}
                   onChange={handleChange}
+                  required
                   className={errors.projectType ? styles.invalid : ''}
                   {...fieldAccessibility('projectType')}
                 >
@@ -334,6 +338,7 @@ function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 rows="5"
+                required
                 placeholder="Descreva sua necessidade, objetivo ou desafio..."
                 className={errors.message ? styles.invalid : ''}
                 {...fieldAccessibility('message')}

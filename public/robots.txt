@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Adicionar a URL absoluta do sitemap quando o domínio oficial for definido.
+Sitemap: https://ronas-tech-site.vercel.app/sitemap.xml
