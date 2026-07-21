@@ -6,34 +6,24 @@ const projects = [
   {
     title: 'Ronas Desk',
     category: 'Sistema Web full stack',
-    description:
-      'Sistema de gestão de clientes e chamados desenvolvido para organizar atendimentos, centralizar informações e acompanhar o andamento dos serviços.',
+    need:
+      'Organizar atendimento, centralizar informações de clientes e acompanhar chamados de forma mais prática.',
+    solution:
+      'Foi desenvolvido um sistema com painel administrativo para controle de clientes, status dos atendimentos e gestão operacional.',
     technologies: ['React', 'Node.js', 'Express', 'MySQL'],
-    features: [
-      'Cadastro de clientes',
-      'Gestão de chamados',
-      'Controle de status',
-      'Painel administrativo',
-      'Integração com banco de dados',
-    ],
     status: 'Em desenvolvimento',
     codeUrl: `${siteConfig.github}/ronas-desk`,
     featured: true,
     visual: 'dashboard',
   },
   {
-    title: 'Portfólio Ronas Tech',
-    category: 'Portfólio profissional',
-    description:
-      'Portfólio desenvolvido para apresentar projetos, habilidades, tecnologias e a trajetória profissional de Ronael Moura como Desenvolvedor Full Stack.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages'],
-    features: [
-      'Apresentação profissional',
-      'Projetos em destaque',
-      'Tecnologias',
-      'Contato',
-      'Layout responsivo',
-    ],
+    title: 'Site da Ronas Tech',
+    category: 'Site institucional / portfolio profissional',
+    need:
+      'Apresentar a empresa e seus serviços de forma clara, profissional e com foco em conversão de clientes.',
+    solution:
+      'Foi criado um site institucional com comunicação objetiva, navegação simples e estrutura voltada para captar leads e apresentar a proposta da empresa.',
+    technologies: ['React', 'Vite', 'CSS Modules', 'Google Analytics'],
     status: 'Publicado',
     projectUrl: siteConfig.portfolio,
     codeUrl: `${siteConfig.github}/portfolio-ronas-tech`,
@@ -121,10 +111,10 @@ function Portfolio() {
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Projetos selecionados</p>
-          <h2 id="portfolio-title">Projetos que demonstram nossa experiência</h2>
+          <h2 id="portfolio-title">Provas de capacidade da Ronas Tech</h2>
           <p className={styles.subtitle}>
-            Conheça algumas soluções desenvolvidas com foco em organização,
-            desempenho, experiência do usuário e resolução de problemas reais.
+            Veja como a equipe trabalha com soluções práticas, comunicação clara e
+            desenvolvimento voltado para necessidades reais de negócio.
           </p>
         </header>
 
@@ -153,7 +143,16 @@ function Portfolio() {
                 </div>
 
                 <h3>{project.title}</h3>
-                <p className={styles.description}>{project.description}</p>
+
+                <div className={styles.features}>
+                  <h4>Necessidade</h4>
+                  <p className={styles.description}>{project.need}</p>
+                </div>
+
+                <div className={styles.features}>
+                  <h4>Solução desenvolvida</h4>
+                  <p className={styles.description}>{project.solution}</p>
+                </div>
 
                 <ul className={styles.technologies} aria-label="Tecnologias utilizadas">
                   {project.technologies.map((technology) => (
@@ -162,15 +161,8 @@ function Portfolio() {
                 </ul>
 
                 <div className={styles.features}>
-                  <h4>Principais funcionalidades</h4>
-                  <ul>
-                    {project.features.map((feature) => (
-                      <li key={feature}>
-                        <span aria-hidden="true">✓</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <h4>Status do projeto</h4>
+                  <p className={styles.description}>{project.status}</p>
                 </div>
 
                 <div className={styles.actions}>
@@ -184,25 +176,27 @@ function Portfolio() {
                         trackExternalLink('portfolio', project.projectUrl)
                       }
                     >
-                      Acessar projeto
+                      Ver projeto
                       <ExternalIcon />
                     </a>
                   ) : (
                     <button className={styles.disabledButton} type="button" disabled>
-                      Demo em breve
+                      Projeto demonstrativo
                     </button>
                   )}
 
-                  <a
-                    className={styles.secondaryButton}
-                    href={project.codeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackExternalLink('github', project.codeUrl)}
-                  >
-                    <CodeIcon />
-                    Ver código
-                  </a>
+                  {project.codeUrl && (
+                    <a
+                      className={styles.secondaryButton}
+                      href={project.codeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackExternalLink('github', project.codeUrl)}
+                    >
+                      <CodeIcon />
+                      Ver no GitHub
+                    </a>
+                  )}
                 </div>
               </div>
             </article>
