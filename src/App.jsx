@@ -10,6 +10,8 @@ import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfUse from './pages/TermsOfUse'
+import ServicePage from './pages/ServicePage'
+import { servicePages } from './data/servicePages'
 
 const legalPages = {
   '/politica-de-privacidade': PrivacyPolicy,
@@ -19,6 +21,7 @@ const legalPages = {
 function App() {
   const pathname = window.location.pathname.replace(/\/$/, '') || '/'
   const LegalPage = legalPages[pathname]
+  const service = servicePages[pathname]
 
   if (LegalPage) {
     return (
@@ -27,6 +30,17 @@ function App() {
           Pular para o conteúdo principal
         </a>
         <LegalPage />
+      </>
+    )
+  }
+
+  if (service) {
+    return (
+      <>
+        <a className="skip-link" href="#conteudo-principal">
+          Pular para o conteúdo principal
+        </a>
+        <ServicePage service={service} />
       </>
     )
   }
