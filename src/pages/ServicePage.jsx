@@ -61,6 +61,11 @@ function ServicePage({ service }) {
         name: siteConfig.companyName,
         url: siteConfig.siteUrl,
         email: siteConfig.email,
+        sameAs: [
+          siteConfig.github,
+          siteConfig.linkedin,
+          siteConfig.instagram,
+        ],
       },
     })
     document.head.appendChild(structuredData)
