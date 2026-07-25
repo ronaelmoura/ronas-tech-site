@@ -1,10 +1,10 @@
 export const siteConfig = {
   companyName: 'Ronas Tech',
   logoPath: '/logo-ronas-tech.png',
-  siteUrl: 'https://ronas-tech-site.vercel.app/',
+  siteUrl: 'https://www.ronastech.com.br/',
   email: 'ronaelmoura240@gmail.com',
-  whatsappDisplay: '(99) 98857-7134',
-  whatsappNumber: '5599988577134',
+  whatsappDisplay: '(88) 99302-1946',
+  whatsappNumber: '5588993021946',
   location: 'Tianguá, Ceará',
   github: 'https://github.com/ronaelmoura',
   linkedin: 'https://www.linkedin.com/in/ronael-moura',
