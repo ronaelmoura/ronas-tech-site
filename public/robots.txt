@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ronas-tech-site.vercel.app/sitemap.xml
+Sitemap: https://www.ronastech.com.br/sitemap.xml
