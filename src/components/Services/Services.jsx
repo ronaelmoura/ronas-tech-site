@@ -12,6 +12,7 @@ const services = [
       'Boa presença para campanhas',
     ],
     icon: 'landing',
+    path: '/landing-pages',
     featured: true,
   },
   {
@@ -25,6 +26,7 @@ const services = [
       'Foco em reputação da marca',
     ],
     icon: 'website',
+    path: '/criacao-de-sites',
   },
   {
     title: 'Sites Empresariais',
@@ -37,6 +39,7 @@ const services = [
       'Experiência profissional online',
     ],
     icon: 'system',
+    path: '/criacao-de-sites',
   },
   {
     title: 'Manutenção de Sites',
@@ -49,6 +52,7 @@ const services = [
       'Site sempre funcionando',
     ],
     icon: 'api',
+    path: '/manutencao-de-sites',
   },
   {
     title: 'Correção de Bugs',
@@ -61,6 +65,7 @@ const services = [
       'Ajustes com foco em resultado',
     ],
     icon: 'api',
+    path: '/manutencao-de-sites',
   },
   {
     title: 'Sistemas Web Simples',
@@ -73,6 +78,7 @@ const services = [
       'Solução adaptada ao seu dia a dia',
     ],
     icon: 'system',
+    path: '/sistemas-web',
   },
 ]
 
@@ -140,7 +146,7 @@ function Services() {
 
         <div className={styles.grid}>
           {services.map(
-            ({ title, description, highlights, icon, featured }) => (
+            ({ title, description, highlights, icon, path, featured }) => (
               <article
                 className={`${styles.card} ${featured ? styles.featured : ''}`}
                 key={title}
@@ -169,8 +175,8 @@ function Services() {
                   ))}
                 </ul>
 
-                <a className={styles.cta} href="#contato">
-                  Solicitar orçamento
+                <a className={styles.cta} href={path}>
+                  Conhecer serviço
                   <span aria-hidden="true">→</span>
                 </a>
               </article>
