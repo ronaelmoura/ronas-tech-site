@@ -5,7 +5,7 @@ import styles from './Navbar.module.css'
 const navigationItems = [
   { label: 'Início', href: '#inicio' },
   { label: 'Serviços', href: '#servicos' },
-  { label: 'Processo', href: '#processo' },
+  { label: 'Pacotes', href: '#pacotes' },
   { label: 'Projetos', href: '#projetos' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Contato', href: '#contato' },

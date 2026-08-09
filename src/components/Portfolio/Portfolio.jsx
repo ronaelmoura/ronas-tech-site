@@ -9,10 +9,13 @@ const projects = [
     need:
       'Organizar atendimento, centralizar informações de clientes e acompanhar chamados de forma mais prática.',
     solution:
-      'Sistema em desenvolvimento com painel administrativo para controlar clientes, chamados, prioridades e andamento dos atendimentos.',
-    technologies: ['React', 'Node.js', 'Express', 'MySQL'],
+      'Um painel único para cadastrar clientes, registrar chamados, definir prioridades e acompanhar cada atendimento.',
+    benefits: [
+      'Histórico de atendimentos centralizado',
+      'Prioridades e andamento mais visíveis',
+      'Menos dependência de anotações soltas',
+    ],
     status: 'Em desenvolvimento',
-    codeUrl: `${siteConfig.github}/ronas-desk`,
     featured: true,
     visual: 'dashboard',
   },
@@ -23,10 +26,13 @@ const projects = [
       'Apresentar a empresa e seus serviços de forma clara, profissional e com foco em conversão de clientes.',
     solution:
       'Foi criado um site institucional com comunicação objetiva, navegação simples e estrutura voltada para captar leads e apresentar a proposta da empresa.',
-    technologies: ['React', 'Vite', 'CSS Modules', 'Google Analytics'],
+    benefits: [
+      'Serviços apresentados com mais clareza',
+      'Contato direto pelo WhatsApp',
+      'Experiência adaptada para celular',
+    ],
     status: 'Publicado',
     projectUrl: siteConfig.siteUrl,
-    codeUrl: `${siteConfig.github}/ronas-tech-site`,
     featured: true,
     visual: 'portfolio',
   },
@@ -36,14 +42,6 @@ function ExternalIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path d="M11 4h5v5M9 11l7-7M16 11v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4" />
-    </svg>
-  )
-}
-
-function CodeIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="m7 5-5 5 5 5M13 5l5 5-5 5M12 3 8 17" />
     </svg>
   )
 }
@@ -155,14 +153,17 @@ function Portfolio() {
                   <p className={styles.description}>{project.solution}</p>
                 </div>
 
-                <ul className={styles.technologies} aria-label="Tecnologias utilizadas">
-                  {project.technologies.map((technology) => (
-                    <li key={technology}>{technology}</li>
-                  ))}
-                </ul>
+                <div className={styles.features}>
+                  <h4>Benefícios para o negócio</h4>
+                  <ul className={styles.businessBenefits}>
+                    {project.benefits.map((benefit) => (
+                      <li key={benefit}>{benefit}</li>
+                    ))}
+                  </ul>
+                </div>
 
                 <div className={styles.features}>
-                  <h4>Status do projeto</h4>
+                  <h4>Andamento</h4>
                   <p className={styles.description}>{project.status}</p>
                 </div>
 
@@ -181,21 +182,9 @@ function Portfolio() {
                       <ExternalIcon />
                     </a>
                   ) : (
-                    <button className={styles.disabledButton} type="button" disabled>
-                      Projeto em desenvolvimento
-                    </button>
-                  )}
-
-                  {project.codeUrl && (
-                    <a
-                      className={styles.secondaryButton}
-                      href={project.codeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => trackExternalLink('github', project.codeUrl)}
-                    >
-                      <CodeIcon />
-                      Ver no GitHub
+                    <a className={styles.primaryButton} href="#contato">
+                      Quero uma solução semelhante
+                      <span aria-hidden="true">→</span>
                     </a>
                   )}
                 </div>

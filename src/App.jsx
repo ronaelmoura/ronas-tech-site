@@ -3,9 +3,11 @@ import Hero from './components/Hero/Hero'
 import Industries from './components/Industries/Industries'
 import About from './components/About/About'
 import Services from './components/Services/Services'
+import Pricing from './components/Pricing/Pricing'
 import Process from './components/Process/Process'
 import Portfolio from './components/Portfolio/Portfolio'
 import Contact from './components/Contact/Contact'
+import FAQ from './components/FAQ/FAQ'
 import Footer from './components/Footer/Footer'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfUse from './pages/TermsOfUse'
@@ -54,9 +56,11 @@ function App() {
         <Hero />
         <Industries />
         <Services />
+        <Pricing />
         <Process />
         <Portfolio />
         <About />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
