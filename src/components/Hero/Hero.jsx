@@ -15,7 +15,7 @@ function Hero() {
         <div className={styles.content}>
           <p className={styles.eyebrow}>
             <span aria-hidden="true" />
-            Sites, automações e sistemas para pequenos negócios
+            Atendimento remoto para pequenos negócios em todo o Brasil
           </p>
 
           <h1 id="hero-title" className={styles.title}>
@@ -48,8 +48,8 @@ function Hero() {
 
           <ul className={styles.trustList} aria-label="Diferenciais do atendimento">
             <li>Atendimento direto com o fundador</li>
+            <li>Projetos para empresas de todo o Brasil</li>
             <li>Escopo e etapas explicados com clareza</li>
-            <li>Soluções pensadas para a rotina do negócio</li>
           </ul>
         </div>
 

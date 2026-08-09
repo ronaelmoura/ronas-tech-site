@@ -2,27 +2,27 @@ import styles from './About.module.css'
 
 const differentials = [
   {
-    title: 'Atendimento direto com o fundador',
+    title: 'Você decide com quem realmente desenvolve',
     icon: 'custom',
   },
   {
-    title: 'Atendimento próximo e transparente',
+    title: 'Atendimento nacional por WhatsApp e videochamada',
     icon: 'support',
   },
   {
-    title: 'Escopo explicado sem complicação',
+    title: 'Escopo, limites e investimento antes de começar',
     icon: 'technology',
   },
   {
-    title: 'Interfaces intuitivas e responsivas',
+    title: 'Entregas pensadas primeiro para o celular',
     icon: 'interface',
   },
   {
-    title: 'Soluções que começam pelo essencial',
+    title: 'Projeto pequeno quando pequeno é o suficiente',
     icon: 'code',
   },
   {
-    title: 'Suporte após a entrega',
+    title: 'Acompanhamento previsto depois da entrega',
     icon: 'delivery',
   },
 ]
@@ -87,18 +87,18 @@ function About() {
         <div className={styles.introduction}>
           <div className={styles.content}>
             <p className={styles.eyebrow}>Sobre a Ronas Tech</p>
-            <h2 id="about-title">Tecnologia próxima da realidade do pequeno negócio</h2>
+            <h2 id="about-title">
+              Uma empresa pequena, com conversa direta e responsabilidade pelo que entrega
+            </h2>
             <p>
-              A Ronas Tech foi criada por Ronael Moura para ajudar pequenos
-              negócios a utilizar tecnologia de forma simples e acessível. O
-              trabalho combina criação de sites, automações e sistemas web com
-              uma conversa direta sobre o problema que precisa ser resolvido.
+              A Ronas Tech nasceu em Tianguá, no Ceará, e atende pequenos
+              negócios de todo o Brasil de forma remota. O trabalho é conduzido
+              por Ronael Moura, do primeiro diagnóstico à publicação.
             </p>
             <p>
-              Do primeiro contato à entrega, você fala diretamente com quem
-              planeja e desenvolve a solução. Cada projeto começa pelo
-              essencial, com etapas claras e espaço para evoluir quando o
-              negócio realmente precisar.
+              Isso significa menos repasse de informação e mais clareza sobre o
+              que está sendo construído. Se uma ideia não resolver o problema ou
+              não justificar o investimento, ela não entra no projeto.
             </p>
             <a className={styles.cta} href="#contato">
               Falar com a Ronas Tech
@@ -106,42 +106,41 @@ function About() {
             </a>
           </div>
 
-          <aside className={styles.principles} aria-label="Propósito da Ronas Tech">
+          <aside className={styles.principles} aria-label="Forma de trabalho da Ronas Tech">
             <article className={styles.principle}>
               <div className={styles.principleHeader}>
                 <span aria-hidden="true">01</span>
-                <h3>Missão</h3>
+                <h3>Entender antes de propor</h3>
               </div>
               <p>
-                Criar soluções digitais claras e úteis que simplifiquem
-                processos e apoiem resultados reais de pequenos negócios.
+                A primeira conversa é sobre a rotina, o gargalo e o resultado
+                esperado — não sobre uma lista pronta de tecnologias.
               </p>
             </article>
 
             <article className={styles.principle}>
               <div className={styles.principleHeader}>
                 <span aria-hidden="true">02</span>
-                <h3>Visão</h3>
+                <h3>Explicar sem esconder</h3>
               </div>
               <p>
-                Construir relações de confiança e evoluir com projetos que façam
-                diferença na rotina de cada cliente.
+                Você sabe o que será feito, o que ficará de fora e por que cada
+                etapa existe antes de aprovar o trabalho.
               </p>
             </article>
 
             <article className={styles.principle}>
               <div className={styles.principleHeader}>
                 <span aria-hidden="true">03</span>
-                <h3>Valores</h3>
+                <h3>Acordos claros</h3>
               </div>
               <ul className={styles.values}>
                 {[
-                  'Qualidade',
-                  'Transparência',
-                  'Compromisso',
-                  'Simplicidade',
-                  'Inovação',
-                  'Evolução contínua',
+                  'Escopo definido',
+                  'Prazo combinado',
+                  'Investimento visível',
+                  'Responsabilidades divididas',
+                  'Suporte previsto',
                 ].map((value) => (
                   <li key={value}>{value}</li>
                 ))}

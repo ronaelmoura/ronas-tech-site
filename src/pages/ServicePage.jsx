@@ -25,6 +25,17 @@ const processSteps = [
   },
 ]
 
+const serviceLinks = [
+  { href: '/criacao-de-sites', label: 'Criação de sites' },
+  { href: '/landing-pages', label: 'Landing pages' },
+  {
+    href: '/automacao-para-pequenos-negocios',
+    label: 'Automações para negócios',
+  },
+  { href: '/sistemas-web', label: 'Sistemas web' },
+  { href: '/manutencao-de-sites', label: 'Manutenção de sites' },
+]
+
 function setMetaContent(selector, content) {
   document.querySelector(selector)?.setAttribute('content', content)
 }
@@ -43,7 +54,11 @@ function ServicePage({ service }) {
     setMetaContent('meta[name="twitter:description"]', service.metaDescription)
     canonical?.setAttribute('href', pageUrl)
 
-    const structuredData = document.createElement('script')
+    const existingStructuredData = document.getElementById(
+      'service-structured-data',
+    )
+    const structuredData =
+      existingStructuredData ?? document.createElement('script')
     structuredData.id = 'service-structured-data'
     structuredData.type = 'application/ld+json'
     structuredData.textContent = JSON.stringify({
@@ -68,10 +83,12 @@ function ServicePage({ service }) {
         ],
       },
     })
-    document.head.appendChild(structuredData)
+    if (!existingStructuredData) document.head.appendChild(structuredData)
     window.scrollTo(0, 0)
 
-    return () => structuredData.remove()
+    return () => {
+      if (!existingStructuredData) structuredData.remove()
+    }
   }, [service])
 
   const whatsappMessage = encodeURIComponent(
@@ -213,6 +230,21 @@ function ServicePage({ service }) {
             </div>
           </div>
         </section>
+
+        <nav className={styles.related} aria-label="Outros serviços da Ronas Tech">
+          <div className={styles.container}>
+            <p>Outras formas de colocar a tecnologia para trabalhar</p>
+            <div className={styles.relatedLinks}>
+              {serviceLinks
+                .filter(({ href }) => href !== `/${service.slug}`)
+                .map(({ href, label }) => (
+                  <a href={href} key={href}>
+                    {label} <span aria-hidden="true">→</span>
+                  </a>
+                ))}
+            </div>
+          </div>
+        </nav>
 
         <section className={styles.ctaSection}>
           <div className={styles.ctaContent}>

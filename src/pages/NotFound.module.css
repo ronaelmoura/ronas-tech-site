@@ -1,0 +1,58 @@
+.page {
+  min-height: 100vh;
+  padding: 28px clamp(20px, 5vw, 72px);
+  background:
+    radial-gradient(circle at 75% 20%, rgb(19 98 255 / 18%), transparent 30rem),
+    #070b14;
+  color: #f8fafc;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.content {
+  width: min(720px, 100%);
+  margin: clamp(110px, 20vh, 220px) auto 0;
+}
+
+.code {
+  margin: 0 0 18px;
+  color: #31d6e8;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.content h1 {
+  margin: 0;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.065em;
+}
+
+.content > p:not(.code) {
+  max-width: 580px;
+  margin: 28px 0 36px;
+  color: #aeb8c9;
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  background: #2768ee;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
