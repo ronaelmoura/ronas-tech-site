@@ -7,15 +7,17 @@ const projects = [
     title: 'Ronas Desk',
     category: 'Sistema de gestão de chamados',
     need:
-      'Organizar atendimento, centralizar informações de clientes e acompanhar chamados de forma mais prática.',
+      'Substituir solicitações espalhadas por um fluxo organizado para registrar, priorizar e acompanhar atendimentos.',
     solution:
-      'Um painel único para cadastrar clientes, registrar chamados, definir prioridades e acompanhar cada atendimento.',
+      'Sistema web publicado com acesso protegido, abertura e acompanhamento de chamados, controle de prioridade e status e painéis para usuários e administradores.',
     benefits: [
-      'Histórico de atendimentos centralizado',
-      'Prioridades e andamento mais visíveis',
-      'Menos dependência de anotações soltas',
+      'Solicitações centralizadas em um único lugar',
+      'Prioridades e andamento visíveis para a equipe',
+      'Histórico organizado para acompanhar cada atendimento',
     ],
-    status: 'Em desenvolvimento',
+    status: 'Publicado',
+    projectUrl: 'https://ronas-desk.onrender.com/',
+    actionLabel: 'Conhecer o Ronas Desk',
     featured: true,
     visual: 'dashboard',
   },
@@ -33,6 +35,7 @@ const projects = [
     ],
     status: 'Publicado',
     projectUrl: siteConfig.siteUrl,
+    actionLabel: 'Ver projeto',
     featured: true,
     visual: 'portfolio',
   },
@@ -178,7 +181,7 @@ function Portfolio() {
                         trackExternalLink('portfolio', project.projectUrl)
                       }
                     >
-                      Ver projeto
+                      {project.actionLabel}
                       <ExternalIcon />
                     </a>
                   ) : (
