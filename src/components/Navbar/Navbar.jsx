@@ -95,7 +95,7 @@ function Navbar() {
           </ul>
 
           <a className={styles.cta} href="#contato" onClick={closeMenu}>
-            Solicitar Orçamento
+            Falar sobre meu negócio
           </a>
         </div>
 

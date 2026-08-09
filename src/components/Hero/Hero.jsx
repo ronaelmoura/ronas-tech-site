@@ -9,31 +9,36 @@ function Hero() {
         <div className={styles.content}>
           <p className={styles.eyebrow}>
             <span aria-hidden="true" />
-            Landing Pages, Sites Institucionais e Sistemas Web
+            Sites, automações e sistemas para pequenos negócios
           </p>
 
           <h1 id="hero-title" className={styles.title}>
-            Transforme sua presença online em uma máquina de{' '}
-            <span>atração e conversão de clientes.</span>
+            Tecnologia para organizar seu negócio e{' '}
+            <span>transformar oportunidades em resultados.</span>
           </h1>
 
           <p className={styles.description}>
-            Desenvolvemos landing pages com foco em conversão, sites
-            institucionais profissionais e sistemas web sob medida para
-            empresas que querem vender mais, ganhar autoridade e crescer com
-            tecnologia.
+            A Ronas Tech cria soluções digitais simples e sob medida para sua
+            empresa vender melhor, reduzir tarefas manuais e ter mais controle
+            do dia a dia — com atendimento direto e linguagem clara.
           </p>
 
           <div className={styles.actions}>
             <a className={styles.primaryButton} href="#contato">
-              Solicitar uma proposta
+              Contar meu desafio
               <span aria-hidden="true">→</span>
             </a>
 
-            <a className={styles.secondaryButton} href="#servicos">
-              Ver serviços
+            <a className={styles.secondaryButton} href="#projetos">
+              Ver projetos reais
             </a>
           </div>
+
+          <ul className={styles.trustList} aria-label="Diferenciais do atendimento">
+            <li>Atendimento direto com o fundador</li>
+            <li>Escopo e etapas explicados com clareza</li>
+            <li>Soluções pensadas para a rotina do negócio</li>
+          </ul>
         </div>
 
         <div className={styles.visual} aria-hidden="true">
@@ -60,8 +65,8 @@ function Hero() {
               <div className={styles.panel}>
                 <div className={styles.panelHeader}>
                   <div>
-                    <span className={styles.label}>Projeto digital</span>
-                    <strong>Seu negócio online</strong>
+                    <span className={styles.label}>Operação digital</span>
+                    <strong>Seu negócio organizado</strong>
                   </div>
 
                   <span className={styles.status}>Publicado</span>
@@ -69,28 +74,28 @@ function Hero() {
 
                 <div className={styles.metrics}>
                   <div className={styles.metricCard}>
-                    <span>Presença digital</span>
-                    <strong>Profissional</strong>
-                    <small>Site moderno</small>
-                  </div>
-
-                  <div className={styles.metricCard}>
-                    <span>Dispositivos</span>
-                    <strong>100%</strong>
-                    <small>Responsivo</small>
-                  </div>
-
-                  <div className={styles.metricCard}>
                     <span>Atendimento</span>
-                    <strong>WhatsApp</strong>
-                    <small>Contato rápido</small>
+                    <strong>Organizado</strong>
+                    <small>Mais agilidade</small>
+                  </div>
+
+                  <div className={styles.metricCard}>
+                    <span>Processos</span>
+                    <strong>Simples</strong>
+                    <small>Menos retrabalho</small>
+                  </div>
+
+                  <div className={styles.metricCard}>
+                    <span>Oportunidades</span>
+                    <strong>Visíveis</strong>
+                    <small>Mais controle</small>
                   </div>
                 </div>
 
                 <div className={styles.chartCard}>
                   <div className={styles.chartHeader}>
-                    <span>Crescimento digital</span>
-                    <small>Presença online</small>
+                    <span>Evolução do negócio</span>
+                    <small>Operação organizada</small>
                   </div>
 
                   <div className={styles.chart}>
@@ -110,10 +115,10 @@ function Hero() {
             <span className={styles.codeLabel}>ronas-tech</span>
 
             <code>
-              <span>const</span> projeto = <em>&apos;online&apos;</em>;
+              <span>const</span> problema = <em>&apos;resolvido&apos;</em>;
             </code>
 
-            <small>✓ Projeto publicado</small>
+            <small>✓ Solução pronta para evoluir</small>
           </div>
         </div>
       </div>

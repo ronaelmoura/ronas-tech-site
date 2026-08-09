@@ -3,33 +3,33 @@ import styles from './Industries.module.css'
 
 const industries = [
   {
-    title: 'Clínicas',
-    description: 'Soluções para organizar atendimentos, clientes e agendamentos.',
+    title: 'Contatos sem acompanhamento',
+    description: 'Organize interessados, próximos passos e retornos para não perder oportunidades.',
     icon: 'clinic',
   },
   {
-    title: 'Oficinas',
-    description: 'Sistemas para controlar serviços, clientes, ordens e orçamentos.',
+    title: 'Orçamentos demorados',
+    description: 'Simplifique propostas, informações e aprovações para responder com mais agilidade.',
     icon: 'workshop',
   },
   {
-    title: 'Escritórios',
-    description: 'Ferramentas para centralizar informações e automatizar tarefas.',
+    title: 'Informações espalhadas',
+    description: 'Centralize dados importantes que hoje ficam em planilhas, cadernos e conversas.',
     icon: 'office',
   },
   {
-    title: 'Restaurantes',
-    description: 'Soluções digitais para atendimento, pedidos e gestão.',
+    title: 'Tarefas repetitivas',
+    description: 'Automatize etapas simples para economizar tempo e reduzir retrabalho.',
     icon: 'restaurant',
   },
   {
-    title: 'Comércio',
-    description: 'Sistemas para clientes, vendas, estoque e processos internos.',
+    title: 'Presença digital fraca',
+    description: 'Apresente seu negócio com clareza e facilite o contato de novos clientes.',
     icon: 'commerce',
   },
   {
-    title: 'Prestadores de serviços',
-    description: 'Sites e sistemas personalizados para organizar e expandir o negócio.',
+    title: 'Ferramentas que não se encaixam',
+    description: 'Comece com uma solução simples, adaptada ao processo real da sua empresa.',
     icon: 'services',
   },
 ]
@@ -117,11 +117,11 @@ function Industries() {
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Empresas que atendemos</p>
-          <h2 id="industries-title">Soluções para empresas de diversos segmentos</h2>
+          <p className={styles.eyebrow}>Problemas que resolvemos</p>
+          <h2 id="industries-title">A tecnologia deve facilitar o trabalho, não complicar</h2>
           <p className={styles.subtitle}>
-            Desenvolvemos software para negócios que desejam crescer, organizar
-            processos e melhorar seus resultados com tecnologia.
+            Partimos da dificuldade que sua empresa enfrenta para criar uma
+            solução útil, clara e compatível com a realidade do negócio.
           </p>
         </header>
 

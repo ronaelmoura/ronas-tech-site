@@ -3,34 +3,24 @@ import styles from './Process.module.css'
 
 const processSteps = [
   {
-    title: 'Descoberta',
+    title: 'Entender o problema',
     description:
-      'Conversamos com o cliente para entender o negócio, os objetivos e os principais desafios.',
+      'Você explica a rotina, a dificuldade atual e o resultado que precisa alcançar.',
   },
   {
-    title: 'Planejamento',
+    title: 'Definir a solução',
     description:
-      'Definimos o escopo, as funcionalidades, os prazos e a melhor estratégia para o projeto.',
+      'Apresentamos um escopo claro, com as funções essenciais, etapas, prazo e investimento.',
   },
   {
-    title: 'Design',
+    title: 'Construir e validar',
     description:
-      'Criamos uma experiência visual moderna, intuitiva e alinhada à identidade do negócio.',
+      'Desenvolvemos por etapas e mostramos a evolução para validar antes da entrega final.',
   },
   {
-    title: 'Desenvolvimento',
+    title: 'Entregar e acompanhar',
     description:
-      'Transformamos o planejamento em uma solução funcional usando tecnologias modernas.',
-  },
-  {
-    title: 'Testes',
-    description:
-      'Validamos o funcionamento, a responsividade, o desempenho e a experiência do usuário.',
-  },
-  {
-    title: 'Entrega e suporte',
-    description:
-      'Publicamos o projeto, orientamos o cliente e oferecemos suporte para melhorias futuras.',
+      'Publicamos, orientamos o uso e acompanhamos os ajustes previstos após a entrega.',
   },
 ]
 
@@ -70,10 +60,10 @@ function Process() {
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Como trabalhamos</p>
-          <h2 id="process-title">Do planejamento à entrega</h2>
+          <h2 id="process-title">Um processo simples, sem linguagem complicada</h2>
           <p className={styles.subtitle}>
-            Seguimos um processo organizado para transformar necessidades reais
-            em soluções digitais eficientes, modernas e fáceis de usar.
+            Você acompanha as decisões e sabe o que está sendo construído em
+            cada etapa do projeto.
           </p>
         </header>
 
