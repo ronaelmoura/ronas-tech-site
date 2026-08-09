@@ -2,83 +2,57 @@ import styles from './Services.module.css'
 
 const services = [
   {
-    title: 'Landing Pages',
+    title: 'Sites e Landing Pages',
     description:
-      'Crie páginas focadas em conversão para captar leads, vender mais e gerar resultado rápido.',
+      'Apresente seu negócio com clareza e crie um caminho direto para novos clientes entrarem em contato.',
     highlights: [
-      'Objetivo claro e direto',
-      'Layout pensado para conversão',
-      'Entrega rápida',
-      'Boa presença para campanhas',
+      'Mensagem clara sobre sua oferta',
+      'Layout profissional e responsivo',
+      'Integração com WhatsApp',
+      'Estrutura básica para buscas',
     ],
     icon: 'landing',
-    path: '/landing-pages',
+    path: '/criacao-de-sites',
     featured: true,
   },
   {
-    title: 'Sites Institucionais',
+    title: 'Automações para o dia a dia',
     description:
-      'Apresente sua empresa com um site profissional, moderno e confiável para gerar confiança.',
+      'Reduza tarefas repetitivas e organize etapas que hoje dependem de copiar, colar e lembrar manualmente.',
     highlights: [
-      'Visual profissional',
-      'Estrutura clara para comunicação',
-      'Responsivo em qualquer tela',
-      'Foco em reputação da marca',
-    ],
-    icon: 'website',
-    path: '/criacao-de-sites',
-  },
-  {
-    title: 'Sites Empresariais',
-    description:
-      'Tenha um site organizado para apresentar serviços, contatos, diferenciais e oportunidades de negócio.',
-    highlights: [
-      'Mais credibilidade',
-      'Melhor comunicação com clientes',
-      'Estrutura para crescimento',
-      'Experiência profissional online',
-    ],
-    icon: 'system',
-    path: '/criacao-de-sites',
-  },
-  {
-    title: 'Manutenção de Sites',
-    description:
-      'Mantenha seu site atualizado, estável e funcionando bem para evitar perda de clientes.',
-    highlights: [
-      'Correções e melhorias',
-      'Mais segurança',
-      'Atualizações constantes',
-      'Site sempre funcionando',
-    ],
-    icon: 'api',
-    path: '/manutencao-de-sites',
-  },
-  {
-    title: 'Correção de Bugs',
-    description:
-      'Resolva problemas de funcionamento com atenção rápida e soluções práticas para o seu negócio.',
-    highlights: [
-      'Mais estabilidade',
-      'Menos interrupções',
-      'Melhor experiência de uso',
-      'Ajustes com foco em resultado',
-    ],
-    icon: 'api',
-    path: '/manutencao-de-sites',
-  },
-  {
-    title: 'Sistemas Web Simples',
-    description:
-      'Automatize processos simples e organize seu trabalho com uma solução prática e eficiente.',
-    highlights: [
-      'Menos trabalho manual',
-      'Processos mais organizados',
-      'Mais produtividade',
-      'Solução adaptada ao seu dia a dia',
+      'Fluxos simples e objetivos',
+      'Menos retrabalho operacional',
+      'Informações centralizadas',
+      'Implantação por etapas',
     ],
     icon: 'system',
     path: '/sistemas-web',
+  },
+  {
+    title: 'Sistemas web sob medida',
+    description:
+      'Transforme planilhas, cadernos e processos soltos em uma ferramenta acessível pelo navegador.',
+    highlights: [
+      'Cadastros e acompanhamento',
+      'Painéis fáceis de entender',
+      'Funções definidas com o cliente',
+      'Projeto preparado para evoluir',
+    ],
+    icon: 'system',
+    path: '/sistemas-web',
+  },
+  {
+    title: 'Manutenção e melhorias',
+    description:
+      'Corrija falhas, atualize informações e melhore uma solução digital que sua empresa já utiliza.',
+    highlights: [
+      'Diagnóstico antes da alteração',
+      'Correções visuais e funcionais',
+      'Ajustes para celular',
+      'Relato claro do que foi feito',
+    ],
+    icon: 'api',
+    path: '/manutencao-de-sites',
   },
 ]
 
@@ -133,14 +107,14 @@ function Services() {
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Nossos serviços</p>
+          <p className={styles.eyebrow}>Como podemos ajudar</p>
           <h2 id="services-title">
-            Soluções práticas para vender mais e operar melhor
+            Soluções digitais ligadas a um objetivo real do negócio
           </h2>
           <p className={styles.subtitle}>
-            Podemos ajudar sua empresa com landing pages, sites institucionais,
-            sites empresariais, manutenção e sistemas simples para melhorar sua
-            presença online e facilitar o dia a dia do negócio.
+            Cada projeto começa por uma necessidade concreta. Você entende o
+            que será feito, por que será feito e como a solução ajudará sua
+            empresa no dia a dia.
           </p>
         </header>
 
@@ -176,7 +150,7 @@ function Services() {
                 </ul>
 
                 <a className={styles.cta} href={path}>
-                  Conhecer serviço
+                  Entender a solução
                   <span aria-hidden="true">→</span>
                 </a>
               </article>

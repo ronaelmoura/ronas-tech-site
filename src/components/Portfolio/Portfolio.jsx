@@ -5,11 +5,11 @@ import styles from './Portfolio.module.css'
 const projects = [
   {
     title: 'Ronas Desk',
-    category: 'Sistema Web full stack',
+    category: 'Sistema de gestão de chamados',
     need:
       'Organizar atendimento, centralizar informações de clientes e acompanhar chamados de forma mais prática.',
     solution:
-      'Foi desenvolvido um sistema com painel administrativo para controle de clientes, status dos atendimentos e gestão operacional.',
+      'Sistema em desenvolvimento com painel administrativo para controlar clientes, chamados, prioridades e andamento dos atendimentos.',
     technologies: ['React', 'Node.js', 'Express', 'MySQL'],
     status: 'Em desenvolvimento',
     codeUrl: `${siteConfig.github}/ronas-desk`,
@@ -18,7 +18,7 @@ const projects = [
   },
   {
     title: 'Site da Ronas Tech',
-    category: 'Site institucional / portfólio profissional',
+    category: 'Site institucional',
     need:
       'Apresentar a empresa e seus serviços de forma clara, profissional e com foco em conversão de clientes.',
     solution:
@@ -86,7 +86,7 @@ function ProjectVisual({ type }) {
         <span />
         <span />
         <span />
-        <i>ronaelmoura.github.io</i>
+        <i>ronastech.com.br</i>
       </div>
       <div className={styles.portfolioScreen}>
         <div>
@@ -114,8 +114,8 @@ function Portfolio() {
           <p className={styles.eyebrow}>Projetos selecionados</p>
           <h2 id="portfolio-title">Provas de capacidade da Ronas Tech</h2>
           <p className={styles.subtitle}>
-            Veja como a equipe trabalha com soluções práticas, comunicação clara e
-            desenvolvimento voltado para necessidades reais de negócio.
+            Projetos construídos por Ronael Moura para demonstrar como a Ronas
+            Tech transforma necessidades em soluções digitais funcionais.
           </p>
         </header>
 

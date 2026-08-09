@@ -2,7 +2,7 @@ import styles from './About.module.css'
 
 const differentials = [
   {
-    title: 'Soluções desenvolvidas sob medida',
+    title: 'Atendimento direto com o fundador',
     icon: 'custom',
   },
   {
@@ -10,7 +10,7 @@ const differentials = [
     icon: 'support',
   },
   {
-    title: 'Tecnologias modernas',
+    title: 'Escopo explicado sem complicação',
     icon: 'technology',
   },
   {
@@ -18,7 +18,7 @@ const differentials = [
     icon: 'interface',
   },
   {
-    title: 'Código organizado e escalável',
+    title: 'Soluções que começam pelo essencial',
     icon: 'code',
   },
   {
@@ -87,19 +87,18 @@ function About() {
         <div className={styles.introduction}>
           <div className={styles.content}>
             <p className={styles.eyebrow}>Sobre a Ronas Tech</p>
-            <h2 id="about-title">Tecnologia para transformar negócios</h2>
+            <h2 id="about-title">Tecnologia próxima da realidade do pequeno negócio</h2>
             <p>
-              A Ronas Tech é uma empresa de desenvolvimento de software focada
-              na criação de sites, sistemas web e soluções digitais
-              personalizadas. Nosso objetivo é ajudar empresas a organizar
-              processos, fortalecer sua presença digital e crescer utilizando
-              tecnologia moderna, segura e eficiente.
+              A Ronas Tech foi criada por Ronael Moura para ajudar pequenos
+              negócios a utilizar tecnologia de forma simples e acessível. O
+              trabalho combina criação de sites, automações e sistemas web com
+              uma conversa direta sobre o problema que precisa ser resolvido.
             </p>
             <p>
-              Trabalhamos com atendimento próximo, planejamento claro e
-              desenvolvimento orientado às necessidades reais de cada cliente.
-              Cada projeto é pensado para ser fácil de usar, responsivo,
-              escalável e preparado para evoluir junto com o negócio.
+              Do primeiro contato à entrega, você fala diretamente com quem
+              planeja e desenvolve a solução. Cada projeto começa pelo
+              essencial, com etapas claras e espaço para evoluir quando o
+              negócio realmente precisar.
             </p>
             <a className={styles.cta} href="#contato">
               Falar com a Ronas Tech
@@ -114,9 +113,8 @@ function About() {
                 <h3>Missão</h3>
               </div>
               <p>
-                Desenvolver soluções digitais modernas que simplifiquem
-                processos, resolvam problemas reais e ajudem empresas a alcançar
-                melhores resultados.
+                Criar soluções digitais claras e úteis que simplifiquem
+                processos e apoiem resultados reais de pequenos negócios.
               </p>
             </article>
 
@@ -126,8 +124,8 @@ function About() {
                 <h3>Visão</h3>
               </div>
               <p>
-                Ser reconhecida como uma empresa de software confiável, inovadora
-                e referência em soluções para pequenas e médias empresas.
+                Construir relações de confiança e evoluir com projetos que façam
+                diferença na rotina de cada cliente.
               </p>
             </article>
 
@@ -155,7 +153,7 @@ function About() {
         <div className={styles.differentials}>
           <header className={styles.differentialsHeader}>
             <p>Por que escolher a Ronas Tech</p>
-            <h3>Desenvolvimento com qualidade em cada detalhe</h3>
+            <h3>Um parceiro acessível para transformar problemas em soluções</h3>
           </header>
 
           <ul className={styles.differentialGrid}>

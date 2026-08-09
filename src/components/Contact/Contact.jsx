@@ -15,16 +15,15 @@ const initialFormData = {
 }
 
 const projectTypes = [
-  'Landing Page',
-  'Site Institucional',
-  'Site Empresarial',
-  'Manutenção de Site',
-  'Correção de Bugs',
-  'Sistema Web Simples',
+  'Site ou Landing Page',
+  'Automação de Processo',
+  'Sistema Web',
+  'Manutenção ou Correção',
+  'Ainda não sei qual solução preciso',
 ]
 
 const directWhatsappMessage =
-  'Olá! Conheci a Ronas Tech pelo site e gostaria de conversar sobre um projeto.'
+  'Olá! Conheci a Ronas Tech pelo site e gostaria de conversar sobre uma necessidade do meu negócio.'
 const directWhatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(directWhatsappMessage)}`
 
 const contactIcons = {
@@ -162,10 +161,10 @@ function Contact() {
       <div className={styles.container}>
         <div className={styles.information}>
           <p className={styles.eyebrow}>Entre em contato</p>
-          <h2 id="contact-title">Pronto para colocar seu projeto no ar?</h2>
+          <h2 id="contact-title">Conte o que está dificultando a rotina do seu negócio</h2>
           <p className={styles.subtitle}>
-            Fale com a Ronas Tech e receba uma proposta personalizada para o
-            seu negócio.
+            Você não precisa chegar com a solução pronta. Explique o problema e
+            vamos avaliar juntos se a tecnologia pode ajudar.
           </p>
 
           <address className={styles.contactList}>
@@ -210,8 +209,8 @@ function Contact() {
           </address>
 
           <p className={styles.supportText}>
-            Atendimento rápido pelo WhatsApp, com comunicação clara e soluções
-            pensadas para ajudar seu negócio a crescer.
+            O primeiro contato é direto com Ronael Moura, sem compromisso e sem
+            linguagem técnica desnecessária.
           </p>
 
           <a
@@ -229,9 +228,9 @@ function Contact() {
 
         <div className={styles.formCard}>
           <header className={styles.formHeader}>
-            <span>Orçamento sem compromisso</span>
-            <h3>Descreva seu projeto</h3>
-            <p>Preencha os campos abaixo e vamos conversar pelo WhatsApp.</p>
+            <span>Conversa inicial sem compromisso</span>
+            <h3>Descreva sua necessidade</h3>
+            <p>Preencha os campos e a conversa continuará pelo WhatsApp.</p>
           </header>
 
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
@@ -331,7 +330,7 @@ function Contact() {
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="contact-message">Descrição do projeto</label>
+              <label htmlFor="contact-message">Qual problema você quer resolver?</label>
               <textarea
                 id="contact-message"
                 name="message"
@@ -339,7 +338,7 @@ function Contact() {
                 onChange={handleChange}
                 rows="5"
                 required
-                placeholder="Descreva sua necessidade, objetivo ou desafio..."
+                placeholder="Conte brevemente o que hoje dá trabalho, causa atraso ou impede o negócio de avançar..."
                 className={errors.message ? styles.invalid : ''}
                 {...fieldAccessibility('message')}
               />
@@ -357,7 +356,7 @@ function Contact() {
             )}
 
             <button className={styles.submitButton} type="submit">
-              Solicitar orçamento pelo WhatsApp
+              Iniciar conversa pelo WhatsApp
               <span aria-hidden="true">→</span>
             </button>
 
