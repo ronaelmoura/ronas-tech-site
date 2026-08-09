@@ -107,6 +107,60 @@ export const servicePages = {
       },
     ],
   },
+  '/automacao-para-pequenos-negocios': {
+    slug: 'automacao-para-pequenos-negocios',
+    eyebrow: 'Automação para pequenos negócios',
+    title: 'Menos tarefas repetitivas. Mais tempo para cuidar do negócio.',
+    metaTitle: 'Automação para Pequenos Negócios | Ronas Tech',
+    metaDescription:
+      'Automação de tarefas, atendimentos e processos para pequenos negócios reduzirem trabalho manual, atrasos e informações espalhadas.',
+    introduction:
+      'Analisamos uma rotina que consome tempo e construímos um fluxo simples para organizar dados, disparar ações e reduzir etapas manuais — sem obrigar sua equipe a mudar tudo de uma vez.',
+    outcomes: [
+      {
+        title: 'Tempo recuperado',
+        description:
+          'Etapas de copiar, conferir, avisar e atualizar podem acontecer automaticamente quando fizer sentido.',
+      },
+      {
+        title: 'Menos esquecimento',
+        description:
+          'Lembretes, mudanças de status e próximos passos deixam de depender apenas da memória da equipe.',
+      },
+      {
+        title: 'Processo visível',
+        description:
+          'As informações ficam organizadas para você saber o que aconteceu e o que ainda precisa ser feito.',
+      },
+    ],
+    deliverables: [
+      'Mapeamento da rotina atual e identificação do principal gargalo',
+      'Definição do fluxo, gatilhos e informações necessárias',
+      'Integração entre formulários, planilhas, e-mail ou sistemas compatíveis',
+      'Painel ou registro para acompanhar as etapas automatizadas',
+      'Testes com situações reais antes da entrega',
+      'Orientação de uso e período inicial de acompanhamento',
+    ],
+    audience:
+      'Pequenos negócios que repetem as mesmas tarefas todos os dias, perdem tempo atualizando informações em vários lugares ou dependem de lembretes manuais para atender e acompanhar clientes.',
+    faq: [
+      {
+        question: 'O que pode ser automatizado?',
+        answer:
+          'Cadastro de contatos, envio de avisos, atualização de planilhas, distribuição de solicitações e acompanhamento de etapas são exemplos. A viabilidade depende das ferramentas usadas hoje.',
+      },
+      {
+        question: 'Preciso trocar todos os sistemas da empresa?',
+        answer:
+          'Não. Primeiro avaliamos o que já funciona. Muitas automações podem conectar ferramentas existentes ou começar apenas pela etapa que mais gera retrabalho.',
+      },
+      {
+        question: 'Como sei se a automação vale a pena?',
+        answer:
+          'Comparamos o tempo gasto atualmente, a frequência da tarefa e o impacto dos erros. Se o ganho não justificar o projeto, isso é explicado antes da contratação.',
+      },
+    ],
+  },
   '/sistemas-web': {
     slug: 'sistemas-web',
     eyebrow: 'Sistemas web',

@@ -2,7 +2,7 @@ import styles from './Services.module.css'
 
 const services = [
   {
-    title: 'Sites e Landing Pages',
+    title: 'Sites profissionais',
     description:
       'Apresente seu negócio com clareza e crie um caminho direto para novos clientes entrarem em contato.',
     highlights: [
@@ -16,6 +16,19 @@ const services = [
     featured: true,
   },
   {
+    title: 'Landing pages para campanhas',
+    description:
+      'Apresente uma oferta sem distrações e conduza o visitante até o contato, cadastro ou pedido de orçamento.',
+    highlights: [
+      'Uma oferta e um objetivo principal',
+      'Estrutura pensada para conversão',
+      'Pronta para anúncios e redes sociais',
+      'Medição de acessos e interações',
+    ],
+    icon: 'landing',
+    path: '/landing-pages',
+  },
+  {
     title: 'Automações para o dia a dia',
     description:
       'Reduza tarefas repetitivas e organize etapas que hoje dependem de copiar, colar e lembrar manualmente.',
@@ -26,7 +39,7 @@ const services = [
       'Implantação por etapas',
     ],
     icon: 'system',
-    path: '/sistemas-web',
+    path: '/automacao-para-pequenos-negocios',
   },
   {
     title: 'Sistemas web sob medida',

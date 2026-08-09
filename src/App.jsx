@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfUse from './pages/TermsOfUse'
 import ServicePage from './pages/ServicePage'
+import NotFound from './pages/NotFound'
 import { servicePages } from './data/servicePages'
 
 const legalPages = {
@@ -19,8 +20,10 @@ const legalPages = {
   '/termos-de-uso': TermsOfUse,
 }
 
-function App() {
-  const pathname = window.location.pathname.replace(/\/$/, '') || '/'
+function App({ pathname: pathnameProp }) {
+  const currentPathname =
+    pathnameProp ?? (typeof window !== 'undefined' ? window.location.pathname : '/')
+  const pathname = currentPathname.replace(/\/$/, '') || '/'
   const LegalPage = legalPages[pathname]
   const service = servicePages[pathname]
 
@@ -44,6 +47,10 @@ function App() {
         <ServicePage service={service} />
       </>
     )
+  }
+
+  if (pathname !== '/') {
+    return <NotFound />
   }
 
   return (

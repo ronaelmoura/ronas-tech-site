@@ -112,11 +112,11 @@ function Portfolio() {
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Projetos selecionados</p>
-          <h2 id="portfolio-title">Provas de capacidade da Ronas Tech</h2>
+          <p className={styles.eyebrow}>Projetos publicados</p>
+          <h2 id="portfolio-title">Projetos que você pode abrir e testar</h2>
           <p className={styles.subtitle}>
-            Projetos construídos por Ronael Moura para demonstrar como a Ronas
-            Tech transforma necessidades em soluções digitais funcionais.
+            Nada de imagens genéricas tratadas como portfólio. Estes projetos
+            foram planejados, desenvolvidos e publicados por Ronael Moura.
           </p>
         </header>
 
