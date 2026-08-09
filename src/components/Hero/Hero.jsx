@@ -1,6 +1,12 @@
 import styles from './Hero.module.css'
+import { siteConfig } from '../../config/siteConfig'
+import { trackExternalLink } from '../../utils/analytics'
 
 function Hero() {
+  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+    'Olá, Ronael! Vim pelo site da Ronas Tech e gostaria de pedir um orçamento.',
+  )}`
+
   return (
     <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.glow} aria-hidden="true" />
@@ -13,19 +19,25 @@ function Hero() {
           </p>
 
           <h1 id="hero-title" className={styles.title}>
-            Tecnologia para organizar seu negócio e{' '}
-            <span>transformar oportunidades em resultados.</span>
+            Sites e automações para pequenos negócios{' '}
+            <span>venderem mais e perderem menos tempo.</span>
           </h1>
 
           <p className={styles.description}>
-            A Ronas Tech cria soluções digitais simples e sob medida para sua
-            empresa vender melhor, reduzir tarefas manuais e ter mais controle
-            do dia a dia — com atendimento direto e linguagem clara.
+            Tenha uma presença profissional, organize sua operação e reduza
+            tarefas manuais com soluções simples, feitas para a realidade do
+            seu negócio.
           </p>
 
           <div className={styles.actions}>
-            <a className={styles.primaryButton} href="#contato">
-              Contar meu desafio
+            <a
+              className={styles.primaryButton}
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackExternalLink('hero_whatsapp', whatsappUrl)}
+            >
+              Pedir orçamento no WhatsApp
               <span aria-hidden="true">→</span>
             </a>
 
