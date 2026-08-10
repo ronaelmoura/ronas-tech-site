@@ -13,6 +13,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfUse from './pages/TermsOfUse'
 import ServicePage from './pages/ServicePage'
 import NotFound from './pages/NotFound'
+import ContractingPage from './pages/ContractingPage'
+import ProjectsPortalPreview from './pages/ProjectsPortalPreview'
 import { servicePages } from './data/servicePages'
 
 const legalPages = {
@@ -26,6 +28,24 @@ function App({ pathname: pathnameProp }) {
   const pathname = currentPathname.replace(/\/$/, '') || '/'
   const LegalPage = legalPages[pathname]
   const service = servicePages[pathname]
+
+  if (pathname === '/contratar') {
+    return (
+      <>
+        <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+        <ContractingPage />
+      </>
+    )
+  }
+
+  if (pathname === '/meus-projetos') {
+    return (
+      <>
+        <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+        <ProjectsPortalPreview />
+      </>
+    )
+  }
 
   if (LegalPage) {
     return (
