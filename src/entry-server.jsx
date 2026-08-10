@@ -23,10 +23,22 @@ const legalMetadata = {
   },
 }
 
+const productMetadata = {
+  '/contratar': {
+    title: `Contratar serviços digitais | ${siteConfig.companyName}`,
+    description: 'Escolha um serviço, personalize seu projeto e envie um pré-pedido para a Ronas Tech.',
+  },
+  '/meus-projetos': {
+    title: `Meus projetos | ${siteConfig.companyName}`,
+    description: 'Área de acompanhamento de projetos da Ronas Tech em preparação.',
+  },
+}
+
 export const staticPaths = [
   '/',
   ...Object.keys(servicePages),
   ...Object.keys(legalMetadata),
+  ...Object.keys(productMetadata),
 ]
 
 export function render(pathname) {
@@ -67,6 +79,14 @@ export function getPageMetadata(pathname) {
   if (legal) {
     return {
       ...legal,
+      canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
+    }
+  }
+
+  const product = productMetadata[pathname]
+  if (product) {
+    return {
+      ...product,
       canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
     }
   }
