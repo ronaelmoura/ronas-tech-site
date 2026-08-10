@@ -39,6 +39,24 @@ const projects = [
     featured: true,
     visual: 'portfolio',
   },
+  {
+    title: 'Portfólio — Beatriz Mendes',
+    category: 'Portfólio profissional',
+    need:
+      'Reunir experiência, competências e projetos de análise de dados em uma apresentação profissional e fácil de compartilhar.',
+    solution:
+      'Foi desenvolvido um portfólio responsivo com identidade visual própria, apresentação dos projetos e acesso direto aos canais profissionais.',
+    benefits: [
+      'Trabalhos e competências reunidos em um único endereço',
+      'Apresentação profissional para processos seletivos e contatos',
+      'Experiência adaptada para celular e computador',
+    ],
+    status: 'Publicado',
+    projectUrl: 'https://beatriz-mendes-portfolio.vercel.app/',
+    actionLabel: 'Ver portfólio da Beatriz',
+    featured: true,
+    visual: 'dataPortfolio',
+  },
 ]
 
 function ExternalIcon() {
@@ -77,6 +95,32 @@ function ProjectVisual({ type }) {
           </div>
         </div>
         <div className={styles.floatingStatus}>Painel de chamados</div>
+      </div>
+    )
+  }
+
+  if (type === 'dataPortfolio') {
+    return (
+      <div className={styles.dataPortfolioMockup} aria-hidden="true">
+        <div className={styles.browserBar}>
+          <span />
+          <span />
+          <span />
+          <i>beatriz-mendes-portfolio.vercel.app</i>
+        </div>
+        <div className={styles.dataPortfolioScreen}>
+          <div className={styles.dataIntro}>
+            <small>Analista de Dados</small>
+            <strong>Beatriz Mendes</strong>
+            <span>Dados que apoiam decisões melhores.</span>
+          </div>
+          <div className={styles.dataChart}>
+            <i />
+            <i />
+            <i />
+            <i />
+          </div>
+        </div>
       </div>
     )
   }

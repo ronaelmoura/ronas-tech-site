@@ -108,13 +108,86 @@
 }
 
 .dashboardMockup,
-.portfolioMockup {
+.portfolioMockup,
+.dataPortfolioMockup {
   height: 100%;
   overflow: hidden;
   background: #111925;
   border: 1px solid rgb(148 163 184 / 15%);
   border-radius: 13px 13px 0 0;
   box-shadow: 0 24px 50px rgb(0 0 0 / 35%);
+}
+
+.dataPortfolioScreen {
+  display: grid;
+  height: calc(100% - 35px);
+  padding: 34px;
+  box-sizing: border-box;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 28px;
+  background:
+    radial-gradient(circle at 85% 20%, rgb(45 212 191 / 16%), transparent 40%),
+    linear-gradient(145deg, #101923, #0c131c);
+}
+
+.dataIntro {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dataIntro small {
+  color: #5eead4;
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dataIntro strong {
+  margin: 8px 0 10px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.dataIntro span {
+  color: #8fa0b2;
+  font-size: 7px;
+  line-height: 1.5;
+}
+
+.dataChart {
+  display: flex;
+  height: 118px;
+  padding: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 7px;
+  background: rgb(255 255 255 / 3%);
+  border: 1px solid rgb(94 234 212 / 14%);
+  border-radius: 12px;
+}
+
+.dataChart i {
+  width: 20%;
+  height: 44%;
+  background: linear-gradient(180deg, #2dd4bf, #0f766e);
+  border-radius: 4px 4px 2px 2px;
+  box-shadow: 0 0 18px rgb(45 212 191 / 12%);
+}
+
+.dataChart i:nth-child(2) {
+  height: 72%;
+}
+
+.dataChart i:nth-child(3) {
+  height: 56%;
+}
+
+.dataChart i:nth-child(4) {
+  height: 88%;
 }
 
 .dashboardMockup {
