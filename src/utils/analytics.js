@@ -66,3 +66,29 @@ export function trackExternalLink(platform, linkUrl = externalLinks[platform]) {
     link_url: linkUrl,
   })
 }
+
+export function getCampaignContext() {
+  if (typeof window === 'undefined') return ''
+  const params = new URLSearchParams(window.location.search)
+  const source = params.get('utm_source')
+  const medium = params.get('utm_medium')
+  const campaign = params.get('utm_campaign')
+  const content = params.get('utm_content')
+  if (!source && !medium && !campaign && !content) return ''
+  const parts = [
+    source && `Origem: ${source}`,
+    medium && `mídia: ${medium}`,
+    campaign && `campanha: ${campaign}`,
+    content && `criativo: ${content}`,
+  ].filter(Boolean)
+  return parts.join(' — ')
+}
+
+export function withCampaign(message) {
+  const campaign = getCampaignContext()
+  return campaign ? `${message}\n\n${campaign}` : message
+}
+
+export function trackConversion(eventName, parameters = {}) {
+  trackEvent(eventName, parameters)
+}

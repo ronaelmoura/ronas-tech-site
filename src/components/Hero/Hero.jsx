@@ -37,12 +37,12 @@ function Hero() {
               rel="noopener noreferrer"
               onClick={() => trackExternalLink('hero_whatsapp', whatsappUrl)}
             >
-              Quero organizar meu negócio
+              Falar no WhatsApp
               <span aria-hidden="true">→</span>
             </a>
 
-            <a className={styles.secondaryButton} href="#projetos">
-              Ver soluções reais
+            <a className={styles.secondaryButton} href="#servicos">
+              Ver soluções
             </a>
           </div>
 

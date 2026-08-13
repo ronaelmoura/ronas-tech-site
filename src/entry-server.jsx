@@ -2,6 +2,7 @@ import { renderToString } from 'react-dom/server'
 import App from './App'
 import { servicePages } from './data/servicePages'
 import { siteConfig } from './config/siteConfig'
+import { campaignPages } from './data/campaignPages'
 
 const homeMetadata = {
   title: 'Criação de Sites, Sistemas e Automações | Ronas Tech',
@@ -39,6 +40,7 @@ export const staticPaths = [
   ...Object.keys(servicePages),
   ...Object.keys(legalMetadata),
   ...Object.keys(productMetadata),
+  ...Object.keys(campaignPages),
 ]
 
 export function render(pathname) {
@@ -87,6 +89,15 @@ export function getPageMetadata(pathname) {
   if (product) {
     return {
       ...product,
+      canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
+    }
+  }
+
+  const campaign = campaignPages[pathname]
+  if (campaign) {
+    return {
+      title: `${campaign.title} | ${siteConfig.companyName}`,
+      description: campaign.description,
       canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
     }
   }

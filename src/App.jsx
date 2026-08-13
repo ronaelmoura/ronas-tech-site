@@ -1,7 +1,9 @@
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import Diagnosis from './components/Diagnosis/Diagnosis'
-import StrategyStudio from './components/StrategyStudio/StrategyStudio'
+import Priority from './components/Priority/Priority'
+import Products from './components/Products/Products'
+import OrderBuilder from './components/OrderBuilder/OrderBuilder'
 import About from './components/About/About'
 import Services from './components/Services/Services'
 import Pricing from './components/Pricing/Pricing'
@@ -16,6 +18,8 @@ import ServicePage from './pages/ServicePage'
 import NotFound from './pages/NotFound'
 import ContractingPage from './pages/ContractingPage'
 import ProjectsPortalPreview from './pages/ProjectsPortalPreview'
+import CampaignPage from './pages/CampaignPage'
+import { campaignPages } from './data/campaignPages'
 import { servicePages } from './data/servicePages'
 
 const legalPages = {
@@ -29,6 +33,7 @@ function App({ pathname: pathnameProp }) {
   const pathname = currentPathname.replace(/\/$/, '') || '/'
   const LegalPage = legalPages[pathname]
   const service = servicePages[pathname]
+  const campaign = campaignPages[pathname]
 
   if (pathname === '/contratar') {
     return (
@@ -70,6 +75,10 @@ function App({ pathname: pathnameProp }) {
     )
   }
 
+  if (campaign) {
+    return <CampaignPage campaign={campaign} />
+  }
+
   if (pathname !== '/') {
     return <NotFound />
   }
@@ -83,13 +92,16 @@ function App({ pathname: pathnameProp }) {
       <main id="conteudo-principal" tabIndex="-1">
         <Hero />
         <Diagnosis />
-        <StrategyStudio />
+        <Priority />
         <Services />
-        <Portfolio />
         <Pricing />
+        <Products />
+        <Portfolio />
         <Process />
         <About />
         <FAQ />
+        <OrderBuilder />
+        <section className="home-cta" aria-labelledby="home-cta-title"><div><p>Comece pelo que cabe hoje</p><h2 id="home-cta-title">Você não precisa começar com um sistema grande.</h2><span>Escolha uma solução prática agora e evolua no ritmo do seu negócio.</span></div><a href="#produtos">Ver soluções acessíveis <span aria-hidden="true">→</span></a></section>
         <Contact />
       </main>
       <Footer />
