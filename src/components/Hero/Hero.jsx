@@ -4,7 +4,7 @@ import { trackExternalLink } from '../../utils/analytics'
 
 function Hero() {
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
-    'Olá, Ronael! Vim pelo site da Ronas Tech e gostaria de pedir um orçamento.',
+    'Olá, Ronael! Vim pelo site da Ronas Tech e quero organizar melhor o meu negócio.',
   )}`
 
   return (
@@ -19,14 +19,14 @@ function Hero() {
           </p>
 
           <h1 id="hero-title" className={styles.title}>
-            Sites e automações para pequenos negócios{' '}
-            <span>venderem mais e perderem menos tempo.</span>
+            Seu negócio não precisa de mais ferramentas.{' '}
+            <span>Precisa da ferramenta certa.</span>
           </h1>
 
           <p className={styles.description}>
-            Tenha uma presença profissional, organize sua operação e reduza
-            tarefas manuais com soluções simples, feitas para a realidade do
-            seu negócio.
+            Criamos sites, automações e sistemas que transformam visitas em
+            conversas, tarefas em processos claros e informações soltas em
+            decisões melhores.
           </p>
 
           <div className={styles.actions}>
@@ -37,19 +37,19 @@ function Hero() {
               rel="noopener noreferrer"
               onClick={() => trackExternalLink('hero_whatsapp', whatsappUrl)}
             >
-              Pedir orçamento no WhatsApp
+              Quero organizar meu negócio
               <span aria-hidden="true">→</span>
             </a>
 
             <a className={styles.secondaryButton} href="#projetos">
-              Ver projetos reais
+              Ver soluções reais
             </a>
           </div>
 
           <ul className={styles.trustList} aria-label="Diferenciais do atendimento">
-            <li>Atendimento direto com o fundador</li>
-            <li>Projetos para empresas de todo o Brasil</li>
-            <li>Escopo e etapas explicados com clareza</li>
+            <li>Atendimento direto com quem desenvolve</li>
+            <li>Proposta clara antes de qualquer decisão</li>
+            <li>Do diagnóstico à publicação e evolução</li>
           </ul>
         </div>
 

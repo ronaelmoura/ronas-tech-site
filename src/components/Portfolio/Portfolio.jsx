@@ -1,4 +1,3 @@
-import { siteConfig } from '../../config/siteConfig'
 import { trackExternalLink } from '../../utils/analytics'
 import styles from './Portfolio.module.css'
 
@@ -22,24 +21,6 @@ const projects = [
     visual: 'dashboard',
   },
   {
-    title: 'Site da Ronas Tech',
-    category: 'Site institucional',
-    need:
-      'Apresentar a empresa e seus serviços de forma clara, profissional e com foco em conversão de clientes.',
-    solution:
-      'Foi criado um site institucional com comunicação objetiva, navegação simples e estrutura voltada para captar leads e apresentar a proposta da empresa.',
-    benefits: [
-      'Serviços apresentados com mais clareza',
-      'Contato direto pelo WhatsApp',
-      'Experiência adaptada para celular',
-    ],
-    status: 'Publicado',
-    projectUrl: siteConfig.siteUrl,
-    actionLabel: 'Ver projeto',
-    featured: true,
-    visual: 'portfolio',
-  },
-  {
     title: 'Portfólio — Beatriz Mendes',
     category: 'Portfólio profissional',
     need:
@@ -53,7 +34,7 @@ const projects = [
     ],
     status: 'Publicado',
     projectUrl: 'https://beatriz-mendes-portfolio.vercel.app/',
-    actionLabel: 'Ver portfólio da Beatriz',
+    actionLabel: 'Abrir portfólio',
     featured: true,
     visual: 'dataPortfolio',
   },
@@ -131,17 +112,17 @@ function ProjectVisual({ type }) {
         <span />
         <span />
         <span />
-        <i>ronastech.com.br</i>
+        <i>portfolio.beatriz</i>
       </div>
       <div className={styles.portfolioScreen}>
         <div>
-          <small>Desenvolvedor Full Stack</small>
-          <strong>Ronael Moura</strong>
+          <small>Portfólio profissional</small>
+          <strong>Beatriz</strong>
           <span />
           <span />
           <button type="button" tabIndex="-1">Projetos</button>
         </div>
-        <div className={styles.profileShape}>RM</div>
+        <div className={styles.profileShape}>B</div>
       </div>
     </div>
   )
@@ -159,8 +140,8 @@ function Portfolio() {
           <p className={styles.eyebrow}>Projetos publicados</p>
           <h2 id="portfolio-title">Projetos que você pode abrir e testar</h2>
           <p className={styles.subtitle}>
-            Nada de imagens genéricas tratadas como portfólio. Estes projetos
-            foram planejados, desenvolvidos e publicados por Ronael Moura.
+            Cada case parte de uma necessidade real, mostra a solução criada e
+            pode ser aberto para você avaliar a entrega.
           </p>
         </header>
 
@@ -230,7 +211,7 @@ function Portfolio() {
                     </a>
                   ) : (
                     <a className={styles.primaryButton} href="#contato">
-                      Quero uma solução semelhante
+                      Conhecer uma solução semelhante
                       <span aria-hidden="true">→</span>
                     </a>
                   )}
