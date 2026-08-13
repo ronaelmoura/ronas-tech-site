@@ -15,7 +15,7 @@ function Hero() {
         <div className={styles.content}>
           <p className={styles.eyebrow}>
             <span aria-hidden="true" />
-            Atendimento remoto para pequenos negócios em todo o Brasil
+            Sites para pequenos negócios
           </p>
 
           <h1 id="hero-title" className={styles.title}>
