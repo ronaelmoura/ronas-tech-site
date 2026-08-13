@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import Diagnosis from './components/Diagnosis/Diagnosis'
+import StrategyStudio from './components/StrategyStudio/StrategyStudio'
 import About from './components/About/About'
 import Services from './components/Services/Services'
 import Pricing from './components/Pricing/Pricing'
@@ -82,6 +83,7 @@ function App({ pathname: pathnameProp }) {
       <main id="conteudo-principal" tabIndex="-1">
         <Hero />
         <Diagnosis />
+        <StrategyStudio />
         <Services />
         <Portfolio />
         <Pricing />
