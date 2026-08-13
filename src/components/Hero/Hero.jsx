@@ -7,6 +7,13 @@ function Hero() {
     'Olá, Ronael! Vim pelo site da Ronas Tech e quero organizar melhor o meu negócio.',
   ))}`
 
+  function openWhatsApp(event) {
+    event.preventDefault()
+    const message = withCampaign('Olá, Ronael! Vim pelo site da Ronas Tech e quero organizar melhor o meu negócio.')
+    window.open(`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer')
+    trackExternalLink('hero_whatsapp', whatsappUrl)
+  }
+
   return (
     <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.glow} aria-hidden="true" />
@@ -35,7 +42,7 @@ function Hero() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackExternalLink('hero_whatsapp', whatsappUrl)}
+              onClick={openWhatsApp}
             >
               Falar no WhatsApp
               <span aria-hidden="true">→</span>
