@@ -46,7 +46,36 @@ export default async function handler(request, response) {
       prompt: `Negócio: ${business}\nPúblico: ${audience || 'não informado'}\nDesafio: ${challenge}\nObjetivo principal: ${goal}`,
     })
     return response.status(200).json({ plan: text })
-  } catch {
+  } catch (error) {
+    const errorDetails = {
+      name:
+        error && typeof error.name === 'string'
+          ? error.name
+          : 'UnknownError',
+      message:
+        error && typeof error.message === 'string'
+          ? error.message
+          : 'Unknown AI Gateway error',
+    }
+
+    if (error && typeof error === 'object') {
+      if (typeof error.status === 'string' || typeof error.status === 'number') {
+        errorDetails.status = error.status
+      }
+
+      if (
+        typeof error.statusCode === 'string' ||
+        typeof error.statusCode === 'number'
+      ) {
+        errorDetails.statusCode = error.statusCode
+      }
+
+      if (error.cause && typeof error.cause.message === 'string') {
+        errorDetails.causeMessage = error.cause.message
+      }
+    }
+
+    console.error('[api/strategy] AI Gateway error', errorDetails)
     return response.status(502).json({ error: 'Não foi possível gerar o plano agora. Você pode falar diretamente pelo WhatsApp.' })
   }
 }
