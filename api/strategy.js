@@ -36,8 +36,11 @@ export default async function handler(request, response) {
   if (!business || !challenge || !consent) return response.status(400).json({ error: 'Dados insuficientes para gerar o plano.' })
 
   try {
+    const apiKey = process.env.AI_GATEWAY_API_KEY
+    if (!apiKey) throw new Error('AI_GATEWAY_API_KEY não configurada no servidor.')
+
     const { text } = await generateText({
-      model: gateway('openai/gpt-5.6-luna'),
+      model: gateway('openai/gpt-5.4'),
       maxOutputTokens: 360,
       instructions: 'Você é o estrategista de produto da Ronas Tech, empresa brasileira que cria sites, automações e sistemas para pequenos negócios. Responda em português do Brasil, sem prometer resultados garantidos, sem inventar números e sem usar jargão excessivo. Gere um plano objetivo com exatamente estes títulos em linhas separadas: LEITURA DO CENÁRIO, SOLUÇÃO INICIAL, PRIMEIRO PASSO. Em cada título, escreva no máximo dois parágrafos curtos. Não fale sobre preços.',
       prompt: `Negócio: ${business}\nPúblico: ${audience || 'não informado'}\nDesafio: ${challenge}\nObjetivo principal: ${goal}`,
