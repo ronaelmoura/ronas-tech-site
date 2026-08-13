@@ -24,8 +24,6 @@ function clean(value, maxLength) {
 
 export default async function handler(request, response) {
   if (request.method !== 'POST') return response.status(405).json({ error: 'Método não permitido.' })
-  if (!process.env.AI_GATEWAY_API_KEY) return response.status(503).json({ error: 'A IA está sendo ativada. Tente novamente em alguns minutos ou fale diretamente pelo WhatsApp.' })
-
   const ip = getClientIp(request)
   if (!withinLimit(ip)) return response.status(429).json({ error: 'Limite de diagnósticos atingido. Tente novamente mais tarde.' })
 
