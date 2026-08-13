@@ -1,11 +1,11 @@
 import styles from './Hero.module.css'
 import { siteConfig } from '../../config/siteConfig'
-import { trackExternalLink } from '../../utils/analytics'
+import { trackExternalLink, withCampaign } from '../../utils/analytics'
 
 function Hero() {
-  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(withCampaign(
     'Olá, Ronael! Vim pelo site da Ronas Tech e quero organizar melhor o meu negócio.',
-  )}`
+  ))}`
 
   return (
     <section id="inicio" className={styles.hero} aria-labelledby="hero-title">

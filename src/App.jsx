@@ -1,16 +1,11 @@
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
-import Diagnosis from './components/Diagnosis/Diagnosis'
 import Priority from './components/Priority/Priority'
 import Products from './components/Products/Products'
 import OrderBuilder from './components/OrderBuilder/OrderBuilder'
-import About from './components/About/About'
 import Services from './components/Services/Services'
-import Pricing from './components/Pricing/Pricing'
 import Process from './components/Process/Process'
 import Portfolio from './components/Portfolio/Portfolio'
-import Contact from './components/Contact/Contact'
-import FAQ from './components/FAQ/FAQ'
 import Footer from './components/Footer/Footer'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfUse from './pages/TermsOfUse'
@@ -91,18 +86,13 @@ function App({ pathname: pathnameProp }) {
       <Navbar />
       <main id="conteudo-principal" tabIndex="-1">
         <Hero />
-        <Diagnosis />
         <Priority />
         <Services />
-        <Pricing />
         <Products />
         <Portfolio />
         <Process />
-        <About />
-        <FAQ />
         <OrderBuilder />
-        <section className="home-cta" aria-labelledby="home-cta-title"><div><p>Comece pelo que cabe hoje</p><h2 id="home-cta-title">Você não precisa começar com um sistema grande.</h2><span>Escolha uma solução prática agora e evolua no ritmo do seu negócio.</span></div><a href="#produtos">Ver soluções acessíveis <span aria-hidden="true">→</span></a></section>
-        <Contact />
+        <section className="home-cta" id="contato" aria-labelledby="home-cta-title"><div><p>Comece pelo que cabe hoje</p><h2 id="home-cta-title">Você não precisa começar com um sistema grande.</h2><span>Escolha uma solução prática agora e evolua no ritmo do seu negócio.</span><div className="home-contact-links"><a href="https://wa.me/5588993021946" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a><a href="mailto:contato@ronastech.com.br">contato@ronastech.com.br</a></div></div><a href="#pedido">Montar meu pedido <span aria-hidden="true">→</span></a></section>
       </main>
       <Footer />
     </>

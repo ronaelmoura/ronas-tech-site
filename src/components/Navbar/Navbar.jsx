@@ -4,11 +4,12 @@ import styles from './Navbar.module.css'
 
 const navigationItems = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Diagnóstico', href: '#diagnostico' },
+  { label: 'Prioridade', href: '#prioridade' },
   { label: 'Serviços', href: '#servicos' },
+  { label: 'Soluções', href: '#produtos' },
   { label: 'Projetos', href: '#projetos' },
-  { label: 'Pacotes', href: '#pacotes' },
-  { label: 'Sobre', href: '#sobre' },
+  { label: 'Processo', href: '#processo' },
+  { label: 'Pedido', href: '#pedido' },
   { label: 'Contato', href: '#contato' },
 ]
 

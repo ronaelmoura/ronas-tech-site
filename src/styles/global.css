@@ -108,6 +108,8 @@ section[id] {
 .home-cta h2 { margin: 0 0 8px; color: #f5f7fb; font-size: clamp(24px, 3vw, 38px); line-height: 1.15; }
 .home-cta span { color: #9eabbc; }
 .home-cta > a { display: inline-flex; gap: 18px; padding: 14px 18px; border: 1px solid #3fa8ef; border-radius: 10px; background: #155f9c; color: #fff; text-decoration: none; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.home-contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
+.home-contact-links a { color: #c6e9ff; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 700px) { .home-cta { padding: 20px 18px 70px; flex-direction: column; align-items: flex-start; } }
 
 @media (prefers-reduced-motion: reduce) {

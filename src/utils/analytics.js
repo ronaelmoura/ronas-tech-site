@@ -11,6 +11,7 @@ const externalLinks = {
 }
 
 export function initializeAnalytics() {
+  getCampaignAttribution()
   if (
     !hasValidMeasurementId ||
     typeof window === 'undefined' ||
@@ -42,8 +43,8 @@ export function initializeAnalytics() {
 
 export function trackEvent(eventName, eventParameters = {}) {
   if (!hasValidMeasurementId || typeof window === 'undefined' || !window.gtag) return
-
-  window.gtag('event', eventName, eventParameters)
+  const attribution = getCampaignAttribution()
+  window.gtag('event', eventName, { ...eventParameters, ...attribution })
 }
 
 export function trackWhatsAppClick(location) {
@@ -69,19 +70,32 @@ export function trackExternalLink(platform, linkUrl = externalLinks[platform]) {
 
 export function getCampaignContext() {
   if (typeof window === 'undefined') return ''
-  const params = new URLSearchParams(window.location.search)
-  const source = params.get('utm_source')
-  const medium = params.get('utm_medium')
-  const campaign = params.get('utm_campaign')
-  const content = params.get('utm_content')
-  if (!source && !medium && !campaign && !content) return ''
+  const attribution = getCampaignAttribution()
+  if (!Object.values(attribution).some(Boolean)) return ''
   const parts = [
-    source && `Origem: ${source}`,
-    medium && `mídia: ${medium}`,
-    campaign && `campanha: ${campaign}`,
-    content && `criativo: ${content}`,
+    attribution.utm_source && `Origem: ${attribution.utm_source}`,
+    attribution.utm_campaign && `Campanha: ${attribution.utm_campaign}`,
+    attribution.utm_content && `Conteúdo: ${attribution.utm_content}`,
+    attribution.utm_medium && `Mídia: ${attribution.utm_medium}`,
+    attribution.fbclid && `Clique: ${attribution.fbclid.slice(0, 18)}`,
   ].filter(Boolean)
-  return parts.join(' — ')
+  return parts.join('\n')
+}
+
+const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'fbclid']
+const campaignStorageKey = 'ronas_campaign_attribution'
+
+export function getCampaignAttribution() {
+  if (typeof window === 'undefined') return {}
+  const current = Object.fromEntries(new URLSearchParams(window.location.search).entries())
+  const stored = (() => {
+    try { return JSON.parse(window.sessionStorage.getItem(campaignStorageKey) || '{}') } catch { return {} }
+  })()
+  const next = campaignKeys.reduce((result, key) => { if (current[key]) result[key] = current[key]; else if (stored[key]) result[key] = stored[key]; return result }, {})
+  if (Object.keys(next).length) {
+    try { window.sessionStorage.setItem(campaignStorageKey, JSON.stringify(next)) } catch { /* storage is optional */ }
+  }
+  return next
 }
 
 export function withCampaign(message) {

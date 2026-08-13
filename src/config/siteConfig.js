@@ -10,4 +10,5 @@ export const siteConfig = {
   linkedin: 'https://www.linkedin.com/in/ronael-moura',
   instagram: 'https://www.instagram.com/ronas_tech/',
   portfolio: 'https://ronaelmoura.github.io/portfolio-ronas-tech/',
+  personalSite: 'https://ronaelmoura.github.io/',
 }

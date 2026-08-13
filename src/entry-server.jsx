@@ -3,6 +3,7 @@ import App from './App'
 import { servicePages } from './data/servicePages'
 import { siteConfig } from './config/siteConfig'
 import { campaignPages } from './data/campaignPages'
+import { products } from './data/products'
 
 const homeMetadata = {
   title: 'Criação de Sites, Sistemas e Automações | Ronas Tech',
@@ -95,10 +96,19 @@ export function getPageMetadata(pathname) {
 
   const campaign = campaignPages[pathname]
   if (campaign) {
+    const product = products.find((item) => item.id === campaign.productId)
     return {
       title: `${campaign.title} | ${siteConfig.companyName}`,
       description: campaign.description,
       canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: product?.name || campaign.title,
+        description: campaign.description,
+        offers: product ? { '@type': 'Offer', price: product.price.replace(/[^0-9]/g, ''), priceCurrency: 'BRL' } : undefined,
+        provider: { '@type': 'Organization', name: siteConfig.companyName, url: siteConfig.siteUrl },
+      },
     }
   }
 

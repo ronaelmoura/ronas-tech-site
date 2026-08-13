@@ -147,7 +147,7 @@ function Footer() {
           <p>
             Desenvolvido por{' '}
             <a
-              href={siteConfig.portfolio}
+              href={siteConfig.personalSite}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackExternalLink('portfolio')}

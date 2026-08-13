@@ -1,18 +1,18 @@
-import { siteConfig } from '../../config/siteConfig'
-import { trackConversion, trackWhatsAppClick, withCampaign } from '../../utils/analytics'
+import { trackConversion } from '../../utils/analytics'
 import { products } from '../../data/products'
 import styles from './Products.module.css'
 
 
-function productMessage(product) {
-  return withCampaign(`Olá, Ronael. Quero saber mais sobre o ${product.name} para o meu negócio.`)
-}
-
-function productWhatsappUrl(product) {
-  return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(productMessage(product))}`
-}
-
 function Products() {
+  const featured = products.filter((product) => ['kit-whatsapp-organizado', 'catalogo-digital', 'presenca-essencial'].includes(product.id))
+  const otherProducts = products.filter((product) => !featured.includes(product))
+  const card = (product, featuredCard = false) => <article className={`${styles.card} ${product.discreet ? styles.discreet : ''}`} key={product.id}>
+    <div className={styles.cardTop}><span className={styles.tag}>{product.discreet ? 'Porta de entrada' : 'Solução prática'}</span><span className={styles.price}>a partir de <strong>{product.price}</strong></span></div>
+    <h3>{product.name}</h3><p className={styles.audience}>{product.audience}</p>
+    {featuredCard && <p className={styles.solves}><strong>O que resolve:</strong> {product.solves}</p>}
+    {featuredCard && <ul>{product.items.slice(0, 4).map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul>}
+    <a className={styles.cta} href={`/${product.id}`} onClick={() => trackConversion('product_view', { product: product.id })}>Ver detalhes da solução <span aria-hidden="true">↗</span></a>
+  </article>
   return <section id="produtos" className={styles.section} aria-labelledby="products-title">
     <div className={styles.container}>
       <header className={styles.heading}>
@@ -20,15 +20,8 @@ function Products() {
         <h2 id="products-title">Produtos prontos para organizar seu negócio</h2>
         <p>Estruturas prontas, adaptadas à realidade de pequenos negócios e entregues com orientação humana. Comece pelo que resolve hoje.</p>
       </header>
-      <div className={styles.grid}>
-        {products.map((product) => <article className={`${styles.card} ${product.discreet ? styles.discreet : ''}`} key={product.id}>
-          <div className={styles.cardTop}><span className={styles.tag}>{product.discreet ? 'Porta de entrada' : 'Entrega orientada'}</span><span className={styles.price}>a partir de <strong>{product.price}</strong></span></div>
-          <h3>{product.name}</h3><p className={styles.audience}>{product.audience}</p>
-          <p className={styles.solves}><strong>O que resolve:</strong> {product.solves}</p>
-          <ul>{product.items.map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul>
-          <a className={styles.cta} href={productWhatsappUrl(product)} target="_blank" rel="noopener noreferrer" onClick={() => { trackWhatsAppClick(`produto_${product.id}`); trackConversion('product_view', { product: product.id }) }}>Falar sobre esta solução <span aria-hidden="true">↗</span></a>
-        </article>)}
-      </div>
+      <div className={styles.grid}>{featured.map((product) => card(product, true))}</div>
+      <details className={styles.allSolutions} id="outras-solucoes"><summary>Ver todas as soluções</summary><div className={styles.grid}>{otherProducts.map((product) => card(product))}</div></details>
     </div>
   </section>
 }
