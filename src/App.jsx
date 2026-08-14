@@ -4,6 +4,7 @@ import Problems from './components/Problems/Problems'
 import Paths from './components/Paths/Paths'
 import Products from './components/Products/Products'
 import Process from './components/Process/Process'
+import About from './components/About/About'
 import Portfolio from './components/Portfolio/Portfolio'
 import OrderBuilder from './components/OrderBuilder/OrderBuilder'
 import Footer from './components/Footer/Footer'
@@ -16,6 +17,7 @@ import ProjectsPortalPreview from './pages/ProjectsPortalPreview'
 import CampaignPage from './pages/CampaignPage'
 import { campaignPages } from './data/campaignPages'
 import { servicePages } from './data/servicePages'
+import { siteConfig } from './config/siteConfig'
 
 const legalPages = { '/politica-de-privacidade': PrivacyPolicy, '/termos-de-uso': TermsOfUse }
 
@@ -31,7 +33,7 @@ function App({ pathname: pathnameProp }) {
   if (service) return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ServicePage service={service} /></>
   if (campaign) return <CampaignPage campaign={campaign} />
   if (pathname !== '/') return <NotFound />
-  return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><Problems /><Paths /><Products /><Process /><Portfolio /><OrderBuilder /></main><Footer /></>
+  return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><Problems /><Paths /><Products /><Process /><About /><Portfolio /><OrderBuilder /></main><a className="floating-contact" href={`https://wa.me/${siteConfig.whatsappNumber}?text=Olá! Vim pelo site da Ronas Tech e quero conversar sobre meu negócio.`} target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Ronas Tech pelo WhatsApp"><span aria-hidden="true">WA</span> WhatsApp <b aria-hidden="true">↗</b></a><Footer /></>
 }
 
 export default App

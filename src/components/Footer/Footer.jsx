@@ -7,7 +7,7 @@ import styles from './Footer.module.css'
 
 const navigationLinks = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Serviços', href: '#servicos' },
+  { label: 'Soluções', href: '#produtos' },
   { label: 'Projetos', href: '#projetos' },
   { label: 'Contato', href: '#contato' },
 ]

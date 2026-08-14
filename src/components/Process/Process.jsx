@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react'
 import styles from './Process.module.css'
 
 const processSteps = [
@@ -9,8 +8,29 @@ const processSteps = [
 ]
 
 function Process() {
-  const sectionRef = useRef(null); const [visible, setVisible] = useState(false)
-  useEffect(() => { const section = sectionRef.current; if (!section || !('IntersectionObserver' in window)) { setVisible(true); return undefined }; const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.unobserve(entry.target) } }, { threshold: .14 }); observer.observe(section); return () => observer.disconnect() }, [])
-  return <section id="processo" ref={sectionRef} className={`${styles.section} ${visible ? styles.visible : ''}`} aria-labelledby="process-title"><div className={styles.container}><header className={styles.heading}><p className={styles.eyebrow}>Como trabalhamos</p><h2 id="process-title">O que você recebe, na prática</h2><p className={styles.subtitle}>Um caminho direto para organizar o primeiro ponto sem transformar tudo de uma vez.</p></header><ol className={styles.timeline}>{processSteps.map(([title, description], index) => <li className={styles.step} style={{ '--delay': `${index * 80}ms` }} key={title}><div className={styles.marker} aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span></div><article className={styles.card}><span className={styles.stepLabel}>Etapa {index + 1}</span><h3>{title}</h3><p>{description}</p></article></li>)}</ol></div></section>
+  return (
+    <section id="processo" className={styles.section} aria-labelledby="process-title">
+      <div className={styles.container}>
+        <header className={styles.heading}>
+          <p className={styles.eyebrow}>Como trabalhamos</p>
+          <h2 id="process-title">O que você recebe, na prática</h2>
+          <p className={styles.subtitle}>Um caminho direto para organizar o primeiro ponto sem transformar tudo de uma vez.</p>
+        </header>
+        <ol className={styles.timeline}>
+          {processSteps.map(([title, description], index) => (
+            <li className={styles.step} key={title}>
+              <div className={styles.marker} aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span></div>
+              <article className={styles.card}>
+                <span className={styles.stepLabel}>Etapa {index + 1}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )
 }
+
 export default Process
