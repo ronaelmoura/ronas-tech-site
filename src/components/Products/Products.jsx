@@ -4,7 +4,7 @@ import styles from './Products.module.css'
 
 
 function Products() {
-  const featured = products.filter((product) => ['kit-whatsapp-organizado', 'catalogo-digital', 'presenca-essencial'].includes(product.id))
+  const featured = ['kit-whatsapp-organizado', 'catalogo-digital', 'presenca-essencial'].map((id) => products.find((product) => product.id === id))
   const otherProducts = products.filter((product) => !featured.includes(product))
   const card = (product, featuredCard = false) => <article className={`${styles.card} ${product.discreet ? styles.discreet : ''}`} key={product.id}>
     <div className={styles.cardTop}><span className={styles.tag}>{product.discreet ? 'Porta de entrada' : 'Solução prática'}</span><span className={styles.price}>a partir de <strong>{product.price}</strong></span></div>

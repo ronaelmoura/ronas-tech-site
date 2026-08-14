@@ -1,23 +1,19 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { siteConfig } from '../../config/siteConfig'
 import { trackConversion, trackWhatsAppClick, withCampaign } from '../../utils/analytics'
 import styles from './OrderBuilder.module.css'
 
-const steps = [
-  { key: 'businessType', title: 'Qual é o seu tipo de negócio?', options: ['Comércio local', 'Prestação de serviços', 'Profissional autônomo', 'Outro negócio'] },
-  { key: 'difficulty', title: 'O que mais dificulta sua rotina?', options: ['Ser encontrado na internet', 'Responder e acompanhar clientes', 'Organizar pedidos e orçamentos', 'Mostrar produtos ou serviços'] },
-  { key: 'solution', title: 'Qual solução chamou sua atenção?', options: ['Site ou presença digital', 'Kit WhatsApp Organizado', 'Painel ou agenda digital', 'Ainda não sei'] },
+const stages = [
+  { key: 'situation', title: 'Qual mais parece com sua situação?', options: ['Quero aparecer melhor na internet.', 'Quero organizar mensagens e pedidos.', 'Quero organizar agenda, clientes ou orçamento.', 'Ainda não sei.'] },
+  { key: 'business', title: 'Que tipo de negócio você tem?', options: ['Comércio local.', 'Prestação de serviços.', 'Profissional autônomo.', 'Outro.'] },
 ]
 
 function OrderBuilder() {
-  const [step, setStep] = useState(0)
-  const [data, setData] = useState({ businessType: '', difficulty: '', solution: '', name: '', contact: '' })
-  const [done, setDone] = useState(false)
-  const current = steps[step]
-  const summary = useMemo(() => Object.entries(data).filter(([, value]) => value).map(([key, value]) => `${key}: ${value}`).join('\n'), [data])
-  const choose = (value) => { setData((old) => ({ ...old, [current.key]: value })); setStep((old) => old + 1) }
-  function submit(event) { event.preventDefault(); if (!data.name.trim() || !data.contact.trim()) return; setDone(true); trackConversion('order_builder_complete', { solution: data.solution }); const message = withCampaign(`Olá, Ronael. Montei meu pedido na Ronas Tech:\n\n${summary}\nNome: ${data.name}\nMelhor contato: ${data.contact}`); window.open(`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer'); trackWhatsAppClick('order_builder') }
-  return <section id="pedido" className={styles.section} aria-labelledby="order-title"><div className={styles.container}><div className={styles.heading}><p className={styles.eyebrow}>Atendimento guiado</p><h2 id="order-title">Monte seu pedido</h2><p>Responda em poucos passos. No final, você revisa o resumo e decide se quer abrir o WhatsApp. Nada é armazenado no site.</p></div><div className={styles.card} aria-live="polite">{done ? <><span className={styles.success}>Pedido preparado</span><h3>Seu resumo está pronto no WhatsApp.</h3><p>Se a janela não abriu, tente novamente pelo botão abaixo.</p><button className={styles.cta} type="button" onClick={() => { setDone(false); setStep(steps.length) }}>Montar outro pedido</button></> : step < steps.length ? <><span className={styles.progress}>Etapa {step + 1} de {steps.length}</span><h3>{current.title}</h3><div className={styles.choices}>{current.options.map((option) => <button type="button" key={option} onClick={() => choose(option)}>{option}<span aria-hidden="true">→</span></button>)}</div></> : <form onSubmit={submit}><span className={styles.progress}>Última etapa</span><h3>Como podemos retornar?</h3><label>Seu nome<input value={data.name} required onChange={(event) => setData({ ...data, name: event.target.value })} /></label><label>WhatsApp ou melhor forma de retorno<input value={data.contact} required onChange={(event) => setData({ ...data, contact: event.target.value })} /></label><div className={styles.summary}><strong>Resumo do pedido</strong><pre>{summary}</pre></div><button className={styles.cta} type="submit">Abrir resumo no WhatsApp <span aria-hidden="true">↗</span></button><small>Usamos esses dados apenas para montar sua mensagem. Não armazenamos o formulário.</small></form>}</div></div></section>
+  const [stage, setStage] = useState(0)
+  const [data, setData] = useState({ situation: '', business: '', name: '', company: '' })
+  const [sent, setSent] = useState(false)
+  function choose(value) { setData((current) => ({ ...current, [stages[stage].key]: value })); setStage((current) => current + 1) }
+  function submit(event) { event.preventDefault(); if (!data.name.trim()) return; const message = withCampaign(`Olá, Ronael. Quero entender qual é o melhor primeiro passo.\n\nSituação: ${data.situation}\nTipo de negócio: ${data.business}\nNome: ${data.name.trim()}${data.company.trim() ? `\nEmpresa: ${data.company.trim()}` : ''}`); window.open(`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer'); trackConversion('order_builder_complete', { situation: data.situation, business: data.business }); trackWhatsAppClick('order_builder'); setSent(true) }
+  return <section id="pedido" className={styles.section} aria-labelledby="order-title"><div className={styles.container}><div className={styles.heading}><p className={styles.eyebrow}>Vamos organizar o primeiro ponto?</p><h2 id="order-title">Você não precisa saber qual tecnologia contratar.</h2><p>Só precisa me contar onde hoje você perde tempo ou clientes.</p></div><div className={styles.card} aria-live="polite">{sent ? <><span className={styles.success}>Mensagem preparada</span><h3>Seu resumo está pronto no WhatsApp.</h3><p>Se quiser, você pode montar outra mensagem.</p><button className={styles.cta} type="button" onClick={() => { setSent(false); setStage(0); setData({ situation: '', business: '', name: '', company: '' }) }}>Começar novamente</button></> : stage < stages.length ? <><span className={styles.progress}>Etapa {stage + 1} de 3</span><h3>{stages[stage].title}</h3><div className={styles.choices}>{stages[stage].options.map((option) => <button type="button" key={option} onClick={() => choose(option)}>{option}<span aria-hidden="true">→</span></button>)}</div></> : <form onSubmit={submit}><span className={styles.progress}>Etapa 3 de 3</span><h3>Como podemos chamar você?</h3><label>Nome<input required value={data.name} onChange={(event) => setData({ ...data, name: event.target.value })} /></label><label>Empresa <small>(opcional)</small><input value={data.company} onChange={(event) => setData({ ...data, company: event.target.value })} /></label><button className={styles.cta} type="submit">Montar minha mensagem no WhatsApp <span aria-hidden="true">↗</span></button><small>Não armazenamos dados; usamos as respostas apenas para montar a mensagem.</small></form>}</div></div></section>
 }
-
 export default OrderBuilder

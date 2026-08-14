@@ -182,7 +182,7 @@ function Portfolio() {
                 </div>
 
                 <div className={styles.features}>
-                  <h4>Benefícios para o negócio</h4>
+                  <h4>Resultado prático</h4>
                   <ul className={styles.businessBenefits}>
                     {project.benefits.map((benefit) => (
                       <li key={benefit}>{benefit}</li>
