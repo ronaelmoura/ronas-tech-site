@@ -19,24 +19,60 @@ const projects = [
     actionLabel: 'Conhecer o Ronas Desk',
     featured: true,
     visual: 'dashboard',
+    repositoryUrl: 'https://github.com/ronaelmoura/ronas-desk',
   },
   {
-    title: 'Portfólio — Beatriz Mendes',
-    category: 'Portfólio profissional',
+    title: 'Nexo',
+    category: 'Dashboard financeiro pessoal',
     need:
-      'Reunir experiência, competências e projetos de análise de dados em uma apresentação profissional e fácil de compartilhar.',
+      'Transformar movimentações financeiras em uma visão clara para acompanhar receitas, despesas e decisões do mês.',
     solution:
-      'Foi desenvolvido um portfólio responsivo com identidade visual própria, apresentação dos projetos e acesso direto aos canais profissionais.',
+      'Dashboard em React com gráficos, filtros por período e categoria, cadastro de transações, modo escuro persistente e experiência responsiva.',
     benefits: [
-      'Trabalhos e competências reunidos em um único endereço',
-      'Apresentação profissional para processos seletivos e contatos',
-      'Experiência adaptada para celular e computador',
+      'Resumo financeiro compreensível em poucos segundos',
+      'Filtros e gráficos para explorar os dados',
+      'Uso confortável no celular e no computador',
     ],
     status: 'Publicado',
-    projectUrl: 'https://beatriz-mendes-portfolio.vercel.app/',
-    actionLabel: 'Abrir portfólio',
-    featured: true,
-    visual: 'dataPortfolio',
+    projectUrl: 'https://ronaelmoura.github.io/nexo-dashboard-financeiro/',
+    repositoryUrl: 'https://github.com/ronaelmoura/nexo-dashboard-financeiro',
+    actionLabel: 'Testar o dashboard',
+    visual: 'finance',
+  },
+  {
+    title: 'StockFlow API',
+    category: 'Backend de estoque e pedidos',
+    need:
+      'Controlar estoque e pedidos sem perder consistência quando várias operações alteram os mesmos produtos.',
+    solution:
+      'API REST com Node.js, Express e MySQL, autenticação por perfis, reservas transacionais, idempotência, auditoria e documentação OpenAPI.',
+    benefits: [
+      'Regras de negócio protegidas por transações',
+      'Histórico de movimentações e eventos de auditoria',
+      'Documentação pronta para integração',
+    ],
+    status: 'Código público',
+    repositoryUrl: 'https://github.com/ronaelmoura/stockflow-api',
+    actionLabel: 'Explorar a API',
+    visual: 'api',
+  },
+  {
+    title: 'ClimaZen',
+    category: 'Landing page comercial',
+    need:
+      'Apresentar um serviço técnico de forma simples, profissional e orientada à geração de oportunidades comerciais.',
+    solution:
+      'Landing page responsiva com posicionamento de marca, serviços, planos, prova social, simulador de economia e formulário de diagnóstico.',
+    benefits: [
+      'Proposta de valor clara desde a primeira tela',
+      'Conteúdo organizado para apoiar a decisão',
+      'Experiência de conversão adaptada ao mobile',
+    ],
+    status: 'Publicado',
+    projectUrl: 'https://ronaelmoura.github.io/climazen-landing-page/',
+    repositoryUrl: 'https://github.com/ronaelmoura/climazen-landing-page',
+    actionLabel: 'Abrir a landing page',
+    visual: 'landing',
   },
 ]
 
@@ -80,20 +116,20 @@ function ProjectVisual({ type }) {
     )
   }
 
-  if (type === 'dataPortfolio') {
+  if (type === 'finance') {
     return (
       <div className={styles.dataPortfolioMockup} aria-hidden="true">
         <div className={styles.browserBar}>
           <span />
           <span />
           <span />
-          <i>beatriz-mendes-portfolio.vercel.app</i>
+          <i>nexo-dashboard-financeiro</i>
         </div>
         <div className={styles.dataPortfolioScreen}>
           <div className={styles.dataIntro}>
-            <small>Analista de Dados</small>
-            <strong>Beatriz Mendes</strong>
-            <span>Dados que apoiam decisões melhores.</span>
+            <small>Visão do mês</small>
+            <strong>R$ 8.420</strong>
+            <span>Saldo disponível para acompanhar.</span>
           </div>
           <div className={styles.dataChart}>
             <i />
@@ -106,23 +142,45 @@ function ProjectVisual({ type }) {
     )
   }
 
+  if (type === 'api') {
+    return (
+      <div className={styles.apiMockup} aria-hidden="true">
+        <div className={styles.apiSidebar}>
+          <strong>StockFlow</strong>
+          <span className={styles.apiActive}>POST</span>
+          <span>GET</span>
+          <span>PATCH</span>
+        </div>
+        <div className={styles.apiContent}>
+          <small>API / V1 / ORDERS</small>
+          <strong>Criar pedido</strong>
+          <div className={styles.codeBlock}>
+            <i><b>201</b> Created</i>
+            <span>{`{ "status": "CONFIRMED" }`}</span>
+            <span>{`{ "stock": "reserved" }`}</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={styles.portfolioMockup} aria-hidden="true">
       <div className={styles.browserBar}>
         <span />
         <span />
         <span />
-        <i>portfolio.beatriz</i>
+        <i>climazen-landing-page</i>
       </div>
       <div className={styles.portfolioScreen}>
         <div>
-          <small>Portfólio profissional</small>
-          <strong>Beatriz</strong>
+          <small>Climatização inteligente</small>
+          <strong>ClimaZen</strong>
           <span />
           <span />
-          <button type="button" tabIndex="-1">Projetos</button>
+          <button type="button" tabIndex="-1">Economize energia</button>
         </div>
-        <div className={styles.profileShape}>B</div>
+        <div className={styles.profileShape}>❄</div>
       </div>
     </div>
   )
@@ -138,10 +196,10 @@ function Portfolio() {
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Projetos publicados</p>
-          <h2 id="portfolio-title">Projetos que você pode abrir e testar</h2>
+          <h2 id="portfolio-title">Projetos que mostram como eu resolvo problemas</h2>
           <p className={styles.subtitle}>
-            Cada case parte de uma necessidade real, mostra a solução criada e
-            pode ser aberto para você avaliar a entrega.
+            Frontend, backend e produto apresentados com contexto, decisões de
+            engenharia e links para você avaliar a entrega.
           </p>
         </header>
 
@@ -192,7 +250,9 @@ function Portfolio() {
 
                 <div className={styles.features}>
                   <h4>Andamento</h4>
-                  <p className={styles.description}>{project.status}</p>
+                  <p className={styles.description}>
+                    {project.status} · Projeto autoral de portfólio
+                  </p>
                 </div>
 
                 <div className={styles.actions}>
@@ -210,9 +270,30 @@ function Portfolio() {
                       <ExternalIcon />
                     </a>
                   ) : (
-                    <a className={styles.primaryButton} href="#contato">
-                      Conhecer uma solução semelhante
-                      <span aria-hidden="true">→</span>
+                    <a
+                      className={styles.primaryButton}
+                      href={project.repositoryUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackExternalLink('portfolio', project.repositoryUrl)
+                      }
+                    >
+                      {project.actionLabel}
+                      <ExternalIcon />
+                    </a>
+                  )}
+                  {project.projectUrl && project.repositoryUrl && (
+                    <a
+                      className={styles.secondaryButton}
+                      href={project.repositoryUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackExternalLink('portfolio', project.repositoryUrl)
+                      }
+                    >
+                      Ver código
                     </a>
                   )}
                 </div>
