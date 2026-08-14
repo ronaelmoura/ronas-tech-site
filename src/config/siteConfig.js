@@ -9,6 +9,6 @@ export const siteConfig = {
   github: 'https://github.com/ronaelmoura',
   linkedin: 'https://www.linkedin.com/in/ronael-moura',
   instagram: 'https://www.instagram.com/ronas_tech/',
-  portfolio: 'https://ronaelmoura.github.io/portfolio-ronas-tech/',
+  portfolio: 'https://github.com/ronaelmoura',
   personalSite: 'https://ronaelmoura.github.io/',
 }

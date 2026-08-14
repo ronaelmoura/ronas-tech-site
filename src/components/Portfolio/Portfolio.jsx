@@ -9,11 +9,12 @@ const projects = [
       'Substituir solicitações espalhadas por um fluxo organizado para registrar, priorizar e acompanhar atendimentos.',
     solution:
       'Sistema web publicado com acesso protegido, abertura e acompanhamento de chamados, controle de prioridade e status e painéis para usuários e administradores.',
-    benefits: [
-      'Solicitações centralizadas em um único lugar',
-      'Prioridades e andamento visíveis para a equipe',
-      'Histórico organizado para acompanhar cada atendimento',
+    highlights: [
+      '122 testes automatizados',
+      'Autenticação e permissões por perfil',
+      'CI e deploy em produção',
     ],
+    stack: ['React 19', 'Express 5', 'MySQL', 'Docker'],
     status: 'Publicado',
     projectUrl: 'https://ronas-desk.onrender.com/',
     actionLabel: 'Conhecer o Ronas Desk',
@@ -28,11 +29,12 @@ const projects = [
       'Transformar movimentações financeiras em uma visão clara para acompanhar receitas, despesas e decisões do mês.',
     solution:
       'Dashboard em React com gráficos, filtros por período e categoria, cadastro de transações, modo escuro persistente e experiência responsiva.',
-    benefits: [
-      'Resumo financeiro compreensível em poucos segundos',
-      'Filtros e gráficos para explorar os dados',
-      'Uso confortável no celular e no computador',
+    highlights: [
+      'Gráficos e filtros interativos',
+      'Tema persistente',
+      'Interface responsiva',
     ],
+    stack: ['React', 'Recharts', 'CSS', 'GitHub Pages'],
     status: 'Publicado',
     projectUrl: 'https://ronaelmoura.github.io/nexo-dashboard-financeiro/',
     repositoryUrl: 'https://github.com/ronaelmoura/nexo-dashboard-financeiro',
@@ -46,11 +48,12 @@ const projects = [
       'Controlar estoque e pedidos sem perder consistência quando várias operações alteram os mesmos produtos.',
     solution:
       'API REST com Node.js, Express e MySQL, autenticação por perfis, reservas transacionais, idempotência, auditoria e documentação OpenAPI.',
-    benefits: [
-      'Regras de negócio protegidas por transações',
-      'Histórico de movimentações e eventos de auditoria',
-      'Documentação pronta para integração',
+    highlights: [
+      'Transações e controle de concorrência',
+      'Idempotência, auditoria e Outbox',
+      'OpenAPI e integração contínua',
     ],
+    stack: ['Node.js', 'Express', 'MySQL', 'OpenAPI'],
     status: 'Código público',
     repositoryUrl: 'https://github.com/ronaelmoura/stockflow-api',
     actionLabel: 'Explorar a API',
@@ -63,11 +66,12 @@ const projects = [
       'Apresentar um serviço técnico de forma simples, profissional e orientada à geração de oportunidades comerciais.',
     solution:
       'Landing page responsiva com posicionamento de marca, serviços, planos, prova social, simulador de economia e formulário de diagnóstico.',
-    benefits: [
-      'Proposta de valor clara desde a primeira tela',
-      'Conteúdo organizado para apoiar a decisão',
-      'Experiência de conversão adaptada ao mobile',
+    highlights: [
+      'Simulador interativo',
+      'Formulário com validação',
+      'SEO e publicação automática',
     ],
+    stack: ['React', 'Vite', 'CSS', 'GitHub Pages'],
     status: 'Publicado',
     projectUrl: 'https://ronaelmoura.github.io/climazen-landing-page/',
     repositoryUrl: 'https://github.com/ronaelmoura/climazen-landing-page',
@@ -229,31 +233,22 @@ function Portfolio() {
 
                 <h3>{project.title}</h3>
 
-                <div className={styles.features}>
-                  <h4>Necessidade</h4>
-                  <p className={styles.description}>{project.need}</p>
+                <div className={styles.caseSummary}>
+                  <p><strong>Desafio:</strong> {project.need}</p>
+                  <p><strong>Solução:</strong> {project.solution}</p>
                 </div>
 
-                <div className={styles.features}>
-                  <h4>Solução desenvolvida</h4>
-                  <p className={styles.description}>{project.solution}</p>
-                </div>
+                <ul className={styles.highlights} aria-label="Destaques técnicos">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
 
-                <div className={styles.features}>
-                  <h4>Resultado prático</h4>
-                  <ul className={styles.businessBenefits}>
-                    {project.benefits.map((benefit) => (
-                      <li key={benefit}>{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className={styles.features}>
-                  <h4>Andamento</h4>
-                  <p className={styles.description}>
-                    {project.status} · Projeto autoral de portfólio
-                  </p>
-                </div>
+                <ul className={styles.stack} aria-label="Tecnologias utilizadas">
+                  {project.stack.map((technology) => (
+                    <li key={technology}>{technology}</li>
+                  ))}
+                </ul>
 
                 <div className={styles.actions}>
                   {project.projectUrl ? (
