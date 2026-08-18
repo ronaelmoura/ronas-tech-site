@@ -1,4 +1,5 @@
 import { trackExternalLink } from '../../utils/analytics'
+import { useTilt } from '../../motion/hooks'
 import styles from './Portfolio.module.css'
 
 const projects = [
@@ -190,11 +191,96 @@ function ProjectVisual({ type }) {
   )
 }
 
+function ProjectCard({ project }) {
+  const tiltRef = useTilt(4)
+  return (
+    <article
+      ref={tiltRef}
+      className={`${styles.card} tilt reveal ${project.featured ? styles.featured : ''}`}
+    >
+      <div className={styles.visual}>
+        {project.featured && (
+          <span className={styles.featuredBadge}>Projeto em destaque</span>
+        )}
+        <ProjectVisual type={project.visual} />
+      </div>
+
+      <div className={styles.content}>
+        <div className={styles.meta}>
+          <span className={styles.category}>{project.category}</span>
+          <span
+            className={`${styles.status} ${project.status === 'Publicado' ? styles.published : ''}`}
+          >
+            <i aria-hidden="true" />
+            {project.status}
+          </span>
+        </div>
+
+        <h3>{project.title}</h3>
+
+        <div className={styles.caseSummary}>
+          <p><strong>Desafio:</strong> {project.need}</p>
+          <p><strong>Solução:</strong> {project.solution}</p>
+        </div>
+
+        <ul className={styles.highlights} aria-label="Destaques técnicos">
+          {project.highlights.map((highlight) => (
+            <li key={highlight}>{highlight}</li>
+          ))}
+        </ul>
+
+        <ul className={styles.stack} aria-label="Tecnologias utilizadas">
+          {project.stack.map((technology) => (
+            <li key={technology}>{technology}</li>
+          ))}
+        </ul>
+
+        <div className={styles.actions}>
+          {project.projectUrl ? (
+            <a
+              className={styles.primaryButton}
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackExternalLink('portfolio', project.projectUrl)}
+            >
+              {project.actionLabel}
+              <ExternalIcon />
+            </a>
+          ) : (
+            <a
+              className={styles.primaryButton}
+              href={project.repositoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackExternalLink('portfolio', project.repositoryUrl)}
+            >
+              {project.actionLabel}
+              <ExternalIcon />
+            </a>
+          )}
+          {project.projectUrl && project.repositoryUrl && (
+            <a
+              className={styles.secondaryButton}
+              href={project.repositoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackExternalLink('portfolio', project.repositoryUrl)}
+            >
+              Ver código
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  )
+}
+
 function Portfolio() {
   return (
     <section
       id="projetos"
-      className={styles.section}
+      className={`${styles.section} reveal`}
       aria-labelledby="portfolio-title"
     >
       <div className={styles.container}>
@@ -209,91 +295,7 @@ function Portfolio() {
 
         <div className={styles.grid}>
           {projects.map((project) => (
-            <article
-              className={`${styles.card} ${project.featured ? styles.featured : ''}`}
-              key={project.title}
-            >
-              <div className={styles.visual}>
-                {project.featured && (
-                  <span className={styles.featuredBadge}>Projeto em destaque</span>
-                )}
-                <ProjectVisual type={project.visual} />
-              </div>
-
-              <div className={styles.content}>
-                <div className={styles.meta}>
-                  <span className={styles.category}>{project.category}</span>
-                  <span
-                    className={`${styles.status} ${project.status === 'Publicado' ? styles.published : ''}`}
-                  >
-                    <i aria-hidden="true" />
-                    {project.status}
-                  </span>
-                </div>
-
-                <h3>{project.title}</h3>
-
-                <div className={styles.caseSummary}>
-                  <p><strong>Desafio:</strong> {project.need}</p>
-                  <p><strong>Solução:</strong> {project.solution}</p>
-                </div>
-
-                <ul className={styles.highlights} aria-label="Destaques técnicos">
-                  {project.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-
-                <ul className={styles.stack} aria-label="Tecnologias utilizadas">
-                  {project.stack.map((technology) => (
-                    <li key={technology}>{technology}</li>
-                  ))}
-                </ul>
-
-                <div className={styles.actions}>
-                  {project.projectUrl ? (
-                    <a
-                      className={styles.primaryButton}
-                      href={project.projectUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        trackExternalLink('portfolio', project.projectUrl)
-                      }
-                    >
-                      {project.actionLabel}
-                      <ExternalIcon />
-                    </a>
-                  ) : (
-                    <a
-                      className={styles.primaryButton}
-                      href={project.repositoryUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        trackExternalLink('portfolio', project.repositoryUrl)
-                      }
-                    >
-                      {project.actionLabel}
-                      <ExternalIcon />
-                    </a>
-                  )}
-                  {project.projectUrl && project.repositoryUrl && (
-                    <a
-                      className={styles.secondaryButton}
-                      href={project.repositoryUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        trackExternalLink('portfolio', project.repositoryUrl)
-                      }
-                    >
-                      Ver código
-                    </a>
-                  )}
-                </div>
-              </div>
-            </article>
+            <ProjectCard project={project} key={project.title} />
           ))}
         </div>
       </div>

@@ -9,7 +9,7 @@ const processSteps = [
 
 function Process() {
   return (
-    <section id="processo" className={styles.section} aria-labelledby="process-title">
+    <section id="processo" className={`${styles.section} reveal`} aria-labelledby="process-title">
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Como trabalhamos</p>

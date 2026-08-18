@@ -13,7 +13,7 @@ function Products() {
     {featuredCard && <ul>{product.items.slice(0, 4).map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul>}
     <a className={styles.cta} href={`/${product.id}`} onClick={() => trackConversion('product_view', { product: product.id })}>Ver detalhes da solução <span aria-hidden="true">↗</span></a>
   </article>
-  return <section id="produtos" className={styles.section} aria-labelledby="products-title">
+  return <section id="produtos" className={`${styles.section} reveal`} aria-labelledby="products-title">
     <div className={styles.container}>
       <header className={styles.heading}>
         <p className={styles.eyebrow}>Soluções práticas</p>

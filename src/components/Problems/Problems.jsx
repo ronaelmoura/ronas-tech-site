@@ -7,6 +7,6 @@ const problems = [
 ]
 
 function Problems() {
-  return <section className={styles.section} aria-labelledby="problems-title"><div className={styles.container}><header><p className={styles.eyebrow}>O que costuma travar</p><h2 id="problems-title">Se isso acontece, o problema não é falta de esforço.</h2></header><div className={styles.grid}>{problems.map(([title, description], index) => <article className={styles.card} key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}</div><p className={styles.note}>Não é sobre colocar mais um aplicativo na rotina. É sobre criar um caminho simples para o cliente chegar, entender e pedir.</p><a className={styles.cta} href="#caminhos">Descobrir por onde começar <span aria-hidden="true">→</span></a></div></section>
+  return <section className={`${styles.section} reveal`} aria-labelledby="problems-title"><div className={styles.container}><header><p className={styles.eyebrow}>O que costuma travar</p><h2 id="problems-title">Se isso acontece, o problema não é falta de esforço.</h2></header><div className={styles.grid}>{problems.map(([title, description], index) => <article className={styles.card} key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}</div><p className={styles.note}>Não é sobre colocar mais um aplicativo na rotina. É sobre criar um caminho simples para o cliente chegar, entender e pedir.</p><a className={styles.cta} href="#caminhos">Descobrir por onde começar <span aria-hidden="true">→</span></a></div></section>
 }
 export default Problems

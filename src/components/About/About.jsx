@@ -11,7 +11,7 @@ const facts = [
 
 function About() {
   return (
-    <section id="sobre" className={styles.section} aria-labelledby="about-title">
+    <section id="sobre" className={`${styles.section} reveal`} aria-labelledby="about-title">
       <div className={styles.container}>
         <div className={styles.content}>
           <p className={styles.eyebrow}>Quem está por trás</p>
