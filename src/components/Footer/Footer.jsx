@@ -138,6 +138,22 @@ function Footer() {
           </div>
         </div>
 
+        <div className={styles.partner}>
+          <div>
+            <p className={styles.partnerTitle}>Precisa de algo mais robusto?</p>
+            <p className={styles.partnerText}>Pra negócios que já têm um volume grande de atendimento e precisam de múltiplos atendentes, chatbot e funil de vendas no WhatsApp, recomendo o ChatGuru — plataforma que uso como referência no mercado.</p>
+          </div>
+          <a
+            className={styles.partnerCta}
+            href="https://indiquei.app/KBYLXMG"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackExternalLink('chatguru_partner')}
+          >
+            Conhecer o ChatGuru <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
         <div className={styles.bottomBar}>
           <p>© {currentYear} {siteConfig.companyName}. Todos os direitos reservados.</p>
           <nav className={styles.legalLinks} aria-label="Links legais">
