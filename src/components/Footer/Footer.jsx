@@ -9,7 +9,7 @@ const navigationLinks = [
   { label: 'Início', href: '#inicio' },
   { label: 'Soluções', href: '#produtos' },
   { label: 'Projetos', href: '#projetos' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'Contato', href: '#pedido' },
 ]
 
 const socialLinks = [
@@ -132,7 +132,7 @@ function Footer() {
                 {siteConfig.email}
               </a>
             </address>
-            <a className={styles.cta} href="#contato">
+            <a className={styles.cta} href="#pedido">
               Solicitar orçamento <span aria-hidden="true">→</span>
             </a>
           </div>

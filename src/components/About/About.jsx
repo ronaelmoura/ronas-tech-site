@@ -19,7 +19,7 @@ function About() {
           <p className={styles.lead}>A Ronas Tech é conduzida por Ronael Moura, desenvolvedor Full Stack com formação pelo SENAI e experiência em suporte de TI. O mesmo profissional que entende o problema planeja, desenvolve, testa e acompanha a publicação.</p>
           <p>Isso reduz ruído, deixa as decisões mais claras e mantém o projeto proporcional ao que o seu negócio realmente precisa.</p>
           <div className={styles.actions}>
-            <a className={styles.primary} href="#contato">Conversar sobre meu projeto <span aria-hidden="true">→</span></a>
+            <a className={styles.primary} href="#pedido">Conversar sobre meu projeto <span aria-hidden="true">→</span></a>
             <a className={styles.secondary} href={siteConfig.github} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink('github')}>Ver trabalho no GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </div>
