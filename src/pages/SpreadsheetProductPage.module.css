@@ -1,0 +1,23 @@
+.previewTrack {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.finalCta > div:last-child strong {
+  font-size: 28px;
+}
+
+@media (max-width: 900px) {
+  .previewTrack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .previewTrack {
+    display: flex;
+  }
+
+  .finalCta > div:last-child strong {
+    font-size: 25px;
+  }
+}

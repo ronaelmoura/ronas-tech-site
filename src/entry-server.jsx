@@ -4,6 +4,7 @@ import { servicePages } from './data/servicePages'
 import { siteConfig } from './config/siteConfig'
 import { campaignPages } from './data/campaignPages'
 import { products } from './data/products'
+import { spreadsheetProducts } from './data/spreadsheetProducts'
 
 const homeMetadata = {
   title: 'Criação de Sites, Sistemas e Automações | Ronas Tech',
@@ -24,6 +25,21 @@ const legalMetadata = {
       'Consulte as regras e condições para utilização do site e dos serviços apresentados pela Ronas Tech.',
   },
 }
+
+const spreadsheetProductMetadata = Object.fromEntries(spreadsheetProducts.map((product) => [product.path, {
+  title: `${product.title} | ${siteConfig.companyName}`,
+  description: product.lead,
+  ogImage: `${siteConfig.siteUrl}${product.image.slice(1)}`,
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    description: product.description,
+    image: `${siteConfig.siteUrl}${product.image.slice(1)}`,
+    url: `${siteConfig.siteUrl}${product.path.slice(1)}`,
+    brand: { '@type': 'Brand', name: siteConfig.companyName },
+  },
+}]))
 
 const productMetadata = {
   '/contratar': {
@@ -68,6 +84,7 @@ const productMetadata = {
       offers: { '@type': 'Offer', price: '37.90', priceCurrency: 'BRL', availability: 'https://schema.org/InStock', url: `${siteConfig.siteUrl}produtos-digitais/kit-financeiro-mei` },
     },
   },
+  ...spreadsheetProductMetadata,
 }
 
 export const staticPaths = [
