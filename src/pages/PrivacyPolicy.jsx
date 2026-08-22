@@ -42,7 +42,8 @@ function PrivacyPolicy() {
             <ul>
               <li>nome;</li><li>e-mail;</li><li>número de WhatsApp;</li>
               <li>tipo de projeto;</li><li>mensagem enviada pelo formulário;</li>
-              <li>dados técnicos de navegação, quando o Google Analytics estiver configurado.</li>
+              <li>dados técnicos de navegação, quando o Google Analytics estiver configurado;</li>
+              <li>identificadores de navegação e de campanha (incluindo cookies e o parâmetro de clique de anúncio), quando o Meta Pixel estiver configurado.</li>
             </ul>
           </section>
 
@@ -60,20 +61,37 @@ function PrivacyPolicy() {
           <section>
             <h2>3. Compartilhamento de dados</h2>
             <p>
-              A Ronas Tech não vende dados pessoais nem os compartilha com
-              terceiros para publicidade. Serviços técnicos, como hospedagem e
-              análise de acesso, podem processar informações necessárias ao
-              funcionamento do site. O WhatsApp possui termos e política de
-              privacidade próprios.
+              A Ronas Tech não vende dados pessoais. Serviços técnicos, como
+              hospedagem e análise de acesso, podem processar informações
+              necessárias ao funcionamento do site. Quando há campanhas de
+              divulgação ativas, dados de navegação são compartilhados com a
+              Meta (Facebook e Instagram) para medir o resultado dos anúncios,
+              conforme descrito no item 4. Nome, e-mail, telefone e mensagem
+              não são utilizados para essa finalidade. O WhatsApp e a Kiwify
+              possuem termos e políticas de privacidade próprios.
             </p>
           </section>
 
           <section>
-            <h2>4. Google Analytics</h2>
+            <h2>4. Google Analytics e Meta Pixel</h2>
             <p>
               O site pode utilizar o Google Analytics para obter estatísticas de
               acesso. Nome, e-mail, telefone, mensagem e outros dados pessoais
               preenchidos no formulário não são enviados ao Analytics.
+            </p>
+            <p>
+              Quando há campanhas ativas no Facebook e no Instagram, o site pode
+              utilizar o Meta Pixel para medir quantas pessoas visitaram uma
+              página de produto e quantas seguiram para o checkout. São
+              registrados dados de navegação e identificadores de anúncio, sem
+              nome, e-mail, telefone ou conteúdo de mensagens. O pagamento é
+              processado pela Kiwify, que informa à Meta a confirmação da compra
+              quando a integração está ativa.
+            </p>
+            <p>
+              Você pode limitar esse acompanhamento pelas preferências de
+              anúncios da sua conta na Meta, pelas configurações de cookies do
+              navegador ou navegando em janela anônima.
             </p>
           </section>
 

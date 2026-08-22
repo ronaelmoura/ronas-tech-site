@@ -3,8 +3,10 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import './styles/global.css'
 import App from './App.jsx'
 import { initializeAnalytics } from './utils/analytics'
+import { initializeMetaPixel } from './utils/metaPixel'
 
 initializeAnalytics()
+initializeMetaPixel()
 
 if (window.location.pathname === '/' && window.location.hash === '#produtos-digitais') {
   window.location.replace('/produtos-digitais')

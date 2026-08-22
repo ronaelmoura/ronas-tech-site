@@ -1,4 +1,7 @@
+import { useEffect } from 'react'
 import { siteConfig } from '../config/siteConfig'
+import { trackConversion } from '../utils/analytics'
+import { trackPixelEvent } from '../utils/metaPixel'
 import styles from './PersonalFinanceProductPage.module.css'
 import fixes from './PersonalFinanceProductPageFixes.module.css'
 import kit from './KitFinanceProductPage.module.css'
@@ -42,15 +45,51 @@ const notAudience = [
   'Quem espera promessa de lucro ou retorno garantido',
 ]
 
-function BuyButton({ location, label = 'Comprar agora' }) {
-  return <a className={`${styles.buyButton} ${fixes.buyButton} ${kit.buyButton}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer" data-location={location}>{label}</a>
+// Shared by the pixel and GA so the ad platform and the reports agree on what
+// the product is. Keep in sync with the Offer in entry-server.jsx.
+const product = {
+  id: 'kit-financeiro-mei',
+  name: 'Kit Financeiro Inteligente para MEI',
+  value: 37.9,
+  currency: 'BRL',
 }
 
+const contentPayload = {
+  content_name: product.name,
+  content_ids: [product.id],
+  content_type: 'product',
+  value: product.value,
+  currency: product.currency,
+}
+
+// Fires on every path to the Kiwify checkout, so no CTA is left unmeasured.
+// The sale itself is reported by Kiwify — this is intent only.
+function trackCheckoutClick(location) {
+  trackPixelEvent('InitiateCheckout', { ...contentPayload, location })
+  trackConversion('begin_checkout', { product: product.id, location, value: product.value, currency: product.currency })
+}
+
+function BuyButton({ location, label = 'Comprar agora' }) {
+  return <a className={`${styles.buyButton} ${fixes.buyButton} ${kit.buyButton}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer" data-location={location} onClick={() => trackCheckoutClick(location)}>{label}</a>
+}
+
+// Each route is its own document (no client-side router), so one page load must
+// report exactly one view. Guards against StrictMode's double effect in dev and
+// against any future remount inflating the numbers Meta optimises on.
+let viewContentSent = false
+
 function KitFinanceProductPage() {
+  useEffect(() => {
+    if (viewContentSent) return
+    viewContentSent = true
+    trackPixelEvent('ViewContent', contentPayload)
+    trackConversion('view_item', { product: product.id, value: product.value, currency: product.currency })
+  }, [])
+
   return <div className={`${styles.page} ${kit.page}`}>
     <header className={styles.header}>
       <a className={styles.brand} href="/"><img src={siteConfig.logoPath} alt="" width="48" height="45" /><span><strong>Ronas Tech</strong><small>Planilhas inteligentes</small></span></a>
-      <nav aria-label="Navegação da página"><a href="/produtos-digitais">Ver todos os produtos</a><a className={`${styles.headerCta} ${kit.headerCta}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer">Comprar agora</a></nav>
+      <nav aria-label="Navegação da página"><a href="/produtos-digitais">Ver todos os produtos</a><a className={`${styles.headerCta} ${kit.headerCta}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer" data-location="cabecalho" onClick={() => trackCheckoutClick('cabecalho')}>Comprar agora</a></nav>
     </header>
 
     <main id="conteudo-principal">
