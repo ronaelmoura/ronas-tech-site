@@ -34,6 +34,26 @@ const productMetadata = {
     title: `Meus projetos | ${siteConfig.companyName}`,
     description: 'Área de acompanhamento de projetos da Ronas Tech em preparação.',
   },
+  '/produtos-digitais/planilha-financeira-pessoal': {
+    title: `Planilha Financeira Pessoal | ${siteConfig.companyName}`,
+    description: 'Organize ganhos, gastos, cartões e metas em uma planilha automática, visual e fácil de acompanhar pelo celular.',
+    ogImage: `${siteConfig.siteUrl}og-planilha-financeira-pessoal.png`,
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'Planilha Financeira Pessoal',
+      description: 'Planilha automática para organizar ganhos, gastos, cartões e metas financeiras.',
+      image: `${siteConfig.siteUrl}og-planilha-financeira-pessoal.png`,
+      brand: { '@type': 'Brand', name: siteConfig.companyName },
+      offers: {
+        '@type': 'Offer',
+        price: '37.90',
+        priceCurrency: 'BRL',
+        availability: 'https://schema.org/InStock',
+        url: `${siteConfig.siteUrl}produtos-digitais/planilha-financeira-pessoal`,
+      },
+    },
+  },
 }
 
 export const staticPaths = [

@@ -1,0 +1,60 @@
+.buyButton {
+  justify-content: center;
+  gap: 0;
+  text-align: center;
+}
+
+.devicePhone {
+  bottom: 35px;
+  height: 145px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.devicePhone img {
+  width: 100%;
+  height: auto;
+}
+
+.insideVisual {
+  width: 100%;
+  max-width: 450px;
+  height: 190px;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.insideVisual img {
+  width: 100%;
+  height: auto;
+  border-radius: 13px;
+}
+
+.insideVisual > div {
+  right: 18px;
+  bottom: 18px;
+  background: rgb(11 36 43 / 95%);
+}
+
+.previewTrack figure img {
+  aspect-ratio: 2.05 / 1;
+  object-fit: cover;
+  object-position: top;
+}
+
+@media (max-width: 620px) {
+  .devicePhone {
+    bottom: 28px;
+    height: 125px;
+  }
+
+  .insideVisual {
+    height: 170px;
+  }
+
+  .insideVisual > div {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+

@@ -68,6 +68,11 @@ function createPageHtml(pathname) {
     html = replaceMetaContent(html, 'name="robots"', 'noindex, follow')
   }
 
+  if (metadata.ogImage) {
+    html = replaceMetaContent(html, 'property="og:image"', metadata.ogImage)
+    html = replaceMetaContent(html, 'name="twitter:image"', metadata.ogImage)
+  }
+
   if (metadata.structuredData) {
     const structuredData = JSON.stringify(metadata.structuredData).replaceAll(
       '<',

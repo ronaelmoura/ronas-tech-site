@@ -17,6 +17,7 @@ import NotFound from './pages/NotFound'
 import ContractingPage from './pages/ContractingPage'
 import ProjectsPortalPreview from './pages/ProjectsPortalPreview'
 import CampaignPage from './pages/CampaignPage'
+import PersonalFinanceProductPage from './pages/PersonalFinanceProductPage'
 import { campaignPages } from './data/campaignPages'
 import { servicePages } from './data/servicePages'
 import { siteConfig } from './config/siteConfig'
@@ -41,6 +42,7 @@ function App({ pathname: pathnameProp }) {
   const campaign = campaignPages[pathname]
   if (pathname === '/contratar') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ContractingPage /></>
   if (pathname === '/meus-projetos') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ProjectsPortalPreview /></>
+  if (pathname === '/produtos-digitais/planilha-financeira-pessoal') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><PersonalFinanceProductPage /></>
   if (LegalPage) return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><LegalPage /></>
   if (service) return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ServicePage service={service} /></>
   if (campaign) return <CampaignPage campaign={campaign} />
