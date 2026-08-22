@@ -92,9 +92,8 @@ const productMetadata = {
   },
   '/produtos-digitais/kit-financeiro-mei': {
     title: `Kit Financeiro Inteligente para MEI | ${siteConfig.companyName}`,
-    description: 'Controle o caixa, acompanhe contas e calcule preços com uma planilha financeira completa para MEI.',
+    description: 'Organize receitas, despesas, fluxo de caixa, contas a pagar e precificação com o Kit Financeiro Inteligente para MEI da Ronas Tech.',
     ogImage: `${siteConfig.siteUrl}og-kit-financeiro-mei.png`,
-    canonical: `${siteConfig.siteUrl}produtos-digitais`,
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Product',
