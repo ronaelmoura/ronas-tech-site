@@ -6,7 +6,7 @@ export const spreadsheetProducts = [
     title: 'Modelos de Propostas e Orçamentos',
     description: 'Apresente serviços e preços com documentos profissionais e personalizáveis.',
     lead: 'Cadastre oportunidades, acompanhe a negociação e monte propostas prontas para apresentar ao cliente sem refazer contas.',
-    image: '/planilha-propostas-painel.png',
+    image: '/capa-propostas-orcamentos.png',
     previews: [
       ['/planilha-propostas-painel.png', 'Painel automático de propostas e conversão'],
       ['/planilha-propostas-cadastro.png', 'Cadastro de propostas, clientes, valores e status'],
@@ -30,7 +30,7 @@ export const spreadsheetProducts = [
     title: 'Planilha de Precificação Inteligente',
     description: 'Calcule custos, margens e preço de venda com mais segurança e clareza.',
     lead: 'Transforme materiais, horas, despesas, impostos e margem desejada em um preço mínimo sustentável para cada produto ou serviço.',
-    image: '/planilha-precificacao-painel.png',
+    image: '/capa-precificacao-inteligente.png',
     previews: [
       ['/planilha-precificacao-painel.png', 'Painel com custos, preços e margens'],
       ['/planilha-precificacao-cadastro.png', 'Cálculo detalhado de preço e lucro por item'],
@@ -54,7 +54,7 @@ export const spreadsheetProducts = [
     title: 'Controle de Vendas e Comissões',
     description: 'Acompanhe metas, vendedores, comissões e resultados em um só painel.',
     lead: 'Registre cada pedido e veja vendas, recebimentos, valores pendentes, comissões e desempenho por vendedor atualizados automaticamente.',
-    image: '/planilha-vendas-painel.png',
+    image: '/capa-vendas-comissoes.png',
     previews: [
       ['/planilha-vendas-painel.png', 'Painel de vendas, comissões e recebimentos'],
       ['/planilha-vendas-cadastro.png', 'Registro detalhado de pedidos e pagamentos'],
@@ -78,7 +78,7 @@ export const spreadsheetProducts = [
     title: 'Controle de Estoque Simplificado',
     description: 'Registre entradas, saídas e estoque mínimo sem depender de sistemas caros.',
     lead: 'Organize produtos e movimentações com saldo automático, alerta de reposição, valor investido e potencial de venda em uma visão rápida.',
-    image: '/planilha-estoque-painel.png',
+    image: '/capa-estoque-simplificado.png',
     previews: [
       ['/planilha-estoque-painel.png', 'Painel de estoque e alertas de reposição'],
       ['/planilha-estoque-produtos.png', 'Cadastro de produtos, custos e estoque mínimo'],
@@ -102,7 +102,7 @@ export const spreadsheetProducts = [
     title: 'Modelo de Ordem de Serviço',
     description: 'Organize solicitações, prazos, valores e entregas de cada cliente.',
     lead: 'Controle serviços do início à conclusão com responsáveis, prazos, custos, pagamentos e uma ficha automática para cada ordem.',
-    image: '/planilha-ordem-servico-painel.png',
+    image: '/capa-ordem-servico.png',
     previews: [
       ['/planilha-ordem-servico-painel.png', 'Painel de ordens, prazos e valores'],
       ['/planilha-ordem-servico-ordens.png', 'Cadastro completo das ordens de serviço'],
@@ -126,7 +126,7 @@ export const spreadsheetProducts = [
     title: 'Calendário de Conteúdo para Negócios',
     description: 'Planeje publicações, campanhas e ideias para manter sua marca ativa.',
     lead: 'Organize temas, formatos, canais, responsáveis e resultados com um calendário editorial e um banco de ideias sempre à mão.',
-    image: '/planilha-conteudo-painel.png',
+    image: '/capa-calendario-conteudo.png',
     previews: [
       ['/planilha-conteudo-painel.png', 'Painel de publicações e progresso do conteúdo'],
       ['/planilha-conteudo-calendario.png', 'Calendário editorial com datas, canais e status'],
