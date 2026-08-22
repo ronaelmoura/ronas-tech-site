@@ -4,8 +4,9 @@ import fixes from './PersonalFinanceProductPageFixes.module.css'
 import pageStyles from './SpreadsheetProductPage.module.css'
 
 function SpreadsheetProductPage({ product }) {
-  const whatsappMessage = `Olá! Quero saber como comprar ${product.title}.`
+  const whatsappMessage = `Olá! Quero comprar ${product.title} por ${product.price}.`
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+  const [currency, amount] = product.price.split(' ')
 
   const BuyButton = ({ location }) => <a
     className={`${styles.buyButton} ${fixes.buyButton}`}
@@ -27,8 +28,8 @@ function SpreadsheetProductPage({ product }) {
           <p className={styles.eyebrow}>{product.category} • planilha automática</p>
           <h1>{product.title}</h1>
           <p className={styles.lead}>{product.lead}</p>
-          <div className={styles.trustRow}><span>✓ Painel automático</span><span>✓ Campos guiados</span><span>✓ Exemplos prontos</span></div>
-          <div className={styles.offer}><div><small>PLANILHA COMPLETA</small><strong>Pronta</strong><p>para personalizar e começar</p></div><BuyButton location="hero" /></div>
+          <div className={styles.trustRow}><span>✓ Painel automático</span><span>✓ Campos guiados</span><span>✓ Pagamento único</span></div>
+          <div className={styles.offer}><div><small>POR APENAS</small><strong><span>{currency}</span> {amount}</strong><p>sem mensalidade</p></div><BuyButton location="hero" /></div>
           <p className={styles.support}>Atendimento direto com a Ronas Tech pelo WhatsApp.</p>
         </div>
         <div className={styles.heroVisual}>
@@ -70,11 +71,11 @@ function SpreadsheetProductPage({ product }) {
           ['Preciso dominar o Excel?', 'Não. As células de preenchimento são destacadas e os cálculos principais já estão configurados.'],
           ['Consigo usar no celular?', 'Sim, em aplicativos compatíveis com arquivos Excel. Para editar tabelas largas e analisar gráficos, o computador oferece mais conforto.'],
           ['Posso personalizar os dados?', 'Sim. Você pode trocar os exemplos e adaptar categorias, nomes e parâmetros à sua rotina.'],
-          ['É um sistema com mensalidade?', 'Não. É uma planilha pronta, sem assinatura mensal. Fale com a Ronas Tech para receber as condições de compra.'],
+          ['É um sistema com mensalidade?', `Não. O valor de ${product.price} é um pagamento único, sem assinatura mensal.`],
         ].map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div>
       </section>
 
-      <section className={`${styles.finalCta} ${pageStyles.finalCta}`}><div><p className={styles.sectionLabel}>Comece com mais clareza</p><h2>Leve esta planilha para sua rotina.</h2><p>{product.description}</p></div><div><strong>Disponível</strong><small>atendimento pelo WhatsApp</small><BuyButton location="final" /></div></section>
+      <section className={`${styles.finalCta} ${pageStyles.finalCta}`}><div><p className={styles.sectionLabel}>Comece com mais clareza</p><h2>Leve esta planilha para sua rotina.</h2><p>{product.description}</p></div><div><strong><span>{currency}</span> {amount}</strong><small>pagamento único</small><BuyButton location="final" /></div></section>
     </main>
 
     <footer className={styles.footer}><a href="/"><img src={siteConfig.logoPath} alt="Ronas Tech" width="43" height="40" /></a><p>© {new Date().getFullYear()} Ronas Tech. Todos os direitos reservados.</p><div><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></footer>

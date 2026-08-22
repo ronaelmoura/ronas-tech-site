@@ -38,6 +38,13 @@ const spreadsheetProductMetadata = Object.fromEntries(spreadsheetProducts.map((p
     image: `${siteConfig.siteUrl}${product.image.slice(1)}`,
     url: `${siteConfig.siteUrl}${product.path.slice(1)}`,
     brand: { '@type': 'Brand', name: siteConfig.companyName },
+    offers: {
+      '@type': 'Offer',
+      price: product.priceValue,
+      priceCurrency: 'BRL',
+      availability: 'https://schema.org/InStock',
+      url: `${siteConfig.siteUrl}${product.path.slice(1)}`,
+    },
   },
 }]))
 
