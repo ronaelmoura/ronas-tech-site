@@ -1,4 +1,4 @@
-const whatsappCheckoutFallback = 'https://wa.me/5588993021946?text=Ol%C3%A1%21%20Quero%20comprar%20o%20Kit%20Financeiro%20Inteligente%20para%20MEI.'
+const kitFinanceCheckoutUrl = 'https://pay.kiwify.com.br/jliI4Lg'
 
 export const siteConfig = {
   companyName: 'Ronas Tech',
@@ -13,5 +13,5 @@ export const siteConfig = {
   instagram: 'https://www.instagram.com/ronas_tech/',
   portfolio: 'https://github.com/ronaelmoura',
   personalSite: 'https://ronaelmoura.github.io/',
-  kiwifyCheckoutUrl: import.meta.env.VITE_KIWIFY_CHECKOUT_URL || whatsappCheckoutFallback,
+  kiwifyCheckoutUrl: import.meta.env.VITE_KIWIFY_CHECKOUT_URL || kitFinanceCheckoutUrl,
 }
