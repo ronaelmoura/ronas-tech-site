@@ -24,11 +24,26 @@ const included = [
 const previews = [
   ['/kit-mei-dashboard.png', 'Dashboard financeiro anual'],
   ['/kit-mei-lancamentos.png', 'Controle de lançamentos e fluxo de caixa'],
+  ['/kit-mei-contas.png', 'Contas a pagar e a receber, com status e atrasos'],
   ['/kit-mei-precificacao.png', 'Calculadora de precificação'],
+  ['/kit-mei-instrucoes.png', 'Manual ilustrado de uso'],
 ]
 
-function BuyButton({ location }) {
-  return <a className={`${styles.buyButton} ${fixes.buyButton} ${kit.buyButton}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer" data-location={location}>Comprar agora</a>
+const audience = [
+  'MEIs que precisam separar as contas do negócio das contas pessoais',
+  'Autônomos e prestadores de serviço',
+  'Pequenos negócios sem sistema financeiro',
+  'Quem quer formar preço considerando custos reais',
+]
+
+const notAudience = [
+  'Quem procura consultoria contábil ou fiscal personalizada',
+  'Quem busca orientação de investimentos',
+  'Quem espera promessa de lucro ou retorno garantido',
+]
+
+function BuyButton({ location, label = 'Comprar agora' }) {
+  return <a className={`${styles.buyButton} ${fixes.buyButton} ${kit.buyButton}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer" data-location={location}>{label}</a>
 }
 
 function KitFinanceProductPage() {
@@ -45,7 +60,8 @@ function KitFinanceProductPage() {
           <h1>Kit Financeiro Inteligente para MEI</h1>
           <p className={styles.lead}>Controle o caixa, acompanhe o resultado e forme preços com segurança em uma planilha premium, automática e pronta para a rotina do pequeno negócio.</p>
           <div className={styles.trustRow}><span>✓ Dashboard automático</span><span>✓ Manual ilustrado</span><span>✓ Pagamento único</span></div>
-          <div className={styles.offer}><div><small>OFERTA DE LANÇAMENTO</small><strong><span>R$</span> 37,90</strong><p>pagamento único • sem mensalidade</p></div><BuyButton location="hero" /></div>
+          <div className={styles.offer}><div><small>OFERTA DE LANÇAMENTO</small><strong><span>R$</span> 37,90</strong><p>pagamento único • sem mensalidade</p></div><BuyButton location="hero" label="Quero acessar agora" /></div>
+          <p className={styles.support}>Pagamento seguro pela Kiwify • Acesso imediato após a aprovação</p>
           <p className={styles.support}>Compra protegida por garantia de 7 dias.</p>
         </div>
         <div className={`${styles.heroVisual} ${kit.heroVisual}`}>
@@ -83,6 +99,15 @@ function KitFinanceProductPage() {
         <ol><li><span>01</span><div><strong>Personalize</strong><p>Informe seu negócio, o período e ajuste as categorias.</p></div></li><li><span>02</span><div><strong>Registre</strong><p>Adicione receitas, despesas, valores e vencimentos.</p></div></li><li><span>03</span><div><strong>Decida</strong><p>Use o dashboard, o fluxo de caixa e a precificação para orientar suas escolhas.</p></div></li></ol>
       </section>
 
+      <section className={kit.audience} aria-labelledby="audience-title">
+        <p className={styles.sectionLabel}>Antes de decidir</p>
+        <h2 id="audience-title">Veja se o kit combina com o seu momento.</h2>
+        <div className={kit.audienceGrid}>
+          <article className={kit.audienceFor}><h3>Para quem é</h3><ul>{audience.map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul></article>
+          <article className={kit.audienceNot}><h3>Para quem não é</h3><ul>{notAudience.map((item) => <li key={item}><span aria-hidden="true">–</span>{item}</li>)}</ul></article>
+        </div>
+      </section>
+
       <section className={kit.guarantee} aria-labelledby="guarantee-title"><div className={kit.guaranteeBadge}><strong>7</strong><span>dias</span></div><div><p className={styles.sectionLabel}>Sua compra protegida</p><h2 id="guarantee-title">Garantia incondicional de 7 dias.</h2><p>Você pode conhecer o material com tranquilidade. Se o kit não fizer sentido para sua rotina, solicite o reembolso dentro do prazo da garantia.</p></div></section>
 
       <section className={styles.faq}>
@@ -91,16 +116,29 @@ function KitFinanceProductPage() {
           ['Preciso entender de Excel?', 'Não. Os campos de preenchimento são indicados e os cálculos e gráficos já estão configurados.'],
           ['O kit funciona no celular?', 'O arquivo pode ser aberto em aplicativos compatíveis. Para editar tabelas e analisar os painéis completos, o computador oferece mais conforto.'],
           ['É uma assinatura mensal?', 'Não. O valor de R$ 37,90 é um pagamento único, sem mensalidade.'],
-          ['Como recebo o material?', 'Após a confirmação do pagamento no checkout, você recebe as instruções de acesso ao produto digital.'],
+          ['Como recebo o material?', 'Após a confirmação do pagamento no checkout, você recebe as instruções de acesso ao produto digital no e-mail informado na compra.'],
+          ['O acesso é imediato?', 'Sim, assim que o pagamento é aprovado. Pagamentos por cartão costumam ser aprovados na hora; boleto e Pix podem levar mais tempo para compensar.'],
+          ['O pagamento é seguro?', 'Sim. Toda a compra é processada pela Kiwify, plataforma especializada em produtos digitais. A Ronas Tech não recebe nem armazena os dados do seu cartão.'],
+          ['Funciona no Excel e no Google Planilhas?', 'O kit foi desenvolvido e testado no Microsoft Excel. Em outros editores de planilha, alguns recursos e gráficos podem se comportar de forma diferente — em caso de dúvida, confirme a compatibilidade com a gente antes da compra.'],
+          ['A planilha já vem com fórmulas automáticas?', 'Sim. Os cálculos, totais, indicadores e gráficos já estão configurados. Você preenche apenas os campos indicados.'],
           ['Como funciona a garantia?', 'Você tem 7 dias após a compra para conhecer o kit e solicitar o reembolso, se necessário.'],
           ['Substitui um contador?', 'Não. O kit ajuda na organização e na visão gerencial, mas não substitui orientação contábil ou fiscal.'],
         ].map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div>
       </section>
 
-      <section className={`${styles.finalCta} ${kit.finalCta}`}><div><p className={styles.sectionLabel}>Organize o dinheiro do negócio</p><h2>Comece hoje com mais clareza financeira.</h2><p>Controle, acompanhe e tome decisões com informações organizadas.</p></div><div><strong><span>R$</span> 37,90</strong><small>pagamento único</small><BuyButton location="final" /></div></section>
+      <section className={`${styles.finalCta} ${kit.finalCta}`}><div><p className={styles.sectionLabel}>Organize o dinheiro do negócio</p><h2>Comece hoje a organizar melhor o seu negócio.</h2><p>Controle, acompanhe e tome decisões com informações organizadas.</p></div><div><strong><span>R$</span> 37,90</strong><small>pagamento único</small><BuyButton location="final" label="Quero acessar o Kit Financeiro MEI" /><p className={kit.finalCtaNote}>Pagamento seguro pela Kiwify • Acesso imediato após a aprovação</p></div></section>
     </main>
 
-    <footer className={styles.footer}><a href="/"><img src={siteConfig.logoPath} alt="Ronas Tech" width="43" height="40" /></a><p>© {new Date().getFullYear()} Ronas Tech. Todos os direitos reservados.</p><div><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></footer>
+    <div className={kit.mobileBar}>
+      <div><small>pagamento único</small><strong>R$ 37,90</strong></div>
+      <BuyButton location="barra-mobile" label="Quero acessar agora" />
+    </div>
+
+    <footer className={`${styles.footer} ${kit.footer}`}>
+      <a href="/"><img src={siteConfig.logoPath} alt="Ronas Tech" width="43" height="40" /></a>
+      <p>© {new Date().getFullYear()} Ronas Tech. Todos os direitos reservados.<br />Pagamento processado pela Kiwify.</p>
+      <div><a href={`mailto:${siteConfig.email}`}>Contato</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div>
+    </footer>
   </div>
 }
 
