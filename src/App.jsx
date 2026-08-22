@@ -20,6 +20,7 @@ import ProjectsPortalPreview from './pages/ProjectsPortalPreview'
 import CampaignPage from './pages/CampaignPage'
 import PersonalFinanceProductPage from './pages/PersonalFinanceProductPage'
 import KitFinanceProductPage from './pages/KitFinanceProductPage'
+import DigitalProductsCatalogPage from './pages/DigitalProductsCatalogPage'
 import SpreadsheetProductPage from './pages/SpreadsheetProductPage'
 import { campaignPages } from './data/campaignPages'
 import { servicePages } from './data/servicePages'
@@ -47,7 +48,7 @@ function App({ pathname: pathnameProp }) {
   const spreadsheetProduct = spreadsheetProductsByPath[pathname]
   if (pathname === '/contratar') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ContractingPage /></>
   if (pathname === '/meus-projetos') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ProjectsPortalPreview /></>
-  if (pathname === '/produtos-digitais') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><KitFinanceProductPage /></>
+  if (pathname === '/produtos-digitais') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><DigitalProductsCatalogPage /></>
   if (pathname === '/produtos-digitais/planilha-financeira-pessoal') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><PersonalFinanceProductPage /></>
   if (pathname === '/produtos-digitais/kit-financeiro-mei') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><KitFinanceProductPage /></>
   if (spreadsheetProduct) return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><SpreadsheetProductPage product={spreadsheetProduct} /></>

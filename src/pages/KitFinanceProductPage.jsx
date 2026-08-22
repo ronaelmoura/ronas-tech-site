@@ -35,7 +35,7 @@ function KitFinanceProductPage() {
   return <div className={`${styles.page} ${kit.page}`}>
     <header className={styles.header}>
       <a className={styles.brand} href="/"><img src={siteConfig.logoPath} alt="" width="48" height="45" /><span><strong>Ronas Tech</strong><small>Planilhas inteligentes</small></span></a>
-      <nav aria-label="Navegação da página"><a href="/">Voltar ao site</a><a className={`${styles.headerCta} ${kit.headerCta}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer">Comprar agora</a></nav>
+      <nav aria-label="Navegação da página"><a href="/produtos-digitais">Ver todos os produtos</a><a className={`${styles.headerCta} ${kit.headerCta}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer">Comprar agora</a></nav>
     </header>
 
     <main id="conteudo-principal">
