@@ -54,6 +54,20 @@ const productMetadata = {
       },
     },
   },
+  '/produtos-digitais/kit-financeiro-mei': {
+    title: `Kit Financeiro Inteligente para MEI | ${siteConfig.companyName}`,
+    description: 'Controle o caixa, acompanhe contas e calcule preços com uma planilha financeira completa para MEI.',
+    ogImage: `${siteConfig.siteUrl}og-kit-financeiro-mei.png`,
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'Kit Financeiro Inteligente para MEI',
+      description: 'Planilha financeira empresarial, dashboard, contas e calculadora de precificação para MEI.',
+      image: `${siteConfig.siteUrl}og-kit-financeiro-mei.png`,
+      brand: { '@type': 'Brand', name: siteConfig.companyName },
+      offers: { '@type': 'Offer', price: '37.90', priceCurrency: 'BRL', availability: 'https://schema.org/InStock', url: `${siteConfig.siteUrl}produtos-digitais/kit-financeiro-mei` },
+    },
+  },
 }
 
 export const staticPaths = [
