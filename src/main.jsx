@@ -6,6 +6,10 @@ import { initializeAnalytics } from './utils/analytics'
 
 initializeAnalytics()
 
+if (window.location.pathname === '/' && window.location.hash === '#produtos-digitais') {
+  window.location.replace('/produtos-digitais')
+}
+
 const container = document.getElementById('root')
 const application = (
   <StrictMode>

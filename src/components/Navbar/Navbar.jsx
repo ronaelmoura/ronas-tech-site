@@ -4,7 +4,7 @@ import styles from './Navbar.module.css'
 
 const navigationItems = [
   { label: 'Soluções', href: '#produtos' },
-  { label: 'Planilhas', href: '#produtos-digitais' },
+  { label: 'Planilhas', href: '/produtos-digitais' },
   { label: 'Projetos', href: '#projetos' },
   { label: 'Como funciona', href: '#processo' },
   { label: 'Contato', href: '#pedido' },

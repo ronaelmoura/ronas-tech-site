@@ -57,6 +57,22 @@ const productMetadata = {
     title: `Meus projetos | ${siteConfig.companyName}`,
     description: 'Área de acompanhamento de projetos da Ronas Tech em preparação.',
   },
+  '/produtos-digitais': {
+    title: `Kit Financeiro Inteligente para MEI | ${siteConfig.companyName}`,
+    description: 'Organize o caixa, acompanhe o dashboard, forme preços e controle o fluxo financeiro do MEI com uma planilha automática e profissional.',
+    ogImage: `${siteConfig.siteUrl}og-kit-financeiro-mei.png`,
+    canonical: `${siteConfig.siteUrl}produtos-digitais`,
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'Kit Financeiro Inteligente para MEI',
+      description: 'Kit de planilhas com dashboard, controle financeiro, precificação e fluxo de caixa para MEI.',
+      image: `${siteConfig.siteUrl}og-kit-financeiro-mei.png`,
+      url: `${siteConfig.siteUrl}produtos-digitais`,
+      brand: { '@type': 'Brand', name: siteConfig.companyName },
+      offers: { '@type': 'Offer', price: '37.90', priceCurrency: 'BRL', availability: 'https://schema.org/InStock', url: `${siteConfig.siteUrl}produtos-digitais` },
+    },
+  },
   '/produtos-digitais/planilha-financeira-pessoal': {
     title: `Planilha Financeira Pessoal | ${siteConfig.companyName}`,
     description: 'Organize ganhos, gastos, cartões e metas em uma planilha automática, visual e fácil de acompanhar pelo celular.',
@@ -81,6 +97,7 @@ const productMetadata = {
     title: `Kit Financeiro Inteligente para MEI | ${siteConfig.companyName}`,
     description: 'Controle o caixa, acompanhe contas e calcule preços com uma planilha financeira completa para MEI.',
     ogImage: `${siteConfig.siteUrl}og-kit-financeiro-mei.png`,
+    canonical: `${siteConfig.siteUrl}produtos-digitais`,
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Product',
@@ -148,7 +165,7 @@ export function getPageMetadata(pathname) {
   if (product) {
     return {
       ...product,
-      canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
+      canonical: product.canonical || `${siteConfig.siteUrl}${pathname.slice(1)}`,
     }
   }
 

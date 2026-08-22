@@ -47,6 +47,7 @@ function App({ pathname: pathnameProp }) {
   const spreadsheetProduct = spreadsheetProductsByPath[pathname]
   if (pathname === '/contratar') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ContractingPage /></>
   if (pathname === '/meus-projetos') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ProjectsPortalPreview /></>
+  if (pathname === '/produtos-digitais') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><KitFinanceProductPage /></>
   if (pathname === '/produtos-digitais/planilha-financeira-pessoal') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><PersonalFinanceProductPage /></>
   if (pathname === '/produtos-digitais/kit-financeiro-mei') return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><KitFinanceProductPage /></>
   if (spreadsheetProduct) return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><SpreadsheetProductPage product={spreadsheetProduct} /></>

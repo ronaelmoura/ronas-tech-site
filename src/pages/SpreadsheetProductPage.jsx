@@ -19,7 +19,7 @@ function SpreadsheetProductPage({ product }) {
   return <div className={styles.page}>
     <header className={styles.header}>
       <a className={styles.brand} href="/"><img src={siteConfig.logoPath} alt="" width="48" height="45" /><span><strong>Ronas Tech</strong><small>Planilhas inteligentes</small></span></a>
-      <nav aria-label="Navegação da página"><a href="/#produtos-digitais">Ver outros produtos</a><a className={styles.headerCta} href={whatsappUrl} target="_blank" rel="noopener noreferrer">Pedir pelo WhatsApp</a></nav>
+      <nav aria-label="Navegação da página"><a href="/produtos-digitais">Ver produtos digitais</a><a className={styles.headerCta} href={whatsappUrl} target="_blank" rel="noopener noreferrer">Pedir pelo WhatsApp</a></nav>
     </header>
 
     <main id="conteudo-principal">
