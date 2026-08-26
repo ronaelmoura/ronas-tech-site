@@ -27,18 +27,39 @@ const services = [
     includes: ['Revisão de programas instalados', 'Verificação do navegador', 'Orientações de segurança'],
   },
   {
-    id: 'configuracao',
-    category: 'Configuração',
-    title: 'Instalação e configuração de programas',
-    description: 'Ajuda para instalar e configurar ferramentas de trabalho, estudo, comunicação e produtividade.',
-    includes: ['Instalação acompanhada', 'Configuração inicial', 'Teste de funcionamento'],
+    id: 'windows',
+    category: 'Windows',
+    title: 'Correção de erros do Windows',
+    description: 'Diagnóstico de atualizações com falha, mensagens de erro e recursos do sistema que pararam de funcionar.',
+    includes: ['Análise dos erros', 'Reparo de componentes do sistema', 'Teste após a correção'],
+  },
+  {
+    id: 'programas',
+    category: 'Programas',
+    title: 'Programas, Office e drivers',
+    description: 'Instalação, atualização e correção de programas usados no trabalho, estudo ou rotina pessoal.',
+    includes: ['Instalação acompanhada', 'Correção de falhas', 'Atualização de drivers compatíveis'],
   },
   {
     id: 'backup',
     category: 'Arquivos',
-    title: 'Backup e organização de arquivos',
-    description: 'Orientação para organizar documentos e configurar cópias em armazenamento externo ou nuvem.',
-    includes: ['Análise do que será protegido', 'Organização de pastas', 'Configuração do método escolhido'],
+    title: 'Backup e transferência de arquivos',
+    description: 'Organização de documentos e cópia para outro computador, armazenamento externo ou nuvem.',
+    includes: ['Análise do que será protegido', 'Organização de pastas', 'Transferência acompanhada'],
+  },
+  {
+    id: 'microsoft-365',
+    category: 'Produtividade',
+    title: 'Microsoft 365, Outlook e Teams',
+    description: 'Configuração e correção das ferramentas Microsoft usadas por profissionais e pequenas equipes.',
+    includes: ['Configuração de conta', 'Correção de sincronização', 'Orientação de uso'],
+  },
+  {
+    id: 'contadores',
+    category: 'Profissionais',
+    title: 'Suporte remoto para contadores',
+    description: 'Ajuda com Windows, Office, programas de escritório, arquivos e ferramentas de produtividade.',
+    includes: ['Atendimento direto', 'Diagnóstico de software', 'Orientação após o serviço'],
   },
   {
     id: 'suporte-mensal',
@@ -52,7 +73,8 @@ const services = [
 const quickIssues = [
   ['Está lento ou travando', 'otimizacao'],
   ['Aparecem anúncios', 'seguranca'],
-  ['Programa não abre', 'configuracao'],
+  ['Programa não abre', 'programas'],
+  ['Erro no Windows', 'windows'],
   ['Não sei o que é', 'diagnostico'],
 ]
 
