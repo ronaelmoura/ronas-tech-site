@@ -9,7 +9,7 @@ import { spreadsheetProducts } from './data/spreadsheetProducts'
 const homeMetadata = {
   title: 'Loja de Suporte Técnico Remoto | Ronas Tech',
   description:
-    'Loja de suporte técnico remoto para PC e notebook. Escolha serviços de diagnóstico, otimização, segurança, configuração e backup e contrate pelo WhatsApp.',
+    'Loja de suporte técnico remoto para PC e notebook, para todo o Brasil. Escolha serviços de diagnóstico, otimização, segurança, configuração e backup, com preço confirmado antes de começar, e contrate pelo WhatsApp.',
   canonical: siteConfig.siteUrl,
 }
 

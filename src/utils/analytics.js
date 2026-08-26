@@ -1,7 +1,18 @@
 import { siteConfig } from '../config/siteConfig'
+import { trackPixelEvent } from './metaPixel'
 
 const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim()
 const hasValidMeasurementId = /^G-[A-Z0-9]+$/.test(measurementId || '')
+
+// Google Ads conversion tracking (separate from GA4). Both share the same
+// gtag.js loader — only the conversion label needs to be set once the Google
+// Ads conversion action ("Enviar mensagem no WhatsApp" ou similar) existir.
+const googleAdsId = import.meta.env.VITE_GOOGLE_ADS_ID?.trim()
+const hasValidGoogleAdsId = /^AW-\d+$/.test(googleAdsId || '')
+const googleAdsConversionLabel = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_LABEL?.trim()
+const hasValidConversionLabel = hasValidGoogleAdsId && Boolean(googleAdsConversionLabel)
+const hasAnyGoogleTag = hasValidMeasurementId || hasValidGoogleAdsId
+
 const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}`
 
 const externalLinks = {
@@ -13,7 +24,7 @@ const externalLinks = {
 export function initializeAnalytics() {
   getCampaignAttribution()
   if (
-    !hasValidMeasurementId ||
+    !hasAnyGoogleTag ||
     typeof window === 'undefined' ||
     typeof document === 'undefined' ||
     window.__ronasAnalyticsInitialized
@@ -30,15 +41,25 @@ export function initializeAnalytics() {
     }
 
   window.gtag('js', new Date())
-  window.gtag('config', measurementId)
+  if (hasValidMeasurementId) window.gtag('config', measurementId)
+  if (hasValidGoogleAdsId) window.gtag('config', googleAdsId)
 
+  const scriptTagId = measurementId || googleAdsId
   if (!document.getElementById('google-analytics-script')) {
     const script = document.createElement('script')
     script.id = 'google-analytics-script'
     script.async = true
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(scriptTagId)}`
     document.head.appendChild(script)
   }
+}
+
+export function trackGoogleAdsConversion(parameters = {}) {
+  if (!hasValidConversionLabel || typeof window === 'undefined' || !window.gtag) return
+  window.gtag('event', 'conversion', {
+    send_to: `${googleAdsId}/${googleAdsConversionLabel}`,
+    ...parameters,
+  })
 }
 
 export function trackEvent(eventName, eventParameters = {}) {
@@ -48,10 +69,15 @@ export function trackEvent(eventName, eventParameters = {}) {
 }
 
 export function trackWhatsAppClick(location) {
+  // Abrir o WhatsApp é o momento em que o visitante vira lead — por isso,
+  // além do evento no GA4, isso também dispara a conversão do Google Ads e
+  // o evento "Lead" do Meta Pixel, quando cada um estiver configurado.
   trackEvent('whatsapp_click', {
     location,
     link_url: whatsappUrl,
   })
+  trackGoogleAdsConversion({ location })
+  trackPixelEvent('Lead', { content_name: location })
 }
 
 export function trackContactFormSubmit(projectType) {

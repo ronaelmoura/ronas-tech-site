@@ -105,14 +105,20 @@ As integrações de métricas e verificação são opcionais:
 ```env
 VITE_GA_MEASUREMENT_ID=
 VITE_GOOGLE_SITE_VERIFICATION=
+VITE_GOOGLE_ADS_ID=
+VITE_GOOGLE_ADS_CONVERSION_LABEL=
+VITE_META_PIXEL_ID=
 ```
 
 | Variável | Finalidade |
 | --- | --- |
 | `VITE_GA_MEASUREMENT_ID` | Measurement ID do Google Analytics 4, no formato `G-XXXXXXXXXX`. |
 | `VITE_GOOGLE_SITE_VERIFICATION` | Código da meta tag de verificação do Google Search Console. |
+| `VITE_GOOGLE_ADS_ID` | ID da conta do Google Ads, no formato `AW-XXXXXXXXX`. |
+| `VITE_GOOGLE_ADS_CONVERSION_LABEL` | Rótulo da ação de conversão do Google Ads (ex: "Enviar mensagem no WhatsApp"), obtido ao criar a conversão no painel do Google Ads. |
+| `VITE_META_PIXEL_ID` | ID numérico do Meta Pixel (Gerenciador de Eventos do Facebook/Instagram). |
 
-Quando `VITE_GA_MEASUREMENT_ID` está vazio, o script do Google Analytics não é carregado.
+Quando `VITE_GA_MEASUREMENT_ID` e `VITE_GOOGLE_ADS_ID` estão vazios, nenhum script do Google é carregado. Quando `VITE_META_PIXEL_ID` está vazio, o Meta Pixel não carrega. Todas as integrações são independentes entre si.
 
 ## Scripts disponíveis
 
@@ -132,6 +138,18 @@ Os eventos implementados são:
 - `external_link_click`: cliques em GitHub, LinkedIn, Instagram e portfólio.
 
 Nome, email, telefone, mensagem e demais dados pessoais do formulário não são enviados ao Google Analytics.
+
+Todo clique em WhatsApp (`whatsapp_click`) é tratado como lead e, além do evento
+no GA4, também dispara:
+
+- a conversão do Google Ads, quando `VITE_GOOGLE_ADS_ID` e
+  `VITE_GOOGLE_ADS_CONVERSION_LABEL` estiverem configurados;
+- o evento `Lead` do Meta Pixel, quando `VITE_META_PIXEL_ID` estiver configurado.
+
+Um aviso de cookies (`src/components/CookieNotice`) é exibido na primeira
+visita, informando o uso de Google Analytics, Google Ads e Meta, com link para
+a Política de Privacidade. A preferência de ter fechado o aviso fica salva no
+`localStorage` do navegador.
 
 ## Deploy
 
