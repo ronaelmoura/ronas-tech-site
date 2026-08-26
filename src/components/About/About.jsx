@@ -3,7 +3,6 @@ import { trackExternalLink } from '../../utils/analytics'
 import styles from './About.module.css'
 
 const facts = [
-  ['670h', 'Formação Full Stack pelo SENAI'],
   ['TI', 'Experiência com suporte e sistemas'],
   ['Brasil', 'Atendimento remoto e direto'],
   ['Ponta a ponta', 'Do diagnóstico à orientação final'],
