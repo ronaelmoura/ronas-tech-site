@@ -7,8 +7,8 @@ import styles from './Footer.module.css'
 
 const navigationLinks = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Soluções', href: '#produtos' },
-  { label: 'Projetos', href: '#projetos' },
+  { label: 'Serviços', href: '#servicos' },
+  { label: 'Como funciona', href: '#processo' },
   { label: 'Contato', href: '#pedido' },
 ]
 
@@ -91,7 +91,7 @@ function Footer() {
               <strong>{siteConfig.companyName}</strong>
             </a>
             <p>
-              Sites, Sistemas Web e Soluções Digitais.
+              Otimização remota de PCs e notebooks.
             </p>
             <div className={styles.socials} aria-label="Redes sociais">
               {socialLinks.map(({ label, href, icon }) => (
@@ -136,22 +136,6 @@ function Footer() {
               Solicitar orçamento <span aria-hidden="true">→</span>
             </a>
           </div>
-        </div>
-
-        <div className={styles.partner}>
-          <div>
-            <p className={styles.partnerTitle}>Precisa de algo mais robusto?</p>
-            <p className={styles.partnerText}>Pra negócios que já têm um volume grande de atendimento e precisam de múltiplos atendentes, chatbot e funil de vendas no WhatsApp, recomendo o ChatGuru — plataforma que uso como referência no mercado.</p>
-          </div>
-          <a
-            className={styles.partnerCta}
-            href="https://indiquei.app/KBYLXMG"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackExternalLink('chatguru_partner')}
-          >
-            Conhecer o ChatGuru <span aria-hidden="true">↗</span>
-          </a>
         </div>
 
         <div className={styles.bottomBar}>

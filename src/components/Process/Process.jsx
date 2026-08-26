@@ -1,10 +1,10 @@
 import styles from './Process.module.css'
 
 const processSteps = [
-  ['Você conta como seu negócio funciona.', 'A conversa começa pela rotina real, sem exigir que você saiba o nome da tecnologia.'],
-  ['Definimos o primeiro problema que vale resolver.', 'Organizamos um escopo proporcional ao que faz sentido agora.'],
-  ['Você recebe uma solução organizada e orientação para usar.', 'A entrega vem acompanhada de explicação clara e próximos passos.'],
-  ['Se fizer sentido, evoluímos depois.', 'Projeto pequeno quando pequeno é suficiente. Solução maior apenas quando o negócio pede.'],
+  ['Você conta o que está acontecendo.', 'Pelo WhatsApp, explicamos os sintomas e combinamos o melhor horário para o atendimento.'],
+  ['Fazemos um diagnóstico inicial.', 'Verifico o sistema e explico o que pode ser otimizado antes de começar as alterações.'],
+  ['Você acompanha o acesso remoto.', 'O serviço é feito com sua autorização e você vê na tela cada etapa do atendimento.'],
+  ['Entrego o computador revisado.', 'Ao final, você recebe um resumo do que foi feito e orientações para manter o bom desempenho.'],
 ]
 
 function Process() {
@@ -12,9 +12,9 @@ function Process() {
     <section id="processo" className={`${styles.section} reveal`} aria-labelledby="process-title">
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Como trabalhamos</p>
-          <h2 id="process-title">O que você recebe, na prática</h2>
-          <p className={styles.subtitle}>Um caminho direto para organizar o primeiro ponto sem transformar tudo de uma vez.</p>
+          <p className={styles.eyebrow}>Como funciona o atendimento remoto</p>
+          <h2 id="process-title">Simples, acompanhado e sem sair de casa.</h2>
+          <p className={styles.subtitle}>Você mantém o controle durante todo o acesso. Nenhuma alteração importante é feita sem explicação.</p>
         </header>
         <ol className={styles.timeline}>
           {processSteps.map(([title, description], index) => (
