@@ -27,3 +27,35 @@
   color: #afc4d5;
   font-size: 12px;
 }
+
+.secondaryOffer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: min(100%, 520px);
+  padding: 13px 16px;
+  margin-top: 12px;
+  color: #bad0df;
+  text-decoration: none;
+  background: rgb(12 27 40 / 72%);
+  border: 1px solid rgb(70 127 167 / 34%);
+  border-radius: 12px;
+}
+
+.secondaryOffer strong {
+  color: #7dd3fc;
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .accountingHero h1 {
+    font-size: clamp(38px, 10.5vw, 48px);
+  }
+
+  .secondaryOffer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+}

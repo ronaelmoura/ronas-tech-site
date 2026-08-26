@@ -129,7 +129,7 @@ function ServicePage({ service }) {
   }, [service])
 
   const whatsappMessage = encodeURIComponent(
-    `Olá! Acessei a página de ${service.eyebrow.toLowerCase()} da Ronas Tech e gostaria de ${service.recurring ? 'receber uma proposta para minha empresa' : isSupport ? 'explicar meu problema e solicitar atendimento' : 'solicitar um orçamento'}.`,
+    `Olá! Acessei a página de ${service.eyebrow.toLowerCase()} da Ronas Tech e gostaria de ${service.whatsappIntent || (service.recurring ? 'receber uma proposta para minha empresa' : isSupport ? 'explicar meu problema e solicitar atendimento' : 'solicitar um orçamento')}.`,
   )
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${whatsappMessage}`
 
@@ -151,11 +151,12 @@ function ServicePage({ service }) {
 
       <main id="conteudo-principal" tabIndex="-1">
         <section className={styles.hero}>
-          <div className={styles.heroContent}>
+          <div className={`${styles.heroContent} ${service.accounting ? conversion.accountingHero : ''}`}>
             <p className={styles.eyebrow}>{service.eyebrow}</p>
             <h1>{service.title}</h1>
             <p className={styles.lead}>{service.introduction}</p>
-            {isSupport ? <div className={conversion.servicePrice}><small>Preço inicial</small><strong>{service.priceLabel}</strong><span>O valor final é confirmado antes do serviço.</span></div> : null}
+            {isSupport ? <div className={conversion.servicePrice}><small>Preço inicial</small><strong>{service.priceLabel}</strong><span>{service.responseLabel || 'O valor final é confirmado antes do serviço.'}</span></div> : null}
+            {service.secondaryOffer ? <a className={conversion.secondaryOffer} href={service.secondaryOffer.href}><span>{service.secondaryOffer.label}</span><strong>{service.secondaryOffer.linkLabel} →</strong></a> : null}
             <div className={styles.actions}>
               <a
                 className={styles.primaryAction}
@@ -163,7 +164,7 @@ function ServicePage({ service }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {service.recurring ? 'Solicitar proposta do plano' : isSupport ? 'Explicar meu problema' : 'Solicitar orçamento'}
+                {service.heroCtaLabel || (service.recurring ? 'Solicitar proposta do plano' : isSupport ? 'Explicar meu problema' : 'Solicitar orçamento')}
                 <span aria-hidden="true">→</span>
               </a>
               <a className={styles.secondaryAction} href="#como-funciona">
