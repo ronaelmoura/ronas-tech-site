@@ -130,21 +130,30 @@ export function getPageMetadata(pathname) {
       canonical: `${siteConfig.siteUrl}${service.slug}`,
       structuredData: {
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: service.eyebrow,
-        description: service.metaDescription,
-        url: `${siteConfig.siteUrl}${service.slug}`,
-        areaServed: {
-          '@type': 'Country',
-          name: 'Brasil',
-        },
-        provider: {
-          '@type': 'Organization',
-          name: siteConfig.companyName,
-          url: siteConfig.siteUrl,
-          email: siteConfig.email,
-          sameAs: [siteConfig.github, siteConfig.linkedin, siteConfig.instagram],
-        },
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: service.eyebrow,
+            description: service.metaDescription,
+            url: `${siteConfig.siteUrl}${service.slug}`,
+            areaServed: { '@type': 'Country', name: 'Brasil' },
+            provider: {
+              '@type': 'Organization',
+              name: siteConfig.companyName,
+              url: siteConfig.siteUrl,
+              email: siteConfig.email,
+              sameAs: [siteConfig.github, siteConfig.linkedin, siteConfig.instagram],
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: service.faq.map(({ question, answer }) => ({
+              '@type': 'Question',
+              name: question,
+              acceptedAnswer: { '@type': 'Answer', text: answer },
+            })),
+          },
+        ],
       },
     }
   }
