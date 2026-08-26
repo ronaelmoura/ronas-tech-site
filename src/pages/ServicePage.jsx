@@ -33,6 +33,13 @@ const supportProcessSteps = [
   { title: 'Confira o resultado', description: 'Testamos o funcionamento e você recebe um resumo com as orientações finais.' },
 ]
 
+const monthlyProcessSteps = [
+  { title: 'Conte sobre a empresa', description: 'Informe quantos computadores e pessoas precisam de suporte e quais problemas aparecem com mais frequência.' },
+  { title: 'Receba o plano indicado', description: 'Definimos chamados, horários, prioridade, limites e mensalidade de forma clara.' },
+  { title: 'Aprove a proposta', description: 'Você confere todas as condições antes de iniciar o acompanhamento.' },
+  { title: 'Acione quando precisar', description: 'A equipe solicita suporte pelo canal combinado e acompanha cada atendimento remoto.' },
+]
+
 const serviceLinks = [
   { href: '/criacao-de-sites', label: 'Criação de sites' },
   { href: '/landing-pages', label: 'Landing pages' },
@@ -47,6 +54,7 @@ const serviceLinks = [
   { href: '/corrigir-erros-windows', label: 'Erros do Windows' },
   { href: '/suporte-tecnico-remoto', label: 'Suporte técnico remoto' },
   { href: '/suporte-ti-para-contadores', label: 'Suporte para contadores' },
+  { href: '/plano-mensal-suporte-ti', label: 'Plano mensal para empresas' },
 ]
 
 const supportServicePaths = new Set([
@@ -55,6 +63,7 @@ const supportServicePaths = new Set([
   '/corrigir-erros-windows',
   '/suporte-tecnico-remoto',
   '/suporte-ti-para-contadores',
+  '/plano-mensal-suporte-ti',
 ])
 
 function setMetaContent(selector, content) {
@@ -63,7 +72,7 @@ function setMetaContent(selector, content) {
 
 function ServicePage({ service }) {
   const isSupport = service.kind === 'support'
-  const activeProcess = isSupport ? supportProcessSteps : processSteps
+  const activeProcess = service.recurring ? monthlyProcessSteps : isSupport ? supportProcessSteps : processSteps
   useEffect(() => {
     const pageUrl = `${siteConfig.siteUrl}${service.slug}`
     const canonical = document.querySelector('link[rel="canonical"]')
@@ -120,7 +129,7 @@ function ServicePage({ service }) {
   }, [service])
 
   const whatsappMessage = encodeURIComponent(
-    `Olá! Acessei a página de ${service.eyebrow.toLowerCase()} da Ronas Tech e gostaria de ${isSupport ? 'explicar meu problema e solicitar atendimento' : 'solicitar um orçamento'}.`,
+    `Olá! Acessei a página de ${service.eyebrow.toLowerCase()} da Ronas Tech e gostaria de ${service.recurring ? 'receber uma proposta para minha empresa' : isSupport ? 'explicar meu problema e solicitar atendimento' : 'solicitar um orçamento'}.`,
   )
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${whatsappMessage}`
 
@@ -154,7 +163,7 @@ function ServicePage({ service }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {isSupport ? 'Explicar meu problema' : 'Solicitar orçamento'}
+                {service.recurring ? 'Solicitar proposta do plano' : isSupport ? 'Explicar meu problema' : 'Solicitar orçamento'}
                 <span aria-hidden="true">→</span>
               </a>
               <a className={styles.secondaryAction} href="#como-funciona">
@@ -217,7 +226,7 @@ function ServicePage({ service }) {
           <div className={styles.container}>
             <header className={styles.sectionHeading}>
               <p>Como funciona</p>
-              <h2 id="process-title">{isSupport ? 'Do primeiro contato até o computador testado' : 'Do primeiro contato até a publicação'}</h2>
+              <h2 id="process-title">{service.recurring ? 'Da necessidade da empresa ao suporte contínuo' : isSupport ? 'Do primeiro contato até o computador testado' : 'Do primeiro contato até a publicação'}</h2>
             </header>
             <ol className={styles.processGrid}>
               {activeProcess.map((step, index) => (
@@ -276,15 +285,15 @@ function ServicePage({ service }) {
 
         <section className={styles.ctaSection}>
           <div className={styles.ctaContent}>
-            <p>{isSupport ? 'Precisa de ajuda agora?' : 'Vamos conversar sobre sua necessidade?'}</p>
-            <h2>{isSupport ? 'Conte o que aparece na tela e receba uma orientação clara.' : 'Conte o que sua empresa precisa e receba uma proposta clara.'}</h2>
+            <p>{service.recurring ? 'Quer suporte contínuo para sua equipe?' : isSupport ? 'Precisa de ajuda agora?' : 'Vamos conversar sobre sua necessidade?'}</p>
+            <h2>{service.recurring ? 'Conte quantos computadores sua empresa utiliza e receba uma proposta clara.' : isSupport ? 'Conte o que aparece na tela e receba uma orientação clara.' : 'Conte o que sua empresa precisa e receba uma proposta clara.'}</h2>
             <a
               className={styles.primaryAction}
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {isSupport ? 'Pedir suporte pelo WhatsApp' : 'Falar com a Ronas Tech'}
+              {service.recurring ? 'Solicitar proposta pelo WhatsApp' : isSupport ? 'Pedir suporte pelo WhatsApp' : 'Falar com a Ronas Tech'}
               <span aria-hidden="true">→</span>
             </a>
           </div>
