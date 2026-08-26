@@ -7,9 +7,9 @@ import { products } from './data/products'
 import { spreadsheetProducts } from './data/spreadsheetProducts'
 
 const homeMetadata = {
-  title: 'Otimização Remota de PC e Notebook | Ronas Tech',
+  title: 'Suporte Técnico e Desenvolvimento Full Stack | Ronas Tech',
   description:
-    'Otimização remota de PC e notebook com diagnóstico, limpeza, ajustes de desempenho e orientação clara. Atendimento online para todo o Brasil.',
+    'Suporte técnico, otimização remota de computadores e desenvolvimento Full Stack de sites, sistemas, APIs e automações para todo o Brasil.',
   canonical: siteConfig.siteUrl,
 }
 

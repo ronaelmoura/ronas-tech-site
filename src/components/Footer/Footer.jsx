@@ -91,7 +91,7 @@ function Footer() {
               <strong>{siteConfig.companyName}</strong>
             </a>
             <p>
-              Otimização remota de PCs e notebooks.
+              Suporte técnico e desenvolvimento de soluções digitais.
             </p>
             <div className={styles.socials} aria-label="Redes sociais">
               {socialLinks.map(({ label, href, icon }) => (
@@ -133,7 +133,7 @@ function Footer() {
               </a>
             </address>
             <a className={styles.cta} href="#pedido">
-              Solicitar orçamento <span aria-hidden="true">→</span>
+              Solicitar orçamento
             </a>
           </div>
         </div>
