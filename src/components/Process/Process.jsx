@@ -1,7 +1,7 @@
 import styles from './Process.module.css'
 
 const processSteps = [
-  ['Escolha os serviços na loja.', 'Adicione ao pedido o que mais se aproxima do problema do seu PC ou notebook.'],
+  ['Escolha um atendimento.', 'Selecione o problema que mais se aproxima do que acontece no seu PC ou notebook.'],
   ['Envie o pedido pelo WhatsApp.', 'O site prepara um resumo e você complementa com os sintomas do computador.'],
   ['Receba a avaliação e o valor.', 'Confirmo o que pode ser feito remotamente, explico o serviço e informo o valor antes de começar.'],
   ['Acompanhe o atendimento.', 'Você vê o acesso remoto na tela e recebe um resumo com as orientações finais.'],
