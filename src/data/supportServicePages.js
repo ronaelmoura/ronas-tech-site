@@ -7,6 +7,7 @@ export const supportServicePages = {
     metaTitle: 'Computador Lento ou Travando? Suporte Remoto | Ronas Tech',
     metaDescription: 'Suporte remoto para computador lento ou travando. Diagnóstico, limpeza, revisão da inicialização e ajustes do Windows para todo o Brasil.',
     introduction: 'Se o PC demora para ligar, trava com programas simples ou ficou mais lento com o tempo, a análise remota identifica o que está consumindo recursos e quais ajustes realmente fazem sentido.',
+    priceLabel: 'Diagnóstico a partir de R$ 29 · Otimização a partir de R$ 109',
     outcomes: [
       { title: 'Inicialização mais leve', description: 'Revisão dos programas e processos que começam junto com o Windows.' },
       { title: 'Uso mais responsivo', description: 'Análise de armazenamento, memória, atualizações e configurações que afetam a rotina.' },
@@ -28,6 +29,7 @@ export const supportServicePages = {
     metaTitle: 'Remoção de Vírus e Anúncios do PC | Suporte Remoto',
     metaDescription: 'Remoção remota de vírus, anúncios, extensões e programas indesejados no Windows. Atendimento seguro e acompanhado para todo o Brasil.',
     introduction: 'Pop-ups, páginas abrindo sozinhas, extensões desconhecidas e programas que você não instalou podem indicar software indesejado. A revisão remota ajuda a limpar o sistema e reduzir o risco de novos problemas.',
+    priceLabel: 'Atendimento a partir de R$ 109',
     outcomes: [
       { title: 'Menos interrupções', description: 'Investigação de anúncios, redirecionamentos e notificações suspeitas.' },
       { title: 'Navegador revisado', description: 'Análise de extensões, permissões e configurações alteradas sem necessidade.' },
@@ -49,6 +51,7 @@ export const supportServicePages = {
     metaTitle: 'Corrigir Erros do Windows Remotamente | Ronas Tech',
     metaDescription: 'Correção remota de erros do Windows, atualizações que falham, mensagens repetidas e recursos que pararam de funcionar. Atendimento nacional.',
     introduction: 'Atualizações que não concluem, mensagens recorrentes e recursos que param de funcionar podem ter diferentes causas. O diagnóstico começa pelo erro apresentado e evita alterações desnecessárias.',
+    priceLabel: 'Atendimento a partir de R$ 119',
     outcomes: [
       { title: 'Causa investigada', description: 'Leitura dos sintomas, histórico e mensagens antes de aplicar qualquer correção.' },
       { title: 'Reparo direcionado', description: 'Ajustes nos componentes relacionados ao problema, respeitando os limites do acesso remoto.' },
@@ -70,6 +73,7 @@ export const supportServicePages = {
     metaTitle: 'Suporte Técnico Remoto para PC e Notebook | Ronas Tech',
     metaDescription: 'Suporte técnico remoto para PC e notebook Windows em todo o Brasil. Atendimento acompanhado para lentidão, erros, programas, backup e segurança.',
     introduction: 'Você explica o problema pelo WhatsApp, recebe uma avaliação inicial e, quando o acesso remoto é indicado, acompanha todo o atendimento pela tela. O valor é confirmado antes de começar.',
+    priceLabel: 'Triagem gratuita · Diagnóstico a partir de R$ 29',
     outcomes: [
       { title: 'Sem deslocamento', description: 'Atendimento para todo o Brasil quando o computador liga e consegue acessar a internet.' },
       { title: 'Controle durante o acesso', description: 'A sessão começa com sua autorização e pode ser encerrada por você a qualquer momento.' },
@@ -81,6 +85,7 @@ export const supportServicePages = {
       { question: 'Como vocês acessam meu computador?', answer: 'Quando o suporte remoto é indicado, você recebe orientação para iniciar uma sessão temporária. O acesso só começa com sua autorização e permanece visível na tela.' },
       { question: 'Alguém pode entrar depois?', answer: 'Não pela sessão encerrada. Um novo acesso exige uma nova autorização. Você também pode remover a ferramenta utilizada depois do atendimento.' },
       { question: 'Qual é o horário?', answer: 'O atendimento funciona todos os dias, das 09h à meia-noite, com resposta inicial em até uma hora dentro desse período. O serviço pode ser agendado conforme a disponibilidade.' },
+      { question: 'E se não der para resolver remotamente?', answer: 'Você recebe uma orientação clara sobre o próximo passo. Nenhum serviço adicional é realizado e nenhum valor além do aprovado é cobrado sem a sua autorização.' },
     ],
   },
   '/suporte-ti-para-contadores': {
@@ -91,6 +96,7 @@ export const supportServicePages = {
     metaTitle: 'Suporte de TI Remoto para Contadores | Ronas Tech',
     metaDescription: 'Suporte remoto de TI para contadores e escritórios contábeis: Windows, Office, Outlook, Teams, arquivos e programas de escritório.',
     introduction: 'Falhas no Windows, Office, Outlook ou programas de escritório interrompem tarefas com prazo. O suporte remoto oferece um ponto de contato direto para diagnosticar problemas de software e orientar a equipe.',
+    priceLabel: 'Avulso a partir de R$ 139 · Plano mensal a partir de R$ 289',
     outcomes: [
       { title: 'Atendimento direto', description: 'Contato com o profissional que analisa o problema, sem repasses entre vários atendentes.' },
       { title: 'Menos tempo parado', description: 'Triagem objetiva e atendimento remoto quando o computador continua conectado à internet.' },

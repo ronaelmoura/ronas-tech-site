@@ -83,6 +83,39 @@
   color: #dff5ff;
 }
 
+.helpCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 22px;
+  margin: 0 0 18px;
+  color: #eaf8ff;
+  text-decoration: none;
+  background: linear-gradient(110deg, #0c2b3f, #102239);
+  border: 1px solid #38bdf8;
+  border-radius: 16px;
+}
+
+.helpCard small,
+.helpCard strong {
+  display: block;
+}
+
+.helpCard small {
+  margin-bottom: 4px;
+  color: #7dd3fc;
+}
+
+.helpCard b {
+  color: #7dd3fc;
+  white-space: nowrap;
+}
+
+.showServices {
+  display: none;
+}
+
 @media (max-width: 680px) {
   .audience {
     grid-template-columns: 1fr;
@@ -91,5 +124,27 @@
   .recommendation {
     flex-direction: column;
     gap: 5px;
+  }
+
+  .helpCard {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .serviceGridCollapsed article:nth-child(n + 4) {
+    display: none;
+  }
+
+  .showServices {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 14px;
+    margin: 14px 0 24px;
+    color: #dff5ff;
+    font-weight: 700;
+    background: #102236;
+    border: 1px solid #31526f;
+    border-radius: 12px;
   }
 }

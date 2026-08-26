@@ -1,0 +1,1 @@
+.showMore{display:none}@media(max-width:620px){.collapsed article:nth-child(n+4){display:none}.showMore{display:flex;width:100%;min-height:46px;align-items:center;justify-content:center;margin-top:14px;color:#dff4ff;background:#10263a;border:1px solid #34739c;border-radius:11px;font:inherit;font-size:12px;font-weight:800;cursor:pointer}}
