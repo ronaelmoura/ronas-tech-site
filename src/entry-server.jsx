@@ -7,9 +7,9 @@ import { products } from './data/products'
 import { spreadsheetProducts } from './data/spreadsheetProducts'
 
 const homeMetadata = {
-  title: 'Criação de Sites, Sistemas e Automações | Ronas Tech',
+  title: 'Otimização Remota de PC e Notebook | Ronas Tech',
   description:
-    'Criação de sites, sistemas web e automações sob medida para pequenos negócios de todo o Brasil venderem mais e reduzirem tarefas manuais.',
+    'Otimização remota de PC e notebook com diagnóstico, limpeza, ajustes de desempenho e orientação clara. Atendimento online para todo o Brasil.',
   canonical: siteConfig.siteUrl,
 }
 
