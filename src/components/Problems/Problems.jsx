@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import styles from './Problems.module.css'
+import compact from './ProblemsCompact.module.css'
 
 const problems = [
   { image: '/images/problemas/inicio-lento.webp', title: 'Demora para ligar', text: 'O Windows inicia devagar e você espera para conseguir trabalhar.', tag: 'Inicialização', serviceId: 'otimizacao', recommendation: 'A otimização revisa os programas que iniciam com o Windows e os processos que atrasam a inicialização.' },
@@ -16,6 +18,8 @@ function recommendService(event, problem) {
 }
 
 function Problems() {
-  return <section id="problemas" className={`${styles.section} reveal`} aria-labelledby="problems-title"><div className={styles.container}><header><p className={styles.eyebrow}>Comece pelo sintoma</p><h2 id="problems-title">Qual destes erros está atrapalhando você?</h2><p>Você não precisa saber o nome técnico do problema. Basta contar o que está acontecendo.</p></header><div className={styles.grid}>{problems.map((problem, index) => <article className={styles.card} key={problem.title}><div className={styles.illustration} aria-hidden="true"><img src={problem.image} alt="" loading="lazy" width="900" height="506" /><span className={styles.screenGlow} style={{ '--delay': `${index * -.7}s` }} /><span className={styles.scan} style={{ '--delay': `${index * -.55}s` }} /></div><small>{problem.tag}</small><h3>{problem.title}</h3><p>{problem.text}</p><a href="#loja" onClick={(event) => recommendService(event, problem)}>Ver recomendação explicada</a></article>)}</div><div className={styles.note}><strong>Nem todo defeito é remoto.</strong><span>Se houver indício de problema físico — tela quebrada, bateria, superaquecimento ou computador que não liga — você será orientado antes de contratar.</span></div></div></section>
+  const [expanded, setExpanded] = useState(false)
+  return <section id="problemas" className={`${styles.section} reveal`} aria-labelledby="problems-title"><div className={styles.container}><header><p className={styles.eyebrow}>Comece pelo sintoma</p><h2 id="problems-title">Qual destes erros está atrapalhando você?</h2><p>Você não precisa saber o nome técnico do problema. Basta contar o que está acontecendo.</p></header><div className={`${styles.grid} ${expanded ? compact.expanded : compact.collapsed}`}>{problems.map((problem, index) => <article className={styles.card} key={problem.title}><div className={styles.illustration} aria-hidden="true"><img src={problem.image} alt="" loading="lazy" width="900" height="506" /><span className={styles.screenGlow} style={{ '--delay': `${index * -.7}s` }} /><span className={styles.scan} style={{ '--delay': `${index * -.55}s` }} /></div><small>{problem.tag}</small><h3>{problem.title}</h3><p>{problem.text}</p><a href="#loja" onClick={(event) => recommendService(event, problem)}>Ver recomendação explicada</a></article>)}</div><button className={compact.showMore} type="button" aria-expanded={expanded} onClick={() => setExpanded((current) => !current)}>{expanded ? 'Mostrar menos problemas' : 'Ver todos os problemas'}</button><div className={styles.note}><strong>Nem todo defeito é remoto.</strong><span>Se houver indício de problema físico — tela quebrada, bateria, superaquecimento ou computador que não liga — você será orientado antes de contratar.</span></div></div></section>
 }
+
 export default Problems

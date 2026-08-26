@@ -6,6 +6,7 @@ const questions = [
   ['Quanto custa o atendimento?', 'A triagem inicial pelo WhatsApp é gratuita. Quando for necessário acessar o computador, o diagnóstico técnico começa em R$ 29; os demais serviços e o valor final são confirmados para sua aprovação antes do trabalho começar. O suporte recorrente para empresas começa em R$ 289 por mês.'],
   ['Qual é o horário de atendimento?', 'O atendimento funciona todos os dias, das 09h à meia-noite. A resposta inicial acontece em até 1 hora dentro desse período; o início do serviço depende da disponibilidade e pode ser agendado.'],
   ['Todo problema pode ser resolvido pela internet?', 'Não. Tela quebrada, bateria defeituosa, superaquecimento, peças danificadas e um computador que nem liga geralmente precisam de avaliação presencial. Se houver esse indício, você será avisado antes de contratar.'],
+  ['E se o problema não puder ser resolvido remotamente?', 'Se isso for identificado na triagem, você será orientado antes de contratar. Se a limitação aparecer durante o diagnóstico, explicamos o que foi encontrado e nenhum serviço adicional é realizado sem sua aprovação.'],
   ['Preciso instalar algum programa?', 'Talvez. Se for necessário, você recebe a orientação durante a conversa no WhatsApp e decide se quer continuar. Não instale ferramentas enviadas por desconhecidos.'],
   ['E se eu não souber qual serviço escolher?', 'Escolha apenas “Diagnóstico remoto” ou fale direto pelo WhatsApp. Você pode descrever o que vê na tela, quando começou e o que já tentou; não precisa conhecer termos técnicos.'],
 ]

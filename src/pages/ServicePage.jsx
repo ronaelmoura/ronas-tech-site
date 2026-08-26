@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { siteConfig } from '../config/siteConfig'
 import styles from './ServicePage.module.css'
+import conversion from './ServicePageConversion.module.css'
 
 const processSteps = [
   {
@@ -47,6 +48,14 @@ const serviceLinks = [
   { href: '/suporte-tecnico-remoto', label: 'Suporte técnico remoto' },
   { href: '/suporte-ti-para-contadores', label: 'Suporte para contadores' },
 ]
+
+const supportServicePaths = new Set([
+  '/computador-lento',
+  '/remocao-de-virus',
+  '/corrigir-erros-windows',
+  '/suporte-tecnico-remoto',
+  '/suporte-ti-para-contadores',
+])
 
 function setMetaContent(selector, content) {
   document.querySelector(selector)?.setAttribute('content', content)
@@ -137,6 +146,7 @@ function ServicePage({ service }) {
             <p className={styles.eyebrow}>{service.eyebrow}</p>
             <h1>{service.title}</h1>
             <p className={styles.lead}>{service.introduction}</p>
+            {isSupport ? <div className={conversion.servicePrice}><small>Preço inicial</small><strong>{service.priceLabel}</strong><span>O valor final é confirmado antes do serviço.</span></div> : null}
             <div className={styles.actions}>
               <a
                 className={styles.primaryAction}
@@ -253,6 +263,7 @@ function ServicePage({ service }) {
             <p>{isSupport ? 'Outros problemas atendidos remotamente' : 'Outras formas de colocar a tecnologia para trabalhar'}</p>
             <div className={styles.relatedLinks}>
               {serviceLinks
+                .filter(({ href }) => isSupport ? supportServicePaths.has(href) : !supportServicePaths.has(href))
                 .filter(({ href }) => href !== `/${service.slug}`)
                 .map(({ href, label }) => (
                   <a href={href} key={href}>

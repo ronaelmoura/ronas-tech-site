@@ -273,3 +273,24 @@ body > #root > footer {
   #inicio { background-position: 0 0, 62% center, 62% center; }
   #sobre { background-position: 66% center; }
 }
+
+#problemas,
+#loja,
+#processo,
+#duvidas,
+#sobre {
+  scroll-margin-top: 96px;
+}
+
+@media (max-width: 680px) {
+  .floating-contact {
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .floating-contact__copy {
+    display: none;
+  }
+}
