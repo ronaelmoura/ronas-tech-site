@@ -294,3 +294,40 @@ body > #root > footer {
     display: none;
   }
 }
+
+/* Compactação visual da página de suporte */
+#problemas,
+#loja {
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+
+section[aria-labelledby='safety-title'] {
+  padding-top: 68px;
+  padding-bottom: 68px;
+}
+
+#sobre {
+  padding-top: 84px;
+  padding-bottom: 84px;
+}
+
+#problemas article,
+#loja article,
+section[aria-labelledby='safety-title'] article {
+  border-color: rgb(84 112 140 / 38%);
+}
+
+@media (max-width: 680px) {
+  #problemas,
+  #loja,
+  #sobre {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  section[aria-labelledby='safety-title'] {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+}

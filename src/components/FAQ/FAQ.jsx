@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './FAQ.module.css'
 
 const questions = [
@@ -12,7 +13,10 @@ const questions = [
 ]
 
 function FAQ() {
-  return <section id="duvidas" className={`${styles.section} reveal`} aria-labelledby="faq-title"><div className={styles.container}><header className={styles.heading}><p className={styles.eyebrow}>Dúvidas frequentes</p><h2 id="faq-title">Segurança e clareza antes de começar.</h2><p>Entenda o acesso, os limites do atendimento e a cobrança antes de permitir qualquer alteração no computador.</p></header><div className={styles.list}>{questions.map(([question, answer]) => <details className={styles.item} key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
+  const [showAll, setShowAll] = useState(false)
+  const visibleQuestions = showAll ? questions : questions.slice(0, 5)
+
+  return <section id="duvidas" className={`${styles.section} reveal`} aria-labelledby="faq-title"><div className={styles.container}><header className={styles.heading}><p className={styles.eyebrow}>Dúvidas frequentes</p><h2 id="faq-title">Segurança e clareza antes de começar.</h2><p>Entenda o acesso, os limites do atendimento e a cobrança antes de permitir qualquer alteração no computador.</p></header><div className={styles.list}>{visibleQuestions.map(([question, answer]) => <details className={styles.item} key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}<button className={styles.showMore} type="button" aria-expanded={showAll} onClick={() => setShowAll((current) => !current)}>{showAll ? 'Mostrar menos perguntas' : 'Ver todas as perguntas'}</button></div></div></section>
 }
 
 export default FAQ
