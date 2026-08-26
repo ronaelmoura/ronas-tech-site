@@ -155,8 +155,7 @@ function ServicePage({ service }) {
             <p className={styles.eyebrow}>{service.eyebrow}</p>
             <h1>{service.title}</h1>
             <p className={styles.lead}>{service.introduction}</p>
-            {isSupport ? <div className={conversion.servicePrice}><small>Preço inicial</small><strong>{service.priceLabel}</strong><span>{service.responseLabel || 'O valor final é confirmado antes do serviço.'}</span></div> : null}
-            {service.secondaryOffer ? <a className={conversion.secondaryOffer} href={service.secondaryOffer.href}><span>{service.secondaryOffer.label}</span><strong>{service.secondaryOffer.linkLabel} →</strong></a> : null}
+            {isSupport ? <div className={conversion.servicePrice}><small>Preço inicial</small><strong>{service.priceLabel}</strong><span>{service.responseLabel || 'O valor final é confirmado antes do serviço.'}</span>{service.responseDetail ? <span>{service.responseDetail}</span> : null}</div> : null}
             <div className={styles.actions}>
               <a
                 className={styles.primaryAction}
@@ -171,6 +170,7 @@ function ServicePage({ service }) {
                 Entender o processo
               </a>
             </div>
+            {service.secondaryOffer ? <a className={conversion.secondaryOffer} href={service.secondaryOffer.href}><span>{service.secondaryOffer.label}</span><strong>{service.secondaryOffer.linkLabel} →</strong></a> : null}
             <ul className={styles.trustList} aria-label="Diferenciais do atendimento">
               <li>{isSupport ? 'Atendimento remoto nacional' : 'Atendimento on-line'}</li>
               <li>{isSupport ? 'Você acompanha o acesso' : 'Escopo transparente'}</li>
