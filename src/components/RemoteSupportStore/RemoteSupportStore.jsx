@@ -9,10 +9,10 @@ const services = [
     id: 'diagnostico',
     category: 'Diagnóstico',
     title: 'Diagnóstico remoto do computador',
-    description: 'Análise inicial para identificar possíveis causas de lentidão, travamentos e erros do Windows.',
+    description: 'Triagem inicial gratuita pelo WhatsApp. Se for necessário acessar o computador, fazemos a análise técnica detalhada.',
     includes: ['Verificação do sistema', 'Análise dos sintomas', 'Orientação sobre o próximo passo'],
     audience: 'personal',
-    price: 'R$ 39',
+    price: 'R$ 29',
   },
   {
     id: 'otimizacao',
