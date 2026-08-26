@@ -7,9 +7,9 @@ import styles from './Footer.module.css'
 
 const navigationLinks = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Serviços', href: '#servicos' },
+  { label: 'Loja', href: '#loja' },
+  { label: 'Problemas atendidos', href: '#problemas' },
   { label: 'Como funciona', href: '#processo' },
-  { label: 'Contato', href: '#pedido' },
 ]
 
 const socialLinks = [
@@ -91,7 +91,7 @@ function Footer() {
               <strong>{siteConfig.companyName}</strong>
             </a>
             <p>
-              Suporte técnico e desenvolvimento de soluções digitais.
+              Loja de suporte técnico remoto para PCs e notebooks.
             </p>
             <div className={styles.socials} aria-label="Redes sociais">
               {socialLinks.map(({ label, href, icon }) => (
@@ -132,8 +132,8 @@ function Footer() {
                 {siteConfig.email}
               </a>
             </address>
-            <a className={styles.cta} href="#pedido">
-              Solicitar orçamento
+            <a className={styles.cta} href="#loja">
+              Montar pedido
             </a>
           </div>
         </div>

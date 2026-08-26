@@ -7,9 +7,9 @@ import { products } from './data/products'
 import { spreadsheetProducts } from './data/spreadsheetProducts'
 
 const homeMetadata = {
-  title: 'Suporte Técnico e Desenvolvimento Full Stack | Ronas Tech',
+  title: 'Loja de Suporte Técnico Remoto | Ronas Tech',
   description:
-    'Suporte técnico, otimização remota de computadores e desenvolvimento Full Stack de sites, sistemas, APIs e automações para todo o Brasil.',
+    'Loja de suporte técnico remoto para PC e notebook. Escolha serviços de diagnóstico, otimização, segurança, configuração e backup e contrate pelo WhatsApp.',
   canonical: siteConfig.siteUrl,
 }
 
