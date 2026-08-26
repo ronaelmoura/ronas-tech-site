@@ -6,7 +6,7 @@ const problems = [
   { icon: '!', title: 'Anúncios e avisos', text: 'Pop-ups, extensões ou programas estranhos aparecem sem você pedir.', tag: 'Segurança' },
   { icon: '×', title: 'Programa não abre', text: 'Erros de instalação, atualização ou configuração interrompem sua rotina.', tag: 'Programas' },
   { icon: '▰', title: 'Pouco espaço', text: 'O disco vive cheio e você não sabe o que pode remover com segurança.', tag: 'Armazenamento' },
-  { icon: '⌁', title: 'Periférico falhando', text: 'Impressora, áudio, câmera ou outro dispositivo não funciona como deveria.', tag: 'Configuração' },
+  { icon: 'W', title: 'Erro no Windows', text: 'Atualizações falham, recursos param de funcionar ou mensagens aparecem repetidamente.', tag: 'Sistema' },
 ]
 
 function Problems() {

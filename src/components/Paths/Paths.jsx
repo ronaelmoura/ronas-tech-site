@@ -2,7 +2,7 @@ import styles from './Paths.module.css'
 
 const supportServices = [
   { title: 'Otimização de PC e notebook', text: 'Diagnóstico de lentidão, revisão da inicialização, limpeza, atualizações e ajustes do Windows.', result: 'Um computador mais leve, seguro e responsivo para sua rotina.' },
-  { title: 'Suporte técnico remoto', text: 'Instalação de programas, configuração de navegador, e-mail, impressora, backup e orientação de uso.', result: 'Problemas resolvidos sem sair de casa e com acompanhamento durante o acesso.' },
+  { title: 'Suporte técnico remoto', text: 'Correção do Windows, instalação de programas, configuração de e-mail, backup e orientação de uso.', result: 'Problemas resolvidos sem sair de casa e com acompanhamento durante o acesso.' },
 ]
 
 const developmentServices = [
