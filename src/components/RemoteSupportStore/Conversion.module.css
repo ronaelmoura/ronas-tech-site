@@ -1,0 +1,79 @@
+.audience {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.audience button {
+  padding: 18px 20px;
+  color: #9fb0c1;
+  text-align: left;
+  background: #0b1622;
+  border: 1px solid #29445f;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.audience small,
+.audience strong {
+  display: block;
+}
+
+.audience small {
+  margin-bottom: 5px;
+  color: #67c8ff;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.audience strong {
+  font-size: 15px;
+}
+
+.audience .activeAudience {
+  color: #fff;
+  background: linear-gradient(135deg, #112a40, #0d1b2a);
+  border-color: #38bdf8;
+  box-shadow: inset 0 0 0 1px rgb(56 189 248 / 18%);
+}
+
+.unknownIssue {
+  flex-basis: 100%;
+  color: #e9f8ff !important;
+  background: #102d43 !important;
+  border-color: #3ba9e8 !important;
+}
+
+.recommendation {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  margin: 0 0 18px;
+  background: #0c2131;
+  border-left: 3px solid #38bdf8;
+}
+
+.recommendation strong {
+  flex: 0 0 auto;
+  color: #e9f7ff;
+  font-size: 12px;
+}
+
+.recommendation span {
+  color: #9fb5c8;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+@media (max-width: 680px) {
+  .audience {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendation {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
