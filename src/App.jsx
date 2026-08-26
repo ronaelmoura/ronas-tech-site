@@ -1,14 +1,10 @@
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import Caretaker from './components/Caretaker/Caretaker'
-import CheckupCallout from './components/CheckupCallout/CheckupCallout'
 import Problems from './components/Problems/Problems'
 import Paths from './components/Paths/Paths'
-import Products from './components/Products/Products'
-import DigitalProducts from './components/DigitalProducts/DigitalProducts'
 import Process from './components/Process/Process'
 import About from './components/About/About'
-import Portfolio from './components/Portfolio/Portfolio'
 import OrderBuilder from './components/OrderBuilder/OrderBuilder'
 import Footer from './components/Footer/Footer'
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -56,7 +52,7 @@ function App({ pathname: pathnameProp }) {
   if (service) return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ServicePage service={service} /></>
   if (campaign) return <CampaignPage campaign={campaign} />
   if (pathname !== '/') return <NotFound />
-  return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><Caretaker /><CheckupCallout /><Problems /><Paths /><Products /><DigitalProducts /><Process /><About /><Portfolio /><OrderBuilder /></main><a className="floating-contact" href={`https://wa.me/${siteConfig.whatsappNumber}?text=Olá! Vim pelo site da Ronas Tech e quero conversar sobre meu negócio.`} target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Ronas Tech pelo WhatsApp"><span className="floating-contact__brand" aria-hidden="true"><img src="/whatsapp.svg" alt="" width="25" height="25" /></span><span className="floating-contact__copy"><small>Fale pelo</small><strong>WhatsApp</strong></span></a><Footer /></>
+  return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><Caretaker /><Problems /><Paths /><Process /><About /><OrderBuilder /></main><a className="floating-contact" href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Quero deixar meu PC ou notebook mais rápido com atendimento remoto.')}`} target="_blank" rel="noopener noreferrer" aria-label="Pedir otimização remota pelo WhatsApp"><span className="floating-contact__brand" aria-hidden="true"><img src="/whatsapp.svg" alt="" width="25" height="25" /></span><span className="floating-contact__copy"><small>Agende pelo</small><strong>WhatsApp</strong></span></a><Footer /></>
 }
 
 export default App

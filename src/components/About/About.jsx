@@ -4,9 +4,9 @@ import styles from './About.module.css'
 
 const facts = [
   ['670h', 'Formação Full Stack pelo SENAI'],
-  ['4', 'Projetos públicos em destaque'],
+  ['TI', 'Experiência com suporte e sistemas'],
   ['Brasil', 'Atendimento remoto e direto'],
-  ['Ponta a ponta', 'Do diagnóstico à publicação'],
+  ['Ponta a ponta', 'Do diagnóstico à orientação final'],
 ]
 
 function About() {
@@ -15,20 +15,20 @@ function About() {
       <div className={styles.container}>
         <div className={styles.content}>
           <p className={styles.eyebrow}>Quem está por trás</p>
-          <h2 id="about-title">Você fala diretamente com quem entende e constrói.</h2>
-          <p className={styles.lead}>A Ronas Tech é conduzida por Ronael Moura, desenvolvedor Full Stack com formação pelo SENAI e experiência em suporte de TI. O mesmo profissional que entende o problema planeja, desenvolve, testa e acompanha a publicação.</p>
-          <p>Isso reduz ruído, deixa as decisões mais claras e mantém o projeto proporcional ao que o seu negócio realmente precisa.</p>
+          <h2 id="about-title">Você fala diretamente com quem entende de computadores e sistemas.</h2>
+          <p className={styles.lead}>A Ronas Tech é conduzida por Ronael Moura, profissional de tecnologia com formação Full Stack pelo SENAI e experiência em suporte de TI.</p>
+          <p>O atendimento combina diagnóstico cuidadoso, explicação em linguagem simples e ajustes proporcionais ao que o seu computador realmente precisa.</p>
           <div className={styles.actions}>
-            <a className={styles.primary} href="#pedido">Conversar sobre meu projeto <span aria-hidden="true">→</span></a>
+            <a className={styles.primary} href="#pedido">Solicitar uma avaliação <span aria-hidden="true">→</span></a>
             <a className={styles.secondary} href={siteConfig.github} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink('github')}>Ver trabalho no GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <div className={styles.proof} aria-label="Informações profissionais">
-          <div className={styles.proofHeader}><span>Ronael Moura</span><strong>Full Stack Developer</strong><small>Tianguá, Ceará · projetos para todo o Brasil</small></div>
+          <div className={styles.proofHeader}><span>Ronael Moura</span><strong>Suporte de TI e tecnologia</strong><small>Tianguá, Ceará · atendimento remoto para todo o Brasil</small></div>
           <dl className={styles.factGrid}>
             {facts.map(([value, label]) => <div key={label}><dt>{value}</dt><dd>{label}</dd></div>)}
           </dl>
-          <div className={styles.stack}><span>React</span><span>Node.js</span><span>Express</span><span>MySQL</span><span>Docker</span></div>
+          <div className={styles.stack}><span>Windows</span><span>Desempenho</span><span>Segurança</span><span>Suporte remoto</span></div>
         </div>
       </div>
     </section>
