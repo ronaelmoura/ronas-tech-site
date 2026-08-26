@@ -3,10 +3,10 @@ import { siteConfig } from '../../config/siteConfig'
 import styles from './Navbar.module.css'
 
 const navigationItems = [
-  { label: 'Serviços', href: '#servicos' },
+  { label: 'Loja', href: '#loja' },
+  { label: 'Problemas atendidos', href: '#problemas' },
   { label: 'Como funciona', href: '#processo' },
   { label: 'Quem atende', href: '#sobre' },
-  { label: 'Contato', href: '#pedido' },
 ]
 
 function Navbar() {
@@ -49,7 +49,7 @@ function Navbar() {
       <div className={`${styles.menuBackdrop} ${isMenuOpen ? styles.open : ''}`} onClick={closeMenu} aria-hidden="true" />
       <div id="main-navigation" className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
         <ul className={styles.links}>{navigationItems.map(({ label, href }, index) => <li key={href}><a ref={index === 0 ? firstLinkRef : undefined} className={styles.link} href={href} onClick={closeMenu}>{label}</a></li>)}</ul>
-        <a className={styles.cta} href="#pedido" onClick={closeMenu}>Falar com Ronael</a>
+        <a className={styles.cta} href="#loja" onClick={closeMenu}>Montar pedido</a>
       </div>
       <button ref={menuButtonRef} className={`${styles.menuButton} ${isMenuOpen ? styles.open : ''}`} type="button" aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'} aria-controls="main-navigation" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((isOpen) => !isOpen)}><span /><span /><span /></button>
     </nav>
