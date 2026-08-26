@@ -1,11 +1,18 @@
 import styles from './Paths.module.css'
 
-const paths = [
-  { title: 'Otimização de desempenho', text: 'Revisão da inicialização, programas em segundo plano, espaço e configurações do Windows.', result: 'Um computador mais leve e responsivo para as tarefas do dia a dia.', links: [['Pedir avaliação', '#pedido']] },
-  { title: 'Limpeza e organização', text: 'Remoção de arquivos temporários, programas desnecessários e ajustes que liberam recursos.', result: 'Mais espaço e menos processos consumindo o computador sem necessidade.', links: [['Pedir avaliação', '#pedido']] },
-  { title: 'Segurança e atualizações', text: 'Verificação de softwares indesejados, atualizações do sistema e orientações de uso seguro.', result: 'Sistema revisado e recomendações simples para evitar novos problemas.', links: [['Pedir avaliação', '#pedido']] },
-  { title: 'Preparação para trabalho ou estudo', text: 'Ajustes de navegador, programas essenciais, impressora e ferramentas de produtividade.', result: 'O computador pronto para sua rotina, com o que você realmente utiliza.', links: [['Pedir avaliação', '#pedido']] },
+const supportServices = [
+  { title: 'Otimização de PC e notebook', text: 'Diagnóstico de lentidão, revisão da inicialização, limpeza, atualizações e ajustes do Windows.', result: 'Um computador mais leve, seguro e responsivo para sua rotina.' },
+  { title: 'Suporte técnico remoto', text: 'Instalação de programas, configuração de navegador, e-mail, impressora, backup e orientação de uso.', result: 'Problemas resolvidos sem sair de casa e com acompanhamento durante o acesso.' },
 ]
 
-function Paths() { return <section id="servicos" className={`${styles.section} reveal`} aria-labelledby="paths-title"><div className={styles.container}><header><p className={styles.eyebrow}>Serviços feitos remotamente</p><h2 id="paths-title">O que pode ser otimizado no seu PC ou notebook.</h2></header><div className={styles.grid}>{paths.map((path) => <article className={styles.card} key={path.title}><h3>{path.title}</h3><p>{path.text}</p><strong>{path.result}</strong><div>{path.links.map(([label, href]) => <a href={href} key={href}>Quero este serviço <span>{label}</span><b aria-hidden="true">↗</b></a>)}</div></article>)}</div></div></section> }
+const developmentServices = [
+  { title: 'Sites e landing pages', text: 'Páginas profissionais, responsivas e preparadas para apresentar sua oferta e gerar contatos.', result: 'Uma presença digital clara e conectada ao WhatsApp.' },
+  { title: 'Sistemas web sob medida', text: 'Painéis, cadastros, pedidos, clientes, orçamentos e ferramentas acessíveis pelo navegador.', result: 'Um sistema proporcional à rotina real do seu negócio.' },
+  { title: 'APIs e integrações', text: 'Conexão entre sistemas, serviços externos, bancos de dados e aplicações já utilizadas.', result: 'Informações circulando com menos trabalho manual e retrabalho.' },
+  { title: 'Automações e manutenção', text: 'Automação de tarefas, correção de bugs, melhorias de desempenho e evolução de projetos existentes.', result: 'Processos mais rápidos e soluções digitais mantidas em funcionamento.' },
+]
+
+function ServiceCard({ service, cta }) { return <article className={styles.card}><h3>{service.title}</h3><p>{service.text}</p><strong>{service.result}</strong><a href="#pedido">{cta}<span>WhatsApp</span></a></article> }
+
+function Paths() { return <section id="servicos" className={`${styles.section} reveal`} aria-labelledby="paths-title"><div className={styles.container}><header><p className={styles.eyebrow}>Duas áreas de atendimento</p><h2 id="paths-title">Suporte para sua máquina. Desenvolvimento para suas ideias.</h2></header><div className={styles.group}><h3 className={styles.groupTitle}>Suporte e otimização remota</h3><p className={styles.groupIntro}>Para pessoas e empresas que precisam recuperar desempenho, configurar ferramentas ou resolver problemas do computador.</p><div className={`${styles.grid} ${styles.supportGrid}`}>{supportServices.map((service) => <ServiceCard service={service} cta="Quero suporte remoto" key={service.title} />)}</div></div><div id="desenvolvimento" className={styles.group}><h3 className={styles.groupTitle}>Desenvolvimento Full Stack</h3><p className={styles.groupIntro}>Para negócios que precisam criar, integrar ou melhorar soluções digitais.</p><div className={styles.grid}>{developmentServices.map((service) => <ServiceCard service={service} cta="Quero uma solução digital" key={service.title} />)}</div></div></div></section> }
 export default Paths
