@@ -49,6 +49,13 @@ const services = [
   },
 ]
 
+const quickIssues = [
+  ['Está lento ou travando', 'otimizacao'],
+  ['Aparecem anúncios', 'seguranca'],
+  ['Programa não abre', 'configuracao'],
+  ['Não sei o que é', 'diagnostico'],
+]
+
 function ServiceCard({ service, selected, onToggle }) {
   return <article className={`${styles.card} ${service.featured ? styles.featured : ''} ${selected ? styles.selected : ''}`}>
     <div className={styles.cardTop}><span className={styles.category}>{service.category}</span>{selected ? <span className={styles.selectedLabel}>Adicionado</span> : null}</div>
@@ -67,6 +74,10 @@ function RemoteSupportStore() {
     setSelectedIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id])
   }
 
+  function chooseIssue(id) {
+    setSelectedIds((current) => current.includes(id) ? current : [...current, id])
+  }
+
   function sendOrder() {
     if (selectedServices.length === 0) return
     const list = selectedServices.map((service, index) => `${index + 1}. ${service.title}`).join('\n')
@@ -80,6 +91,8 @@ function RemoteSupportStore() {
   return <section id="loja" className={`${styles.section} reveal`} aria-labelledby="store-title">
     <div className={styles.container}>
       <header className={styles.heading}><div><p className={styles.eyebrow}>Loja de serviços remotos</p><h2 id="store-title">Escolha o suporte que você precisa.</h2><p>Adicione um ou mais serviços ao pedido. O atendimento continua pelo WhatsApp, onde o problema é avaliado antes da confirmação do valor.</p></div><div className={styles.safety}><strong>Atendimento acompanhado</strong><span>Você vê o que está sendo feito e pode encerrar o acesso remoto quando quiser.</span></div></header>
+      <div className="quick-pick" aria-labelledby="quick-pick-title"><div><small>AJUDA PARA ESCOLHER</small><strong id="quick-pick-title">O que está acontecendo?</strong></div><div>{quickIssues.map(([label, id]) => <button type="button" key={label} aria-pressed={selectedIds.includes(id)} onClick={() => chooseIssue(id)}>{label}<span aria-hidden="true">+</span></button>)}</div></div>
+      <p className="selection-status" aria-live="polite">{selectedServices.length > 0 ? `${selectedServices.length} ${selectedServices.length === 1 ? 'serviço selecionado' : 'serviços selecionados'}. Revise o pedido ao lado.` : 'Nenhum serviço selecionado.'}</p>
       <div className={styles.layout}>
         <div className={styles.grid}>{services.map((service) => <ServiceCard key={service.id} service={service} selected={selectedIds.includes(service.id)} onToggle={toggleService} />)}</div>
         <aside className={styles.order} aria-labelledby="order-summary-title">

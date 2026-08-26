@@ -1,17 +1,24 @@
-import styles from './Hero.module.css'
 import { siteConfig } from '../../config/siteConfig'
 import { trackExternalLink, withCampaign } from '../../utils/analytics'
 import { useMagnetic, useTilt } from '../../motion/hooks'
 import { useHeroIntro } from '../../motion/scroll'
+import styles from './Hero.module.css'
+
+const checks = ['Sistema Windows', 'Inicialização', 'Armazenamento', 'Segurança básica']
+
+function DiagnosticConsole() {
+  const consoleRef = useTilt(4)
+  return <div ref={consoleRef} className={`${styles.console} tilt`}><div className={styles.consoleBar}><div><i /><i /><i /></div><span>diagnostico.ronastech</span><strong><b /> sessão segura</strong></div><div className={styles.consoleBody}><div className={styles.consoleHeading}><div><small>DIAGNÓSTICO REMOTO</small><h2>Entender antes de corrigir.</h2></div><span>Você acompanha</span></div><div className={styles.checks}>{checks.map((label, index) => <div className={styles.check} key={label} style={{ '--delay': `${index * 1.15}s` }}><span className={styles.checkIcon}>✓</span><strong>{label}</strong><small>analisando</small></div>)}</div><div className={styles.terminal}><span>&gt; suporte iniciado com sua autorização</span><span>&gt; nenhum valor cobrado antes da avaliação</span><span className={styles.prompt}>&gt; <i /></span></div></div><div className={styles.scanline} aria-hidden="true" /></div>
+}
 
 function Hero() {
   useHeroIntro()
   const primaryRef = useMagnetic(14)
   const secondaryRef = useMagnetic(14)
-  const phoneRef = useTilt(6)
-  const message = withCampaign('Olá, Ronael! Quero otimizar meu PC ou notebook por atendimento remoto.')
+  const message = withCampaign('Olá, Ronael! Preciso de suporte remoto para meu PC ou notebook.')
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`
   function openWhatsApp(event) { event.preventDefault(); window.open(whatsappUrl, '_blank', 'noopener,noreferrer'); trackExternalLink('hero_whatsapp', whatsappUrl) }
-  return <section id="inicio" className={styles.hero} aria-labelledby="hero-title"><div className={styles.glow} aria-hidden="true" /><div className={styles.container}><div className={styles.content}><p className={`${styles.eyebrow} hero-eyebrow-anim`}><span aria-hidden="true" />Loja de suporte técnico remoto</p><div className="hero-mask"><h1 id="hero-title" className={styles.title}>Resolva problemas do seu <span>PC ou notebook</span> sem sair de casa.</h1></div><p className={`${styles.description} hero-desc-anim`}>Escolha o serviço, monte seu pedido e fale diretamente com Ronael pelo WhatsApp. Atendimento remoto para lentidão, travamentos, configurações, segurança e suporte do dia a dia.</p><div className={`${styles.actions} hero-actions-anim`}><a ref={primaryRef} className={styles.primaryButton} href="#loja">Escolher um serviço</a><a ref={secondaryRef} className={styles.secondaryButton} href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={openWhatsApp}>Explicar meu problema</a></div><p className={`${styles.proof} hero-actions-anim`}>Atendimento remoto para todo o Brasil · Diagnóstico antes da confirmação do valor</p></div><div className={`${styles.visual} hero-visual-anim`} aria-label="Pedido de suporte técnico remoto" role="img"><div ref={phoneRef} className={`${styles.phone} tilt`}><div className={styles.phoneBar}><span /><strong>Pedido de suporte</strong><small>online</small></div><div className={styles.chat}><div className={styles.message}>Meu notebook está lento e demora para abrir os programas.</div><div className={`${styles.message} ${styles.reply}`}>Vou entender os sintomas e confirmar o que pode ser resolvido remotamente.</div><div className={styles.labels}><span>Diagnóstico</span><span>Remoto</span></div><div className={styles.summary}><small>PEDIDO MONTADO</small><strong>Otimização completa</strong><span>Valor confirmado após avaliação</span></div></div><div className={styles.phoneInput}>Atendimento acompanhado <b>✓</b></div></div></div></div></section>
+  return <section id="inicio" className={styles.hero} aria-labelledby="hero-title"><div className={styles.glow} aria-hidden="true" /><div className={styles.container}><div className={styles.content}><p className={`${styles.eyebrow} hero-eyebrow-anim`}><span aria-hidden="true" />Suporte remoto para Windows · todo o Brasil</p><div className="hero-mask"><h1 id="hero-title" className={styles.title}>Seu computador volta a <span>acompanhar sua rotina.</span></h1></div><p className={`${styles.description} hero-desc-anim`}>PC lento, travando, com anúncios ou programa que não abre? Eu analiso o problema, explico sem termos complicados e confirmo o valor antes de começar.</p><div className={`${styles.actions} hero-actions-anim`}><a ref={primaryRef} className={styles.primaryButton} href="#loja">Ver serviços <span aria-hidden="true">→</span></a><a ref={secondaryRef} className={styles.secondaryButton} href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={openWhatsApp}>Explicar meu problema</a></div><ul className={`${styles.trustList} hero-actions-anim`}><li>Você acompanha tudo pela tela</li><li>Atendimento direto com Ronael</li><li>Valor combinado antes do serviço</li></ul></div><div className={`${styles.visual} hero-visual-anim`} role="img" aria-label="Painel ilustrativo de diagnóstico remoto acompanhado"><DiagnosticConsole /></div></div></section>
 }
+
 export default Hero

@@ -3,10 +3,10 @@ import { siteConfig } from '../../config/siteConfig'
 import styles from './Navbar.module.css'
 
 const navigationItems = [
-  { label: 'Loja', href: '#loja' },
-  { label: 'Problemas atendidos', href: '#problemas' },
+  { label: 'Problemas', href: '#problemas' },
+  { label: 'Serviços', href: '#loja' },
   { label: 'Como funciona', href: '#processo' },
-  { label: 'Quem atende', href: '#sobre' },
+  { label: 'Dúvidas', href: '#duvidas' },
 ]
 
 function Navbar() {

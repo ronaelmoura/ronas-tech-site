@@ -5,6 +5,7 @@ import Problems from './components/Problems/Problems'
 import RemoteSupportStore from './components/RemoteSupportStore/RemoteSupportStore'
 import Process from './components/Process/Process'
 import About from './components/About/About'
+import FAQ from './components/FAQ/FAQ'
 import Footer from './components/Footer/Footer'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfUse from './pages/TermsOfUse'
@@ -51,7 +52,7 @@ function App({ pathname: pathnameProp }) {
   if (service) return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ServicePage service={service} /></>
   if (campaign) return <CampaignPage campaign={campaign} />
   if (pathname !== '/') return <NotFound />
-  return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><RemoteSupportStore /><Problems /><Process /><Caretaker /><About /></main><a className="floating-contact" href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Preciso de suporte técnico remoto para meu computador.')}`} target="_blank" rel="noopener noreferrer" aria-label="Pedir suporte técnico remoto pelo WhatsApp"><span className="floating-contact__brand" aria-hidden="true"><img src="/whatsapp.svg" alt="" width="25" height="25" /></span><span className="floating-contact__copy"><small>Suporte pelo</small><strong>WhatsApp</strong></span></a><Footer /></>
+  return <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><Problems /><RemoteSupportStore /><Process /><Caretaker /><About /><FAQ /></main><a className="floating-contact" href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Preciso de suporte técnico remoto para meu computador.')}`} target="_blank" rel="noopener noreferrer" aria-label="Pedir suporte técnico remoto pelo WhatsApp"><span className="floating-contact__brand" aria-hidden="true"><img src="/whatsapp.svg" alt="" width="25" height="25" /></span><span className="floating-contact__copy"><small>Suporte pelo</small><strong>WhatsApp</strong></span></a><Footer /></>
 }
 
 export default App
