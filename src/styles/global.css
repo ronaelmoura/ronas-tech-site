@@ -230,3 +230,46 @@ body.has-custom-cursor, body.has-custom-cursor * { cursor: none; }
   .cursor-dot, .cursor-ring { display: none !important; }
   body.has-custom-cursor, body.has-custom-cursor * { cursor: auto; }
 }
+
+/* Fundos fotográficos com contraste preservado para leitura */
+#inicio {
+  background-image:
+    radial-gradient(circle, rgb(67 199 255 / 18%) 0 1px, transparent 2px),
+    linear-gradient(90deg, rgb(5 10 16 / 97%) 0%, rgb(5 10 16 / 86%) 49%, rgb(5 10 16 / 48%) 100%),
+    url('/images/fundos/hero-escritorio.png');
+  background-position: 0 0, center, center;
+  background-size: 96px 96px, cover, cover;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+
+#loja {
+  background-image:
+    linear-gradient(rgb(10 20 31 / 93%), rgb(10 20 31 / 96%)),
+    url('/images/fundos/servicos-componentes.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#sobre {
+  background-image:
+    radial-gradient(circle at 78% 50%, rgb(9 20 31 / 28%), rgb(9 20 31 / 88%) 47%, #09141f 76%),
+    url('/images/fundos/brasil-conectado.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body > #root > footer {
+  background-image:
+    linear-gradient(rgb(5 10 16 / 86%), rgb(5 10 16 / 93%)),
+    url('/images/fundos/rodape-bancada.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 700px) {
+  #inicio { background-position: 0 0, 62% center, 62% center; }
+  #sobre { background-position: 66% center; }
+}
