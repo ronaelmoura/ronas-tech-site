@@ -12,7 +12,7 @@ const services = [
     description: 'Análise inicial para identificar possíveis causas de lentidão, travamentos e erros do Windows.',
     includes: ['Verificação do sistema', 'Análise dos sintomas', 'Orientação sobre o próximo passo'],
     audience: 'personal',
-    price: 'R$ 49',
+    price: 'R$ 39',
   },
   {
     id: 'otimizacao',
@@ -22,7 +22,7 @@ const services = [
     includes: ['Limpeza de arquivos temporários', 'Revisão de programas desnecessários', 'Ajustes de desempenho'],
     featured: true,
     audience: 'personal',
-    price: 'R$ 119',
+    price: 'R$ 109',
   },
   {
     id: 'seguranca',
@@ -31,7 +31,7 @@ const services = [
     description: 'Verificação de anúncios, extensões, programas suspeitos e configurações básicas de segurança.',
     includes: ['Revisão de programas instalados', 'Verificação do navegador', 'Orientações de segurança'],
     audience: 'personal',
-    price: 'R$ 119',
+    price: 'R$ 109',
   },
   {
     id: 'windows',
@@ -40,7 +40,7 @@ const services = [
     description: 'Diagnóstico de atualizações com falha, mensagens de erro e recursos do sistema que pararam de funcionar.',
     includes: ['Análise dos erros', 'Reparo de componentes do sistema', 'Teste após a correção'],
     audience: 'personal',
-    price: 'R$ 129',
+    price: 'R$ 119',
   },
   {
     id: 'programas',
@@ -49,7 +49,7 @@ const services = [
     description: 'Instalação, atualização e correção de programas usados no trabalho, estudo ou rotina pessoal.',
     includes: ['Instalação acompanhada', 'Correção de falhas', 'Atualização de drivers compatíveis'],
     audience: 'personal',
-    price: 'R$ 89',
+    price: 'R$ 79',
   },
   {
     id: 'backup',
@@ -58,7 +58,7 @@ const services = [
     description: 'Organização de documentos e cópia para outro computador, armazenamento externo ou nuvem.',
     includes: ['Análise do que será protegido', 'Organização de pastas', 'Transferência acompanhada'],
     audience: 'personal',
-    price: 'R$ 129',
+    price: 'R$ 119',
   },
   {
     id: 'microsoft-365',
@@ -67,7 +67,7 @@ const services = [
     description: 'Configuração e correção das ferramentas Microsoft usadas por profissionais e pequenas equipes.',
     includes: ['Configuração de conta', 'Correção de sincronização', 'Orientação de uso'],
     audience: 'business',
-    price: 'R$ 119',
+    price: 'R$ 109',
   },
   {
     id: 'contadores',
@@ -76,7 +76,7 @@ const services = [
     description: 'Ajuda com Windows, Office, programas de escritório, arquivos e ferramentas de produtividade.',
     includes: ['Atendimento direto', 'Diagnóstico de software', 'Orientação após o serviço'],
     audience: 'business',
-    price: 'R$ 149',
+    price: 'R$ 139',
   },
   {
     id: 'suporte-mensal',
@@ -85,7 +85,7 @@ const services = [
     description: 'Atendimento continuado para profissionais e pequenos negócios que precisam de suporte no dia a dia.',
     includes: ['Avaliação da necessidade', 'Plano de atendimento', 'Acompanhamento remoto'],
     audience: 'business',
-    price: 'R$ 299/mês',
+    price: 'R$ 289/mês',
   },
 ]
 
