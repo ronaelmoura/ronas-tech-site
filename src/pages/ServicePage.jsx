@@ -25,6 +25,13 @@ const processSteps = [
   },
 ]
 
+const supportProcessSteps = [
+  { title: 'Conte o problema', description: 'Explique pelo WhatsApp o que aparece na tela, quando começou e o que você já tentou.' },
+  { title: 'Receba a avaliação', description: 'Confirmamos se o caso pode ser atendido remotamente e informamos o preço antes de começar.' },
+  { title: 'Autorize o acesso', description: 'Você inicia a sessão temporária, acompanha tudo pela tela e pode encerrar quando quiser.' },
+  { title: 'Confira o resultado', description: 'Testamos o funcionamento e você recebe um resumo com as orientações finais.' },
+]
+
 const serviceLinks = [
   { href: '/criacao-de-sites', label: 'Criação de sites' },
   { href: '/landing-pages', label: 'Landing pages' },
@@ -34,6 +41,11 @@ const serviceLinks = [
   },
   { href: '/sistemas-web', label: 'Sistemas web' },
   { href: '/manutencao-de-sites', label: 'Manutenção de sites' },
+  { href: '/computador-lento', label: 'Computador lento' },
+  { href: '/remocao-de-virus', label: 'Remoção de vírus' },
+  { href: '/corrigir-erros-windows', label: 'Erros do Windows' },
+  { href: '/suporte-tecnico-remoto', label: 'Suporte técnico remoto' },
+  { href: '/suporte-ti-para-contadores', label: 'Suporte para contadores' },
 ]
 
 function setMetaContent(selector, content) {
@@ -41,6 +53,8 @@ function setMetaContent(selector, content) {
 }
 
 function ServicePage({ service }) {
+  const isSupport = service.kind === 'support'
+  const activeProcess = isSupport ? supportProcessSteps : processSteps
   useEffect(() => {
     const pageUrl = `${siteConfig.siteUrl}${service.slug}`
     const canonical = document.querySelector('link[rel="canonical"]')
@@ -63,25 +77,30 @@ function ServicePage({ service }) {
     structuredData.type = 'application/ld+json'
     structuredData.textContent = JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'Service',
-      name: service.eyebrow,
-      description: service.metaDescription,
-      url: pageUrl,
-      areaServed: {
-        '@type': 'Country',
-        name: 'Brasil',
-      },
-      provider: {
-        '@type': 'Organization',
-        name: siteConfig.companyName,
-        url: siteConfig.siteUrl,
-        email: siteConfig.email,
-        sameAs: [
-          siteConfig.github,
-          siteConfig.linkedin,
-          siteConfig.instagram,
-        ],
-      },
+      '@graph': [
+        {
+          '@type': 'Service',
+          name: service.eyebrow,
+          description: service.metaDescription,
+          url: pageUrl,
+          areaServed: { '@type': 'Country', name: 'Brasil' },
+          provider: {
+            '@type': 'Organization',
+            name: siteConfig.companyName,
+            url: siteConfig.siteUrl,
+            email: siteConfig.email,
+            sameAs: [siteConfig.github, siteConfig.linkedin, siteConfig.instagram],
+          },
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: service.faq.map(({ question, answer }) => ({
+            '@type': 'Question',
+            name: question,
+            acceptedAnswer: { '@type': 'Answer', text: answer },
+          })),
+        },
+      ],
     })
     if (!existingStructuredData) document.head.appendChild(structuredData)
     window.scrollTo(0, 0)
@@ -92,7 +111,7 @@ function ServicePage({ service }) {
   }, [service])
 
   const whatsappMessage = encodeURIComponent(
-    `Olá! Acessei a página de ${service.eyebrow.toLowerCase()} da Ronas Tech e gostaria de solicitar um orçamento.`,
+    `Olá! Acessei a página de ${service.eyebrow.toLowerCase()} da Ronas Tech e gostaria de ${isSupport ? 'explicar meu problema e solicitar atendimento' : 'solicitar um orçamento'}.`,
   )
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${whatsappMessage}`
 
@@ -125,7 +144,7 @@ function ServicePage({ service }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Solicitar orçamento
+                {isSupport ? 'Explicar meu problema' : 'Solicitar orçamento'}
                 <span aria-hidden="true">→</span>
               </a>
               <a className={styles.secondaryAction} href="#como-funciona">
@@ -133,9 +152,9 @@ function ServicePage({ service }) {
               </a>
             </div>
             <ul className={styles.trustList} aria-label="Diferenciais do atendimento">
-              <li>Atendimento on-line</li>
-              <li>Escopo transparente</li>
-              <li>Solução responsiva</li>
+              <li>{isSupport ? 'Atendimento remoto nacional' : 'Atendimento on-line'}</li>
+              <li>{isSupport ? 'Você acompanha o acesso' : 'Escopo transparente'}</li>
+              <li>{isSupport ? 'Valor confirmado antes' : 'Solução responsiva'}</li>
             </ul>
           </div>
         </section>
@@ -163,12 +182,10 @@ function ServicePage({ service }) {
             <div>
               <header className={styles.sectionHeading}>
                 <p>O que pode estar incluído</p>
-                <h2>Entrega definida antes do início</h2>
+                <h2>{isSupport ? 'O que será verificado e realizado' : 'Entrega definida antes do início'}</h2>
               </header>
               <p className={styles.sectionText}>
-                Cada projeto recebe um escopo próprio. Antes de começar, você sabe
-                quais itens serão desenvolvidos e quais são as responsabilidades de
-                cada parte.
+                {isSupport ? 'O atendimento é proporcional ao problema encontrado. Antes de qualquer alteração, você sabe o que será feito e confirma se deseja continuar.' : 'Cada projeto recebe um escopo próprio. Antes de começar, você sabe quais itens serão desenvolvidos e quais são as responsabilidades de cada parte.'}
               </p>
             </div>
             <ul className={styles.checkList}>
@@ -190,10 +207,10 @@ function ServicePage({ service }) {
           <div className={styles.container}>
             <header className={styles.sectionHeading}>
               <p>Como funciona</p>
-              <h2 id="process-title">Do primeiro contato até a publicação</h2>
+              <h2 id="process-title">{isSupport ? 'Do primeiro contato até o computador testado' : 'Do primeiro contato até a publicação'}</h2>
             </header>
             <ol className={styles.processGrid}>
-              {processSteps.map((step, index) => (
+              {activeProcess.map((step, index) => (
                 <li key={step.title}>
                   <span>{String(index + 1).padStart(2, '0')}</span>
                   <h3>{step.title}</h3>
@@ -208,7 +225,7 @@ function ServicePage({ service }) {
           <div className={`${styles.container} ${styles.audience}`}>
             <div>
               <p className={styles.eyebrow}>Para quem é</p>
-              <h2>Este serviço pode ajudar o seu negócio?</h2>
+              <h2>{isSupport ? 'Este atendimento serve para o seu caso?' : 'Este serviço pode ajudar o seu negócio?'}</h2>
             </div>
             <p>{service.audience}</p>
           </div>
@@ -218,7 +235,7 @@ function ServicePage({ service }) {
           <div className={`${styles.container} ${styles.faqLayout}`}>
             <header className={styles.sectionHeading}>
               <p>Dúvidas frequentes</p>
-              <h2 id="faq-title">Antes de solicitar um orçamento</h2>
+              <h2 id="faq-title">{isSupport ? 'Antes de permitir o acesso remoto' : 'Antes de solicitar um orçamento'}</h2>
             </header>
             <div className={styles.faqList}>
               {service.faq.map((item) => (
@@ -233,7 +250,7 @@ function ServicePage({ service }) {
 
         <nav className={styles.related} aria-label="Outros serviços da Ronas Tech">
           <div className={styles.container}>
-            <p>Outras formas de colocar a tecnologia para trabalhar</p>
+            <p>{isSupport ? 'Outros problemas atendidos remotamente' : 'Outras formas de colocar a tecnologia para trabalhar'}</p>
             <div className={styles.relatedLinks}>
               {serviceLinks
                 .filter(({ href }) => href !== `/${service.slug}`)
@@ -248,15 +265,15 @@ function ServicePage({ service }) {
 
         <section className={styles.ctaSection}>
           <div className={styles.ctaContent}>
-            <p>Vamos conversar sobre sua necessidade?</p>
-            <h2>Conte o que sua empresa precisa e receba uma proposta clara.</h2>
+            <p>{isSupport ? 'Precisa de ajuda agora?' : 'Vamos conversar sobre sua necessidade?'}</p>
+            <h2>{isSupport ? 'Conte o que aparece na tela e receba uma orientação clara.' : 'Conte o que sua empresa precisa e receba uma proposta clara.'}</h2>
             <a
               className={styles.primaryAction}
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Falar com a Ronas Tech
+              {isSupport ? 'Pedir suporte pelo WhatsApp' : 'Falar com a Ronas Tech'}
               <span aria-hidden="true">→</span>
             </a>
           </div>

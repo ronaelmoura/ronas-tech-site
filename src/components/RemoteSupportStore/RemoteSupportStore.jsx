@@ -13,6 +13,7 @@ const services = [
     includes: ['Verificação do sistema', 'Análise dos sintomas', 'Orientação sobre o próximo passo'],
     audience: 'personal',
     price: 'R$ 29',
+    page: '/suporte-tecnico-remoto',
   },
   {
     id: 'otimizacao',
@@ -23,6 +24,7 @@ const services = [
     featured: true,
     audience: 'personal',
     price: 'R$ 109',
+    page: '/computador-lento',
   },
   {
     id: 'seguranca',
@@ -32,6 +34,7 @@ const services = [
     includes: ['Revisão de programas instalados', 'Verificação do navegador', 'Orientações de segurança'],
     audience: 'personal',
     price: 'R$ 109',
+    page: '/remocao-de-virus',
   },
   {
     id: 'windows',
@@ -41,6 +44,7 @@ const services = [
     includes: ['Análise dos erros', 'Reparo de componentes do sistema', 'Teste após a correção'],
     audience: 'personal',
     price: 'R$ 119',
+    page: '/corrigir-erros-windows',
   },
   {
     id: 'programas',
@@ -77,6 +81,7 @@ const services = [
     includes: ['Atendimento direto', 'Diagnóstico de software', 'Orientação após o serviço'],
     audience: 'business',
     price: 'R$ 139',
+    page: '/suporte-ti-para-contadores',
   },
   {
     id: 'suporte-mensal',
@@ -103,6 +108,7 @@ function ServiceCard({ service, selected, onToggle }) {
     <h3>{service.title}</h3>
     <p>{service.description}</p>
     <ul>{service.includes.map((item) => <li key={item}>{item}</li>)}</ul>
+    {service.page ? <a className={conversion.detailsLink} href={service.page}>Entenda este atendimento <span aria-hidden="true">→</span></a> : null}
     <div className={styles.cardFooter}><span><small>A partir de</small><strong>{service.price}</strong></span><button type="button" aria-pressed={selected} onClick={() => onToggle(service.id)}>{selected ? 'Remover do pedido' : 'Adicionar ao pedido'}</button></div>
   </article>
 }

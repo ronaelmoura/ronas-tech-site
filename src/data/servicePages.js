@@ -1,4 +1,7 @@
+import { supportServicePages } from './supportServicePages'
+
 export const servicePages = {
+  ...supportServicePages,
   '/criacao-de-sites': {
     slug: 'criacao-de-sites',
     eyebrow: 'Criação de sites profissionais',
