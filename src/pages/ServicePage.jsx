@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { siteConfig } from '../config/siteConfig'
+import { trackWhatsAppClick } from '../utils/analytics'
 import styles from './ServicePage.module.css'
 import conversion from './ServicePageConversion.module.css'
 
@@ -162,6 +163,7 @@ function ServicePage({ service }) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick(`servico_${service.slug}_hero`)}
               >
                 {service.heroCtaLabel || (service.recurring ? 'Solicitar proposta do plano' : isSupport ? 'Explicar meu problema' : 'Solicitar orçamento')}
                 <span aria-hidden="true">→</span>
@@ -293,6 +295,7 @@ function ServicePage({ service }) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick(`servico_${service.slug}_final`)}
             >
               {service.recurring ? 'Solicitar proposta pelo WhatsApp' : isSupport ? 'Pedir suporte pelo WhatsApp' : 'Falar com a Ronas Tech'}
               <span aria-hidden="true">→</span>

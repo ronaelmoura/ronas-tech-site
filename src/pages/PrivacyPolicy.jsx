@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { siteConfig } from '../config/siteConfig'
+import { trackWhatsAppClick } from '../utils/analytics'
 import styles from './PrivacyPolicy.module.css'
 
 const LAST_UPDATED = '21 de julho de 2026'
@@ -159,6 +160,7 @@ function PrivacyPolicy() {
                 href={`https://wa.me/${siteConfig.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('politica_privacidade')}
               >
                 WhatsApp: {siteConfig.whatsappDisplay}
               </a>

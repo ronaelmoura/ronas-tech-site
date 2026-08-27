@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { siteConfig } from '../config/siteConfig'
+import { trackWhatsAppClick } from '../utils/analytics'
 import styles from './TermsOfUse.module.css'
 
 const LAST_UPDATED = '21 de julho de 2026'
@@ -129,6 +130,7 @@ function TermsOfUse() {
                 href={`https://wa.me/${siteConfig.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('termos_de_uso')}
               >
                 WhatsApp: {siteConfig.whatsappDisplay}
               </a>

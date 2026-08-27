@@ -24,6 +24,7 @@ import { campaignPages } from './data/campaignPages'
 import { servicePages } from './data/servicePages'
 import { spreadsheetProductsByPath } from './data/spreadsheetProducts'
 import { siteConfig } from './config/siteConfig'
+import { trackWhatsAppClick } from './utils/analytics'
 import { Aurora, CursorGlow, ScrollProgress } from './motion/effects'
 import { useScrollReveals, useSmoothScroll } from './motion/scroll'
 
@@ -56,7 +57,7 @@ function App({ pathname: pathnameProp }) {
   else if (service) content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ServicePage service={service} /></>
   else if (campaign) content = <CampaignPage campaign={campaign} />
   else if (pathname !== '/') content = <NotFound />
-  else content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><Problems /><Safety /><TrustBand /><RemoteSupportStore /><Process /><About /><FAQ /></main><a className="floating-contact" href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Preciso de suporte técnico remoto para meu computador.')}`} target="_blank" rel="noopener noreferrer" aria-label="Pedir suporte técnico remoto pelo WhatsApp"><span className="floating-contact__brand" aria-hidden="true"><img src="/whatsapp.svg" alt="" width="25" height="25" /></span><span className="floating-contact__copy"><small>Suporte pelo</small><strong>WhatsApp</strong></span></a><Footer /></>
+  else content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><Problems /><Safety /><TrustBand /><RemoteSupportStore /><Process /><About /><FAQ /></main><a className="floating-contact" href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Preciso de suporte técnico remoto para meu computador.')}`} target="_blank" rel="noopener noreferrer" aria-label="Pedir suporte técnico remoto pelo WhatsApp" onClick={() => trackWhatsAppClick('floating_button')}><span className="floating-contact__brand" aria-hidden="true"><img src="/whatsapp.svg" alt="" width="25" height="25" /></span><span className="floating-contact__copy"><small>Suporte pelo</small><strong>WhatsApp</strong></span></a><Footer /></>
 
   return <>{content}<CookieNotice /></>
 }
