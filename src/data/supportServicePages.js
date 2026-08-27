@@ -90,6 +90,7 @@ export const supportServicePages = {
   },
   '/suporte-ti-para-contadores': {
     kind: 'support',
+    businessOnly: true,
     accounting: true,
     slug: 'suporte-ti-para-contadores',
     eyebrow: 'Suporte de TI para contadores',
@@ -156,6 +157,7 @@ export const supportServicePages = {
   },
   '/plano-mensal-suporte-ti': {
     kind: 'support',
+    businessOnly: true,
     recurring: true,
     slug: 'plano-mensal-suporte-ti',
     eyebrow: 'Plano mensal de suporte de TI',
