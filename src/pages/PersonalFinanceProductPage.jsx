@@ -1,4 +1,5 @@
 import { siteConfig } from '../config/siteConfig'
+import { trackWhatsAppClick } from '../utils/analytics'
 import styles from './PersonalFinanceProductPage.module.css'
 import fixes from './PersonalFinanceProductPageFixes.module.css'
 
@@ -30,14 +31,14 @@ const previews = [
 ]
 
 function BuyButton({ location = 'pagina' }) {
-  return <a className={`${styles.buyButton} ${fixes.buyButton}`} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-location={location}>Quero a minha planilha</a>
+  return <a className={`${styles.buyButton} ${fixes.buyButton}`} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-location={location} onClick={() => trackWhatsAppClick(`financeira_${location}`)}>Quero a minha planilha</a>
 }
 
 function PersonalFinanceProductPage() {
   return <div className={styles.page}>
     <header className={styles.header}>
       <a className={styles.brand} href="/"><img src={siteConfig.logoPath} alt="" width="48" height="45" /><span><strong>Ronas Tech</strong><small>Planilhas inteligentes</small></span></a>
-      <nav aria-label="Navegação da página"><a href="/produtos-digitais">Ver produtos digitais</a><a className={styles.headerCta} href={whatsappUrl} target="_blank" rel="noopener noreferrer">Comprar agora</a></nav>
+      <nav aria-label="Navegação da página"><a href="/produtos-digitais">Ver produtos digitais</a><a className={styles.headerCta} href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('financeira_header')}>Comprar agora</a></nav>
     </header>
 
     <main id="conteudo-principal">

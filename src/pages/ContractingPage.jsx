@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { siteConfig } from '../config/siteConfig'
+import { trackWhatsAppClick } from '../utils/analytics'
 import { contractingServices, getContractingService } from '../data/contractingServices'
 import { createOrderDraft, orderCapabilities } from '../features/contracting/orderModel'
 import styles from './ContractingPage.module.css'
@@ -267,7 +268,7 @@ function ContractingPage() {
                   <div><span>02</span><p><strong>Pagamento seguro</strong>Será adicionado em uma próxima versão, após a confirmação.</p></div>
                   <div><span>03</span><p><strong>Meus projetos</strong>A área de acompanhamento já está prevista na arquitetura.</p></div>
                 </div>
-                <a className={styles.submitButton} href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(orderMessage)}`} target="_blank" rel="noopener noreferrer">
+                <a className={styles.submitButton} href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(orderMessage)}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('contratacao_pre_pedido')}>
                   Enviar pré-pedido pelo WhatsApp <span aria-hidden="true">→</span>
                 </a>
                 <p className={styles.privacyNote}>O WhatsApp abrirá com o resumo preenchido para você revisar antes do envio.</p>
@@ -284,7 +285,7 @@ function ContractingPage() {
             <span className={styles.supportIcon}>💬</span>
             <p>Prefere atendimento humano?</p><strong>Fale diretamente com a Ronas Tech</strong>
             <small>Peça ajuda ou continue a contratação pelo WhatsApp em qualquer etapa.</small>
-            <a href={supportUrl} target="_blank" rel="noopener noreferrer">Falar no WhatsApp <span aria-hidden="true">↗</span></a>
+            <a href={supportUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('contratacao_ajuda')}>Falar no WhatsApp <span aria-hidden="true">↗</span></a>
             <em>Normalmente respondemos em horário comercial.</em>
           </aside>
         </div>

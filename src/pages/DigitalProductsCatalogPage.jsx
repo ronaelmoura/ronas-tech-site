@@ -1,4 +1,5 @@
 import { siteConfig } from '../config/siteConfig'
+import { trackWhatsAppClick } from '../utils/analytics'
 import { spreadsheetProducts } from '../data/spreadsheetProducts'
 import styles from './DigitalProductsCatalogPage.module.css'
 
@@ -45,7 +46,7 @@ function DigitalProductsCatalogPage() {
         </a>)}</div>
       </section>
 
-      <section className={styles.help}><div><p>Não sabe qual escolher?</p><h2>Conte o que você precisa organizar.</h2><span>A Ronas Tech ajuda você a identificar a planilha mais adequada para sua rotina.</span></div><a href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Preciso de ajuda para escolher uma planilha da Ronas Tech.')}`} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a></section>
+      <section className={styles.help}><div><p>Não sabe qual escolher?</p><h2>Conte o que você precisa organizar.</h2><span>A Ronas Tech ajuda você a identificar a planilha mais adequada para sua rotina.</span></div><a href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Preciso de ajuda para escolher uma planilha da Ronas Tech.')}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('catalogo_ajuda')}>Falar no WhatsApp</a></section>
     </main>
 
     <footer className={styles.footer}><a href="/"><img src={siteConfig.logoPath} alt="Ronas Tech" width="43" height="40" /></a><p>© {new Date().getFullYear()} Ronas Tech. Todos os direitos reservados.</p><div><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></footer>
