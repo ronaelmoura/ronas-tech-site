@@ -128,6 +128,8 @@ export function getPageMetadata(pathname) {
       title: service.metaTitle,
       description: service.metaDescription,
       canonical: `${siteConfig.siteUrl}${service.slug}`,
+      ogImage: service.ogImage ? `${siteConfig.siteUrl}${service.ogImage.replace(/^\//, '')}` : undefined,
+      ogImageAlt: service.ogImageAlt,
       structuredData: {
         '@context': 'https://schema.org',
         '@graph': [
@@ -137,6 +139,8 @@ export function getPageMetadata(pathname) {
             description: service.metaDescription,
             url: `${siteConfig.siteUrl}${service.slug}`,
             areaServed: { '@type': 'Country', name: 'Brasil' },
+            audience: service.businessOnly ? { '@type': 'BusinessAudience', audienceType: 'Empresas e profissionais com CNPJ' } : undefined,
+            serviceType: service.businessOnly ? 'Suporte de TI remoto empresarial' : undefined,
             provider: {
               '@type': 'Organization',
               name: siteConfig.companyName,

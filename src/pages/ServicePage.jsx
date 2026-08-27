@@ -54,6 +54,7 @@ const serviceLinks = [
   { href: '/remocao-de-virus', label: 'Remoção de vírus' },
   { href: '/corrigir-erros-windows', label: 'Erros do Windows' },
   { href: '/suporte-tecnico-remoto', label: 'Suporte técnico remoto' },
+  { href: '/suporte-ti-para-empresas', label: 'Suporte de TI para empresas' },
   { href: '/suporte-ti-para-contadores', label: 'Suporte para contadores' },
   { href: '/plano-mensal-suporte-ti', label: 'Plano mensal para empresas' },
 ]
@@ -63,6 +64,13 @@ const supportServicePaths = new Set([
   '/remocao-de-virus',
   '/corrigir-erros-windows',
   '/suporte-tecnico-remoto',
+  '/suporte-ti-para-empresas',
+  '/suporte-ti-para-contadores',
+  '/plano-mensal-suporte-ti',
+])
+
+const businessSupportPaths = new Set([
+  '/suporte-ti-para-empresas',
   '/suporte-ti-para-contadores',
   '/plano-mensal-suporte-ti',
 ])
@@ -73,6 +81,7 @@ function setMetaContent(selector, content) {
 
 function ServicePage({ service }) {
   const isSupport = service.kind === 'support'
+  const isBusinessOnly = Boolean(service.businessOnly)
   const activeProcess = service.recurring ? monthlyProcessSteps : isSupport ? supportProcessSteps : processSteps
   useEffect(() => {
     const pageUrl = `${siteConfig.siteUrl}${service.slug}`
@@ -139,14 +148,14 @@ function ServicePage({ service }) {
       <header className={styles.header}>
         <a
           className={styles.brand}
-          href="/"
+          href={isBusinessOnly ? '/suporte-ti-para-empresas' : '/'}
           aria-label={`${siteConfig.companyName} — página inicial`}
         >
           <img src={siteConfig.logoPath} alt="" width="41" height="38" />
           {siteConfig.companyName}
         </a>
-        <a className={styles.backLink} href="/#servicos">
-          ← Ver todos os serviços
+        <a className={styles.backLink} href={isBusinessOnly ? '#servicos-inclusos' : '/#servicos'}>
+          {isBusinessOnly ? 'Conhecer o atendimento ↓' : '← Ver todos os serviços'}
         </a>
       </header>
 
@@ -174,18 +183,18 @@ function ServicePage({ service }) {
             </div>
             {service.secondaryOffer ? <a className={conversion.secondaryOffer} href={service.secondaryOffer.href}><span>{service.secondaryOffer.label}</span><strong>{service.secondaryOffer.linkLabel} →</strong></a> : null}
             <ul className={styles.trustList} aria-label="Diferenciais do atendimento">
-              <li>{isSupport ? 'Atendimento remoto nacional' : 'Atendimento on-line'}</li>
-              <li>{isSupport ? 'Você acompanha o acesso' : 'Escopo transparente'}</li>
-              <li>{isSupport ? 'Valor confirmado antes' : 'Solução responsiva'}</li>
+              <li>{isBusinessOnly ? 'Exclusivo para empresas' : isSupport ? 'Atendimento remoto nacional' : 'Atendimento on-line'}</li>
+              <li>{isBusinessOnly ? 'Canal para a equipe' : isSupport ? 'Você acompanha o acesso' : 'Escopo transparente'}</li>
+              <li>{isBusinessOnly ? 'Condições em proposta' : isSupport ? 'Valor confirmado antes' : 'Solução responsiva'}</li>
             </ul>
           </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="beneficios-title">
+        <section id="beneficios" className={styles.section} aria-labelledby="beneficios-title">
           <div className={styles.container}>
             <header className={styles.sectionHeading}>
               <p>Benefícios</p>
-              <h2 id="beneficios-title">Uma solução pensada para o seu objetivo</h2>
+              <h2 id="beneficios-title">{isBusinessOnly ? 'TI alinhada à rotina da sua empresa' : 'Uma solução pensada para o seu objetivo'}</h2>
             </header>
             <div className={styles.cardGrid}>
               {service.outcomes.map((outcome) => (
@@ -199,15 +208,15 @@ function ServicePage({ service }) {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.sectionMuted}`}>
+        <section id="servicos-inclusos" className={`${styles.section} ${styles.sectionMuted}`}>
           <div className={`${styles.container} ${styles.split}`}>
             <div>
               <header className={styles.sectionHeading}>
                 <p>O que pode estar incluído</p>
-                <h2>{isSupport ? 'O que será verificado e realizado' : 'Entrega definida antes do início'}</h2>
+                <h2>{isBusinessOnly ? 'O que o plano empresarial pode incluir' : isSupport ? 'O que será verificado e realizado' : 'Entrega definida antes do início'}</h2>
               </header>
               <p className={styles.sectionText}>
-                {isSupport ? 'O atendimento é proporcional ao problema encontrado. Antes de qualquer alteração, você sabe o que será feito e confirma se deseja continuar.' : 'Cada projeto recebe um escopo próprio. Antes de começar, você sabe quais itens serão desenvolvidos e quais são as responsabilidades de cada parte.'}
+                {isBusinessOnly ? 'A cobertura é definida conforme o ambiente de trabalho. Antes da contratação, a empresa recebe uma proposta com máquinas, usuários, canais, horários, limites e responsabilidades.' : isSupport ? 'O atendimento é proporcional ao problema encontrado. Antes de qualquer alteração, você sabe o que será feito e confirma se deseja continuar.' : 'Cada projeto recebe um escopo próprio. Antes de começar, você sabe quais itens serão desenvolvidos e quais são as responsabilidades de cada parte.'}
               </p>
             </div>
             <ul className={styles.checkList}>
@@ -243,21 +252,21 @@ function ServicePage({ service }) {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.sectionMuted}`}>
+        <section id="para-quem" className={`${styles.section} ${styles.sectionMuted}`}>
           <div className={`${styles.container} ${styles.audience}`}>
             <div>
               <p className={styles.eyebrow}>Para quem é</p>
-              <h2>{isSupport ? 'Este atendimento serve para o seu caso?' : 'Este serviço pode ajudar o seu negócio?'}</h2>
+              <h2>{isBusinessOnly ? 'Uma oferta somente para negócios' : isSupport ? 'Este atendimento serve para o seu caso?' : 'Este serviço pode ajudar o seu negócio?'}</h2>
             </div>
             <p>{service.audience}</p>
           </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="faq-title">
+        <section id="duvidas" className={styles.section} aria-labelledby="faq-title">
           <div className={`${styles.container} ${styles.faqLayout}`}>
             <header className={styles.sectionHeading}>
               <p>Dúvidas frequentes</p>
-              <h2 id="faq-title">{isSupport ? 'Antes de permitir o acesso remoto' : 'Antes de solicitar um orçamento'}</h2>
+              <h2 id="faq-title">{isBusinessOnly ? 'Antes de solicitar uma proposta empresarial' : isSupport ? 'Antes de permitir o acesso remoto' : 'Antes de solicitar um orçamento'}</h2>
             </header>
             <div className={styles.faqList}>
               {service.faq.map((item) => (
@@ -270,12 +279,12 @@ function ServicePage({ service }) {
           </div>
         </section>
 
-        <nav className={styles.related} aria-label="Outros serviços da Ronas Tech">
+        <nav className={styles.related} aria-label={isBusinessOnly ? 'Outras soluções empresariais da Ronas Tech' : 'Outros serviços da Ronas Tech'}>
           <div className={styles.container}>
-            <p>{isSupport ? 'Outros problemas atendidos remotamente' : 'Outras formas de colocar a tecnologia para trabalhar'}</p>
+            <p>{isBusinessOnly ? 'Outras soluções para empresas' : isSupport ? 'Outros problemas atendidos remotamente' : 'Outras formas de colocar a tecnologia para trabalhar'}</p>
             <div className={styles.relatedLinks}>
               {serviceLinks
-                .filter(({ href }) => isSupport ? supportServicePaths.has(href) : !supportServicePaths.has(href))
+                .filter(({ href }) => isBusinessOnly ? businessSupportPaths.has(href) : isSupport ? supportServicePaths.has(href) : !supportServicePaths.has(href))
                 .filter(({ href }) => href !== `/${service.slug}`)
                 .map(({ href, label }) => (
                   <a href={href} key={href}>
@@ -286,7 +295,7 @@ function ServicePage({ service }) {
           </div>
         </nav>
 
-        <section className={styles.ctaSection}>
+        <section id="contato" className={styles.ctaSection}>
           <div className={styles.ctaContent}>
             <p>{service.recurring ? 'Quer suporte contínuo para sua equipe?' : isSupport ? 'Precisa de ajuda agora?' : 'Vamos conversar sobre sua necessidade?'}</p>
             <h2>{service.recurring ? 'Conte quantos computadores sua empresa utiliza e receba uma proposta clara.' : isSupport ? 'Conte o que aparece na tela e receba uma orientação clara.' : 'Conte o que sua empresa precisa e receba uma proposta clara.'}</h2>

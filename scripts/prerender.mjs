@@ -35,6 +35,17 @@ function createPageHtml(pathname) {
   )
   let html = template
 
+  if (pathname !== '/') {
+    html = html.replace(
+      /\s*<script id="home-business-structured-data" type="application\/ld\+json">[\s\S]*?<\/script>/,
+      '',
+    )
+    html = html.replace(
+      /\s*<script id="home-faq-structured-data" type="application\/ld\+json">[\s\S]*?<\/script>/,
+      '',
+    )
+  }
+
   html = html.replace(
     /<title>[\s\S]*?<\/title>/,
     `<title>${escapeAttribute(metadata.title)}</title>`,
@@ -71,6 +82,11 @@ function createPageHtml(pathname) {
   if (metadata.ogImage) {
     html = replaceMetaContent(html, 'property="og:image"', metadata.ogImage)
     html = replaceMetaContent(html, 'name="twitter:image"', metadata.ogImage)
+  }
+
+  if (metadata.ogImageAlt) {
+    html = replaceMetaContent(html, 'property="og:image:alt"', metadata.ogImageAlt)
+    html = replaceMetaContent(html, 'name="twitter:image:alt"', metadata.ogImageAlt)
   }
 
   if (metadata.structuredData) {
