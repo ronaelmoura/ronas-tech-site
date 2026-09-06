@@ -152,6 +152,15 @@
   transform: translateY(-2px);
 }
 
+/* Mesma aparência do .primaryAction quando o CTA é um <button> (abre o modal
+   de captura de nome/telefone antes de redirecionar ao WhatsApp). */
+.primaryActionButton {
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
 .secondaryAction {
   color: #dbeafe;
   background: rgb(15 23 42 / 55%);
