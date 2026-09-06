@@ -130,6 +130,14 @@
   display: none;
 }
 
+/* Cards do público que não está selecionado nas abas "Para você" / "Para
+   empresas". Eles continuam no HTML (e portanto rastreáveis pelo Google, que
+   antes não via nenhum link para as páginas empresariais no pré-render), mas
+   display:none também os retira da ordem de tabulação e do leitor de tela. */
+.hiddenAudience {
+  display: none;
+}
+
 @media (max-width: 680px) {
   .audience {
     grid-template-columns: 1fr;
