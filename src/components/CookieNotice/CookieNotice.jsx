@@ -8,19 +8,25 @@ const STORAGE_KEY = 'ronas_cookie_notice_dismissed'
 // entram em ação quando os IDs estão configurados), mas garante que o
 // visitante veja o aviso antes de navegar, como recomenda a LGPD para o uso
 // de cookies de análise e publicidade.
+// O aviso já vem no HTML renderizado no servidor: ele é o maior bloco de
+// texto da página e, quando só aparecia depois da hidratação, era ele que
+// determinava o LCP da home. Para quem já aceitou, um script curto no
+// index.html marca o <html> antes da primeira pintura e o CSS esconde o
+// aviso — sem piscada e sem depender do React.
 function CookieNotice() {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     try {
-      if (!window.localStorage.getItem(STORAGE_KEY)) setVisible(true)
+      if (window.localStorage.getItem(STORAGE_KEY)) setVisible(false)
     } catch {
-      setVisible(true)
+      /* localStorage indisponível — o aviso continua visível */
     }
   }, [])
 
   function dismiss() {
     setVisible(false)
+    document.documentElement.dataset.cookieNotice = 'dismissed'
     try {
       window.localStorage.setItem(STORAGE_KEY, '1')
     } catch {
@@ -31,7 +37,7 @@ function CookieNotice() {
   if (!visible) return null
 
   return (
-    <div className={styles.notice} role="dialog" aria-labelledby="cookie-notice-title">
+    <div className={`${styles.notice} cookie-notice`} role="dialog" aria-labelledby="cookie-notice-title">
       <p id="cookie-notice-title">
         Usamos cookies e ferramentas de análise (Google Analytics, Google Ads e
         Meta) para entender o uso do site e mostrar anúncios mais relevantes.

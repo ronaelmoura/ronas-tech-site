@@ -11,6 +11,33 @@
     <meta name="author" content="Ronas Tech" />
     <meta name="theme-color" content="#070b14" />
     <link rel="icon" type="image/webp" href="/logo-ronas-tech.webp" />
+
+    <!-- Esconde o aviso de cookies antes da primeira pintura para quem já
+         aceitou, sem esperar o React hidratar. -->
+    <style>
+      html[data-cookie-notice='dismissed'] .cookie-notice { display: none; }
+    </style>
+    <script>
+      try {
+        if (localStorage.getItem('ronas_cookie_notice_dismissed'))
+          document.documentElement.dataset.cookieNotice = 'dismissed'
+      } catch (error) {}
+    </script>
+
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/manrope-latin.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/space-grotesk-latin.woff2"
+      crossorigin
+    />
     <meta name="google-site-verification" content="YM5EkvXA7LQsTvGCicZWgoO_N7Y5FU71O0msxVfdfaA" />
 
     <meta property="og:type" content="website" />

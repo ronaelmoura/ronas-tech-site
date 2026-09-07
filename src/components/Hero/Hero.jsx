@@ -1,7 +1,6 @@
 import { siteConfig } from '../../config/siteConfig'
 import { trackWhatsAppClick, withCampaign } from '../../utils/analytics'
 import { useMagnetic, useTilt } from '../../motion/hooks'
-import { useHeroIntro } from '../../motion/scroll'
 import styles from './Hero.module.css'
 import conversion from './HeroConversion.module.css'
 
@@ -13,7 +12,8 @@ function DiagnosticConsole() {
 }
 
 function Hero() {
-  useHeroIntro()
+  // A animação de entrada do hero é disparada pelo módulo de movimento
+  // carregado sob demanda em App.jsx (ela usa seletores globais).
   const primaryRef = useMagnetic(14)
   const secondaryRef = useMagnetic(14)
   const message = withCampaign('Olá, Ronael! Preciso de suporte remoto para meu PC ou notebook.')
