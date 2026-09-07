@@ -124,9 +124,33 @@
 .cardHeader,
 .description,
 .highlights,
+.price,
 .cta {
   position: relative;
   z-index: 1;
+}
+
+.price {
+  display: grid;
+  gap: 3px;
+  margin: auto 0 16px;
+}
+
+.price small {
+  color: #71879d;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.price strong {
+  color: #dce8f3;
+  font-size: 15px;
+}
+
+.price + .cta {
+  margin-top: 0;
 }
 
 .cardHeader {

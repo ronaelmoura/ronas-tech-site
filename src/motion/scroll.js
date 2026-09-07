@@ -27,15 +27,28 @@ export function useSmoothScroll() {
   }, [])
 }
 
+// O módulo de movimento é carregado depois da hidratação. Quando ele
+// demora demais (rede lenta, aparelho fraco), animar o que o visitante já
+// está lendo causaria um "pisca" — nesses casos o conteúdo simplesmente
+// fica como está.
+const LATE_LOAD_MS = 1500
+const loadedLate = () => performance.now() > LATE_LOAD_MS
+
 export function useScrollReveals() {
   useIsomorphicLayoutEffect(() => {
     if (prefersReduced()) {
       document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'))
       return undefined
     }
+    // Só prepara o que ainda está abaixo da dobra: o que já foi pintado
+    // nunca é escondido para depois reaparecer.
+    const pending = [...document.querySelectorAll('.reveal')].filter(
+      (element) => element.getBoundingClientRect().top > window.innerHeight * 0.88,
+    )
+    if (!pending.length) return undefined
     const ctx = gsap.context(() => {
-      gsap.set('.reveal', { autoAlpha: 0, y: 42, scale: 0.96, skewY: 2 })
-      ScrollTrigger.batch('.reveal', {
+      gsap.set(pending, { autoAlpha: 0, y: 42, scale: 0.96, skewY: 2 })
+      ScrollTrigger.batch(pending, {
         start: 'top 88%',
         once: true,
         onEnter: (batch) => gsap.to(batch, {
@@ -50,15 +63,20 @@ export function useScrollReveals() {
 
 export function useHeroIntro() {
   useIsomorphicLayoutEffect(() => {
-    if (prefersReduced()) return undefined
+    // O hero já está visível no HTML: se o módulo chegou tarde, animar
+    // agora significaria apagar e redesenhar o que o visitante está lendo.
+    if (prefersReduced() || loadedLate()) return undefined
     let failSafe
     const ctx = gsap.context(() => {
+      // A entrada do hero usa só transformações, nunca opacidade: o texto
+      // do hero é o elemento de LCP da home e animá-lo em opacidade adiava
+      // a maior pintura em mais de um segundo.
       const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.9 } })
-        .from('.hero-eyebrow-anim', { y: 20, autoAlpha: 0 })
+        .from('.hero-eyebrow-anim', { y: 20 })
         .from('.hero-mask h1', { yPercent: 115 }, '-=0.55')
-        .from('.hero-desc-anim', { y: 24, autoAlpha: 0 }, '-=0.55')
-        .from('.hero-actions-anim', { y: 20, autoAlpha: 0 }, '-=0.5')
-        .from('.hero-visual-anim', { autoAlpha: 0, scale: 0.94, y: 30, duration: 1.1 }, '-=0.85')
+        .from('.hero-desc-anim', { y: 24 }, '-=0.55')
+        .from('.hero-actions-anim', { y: 20 }, '-=0.5')
+        .from('.hero-visual-anim', { scale: 0.94, y: 30, duration: 1.1 }, '-=0.85')
       // If the ticker ever stalls (throttled tab, blocked script, slow
       // device) this jumps straight to the finished state so the hero
       // never gets stuck invisible.

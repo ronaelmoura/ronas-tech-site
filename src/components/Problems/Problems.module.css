@@ -1,1 +1,214 @@
 .section{padding:112px 24px;background:#090f17}.container{max-width:1180px;margin:auto}.eyebrow{margin:0;color:#58c4fb;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.15em;font-size:10px;font-weight:700}.section header h2{max-width:760px;margin:14px 0 16px;color:#f5f8fc;font-family:var(--font-display);font-size:clamp(34px,4.3vw,56px);letter-spacing:-.04em;line-height:1.08}.section header>p:last-child{max-width:620px;margin:0;color:#9fadc0;font-size:15px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}.card{overflow:hidden;padding:10px 10px 22px;border:1px solid #21364b;border-radius:18px;background:linear-gradient(145deg,#0e1925,#0b131d);transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease}.card:hover{border-color:#3f789c;box-shadow:0 22px 50px rgb(0 0 0/28%);transform:translateY(-5px)}.illustration{position:relative;height:180px;margin-bottom:22px;overflow:hidden;border:1px solid #24445e;border-radius:12px;background:#08131e;isolation:isolate}.illustration:after{position:absolute;inset:0;background:linear-gradient(to top,rgb(5 13 21/58%),transparent 52%);content:'';pointer-events:none}.illustration img{width:100%;height:100%;display:block;object-fit:cover;transform:scale(1.025);animation:cameraDrift 9s ease-in-out infinite alternate;transition:filter .3s ease}.card:hover .illustration img{filter:saturate(1.12) brightness(1.06)}.screenGlow{position:absolute;z-index:1;inset:15% 22%;border-radius:50%;background:radial-gradient(circle,rgb(54 199 255/20%),transparent 67%);mix-blend-mode:screen;animation:screenBreathe 3.2s var(--delay) ease-in-out infinite}.scan{position:absolute;z-index:2;left:0;right:0;top:-35%;height:38%;background:linear-gradient(transparent,rgb(99 211 255/11%),transparent);animation:imageScan 5.5s var(--delay) linear infinite}.card>small,.card>h3,.card>p,.card>a{margin-left:8px;margin-right:8px}.card small{color:#54bcf2;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em}.card h3{margin-top:9px;margin-bottom:9px;color:#edf5fb;font-family:var(--font-display);font-size:20px}.card p{min-height:66px;margin-top:0;margin-bottom:0;color:#98a8b8;font-size:13px;line-height:1.65}.card a{display:inline-flex;margin-top:18px;color:#bde9ff;font-size:11px;font-weight:800;text-decoration:none}.card a:after{width:5px;height:5px;margin:4px 0 0 10px;border-top:1px solid #5bd1ff;border-right:1px solid #5bd1ff;content:'';transform:rotate(45deg);transition:transform .2s ease}.card a:hover:after{transform:translateX(3px) rotate(45deg)}.note{display:flex;max-width:900px;gap:18px;padding:20px 22px;margin-top:28px;border-left:2px solid #36a9e1;background:#0d1823}.note strong{flex:0 0 auto;color:#e9f5fb;font-size:13px}.note span{color:#91a3b4;font-size:12px;line-height:1.6}@keyframes cameraDrift{from{transform:scale(1.025) translate3d(-.5%,0,0)}to{transform:scale(1.075) translate3d(.7%,-.7%,0)}}@keyframes screenBreathe{50%{opacity:.35;transform:scale(1.12)}}@keyframes imageScan{from{transform:translateY(-100%)}to{transform:translateY(430%)}}@media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.section{padding:78px 18px}.grid{grid-template-columns:1fr;margin-top:30px}.illustration{height:190px}.card p{min-height:0}.note{flex-direction:column;gap:5px}}@media(prefers-reduced-motion:reduce){.illustration img,.screenGlow,.scan{animation:none}.card,.card a:after{transition:none}}
+
+/* Animações que contam o sintoma de cada card.
+   Elas rodam três vezes quando o card entra na tela (classe .playing,
+   aplicada pelo IntersectionObserver) e voltam a rodar enquanto o
+   ponteiro estiver sobre o card. Fora disso ficam paradas: nada de
+   looping permanente gastando bateria em seis imagens ao mesmo tempo. */
+.loader,
+.freeze,
+.popup,
+.crash,
+.disk,
+.alert {
+  position: absolute;
+  z-index: 3;
+  animation-play-state: paused;
+  pointer-events: none;
+}
+
+.playing .loader,
+.playing .freeze,
+.playing .popup,
+.playing .crash,
+.playing .disk,
+.playing .alert,
+.card:hover .loader,
+.card:hover .freeze,
+.card:hover .popup,
+.card:hover .crash,
+.card:hover .disk,
+.card:hover .alert {
+  animation-play-state: running;
+}
+
+/* Demora para ligar: o círculo de carregamento que nunca termina */
+.loader {
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 2px solid rgb(99 211 255 / 22%);
+  border-top-color: rgb(99 211 255 / 95%);
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgb(54 199 255 / 30%);
+  animation: problemSpin 1.15s linear 3;
+}
+
+.card:hover .loader { animation-iteration-count: infinite; }
+
+/* Trava ou fica lento: a barra que avança e engasga */
+.freeze {
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  height: 4px;
+  overflow: hidden;
+  background: rgb(8 19 30 / 75%);
+  border-radius: 99px;
+}
+
+.freeze i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgb(54 199 255), rgb(99 211 255));
+  border-radius: 99px;
+  transform-origin: 0 50%;
+  animation: problemStutter 3.4s ease-in-out 3;
+}
+
+.card:hover .freeze i { animation-iteration-count: infinite; }
+
+/* Anúncios e avisos: janelas que aparecem sozinhas */
+.popup {
+  top: 18px;
+  right: 16px;
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+}
+
+.popup i {
+  display: block;
+  width: 46px;
+  height: 14px;
+  background: rgb(99 211 255 / 26%);
+  border: 1px solid rgb(99 211 255 / 55%);
+  border-radius: 3px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 35%);
+  opacity: 0;
+  animation: problemPopIn 2.6s ease-in-out 3;
+}
+
+.popup i:last-child {
+  width: 34px;
+  animation-delay: 0.55s;
+}
+
+.card:hover .popup i { animation-iteration-count: infinite; }
+
+/* Programa não abre: a janela de erro que treme */
+.crash {
+  top: 50%;
+  left: 50%;
+  width: 58px;
+  height: 34px;
+  margin: -17px 0 0 -29px;
+  background: rgb(10 22 34 / 82%);
+  border: 1px solid rgb(248 113 113 / 62%);
+  border-radius: 4px;
+  animation: problemShake 2.8s ease-in-out 3;
+}
+
+.crash i {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  margin-left: -12px;
+  background: rgb(248 113 113 / 85%);
+  border-radius: 99px;
+}
+
+.card:hover .crash { animation-iteration-count: infinite; }
+
+/* Pouco espaço: o disco enchendo até o limite */
+.disk {
+  right: 14px;
+  bottom: 14px;
+  width: 54px;
+  height: 5px;
+  overflow: hidden;
+  background: rgb(8 19 30 / 78%);
+  border: 1px solid rgb(99 211 255 / 30%);
+  border-radius: 99px;
+}
+
+.disk i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgb(54 199 255), rgb(251 146 60));
+  transform-origin: 0 50%;
+  animation: problemFill 3.6s ease-in-out 3;
+}
+
+.card:hover .disk i { animation-iteration-count: infinite; }
+
+/* Erro no Windows: o aviso que insiste */
+/* Canto superior, e não o centro: a foto deste card já tem um triângulo
+   de aviso, e sobrepor outro alerta bem em cima dele polui a imagem. */
+.alert {
+  top: 16px;
+  right: 16px;
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  color: #08131e;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  background: rgb(99 211 255 / 92%);
+  border-radius: 7px;
+  animation: problemAlert 2.4s ease-in-out 3;
+}
+
+.card:hover .alert { animation-iteration-count: infinite; }
+
+@keyframes problemSpin { to { transform: rotate(360deg); } }
+
+@keyframes problemStutter {
+  0% { transform: scaleX(0.1); }
+  22% { transform: scaleX(0.42); }
+  30%, 62% { transform: scaleX(0.46); }
+  78%, 100% { transform: scaleX(0.9); }
+}
+
+@keyframes problemPopIn {
+  0%, 8% { opacity: 0; transform: translateY(-6px) scale(0.9); }
+  18%, 62% { opacity: 1; transform: translateY(0) scale(1); }
+  75%, 100% { opacity: 0; transform: translateY(-4px) scale(0.96); }
+}
+
+@keyframes problemShake {
+  0%, 62%, 100% { transform: translateX(0); }
+  66%, 74%, 82% { transform: translateX(-3px); }
+  70%, 78%, 86% { transform: translateX(3px); }
+}
+
+@keyframes problemFill {
+  0% { transform: scaleX(0.3); }
+  70%, 100% { transform: scaleX(0.97); }
+}
+
+@keyframes problemAlert {
+  0%, 100% { opacity: 0.55; transform: scale(0.94); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader,
+  .freeze i,
+  .popup i,
+  .crash,
+  .disk i,
+  .alert {
+    animation: none !important;
+  }
+
+  .popup i { opacity: 1; }
+}

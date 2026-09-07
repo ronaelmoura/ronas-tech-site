@@ -10,7 +10,7 @@ const products = [
     title: 'Kit Financeiro Inteligente para MEI',
     price: 'R$ 37,90',
     description: 'Dashboard, controle financeiro, precificação e fluxo de caixa para o pequeno negócio.',
-    image: '/capa-kit-financeiro-mei-v2.png',
+    image: '/capa-kit-financeiro-mei-v2.webp',
     featured: true,
   },
   {

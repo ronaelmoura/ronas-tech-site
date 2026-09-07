@@ -1,4 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+/* Fontes hospedadas no próprio domínio (arquivos variáveis, subconjuntos
+   latin e latin-ext). Antes vinham do Google por @import, o que criava uma
+   corrente de requisições — CSS do site, CSS do Google, arquivo da fonte —
+   e bloqueava a renderização por cerca de 1 segundo no celular. */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/fonts/manrope-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/fonts/manrope-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 
 :root {
   --font-body: 'Manrope', sans-serif;
@@ -193,8 +249,11 @@ section[id] {
   }
 }
 
-/* Motion system — cursor, aurora, tilt, magnetic, scroll reveals */
-.reveal { opacity: 0; }
+/* Motion system — cursor, aurora, tilt, magnetic, scroll reveals.
+   As seções nascem visíveis: quem esconde o que ainda está abaixo da
+   dobra é o GSAP, depois que o módulo de movimento carrega. Assim o
+   conteúdo aparece na primeira pintura e nada some se o JS falhar. */
+.reveal,
 .reveal.visible { opacity: 1; }
 
 .hero-mask { display: block; overflow: hidden; }
@@ -229,6 +288,75 @@ body.has-custom-cursor, body.has-custom-cursor * { cursor: none; }
   .aurora i { animation: none !important; }
   .cursor-dot, .cursor-ring { display: none !important; }
   body.has-custom-cursor, body.has-custom-cursor * { cursor: auto; }
+}
+
+/* A home é longa: adiar o layout das seções fora da tela reduz o trabalho
+   da primeira renderização. O tamanho estimado evita que a barra de
+   rolagem pule enquanto o visitante desce a página. */
+#problemas,
+#loja,
+#servicos,
+#processo,
+#sobre,
+#duvidas {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
+}
+
+/* Microinterações — elevação e brilho ciano nos cards das seções da home */
+#problemas article,
+#loja article,
+#servicos article,
+section[aria-labelledby='safety-title'] article {
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+#problemas article:hover,
+#loja article:hover,
+#servicos article:hover,
+section[aria-labelledby='safety-title'] article:hover {
+  border-color: rgb(99 211 255 / 55%);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 32%), 0 0 26px rgb(54 199 255 / 14%);
+  transform: translateY(-4px);
+}
+
+/* Categoria gamer: mesmo card, acento roxo-neon */
+#loja article[data-accent='gamer'] {
+  border-color: rgb(167 139 250 / 50%);
+}
+
+#loja article[data-accent='gamer']:hover {
+  border-color: rgb(167 139 250 / 75%);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 32%), 0 0 26px rgb(167 139 250 / 18%);
+}
+
+/* Pulso de atenção no botão flutuante — finito, para não virar um piscar constante */
+.floating-contact__brand::before {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgb(37 211 102 / 42%);
+  animation: floating-contact-pulse 2.6s ease-out 6;
+  content: '';
+}
+
+@keyframes floating-contact-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(37 211 102 / 38%); }
+  70% { box-shadow: 0 0 0 12px rgb(37 211 102 / 0%); }
+  100% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-contact__brand::before {
+    animation: none;
+  }
+
+  #problemas article:hover,
+  #loja article:hover,
+  #servicos article:hover,
+  section[aria-labelledby='safety-title'] article:hover {
+    transform: none;
+  }
 }
 
 /* Fundos fotográficos com contraste preservado para leitura */
