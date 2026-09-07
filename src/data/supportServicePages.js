@@ -29,7 +29,7 @@ export const supportServicePages = {
     metaTitle: 'Otimização de PC para Jogos | Mais FPS | Ronas Tech',
     metaDescription: 'Otimização remota de PC gamer: queda de FPS, travamentos em jogos, superaquecimento, drivers de vídeo desatualizados e ajuste das configurações gráficas.',
     introduction: 'Perder uma partida por causa de stutter, FPS instável ou um PC que esquenta demais não é normal. A análise remota identifica o que está segurando o desempenho — drivers, processos em segundo plano, energia, temperatura ou configuração gráfica — e ajusta o que realmente muda o jogo.',
-    priceLabel: 'Otimização gamer a partir de R$ 139',
+    priceLabel: 'Otimização gamer a partir de R$ 109',
     responseLabel: 'Atendimento remoto em todo o Brasil',
     heroCtaLabel: 'Analisar meu PC gamer',
     whatsappIntent: 'otimizar meu PC para jogos. Jogo principal: ___ | Placa de vídeo: ___ | O que acontece: ___',
@@ -51,7 +51,7 @@ export const supportServicePages = {
       { question: 'A otimização vai fazer meu PC rodar qualquer jogo?', answer: 'Não. O ajuste extrai o melhor do hardware que você já tem. Se a placa de vídeo, a memória ou o processador forem o limite real, você recebe essa informação com clareza em vez de uma promessa vazia.' },
       { question: 'Superaquecimento resolve remotamente?', answer: 'Em parte. Monitoramos a temperatura, identificamos throttling e ajustamos energia e configurações. Limpeza interna, troca de pasta térmica e problemas de ventoinha exigem atendimento físico — e você é avisado antes de contratar.' },
       { question: 'É seguro fazer overclock no meu PC?', answer: 'Não fazemos overclock arriscado. O trabalho é focado em drivers, sistema, processos e configuração gráfica, mantendo o hardware dentro das especificações do fabricante.' },
-      { question: 'Quanto custa?', answer: 'A triagem pelo WhatsApp é gratuita e a otimização gamer começa em R$ 139. O valor final é confirmado antes do início do serviço.' },
+      { question: 'Quanto custa?', answer: 'A triagem pelo WhatsApp é gratuita e a otimização gamer começa em R$ 109. O valor final é confirmado antes do início do serviço.' },
     ],
   },
   '/remocao-de-virus': {
