@@ -1,3 +1,66 @@
 .section{padding:112px 24px;background:#101a29;border-top:1px solid #1c3048}.container{max-width:1220px;margin:auto}.heading{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:42px;align-items:end;margin-bottom:42px}.eyebrow{margin:0;color:#54bcff;text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}.heading h2{max-width:720px;margin:14px 0 16px;color:#f5f7fb;font-size:clamp(34px,4.4vw,58px);line-height:1.05}.heading>div>p:last-child{max-width:720px;margin:0;color:#a8b6c6;font-size:16px;line-height:1.7}.safety{padding:20px 22px;border:1px solid #245277;border-radius:16px;background:linear-gradient(145deg,#102338,#0d1724)}.safety strong,.safety span{display:block}.safety strong{color:#e9f7ff;font-size:14px;margin-bottom:6px}.safety span{color:#91a7bb;font-size:12px;line-height:1.55}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:start}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{display:flex;flex-direction:column;min-height:100%;padding:26px;border:1px solid #2b4563;border-radius:20px;background:#0d1520;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}.card:hover{transform:translateY(-2px);border-color:#3c658c}.featured{box-shadow:inset 0 3px 0 #26aef4}.selected{border-color:#2bbcff;box-shadow:0 0 0 1px rgba(43,188,255,.18),0 18px 42px rgba(0,0,0,.18)}.cardTop{display:flex;align-items:center;justify-content:space-between;gap:12px}.category{color:#64c5ff;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800}.selectedLabel{padding:5px 8px;border-radius:99px;background:#123a34;color:#71e6bd;font-size:10px;font-weight:800}.card h3{margin:16px 0 12px;color:#fff;font-size:22px;line-height:1.2}.card>p{margin:0;color:#a8b6c6;font-size:14px;line-height:1.65}.card ul{display:grid;gap:8px;padding:0;margin:22px 0 26px;list-style:none}.card li{position:relative;padding-left:18px;color:#c5d2df;font-size:12px;line-height:1.5}.card li:before{content:'✓';position:absolute;left:0;color:#4ed4aa;font-weight:900}.cardFooter{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-top:auto;padding-top:18px;border-top:1px solid #24384f}.cardFooter>span small,.cardFooter>span strong{display:block}.cardFooter>span small{margin-bottom:3px;color:#71879d;font-size:10px;text-transform:uppercase;letter-spacing:.1em}.cardFooter>span strong{color:#dce8f3;font-size:12px}.cardFooter button{min-height:42px;padding:10px 14px;border:1px solid #36709b;border-radius:11px;background:#12283a;color:#e8f7ff;font:inherit;font-size:12px;font-weight:800;cursor:pointer}.selected .cardFooter button{border-color:#385266;background:transparent;color:#9cb0c2}.order{position:sticky;top:96px;padding:24px;border:1px solid #2d4b69;border-radius:20px;background:linear-gradient(155deg,#0d1926,#0a111b);box-shadow:0 22px 60px rgba(0,0,0,.25)}.orderHeader{display:flex;align-items:center;justify-content:space-between;color:#75cfff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}.orderHeader strong{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#1e86ca;color:#fff;font-size:12px}.order h3{margin:18px 0;color:#fff;font-size:21px}.order>ul{display:grid;gap:0;padding:0;margin:0 0 20px;list-style:none}.order>ul li{display:flex;align-items:start;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #203348}.order>ul span{color:#cad7e3;font-size:12px;line-height:1.45}.order>ul button{padding:0;border:0;background:transparent;color:#6eaccf;font-size:10px;cursor:pointer}.empty{min-height:74px;margin:0 0 18px;color:#8297aa;font-size:13px;line-height:1.55}.orderNote{padding:15px;border-radius:12px;background:#101f2e}.orderNote strong,.orderNote span{display:block}.orderNote strong{margin-bottom:5px;color:#9ce6ce;font-size:12px}.orderNote span{color:#8297aa;font-size:11px;line-height:1.5}.checkout{width:100%;min-height:50px;margin-top:18px;padding:13px 16px;border:0;border-radius:12px;background:linear-gradient(135deg,#1769e8,#278cf2);color:#fff;font:inherit;font-size:13px;font-weight:900;cursor:pointer}.checkout:disabled{background:#1a2a3a;color:#607588;cursor:not-allowed}.privacy{display:block;margin-top:10px;color:#64788b;font-size:10px;text-align:center}@media(max-width:980px){.heading{grid-template-columns:1fr}.layout{grid-template-columns:1fr}.order{position:static}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.section{padding:78px 18px}.heading{gap:24px;margin-bottom:28px}.grid{grid-template-columns:1fr}.card{padding:22px}.cardFooter{align-items:center}.cardFooter button{max-width:155px}.order{padding:21px}}
 
 .gamerAccent{border-color:rgba(167,139,250,.5);background:linear-gradient(160deg,#131029,#0d1520 62%)}.gamerAccent .category{color:#c4b5fd}.gamerAccent li:before{color:#a78bfa}.gamerAccent .cardFooter button{border-color:#6d5bb8;background:#1c1836;color:#ede9fe}.gamerAccent.selected{border-color:#a78bfa;box-shadow:0 0 0 1px rgba(167,139,250,.22),0 18px 42px rgba(0,0,0,.18)}
+
+/* Ícone animado de cada serviço. A animação roda três vezes quando o card
+   entra na tela (classe .playing, aplicada pelo IntersectionObserver) e
+   volta a rodar no hover; fora disso fica parada. */
+.cardTag { display: flex; align-items: center; gap: 9px; }
+.glyph { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; color: #64c5ff; background: rgb(54 199 255 / 9%); border: 1px solid rgb(54 199 255 / 24%); border-radius: 10px; }
+.glyph svg { width: 19px; height: 19px; overflow: visible; }
+.gamerAccent .glyph { color: #c4b5fd; background: rgb(167 139 250 / 12%); border-color: rgb(167 139 250 / 34%); }
+.glyph :is(.gPing, .gPing2, .gNeedle, .gScanLine, .gBar1, .gBar2, .gBar3, .gSpark, .gDrop, .gSlide, .gSlideBack, .gSync, .gCheck, .gBeat) { animation-play-state: paused; }
+.playing .glyph :is(.gPing, .gPing2, .gNeedle, .gScanLine, .gBar1, .gBar2, .gBar3, .gSpark, .gDrop, .gSlide, .gSlideBack, .gSync, .gCheck, .gBeat),
+.card:hover .glyph :is(.gPing, .gPing2, .gNeedle, .gScanLine, .gBar1, .gBar2, .gBar3, .gSpark, .gDrop, .gSlide, .gSlideBack, .gSync, .gCheck, .gBeat) { animation-play-state: running; }
+.card:hover .glyph :is(.gPing, .gPing2, .gNeedle, .gScanLine, .gBar1, .gBar2, .gBar3, .gSpark, .gDrop, .gSlide, .gSlideBack, .gSync, .gCheck, .gBeat) { animation-iteration-count: infinite; }
+
+/* Diagnóstico: ondas de radar saindo do centro */
+.gPing, .gPing2 { transform-origin: 12px 12px; animation: glyphPing 2.2s ease-out 3; }
+.gPing2 { animation-delay: .5s; }
+@keyframes glyphPing { 0% { opacity: .9; transform: scale(.35); } 70%, 100% { opacity: 0; transform: scale(1); } }
+
+/* Otimização: ponteiro do medidor subindo */
+.gNeedle { transform-origin: 12px 16px; animation: glyphNeedle 2.6s ease-in-out 3; }
+@keyframes glyphNeedle { 0%, 100% { transform: rotate(-62deg); } 55%, 75% { transform: rotate(48deg); } }
+
+/* Segurança: linha varrendo o escudo */
+.gScanLine { animation: glyphScan 2.4s ease-in-out 3; }
+@keyframes glyphScan { 0%, 100% { opacity: 0; transform: translateY(0); } 15% { opacity: 1; } 85% { opacity: .15; transform: translateY(8.5px); } }
+
+/* Gamer: barras de FPS oscilando */
+.gBar1, .gBar2, .gBar3 { transform-origin: 12px 19px; animation: glyphBars 1.5s ease-in-out 3; }
+.gBar2 { animation-delay: .18s; }
+.gBar3 { animation-delay: .36s; }
+@keyframes glyphBars { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.45); } }
+
+/* Windows: faísca do reparo */
+.gSpark { animation: glyphSpark 2.2s ease-in-out 3; }
+@keyframes glyphSpark { 0%, 44%, 100% { opacity: .35; } 55%, 70% { opacity: 1; } }
+
+/* Programas: seta de instalação descendo */
+.gDrop { animation: glyphDrop 2.2s ease-in-out 3; }
+@keyframes glyphDrop { 0%, 100% { opacity: .5; transform: translateY(-2.5px); } 45%, 70% { opacity: 1; transform: translateY(1.5px); } }
+
+/* Backup: arquivos indo e voltando */
+.gSlide, .gSlideBack { animation: glyphSlide 2.4s ease-in-out 3; }
+.gSlideBack { animation-name: glyphSlideBack; animation-delay: .3s; }
+@keyframes glyphSlide { 0%, 100% { opacity: .45; transform: translateX(-2px); } 50% { opacity: 1; transform: translateX(2px); } }
+@keyframes glyphSlideBack { 0%, 100% { opacity: .45; transform: translateX(2px); } 50% { opacity: 1; transform: translateX(-2px); } }
+
+/* Microsoft 365: sincronização girando */
+.gSync { transform-origin: 12px 12px; animation: glyphSync 2.4s cubic-bezier(.6,0,.3,1) 3; }
+@keyframes glyphSync { 0%, 20% { transform: rotate(0); } 80%, 100% { transform: rotate(360deg); } }
+
+/* Contadores: confirmação sendo desenhada */
+.gCheck { stroke-dasharray: 12; stroke-dashoffset: 12; animation: glyphCheck 2.6s ease-in-out 3; }
+@keyframes glyphCheck { 0%, 15% { stroke-dashoffset: 12; } 45%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 12; } }
+
+/* Plano mensal: batimento do acompanhamento contínuo */
+.gBeat { stroke-dasharray: 22; stroke-dashoffset: 22; animation: glyphBeat 2.8s linear 3; }
+@keyframes glyphBeat { 0% { stroke-dashoffset: 22; } 60%, 100% { stroke-dashoffset: -22; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .glyph :is(.gPing, .gPing2, .gNeedle, .gScanLine, .gBar1, .gBar2, .gBar3, .gSpark, .gDrop, .gSlide, .gSlideBack, .gSync, .gCheck, .gBeat) { animation: none !important; }
+  .gCheck, .gBeat { stroke-dashoffset: 0; }
+  .gNeedle { transform: rotate(-20deg); }
+}
