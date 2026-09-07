@@ -10,6 +10,10 @@ const hasValidMeasurementId = /^G-[A-Z0-9]+$/.test(measurementId || '')
 const googleAdsId = import.meta.env.VITE_GOOGLE_ADS_ID?.trim()
 const hasValidGoogleAdsId = /^AW-\d+$/.test(googleAdsId || '')
 const googleAdsConversionLabel = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_LABEL?.trim()
+// O rótulo da ação de conversão "Contato" (a parte depois da barra em
+// "AW-XXXXXXXXX/ROTULO", visível em Google Ads > Metas > Contato >
+// Detalhes > "Detalhes da tag") vem sempre da variável de ambiente
+// VITE_GOOGLE_ADS_CONVERSION_LABEL, nunca fixo no código.
 const hasValidConversionLabel = hasValidGoogleAdsId && Boolean(googleAdsConversionLabel)
 const hasAnyGoogleTag = hasValidMeasurementId || hasValidGoogleAdsId
 
@@ -60,6 +64,18 @@ export function trackGoogleAdsConversion(parameters = {}) {
     send_to: `${googleAdsId}/${googleAdsConversionLabel}`,
     ...parameters,
   })
+}
+
+// Conversões Otimizadas: envia nome e telefone informados pelo visitante para
+// o gtag.js, que gera o hash (SHA-256) no próprio navegador antes de mandar
+// para o Google Ads — os dados brutos nunca saem do dispositivo.
+export function setEnhancedConversionUserData({ name, phoneE164 }) {
+  if (typeof window === 'undefined' || !window.gtag) return
+  const userData = {}
+  if (phoneE164) userData.phone_number = phoneE164
+  if (name) userData.address = { first_name: name }
+  if (!Object.keys(userData).length) return
+  window.gtag('set', 'user_data', userData)
 }
 
 export function trackEvent(eventName, eventParameters = {}) {

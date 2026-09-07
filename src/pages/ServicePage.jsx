@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import LeadCaptureModal from '../components/LeadCaptureModal/LeadCaptureModal'
 import { siteConfig } from '../config/siteConfig'
 import { trackWhatsAppClick } from '../utils/analytics'
 import styles from './ServicePage.module.css'
@@ -85,6 +86,10 @@ function setMetaContent(selector, content) {
 function ServicePage({ service }) {
   const isSupport = service.kind === 'support'
   const isBusinessOnly = Boolean(service.businessOnly)
+  // O CTA principal do topo passa por um modal rápido de nome + telefone para
+  // alimentar as Conversões Otimizadas do Google Ads antes de abrir o WhatsApp.
+  const [leadModalOpen, setLeadModalOpen] = useState(false)
+  const closeLeadModal = useCallback(() => setLeadModalOpen(false), [])
   const activeProcess = service.recurring ? monthlyProcessSteps : isSupport ? supportProcessSteps : processSteps
   useEffect(() => {
     const pageUrl = `${siteConfig.siteUrl}${service.slug}`
@@ -170,16 +175,14 @@ function ServicePage({ service }) {
             <p className={styles.lead}>{service.introduction}</p>
             {isSupport ? <div className={conversion.servicePrice}><small>Preço inicial</small><strong>{service.priceLabel}</strong><span>{service.responseLabel || 'O valor final é confirmado antes do serviço.'}</span>{service.responseDetail ? <span>{service.responseDetail}</span> : null}</div> : null}
             <div className={styles.actions}>
-              <a
-                className={styles.primaryAction}
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackWhatsAppClick(`servico_${service.slug}_hero`)}
+              <button
+                type="button"
+                className={`${styles.primaryAction} ${styles.primaryActionButton}`}
+                onClick={() => setLeadModalOpen(true)}
               >
                 {service.heroCtaLabel || (service.recurring ? 'Solicitar proposta do plano' : isSupport ? 'Explicar meu problema' : 'Solicitar orçamento')}
                 <span aria-hidden="true">→</span>
-              </a>
+              </button>
               <a className={styles.secondaryAction} href="#como-funciona">
                 Entender o processo
               </a>
@@ -324,6 +327,12 @@ function ServicePage({ service }) {
           <a href="/termos-de-uso">Termos de uso</a>
         </div>
       </footer>
+
+      <LeadCaptureModal
+        open={leadModalOpen}
+        onClose={closeLeadModal}
+        trackingLocation={`servico_${service.slug}_hero`}
+      />
     </div>
   )
 }

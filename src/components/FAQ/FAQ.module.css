@@ -148,8 +148,11 @@
   padding: 13px 20px;
   margin-top: 8px;
   color: #06131c;
+  font: inherit;
   font-size: 13px;
   font-weight: 800;
+  border: 0;
+  cursor: pointer;
   text-decoration: none;
   background: linear-gradient(135deg, rgb(99 211 255), rgb(54 199 255));
   border-radius: 12px;
