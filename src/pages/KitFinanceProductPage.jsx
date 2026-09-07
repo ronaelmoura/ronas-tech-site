@@ -104,7 +104,7 @@ function KitFinanceProductPage() {
           <p className={styles.support}>Compra protegida por garantia de 7 dias.</p>
         </div>
         <div className={`${styles.heroVisual} ${kit.heroVisual}`}>
-          <div className={kit.productCover}><img src="/capa-kit-financeiro-mei-v2.png" alt="Capa do Kit Financeiro Inteligente para MEI" width="1280" height="720" /></div>
+          <div className={kit.productCover}><img src="/capa-kit-financeiro-mei-v2.webp" alt="Capa do Kit Financeiro Inteligente para MEI" width="1280" height="720" /></div>
           <div className={styles.floatCard}><span>Visão do negócio</span><strong>Lucro e pendências em segundos</strong></div>
         </div>
       </section>

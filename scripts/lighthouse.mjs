@@ -33,6 +33,7 @@ const pages = [
   { name: 'home', route: '/' },
   { name: 'computador-lento', route: '/computador-lento' },
   { name: 'criacao-de-sites', route: '/criacao-de-sites' },
+  { name: 'produtos-digitais', route: '/produtos-digitais' },
 ]
 
 const metricKeys = [
