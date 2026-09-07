@@ -7,7 +7,7 @@
    volta a rodar no hover; fora disso fica parada. */
 .cardTag { display: flex; align-items: center; gap: 9px; }
 .glyph { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; color: #64c5ff; background: rgb(54 199 255 / 9%); border: 1px solid rgb(54 199 255 / 24%); border-radius: 10px; }
-.glyph svg { width: 19px; height: 19px; overflow: visible; }
+.glyph svg { width: 22px; height: 22px; overflow: visible; }
 .gamerAccent .glyph { color: #c4b5fd; background: rgb(167 139 250 / 12%); border-color: rgb(167 139 250 / 34%); }
 .glyph :is(.gPing, .gPing2, .gNeedle, .gScanLine, .gBar1, .gBar2, .gBar3, .gSpark, .gDrop, .gSlide, .gSlideBack, .gSync, .gCheck, .gBeat) { animation-play-state: paused; }
 .playing .glyph :is(.gPing, .gPing2, .gNeedle, .gScanLine, .gBar1, .gBar2, .gBar3, .gSpark, .gDrop, .gSlide, .gSlideBack, .gSync, .gCheck, .gBeat),
