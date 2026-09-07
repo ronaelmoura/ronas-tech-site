@@ -10,17 +10,11 @@ const hasValidMeasurementId = /^G-[A-Z0-9]+$/.test(measurementId || '')
 const googleAdsId = import.meta.env.VITE_GOOGLE_ADS_ID?.trim()
 const hasValidGoogleAdsId = /^AW-\d+$/.test(googleAdsId || '')
 const googleAdsConversionLabel = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_LABEL?.trim()
-
-// Escape para fixar no código o rótulo da ação de conversão "Contato" do
-// Google Ads (a parte depois da barra em "AW-XXXXXXXXX/ROTULO", visível em
-// Google Ads > Metas > Contato > Detalhes > "Detalhes da tag").
-// Mantenha '' aqui: o rótulo vem da variável de ambiente
-// VITE_GOOGLE_ADS_CONVERSION_LABEL, seguindo o mesmo padrão de
-// VITE_GOOGLE_ADS_ID e evitando hardcode de configuração no código.
-const CONTACT_CONVERSION_LABEL = ''
-
-const resolvedConversionLabel = CONTACT_CONVERSION_LABEL || googleAdsConversionLabel
-const hasValidConversionLabel = hasValidGoogleAdsId && Boolean(resolvedConversionLabel)
+// O rótulo da ação de conversão "Contato" (a parte depois da barra em
+// "AW-XXXXXXXXX/ROTULO", visível em Google Ads > Metas > Contato >
+// Detalhes > "Detalhes da tag") vem sempre da variável de ambiente
+// VITE_GOOGLE_ADS_CONVERSION_LABEL, nunca fixo no código.
+const hasValidConversionLabel = hasValidGoogleAdsId && Boolean(googleAdsConversionLabel)
 const hasAnyGoogleTag = hasValidMeasurementId || hasValidGoogleAdsId
 
 const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}`
@@ -67,7 +61,7 @@ export function initializeAnalytics() {
 export function trackGoogleAdsConversion(parameters = {}) {
   if (!hasValidConversionLabel || typeof window === 'undefined' || !window.gtag) return
   window.gtag('event', 'conversion', {
-    send_to: `${googleAdsId}/${resolvedConversionLabel}`,
+    send_to: `${googleAdsId}/${googleAdsConversionLabel}`,
     ...parameters,
   })
 }

@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { siteConfig } from '../../config/siteConfig'
-import { trackConversion, trackWhatsAppClick, withCampaign } from '../../utils/analytics'
+import { useCallback, useState } from 'react'
+import LeadCaptureModal from '../LeadCaptureModal/LeadCaptureModal'
+import { trackConversion, withCampaign } from '../../utils/analytics'
 import styles from './FAQ.module.css'
 
 const questions = [
@@ -18,24 +18,30 @@ const questions = [
   ['E se eu não souber qual serviço escolher?', 'Escolha apenas “Diagnóstico remoto” ou fale direto pelo WhatsApp. Você pode descrever o que vê na tela, quando começou e o que já tentou; não precisa conhecer termos técnicos.'],
 ]
 
-const doubtMessage = 'Olá, Ronael! Vi o site da Ronas Tech e ficou uma dúvida que não estava na lista. Pode me explicar?'
+function doubtMessage(name) {
+  return withCampaign(`Olá, Ronael! Me chamo ${name}. Vi o site da Ronas Tech e ficou uma dúvida que não estava na lista. Pode me explicar?`)
+}
 
 function FAQ() {
   const [showAll, setShowAll] = useState(false)
   const [openQuestion, setOpenQuestion] = useState(null)
+  // O CTA passa pelo modal de captação antes de abrir o WhatsApp: é ele
+  // quem dispara a conversão "Contato" e alimenta as Conversões
+  // Otimizadas do Google Ads com nome e telefone.
+  const [leadModalOpen, setLeadModalOpen] = useState(false)
+  const closeLeadModal = useCallback(() => setLeadModalOpen(false), [])
   const visibleQuestions = showAll ? questions : questions.slice(0, 5)
-  const doubtUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(withCampaign(doubtMessage))}`
 
   function openDoubtChat() {
     trackConversion('faq_free_doubt', { location: 'faq_cta' })
-    trackWhatsAppClick('faq_duvida_gratis')
+    setLeadModalOpen(true)
   }
 
   return <section id="duvidas" className={`${styles.section} reveal`} aria-labelledby="faq-title"><div className={styles.container}><header className={styles.heading}><p className={styles.eyebrow}>Dúvidas frequentes</p><h2 id="faq-title">Ainda com dúvida? A gente te explica de graça.</h2><p>Entenda o acesso, os limites do atendimento e a cobrança antes de permitir qualquer alteração no computador. Se a sua pergunta não estiver aqui, é só chamar no WhatsApp — explicar não custa nada.</p></header><div className={styles.list}>{visibleQuestions.map(([question, answer]) => {
     const open = openQuestion === question
     const panelId = `faq-panel-${question.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase()}`
     return <div className={`${styles.item} ${open ? styles.itemOpen : ''}`} key={question}><h3 className={styles.itemTitle}><button type="button" aria-expanded={open} aria-controls={panelId} onClick={() => setOpenQuestion((current) => current === question ? null : question)}>{question}<span aria-hidden="true">+</span></button></h3><div className={styles.panel} id={panelId} hidden={!open}><p>{answer}</p></div></div>
-  })}<button className={styles.showMore} type="button" aria-expanded={showAll} onClick={() => setShowAll((current) => !current)}>{showAll ? 'Mostrar menos perguntas' : 'Ver todas as perguntas'}</button><div className={styles.doubtCta}><strong>Não achou sua dúvida aqui?</strong><span>Fale agora com a gente pelo WhatsApp — sem custo, sem compromisso.</span><a className={styles.doubtButton} href={doubtUrl} target="_blank" rel="noopener noreferrer" onClick={openDoubtChat}>Tirar dúvida grátis no WhatsApp <span aria-hidden="true">→</span></a></div></div></div></section>
+  })}<button className={styles.showMore} type="button" aria-expanded={showAll} onClick={() => setShowAll((current) => !current)}>{showAll ? 'Mostrar menos perguntas' : 'Ver todas as perguntas'}</button><div className={styles.doubtCta}><strong>Não achou sua dúvida aqui?</strong><span>Fale agora com a gente pelo WhatsApp — sem custo, sem compromisso.</span><button className={styles.doubtButton} type="button" onClick={openDoubtChat}>Tirar dúvida grátis no WhatsApp <span aria-hidden="true">→</span></button></div></div><LeadCaptureModal open={leadModalOpen} onClose={closeLeadModal} trackingLocation="faq_duvida_gratis" buildMessage={doubtMessage} title="Tirar dúvida grátis" description="Deixe seu nome e telefone para a gente já chamar você no WhatsApp e explicar sem custo." /></div></section>
 }
 
 export default FAQ
