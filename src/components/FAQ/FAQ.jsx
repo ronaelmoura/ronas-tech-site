@@ -1,22 +1,41 @@
 import { useState } from 'react'
+import { siteConfig } from '../../config/siteConfig'
+import { trackConversion, trackWhatsAppClick, withCampaign } from '../../utils/analytics'
 import styles from './FAQ.module.css'
 
 const questions = [
   ['Como funciona o acesso remoto?', 'Se o atendimento remoto for indicado, você recebe pelo WhatsApp a orientação para iniciar uma sessão. O acesso só começa com a sua autorização, você acompanha a tela e pode encerrar quando quiser.'],
-  ['Alguém pode acessar meu computador depois?', 'Não pela sessão encerrada. Um novo atendimento exige uma nova autorização sua. Durante o serviço, abra somente o que for necessário e nunca compartilhe senhas pessoais.'],
+  ['É seguro dar acesso ao meu computador?', 'Sim. Você vê a tela inteira durante o atendimento, aprova cada etapa e pode encerrar o acesso quando quiser.'],
+  ['Preciso instalar algum programa antes do atendimento?', 'Só quando for começar. Você acessa um link, autoriza por alguns minutos e acompanha tudo em tempo real.'],
+  ['Quanto tempo demora um atendimento?', 'A maioria dos casos resolve entre 20 e 40 minutos, dependendo do problema.'],
+  ['Como funciona o pagamento?', 'Só depois do atendimento, com o problema resolvido e você aprovando.'],
   ['Quanto custa o atendimento?', 'A triagem inicial pelo WhatsApp é gratuita. Quando for necessário acessar o computador, o diagnóstico técnico começa em R$ 29; os demais serviços e o valor final são confirmados para sua aprovação antes do trabalho começar. O suporte recorrente para empresas começa em R$ 289 por mês.'],
+  ['E se não conseguir resolver o problema?', 'Você só paga pelo que for resolvido. Se identificarmos que não dá para resolver remotamente, explicamos o motivo antes de cobrar.'],
+  ['Funciona também para notebook e Mac?', 'Notebook sim, sempre. Para Mac, chame no WhatsApp antes para confirmar se o seu caso está no escopo.'],
   ['Qual é o horário de atendimento?', 'O atendimento funciona todos os dias, das 09h à meia-noite. A resposta inicial acontece em até 1 hora dentro desse período; o início do serviço depende da disponibilidade e pode ser agendado.'],
+  ['Alguém pode acessar meu computador depois?', 'Não pela sessão encerrada. Um novo atendimento exige uma nova autorização sua. Durante o serviço, abra somente o que for necessário e nunca compartilhe senhas pessoais.'],
   ['Todo problema pode ser resolvido pela internet?', 'Não. Tela quebrada, bateria defeituosa, superaquecimento, peças danificadas e um computador que nem liga geralmente precisam de avaliação presencial. Se houver esse indício, você será avisado antes de contratar.'],
-  ['E se o problema não puder ser resolvido remotamente?', 'Se isso for identificado na triagem, você será orientado antes de contratar. Se a limitação aparecer durante o diagnóstico, explicamos o que foi encontrado e nenhum serviço adicional é realizado sem sua aprovação.'],
-  ['Preciso instalar algum programa?', 'Talvez. Se for necessário, você recebe a orientação durante a conversa no WhatsApp e decide se quer continuar. Não instale ferramentas enviadas por desconhecidos.'],
   ['E se eu não souber qual serviço escolher?', 'Escolha apenas “Diagnóstico remoto” ou fale direto pelo WhatsApp. Você pode descrever o que vê na tela, quando começou e o que já tentou; não precisa conhecer termos técnicos.'],
 ]
 
+const doubtMessage = 'Olá, Ronael! Vi o site da Ronas Tech e ficou uma dúvida que não estava na lista. Pode me explicar?'
+
 function FAQ() {
   const [showAll, setShowAll] = useState(false)
+  const [openQuestion, setOpenQuestion] = useState(null)
   const visibleQuestions = showAll ? questions : questions.slice(0, 5)
+  const doubtUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(withCampaign(doubtMessage))}`
 
-  return <section id="duvidas" className={`${styles.section} reveal`} aria-labelledby="faq-title"><div className={styles.container}><header className={styles.heading}><p className={styles.eyebrow}>Dúvidas frequentes</p><h2 id="faq-title">Segurança e clareza antes de começar.</h2><p>Entenda o acesso, os limites do atendimento e a cobrança antes de permitir qualquer alteração no computador.</p></header><div className={styles.list}>{visibleQuestions.map(([question, answer]) => <details className={styles.item} key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}<button className={styles.showMore} type="button" aria-expanded={showAll} onClick={() => setShowAll((current) => !current)}>{showAll ? 'Mostrar menos perguntas' : 'Ver todas as perguntas'}</button></div></div></section>
+  function openDoubtChat() {
+    trackConversion('faq_free_doubt', { location: 'faq_cta' })
+    trackWhatsAppClick('faq_duvida_gratis')
+  }
+
+  return <section id="duvidas" className={`${styles.section} reveal`} aria-labelledby="faq-title"><div className={styles.container}><header className={styles.heading}><p className={styles.eyebrow}>Dúvidas frequentes</p><h2 id="faq-title">Ainda com dúvida? A gente te explica de graça.</h2><p>Entenda o acesso, os limites do atendimento e a cobrança antes de permitir qualquer alteração no computador. Se a sua pergunta não estiver aqui, é só chamar no WhatsApp — explicar não custa nada.</p></header><div className={styles.list}>{visibleQuestions.map(([question, answer]) => {
+    const open = openQuestion === question
+    const panelId = `faq-panel-${question.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase()}`
+    return <div className={`${styles.item} ${open ? styles.itemOpen : ''}`} key={question}><h3 className={styles.itemTitle}><button type="button" aria-expanded={open} aria-controls={panelId} onClick={() => setOpenQuestion((current) => current === question ? null : question)}>{question}<span aria-hidden="true">+</span></button></h3><div className={styles.panel} id={panelId} hidden={!open}><p>{answer}</p></div></div>
+  })}<button className={styles.showMore} type="button" aria-expanded={showAll} onClick={() => setShowAll((current) => !current)}>{showAll ? 'Mostrar menos perguntas' : 'Ver todas as perguntas'}</button><div className={styles.doubtCta}><strong>Não achou sua dúvida aqui?</strong><span>Fale agora com a gente pelo WhatsApp — sem custo, sem compromisso.</span><a className={styles.doubtButton} href={doubtUrl} target="_blank" rel="noopener noreferrer" onClick={openDoubtChat}>Tirar dúvida grátis no WhatsApp <span aria-hidden="true">→</span></a></div></div></div></section>
 }
 
 export default FAQ

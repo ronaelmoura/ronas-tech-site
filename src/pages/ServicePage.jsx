@@ -43,6 +43,7 @@ const monthlyProcessSteps = [
 
 const serviceLinks = [
   { href: '/criacao-de-sites', label: 'Criação de sites' },
+  { href: '/criacao-de-portfolio', label: 'Criação de portfólio' },
   { href: '/landing-pages', label: 'Landing pages' },
   {
     href: '/automacao-para-pequenos-negocios',
@@ -51,6 +52,7 @@ const serviceLinks = [
   { href: '/sistemas-web', label: 'Sistemas web' },
   { href: '/manutencao-de-sites', label: 'Manutenção de sites' },
   { href: '/computador-lento', label: 'Computador lento' },
+  { href: '/otimizacao-pc-gamer', label: 'Otimização para jogos' },
   { href: '/remocao-de-virus', label: 'Remoção de vírus' },
   { href: '/corrigir-erros-windows', label: 'Erros do Windows' },
   { href: '/suporte-tecnico-remoto', label: 'Suporte técnico remoto' },
@@ -61,6 +63,7 @@ const serviceLinks = [
 
 const supportServicePaths = new Set([
   '/computador-lento',
+  '/otimizacao-pc-gamer',
   '/remocao-de-virus',
   '/corrigir-erros-windows',
   '/suporte-tecnico-remoto',

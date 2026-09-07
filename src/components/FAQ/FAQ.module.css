@@ -56,8 +56,19 @@
   border-color: rgb(96 165 250 / 34%);
 }
 
-.item summary {
+.itemOpen {
+  background: #121b26;
+  border-color: rgb(96 165 250 / 34%);
+}
+
+.itemTitle {
+  margin: 0;
+  font: inherit;
+}
+
+.item button {
   display: flex;
+  width: 100%;
   min-height: 72px;
   align-items: center;
   justify-content: space-between;
@@ -65,16 +76,15 @@
   padding: 18px 22px;
   color: #f3f4f6;
   cursor: pointer;
+  font: inherit;
   font-size: 14px;
   font-weight: 600;
-  list-style: none;
+  text-align: left;
+  background: none;
+  border: 0;
 }
 
-.item summary::-webkit-details-marker {
-  display: none;
-}
-
-.item summary span {
+.item button span {
   display: grid;
   width: 28px;
   height: 28px;
@@ -88,11 +98,11 @@
   transition: transform 180ms ease;
 }
 
-.item[open] summary span {
+.itemOpen button span {
   transform: rotate(45deg);
 }
 
-.item p {
+.panel p {
   padding: 0 22px 22px;
   margin: -2px 0 0;
   color: #9ca3af;
@@ -100,8 +110,60 @@
   line-height: 1.75;
 }
 
-.item summary:focus-visible {
+.item button:focus-visible {
   outline: 2px solid #60a5fa;
+  outline-offset: -2px;
+  border-radius: 13px;
+}
+
+.doubtCta {
+  display: grid;
+  gap: 8px;
+  padding: 24px 26px;
+  margin-top: 10px;
+  background: linear-gradient(140deg, #0c2b3f, #101f31);
+  border: 1px solid rgb(54 199 255 / 42%);
+  border-radius: 16px;
+}
+
+.doubtCta strong {
+  color: #eaf8ff;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.doubtCta span {
+  color: #9fbdd2;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.doubtButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  min-height: 50px;
+  padding: 13px 20px;
+  margin-top: 8px;
+  color: #06131c;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgb(99 211 255), rgb(54 199 255));
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgb(54 199 255 / 22%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.doubtButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 38px rgb(54 199 255 / 34%);
+}
+
+.doubtButton:focus-visible {
+  outline: 2px solid #bfe9ff;
   outline-offset: 3px;
 }
 
@@ -141,20 +203,30 @@
     font-size: clamp(30px, 9vw, 39px);
   }
 
-  .item summary {
+  .item button {
     min-height: 66px;
     padding: 16px 18px;
     font-size: 13px;
   }
 
-  .item p {
+  .panel p {
     padding: 0 18px 19px;
+  }
+
+  .doubtCta {
+    padding: 20px;
+  }
+
+  .doubtButton {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .item,
-  .item summary span {
+  .item button span,
+  .doubtButton {
     transition-duration: 0.01ms;
   }
 }

@@ -56,6 +56,60 @@ export const servicePages = {
       },
     ],
   },
+  '/criacao-de-portfolio': {
+    slug: 'criacao-de-portfolio',
+    eyebrow: 'Criação de portfólio online',
+    title: 'Um portfólio que mostra seu trabalho e faz o cliente chamar você',
+    metaTitle: 'Criação de Portfólio Online | Ronas Tech',
+    metaDescription:
+      'Criação de portfólio online para desenvolvedores, designers, fotógrafos e freelancers. Projetos em destaque, layout responsivo e contato direto pelo WhatsApp.',
+    introduction:
+      'Seu trabalho já é bom — o problema é quando ele fica espalhado entre redes sociais, links soltos e arquivos no computador. O portfólio reúne seus melhores projetos em um endereço próprio, com um caminho claro para quem quiser te contratar.',
+    outcomes: [
+      {
+        title: 'Seus projetos em destaque',
+        description:
+          'Cada trabalho com contexto, resultado e imagens organizadas para o cliente entender o que você faz.',
+      },
+      {
+        title: 'Endereço próprio',
+        description:
+          'Um link profissional para colocar no currículo, na bio das redes e nas propostas que você envia.',
+      },
+      {
+        title: 'Contato sem fricção',
+        description:
+          'Botões de WhatsApp e e-mail em pontos naturais da página, para o convite virar conversa.',
+      },
+    ],
+    deliverables: [
+      'Estrutura de apresentação: quem é você, o que faz e para quem',
+      'Galeria de projetos com descrição, imagens e resultados',
+      'Layout responsivo e carregamento rápido no celular',
+      'Integração com WhatsApp, e-mail e redes profissionais',
+      'Metadados para compartilhamento em links e SEO básico',
+      'Publicação com domínio próprio e orientação para atualizar',
+    ],
+    audience:
+      'Desenvolvedores, designers, fotógrafos, redatores, editores de vídeo e outros freelancers que precisam mostrar trabalho de forma organizada para conseguir clientes, vagas ou parcerias.',
+    faq: [
+      {
+        question: 'Quanto custa um portfólio?',
+        answer:
+          'O valor depende da quantidade de projetos, do nível de personalização do layout e das integrações necessárias. O orçamento é fechado antes do início, sem cobrança pela conversa inicial.',
+      },
+      {
+        question: 'Preciso ter os textos e as imagens prontos?',
+        answer:
+          'Não precisa estar tudo pronto. Definimos juntos quais projetos entram e como cada um será apresentado; você envia o material e recebe orientação sobre o que ainda falta.',
+      },
+      {
+        question: 'Consigo atualizar o portfólio depois?',
+        answer:
+          'Sim. A estrutura é preparada para receber novos projetos, e você recebe a orientação de como incluir ou atualizar os trabalhos.',
+      },
+    ],
+  },
   '/landing-pages': {
     slug: 'landing-pages',
     eyebrow: 'Landing pages',

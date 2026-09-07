@@ -16,6 +16,20 @@ const services = [
     featured: true,
   },
   {
+    title: 'Criação de portfólio',
+    description:
+      'Reúna seus melhores trabalhos em um endereço próprio e transforme quem admira seu trabalho em cliente.',
+    highlights: [
+      'Projetos apresentados com contexto',
+      'Link profissional para bio e propostas',
+      'Layout responsivo e rápido',
+      'Contato direto pelo WhatsApp',
+    ],
+    icon: 'website',
+    path: '/criacao-de-portfolio',
+    price: 'Consulte',
+  },
+  {
     title: 'Landing pages para campanhas',
     description:
       'Apresente uma oferta sem distrações e conduza o visitante até o contato, cadastro ou pedido de orçamento.',
@@ -115,25 +129,25 @@ function Services() {
   return (
     <section
       id="servicos"
-      className={styles.section}
+      className={`${styles.section} reveal`}
       aria-labelledby="services-title"
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Como podemos ajudar</p>
+          <p className={styles.eyebrow}>Sites e sistemas</p>
           <h2 id="services-title">
-            Soluções digitais ligadas a um objetivo real do negócio
+            Além do suporte: presença digital e ferramentas sob medida
           </h2>
           <p className={styles.subtitle}>
             Cada projeto começa por uma necessidade concreta. Você entende o
-            que será feito, por que será feito e como a solução ajudará sua
-            empresa no dia a dia.
+            que será feito, por que será feito e como a solução ajudará você ou
+            sua empresa no dia a dia.
           </p>
         </header>
 
         <div className={styles.grid}>
           {services.map(
-            ({ title, description, highlights, icon, path, featured }) => (
+            ({ title, description, highlights, icon, path, featured, price }) => (
               <article
                 className={`${styles.card} ${featured ? styles.featured : ''}`}
                 key={title}
@@ -161,6 +175,13 @@ function Services() {
                     </li>
                   ))}
                 </ul>
+
+                {price && (
+                  <p className={styles.price}>
+                    <small>Investimento</small>
+                    <strong>{price}</strong>
+                  </p>
+                )}
 
                 <a className={styles.cta} href={path}>
                   Entender a solução
