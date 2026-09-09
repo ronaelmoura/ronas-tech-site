@@ -149,11 +149,11 @@ section[id] {
   top: 12px;
   left: 12px;
   padding: 10px 14px;
-  color: #fff;
-  background: #2563eb;
+  color: var(--color-page);
+  background: var(--color-brand);
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 30%);
-  font-size: 13px;
+  box-shadow: 0 8px 24px var(--color-shadow-strong);
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   transform: translateY(-160%);
@@ -161,7 +161,7 @@ section[id] {
 }
 
 .skip-link:focus {
-  outline: 2px solid #93c5fd;
+  outline: 2px solid var(--color-brand);
   outline-offset: 3px;
   transform: translateY(0);
 }
@@ -176,11 +176,11 @@ section[id] {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #f2fff8;
-  background: linear-gradient(135deg, rgb(10 43 31 / 97%), rgb(8 30 24 / 97%));
-  border: 1px solid rgb(37 211 102 / 48%);
+  color: var(--color-page);
+  background: var(--color-action);
+  border: 1px solid var(--color-action);
   border-radius: 999px;
-  box-shadow: 0 16px 38px rgb(0 0 0 / 40%), 0 0 0 1px rgb(37 211 102 / 6%);
+  box-shadow: 0 16px 38px var(--color-shadow-strong);
   backdrop-filter: blur(12px);
   text-decoration: none;
   isolation: isolate;
@@ -216,11 +216,11 @@ section[id] {
   line-height: 1.1;
 }
 
-.floating-contact__copy small { color: #8fb6a5; font-size: 8px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.floating-contact__copy strong { margin-top: 4px; color: #fff; font-size: 12px; font-weight: 700; }
+.floating-contact__copy small { color: var(--color-page); font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.floating-contact__copy strong { margin-top: 4px; color: var(--color-page); font-size: 13px; font-weight: 700; }
 
-.floating-contact:hover { border-color: #25d366; box-shadow: 0 19px 44px rgb(0 0 0 / 45%), 0 0 24px rgb(37 211 102 / 11%); transform: translateY(-3px); }
-.floating-contact:focus-visible { outline: 2px solid #86efac; outline-offset: 3px; }
+.floating-contact:hover { background: var(--color-action-strong); border-color: var(--color-action-strong); box-shadow: 0 19px 44px var(--color-shadow-strong); transform: translateY(-3px); }
+.floating-contact:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; }
 
 @media (max-width: 620px) {
   .floating-contact { right: 16px; bottom: 16px; min-height: 54px; padding: 6px 7px; gap: 8px; }
