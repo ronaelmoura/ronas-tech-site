@@ -64,6 +64,18 @@
   --color-shadow: rgb(13 17 23 / 10%);
   --color-shadow-strong: rgb(13 17 23 / 16%);
 
+  /* Estados de alerta usados nas ilustrações (disco cheio, erro do
+     Windows). Não são cor de ação: nunca em botão. */
+  --color-danger: #b3261e;
+  --color-warn: #a8410a;
+
+  /* Marcas desenhadas por cima de fotografia. A foto é escura, então
+     estas continuam claras — é o único lugar onde isso é correto. */
+  --color-on-media: #ffffff;
+  --color-on-media-soft: rgb(255 255 255 / 30%);
+  --color-media-scrim: rgb(13 17 23 / 58%);
+  --color-media-panel: rgb(13 17 23 / 78%);
+
   /* Faixas escuras que permanecem escuras (rodapé, no máximo uma seção) */
   --color-dark: #0d1117;
   --color-dark-alt: #101b28;
