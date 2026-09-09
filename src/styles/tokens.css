@@ -1,0 +1,59 @@
+/* ---------------------------------------------------------------------------
+   Tokens de cor — Ronas Tech
+   ---------------------------------------------------------------------------
+   Este arquivo só declara custom properties. Nada muda de aparência até um
+   componente referenciar um token, então a migração do site escuro para o
+   claro pode ser feita um componente por vez, com o site funcionando entre
+   cada passo.
+
+   Papéis (ver seção 3 da especificação de redesign):
+     - fundo da página em --color-page, cartões em --color-surface,
+       bordas em --color-line;
+     - texto principal --color-ink, secundário --color-ink-soft,
+       apoio --color-ink-faint. Nunca um cinza mais claro que
+       --color-ink-faint sobre branco;
+     - --color-brand carrega autoridade: títulos de destaque, números
+       grandes, bordas de cartão em evidência;
+     - --color-action é EXCLUSIVO de botão de ação. Sem texto verde, sem
+       borda verde decorativa, sem ícone verde.
+
+   Contraste verificado (mínimo AA: 4,5:1 texto normal, 3:1 texto grande):
+     --color-ink        18,92:1 sobre page   17,79:1 sobre surface
+     --color-ink-soft    8,18:1 sobre page    7,69:1 sobre surface
+     --color-ink-faint   5,35:1 sobre page    5,03:1 sobre surface
+     --color-brand       5,33:1 sobre page    5,01:1 sobre surface
+     --color-action      5,36:1 sobre page    5,04:1 sobre surface
+     branco sobre --color-action  5,36:1
+     branco sobre --color-brand   5,33:1
+     --color-dark-ink sobre --color-dark  12,59:1
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Superfícies claras */
+  --color-page: #ffffff;
+  --color-surface: #f6f8fb;
+  --color-surface-alt: #eef2f7;
+  --color-line: #dfe5ec;
+  --color-line-strong: #c4ced9;
+
+  /* Texto sobre superfícies claras */
+  --color-ink: #0d1117;
+  --color-ink-soft: #45505f;
+  --color-ink-faint: #5f6c7d;
+
+  /* Marca: autoridade, não ação */
+  --color-brand: #1069cf;
+  --color-brand-strong: #0b4f9e;
+  --color-brand-soft: #eaf2fd;
+
+  /* Ação: somente botão de ação */
+  --color-action: #0f7a4f;
+  --color-action-strong: #0b5c3b;
+
+  /* Faixas escuras que permanecem escuras (rodapé, no máximo uma seção) */
+  --color-dark: #0d1117;
+  --color-dark-alt: #101b28;
+  --color-dark-ink: #c8d4e2;
+  --color-dark-ink-strong: #f5f8fc;
+  --color-dark-line: rgb(148 163 184 / 22%);
+}
