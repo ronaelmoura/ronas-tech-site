@@ -64,6 +64,11 @@
   --color-shadow: rgb(13 17 23 / 10%);
   --color-shadow-strong: rgb(13 17 23 / 16%);
 
+  /* Acento da categoria gamer na loja. É identidade de categoria, não
+     ação — por isso não usa --color-action. */
+  --color-accent-gamer: #6d28d9;
+  --color-accent-gamer-soft: #f3eefe;
+
   /* Estados de alerta usados nas ilustrações (disco cheio, erro do
      Windows). Não são cor de ação: nunca em botão. */
   --color-danger: #b3261e;

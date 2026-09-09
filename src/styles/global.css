@@ -392,7 +392,7 @@ section[aria-labelledby='safety-title'] article:hover {
 
 #loja {
   background-image:
-    linear-gradient(rgb(10 20 31 / 93%), rgb(10 20 31 / 96%)),
+    linear-gradient(var(--color-veil-strong), var(--color-veil-strong)),
     url('/images/fundos/servicos-componentes.webp');
   background-position: center;
   background-size: cover;
@@ -643,7 +643,7 @@ section[aria-labelledby='safety-title'] article {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: var(--text-faint);
+  color: var(--color-ink-faint);
   font-size: 14px;
 }
 
@@ -652,30 +652,32 @@ section[aria-labelledby='safety-title'] article {
   height: 24px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-line-strong);
   border-radius: 50%;
   font-size: 12px;
   font-weight: 700;
 }
 
 .store-progress li[data-state='current'] {
-  color: var(--text-strong);
+  color: var(--color-ink);
 }
 
 .store-progress li[data-state='current'] b {
-  color: #071520;
-  background: var(--accent);
-  border-color: var(--accent);
+  color: var(--color-page);
+  background: var(--color-brand);
+  border-color: var(--color-brand);
 }
 
+/* Etapa concluída. Era verde, mas verde aqui é estado, não ação: passa a
+   marca, para o único verde da seção continuar sendo o botão de enviar. */
 .store-progress li[data-state='done'] {
-  color: #6ee7b7;
+  color: var(--color-brand);
 }
 
 .store-progress li[data-state='done'] b {
-  color: #6ee7b7;
-  border-color: rgb(52 211 153 / 45%);
-  background: rgb(52 211 153 / 12%);
+  color: var(--color-brand);
+  border-color: var(--color-brand);
+  background: var(--color-brand-soft);
 }
 
 /* Rodapé: links de navegação e ícones sociais como alvos de toque reais. */
