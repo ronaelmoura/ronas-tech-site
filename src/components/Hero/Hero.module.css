@@ -1,1 +1,414 @@
-.hero{position:relative;display:flex;min-height:100svh;align-items:center;overflow:hidden;padding:116px 0 72px;color:#fff;background:#080d14;isolation:isolate}.hero:before{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgb(255 255 255/2.5%) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255/2.5%) 1px,transparent 1px);background-size:56px 56px;content:'';mask-image:linear-gradient(to bottom,black,transparent 88%)}.glow{position:absolute;z-index:-1;top:-10%;right:-15%;width:70vw;height:70vw;max-width:900px;max-height:900px;background:radial-gradient(circle,rgb(23 139 216/20%),transparent 65%);pointer-events:none}.container{display:grid;width:min(100% - 48px,1200px);margin:auto;grid-template-columns:minmax(0,.95fr) minmax(440px,1.05fr);align-items:center;gap:clamp(48px,7vw,92px)}.content{animation:contentIn .7s cubic-bezier(.22,1,.36,1) both}.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 18px;color:#8ad8ff;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.eyebrow span{width:8px;height:8px;border-radius:50%;background:#37d6a3;box-shadow:0 0 14px #37d6a3;animation:statusPulse 2.4s ease-in-out infinite}.title{max-width:680px;margin:0;color:#f8fbff;font-family:var(--font-display);font-size:clamp(44px,4.8vw,66px);font-weight:700;letter-spacing:-.055em;line-height:1.01}.title span{color:#62c8ff}.description{max-width:620px;margin:24px 0 0;color:#a9b7c8;font-size:clamp(16px,1.45vw,19px);line-height:1.72}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.primaryButton,.secondaryButton{display:inline-flex;min-height:52px;align-items:center;justify-content:center;gap:18px;padding:0 22px;border-radius:11px;font-size:14px;font-weight:800;text-decoration:none;transition:.2s ease}.primaryButton{color:#fff;background:linear-gradient(135deg,#1475dc,#229fe9);border:1px solid #45bdf9;box-shadow:0 14px 34px rgb(20 117 220/28%)}.primaryButton span{font-size:19px}.secondaryButton{color:#e7f2fb;background:rgb(255 255 255/4%);border:1px solid rgb(255 255 255/14%)}.primaryButton:hover,.secondaryButton:hover{transform:translateY(-2px)}.primaryButton:focus-visible,.secondaryButton:focus-visible{outline:2px solid #73d0ff;outline-offset:4px}.trustList{display:flex;flex-wrap:wrap;gap:8px 18px;padding:0;margin:22px 0 0;list-style:none}.trustList li{position:relative;padding-left:19px;color:#b5c2d0;font-size:11px}.trustList li:before{position:absolute;left:0;color:#4adeb1;content:'✓';font-weight:900}.visual{position:relative;animation:visualIn .85s .12s cubic-bezier(.22,1,.36,1) both;perspective:1200px}.console{position:relative;overflow:hidden;border:1px solid #274866;border-radius:20px;background:#0c1520;box-shadow:0 34px 85px rgb(0 0 0/48%),0 0 55px rgb(30 146 218/10%);transform:rotateY(-2deg) rotateX(1deg)}.consoleBar{display:grid;height:46px;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 16px;border-bottom:1px solid #203448;background:#09111a;font-family:var(--font-mono);font-size:8px;color:#647b91}.consoleBar>div{display:flex;gap:6px}.consoleBar i{width:7px;height:7px;border-radius:50%;background:#31465a}.consoleBar i:first-child{background:#2f8dca}.consoleBar strong{justify-self:end;color:#83d7bb;font-size:8px}.consoleBar b{display:inline-block;width:6px;height:6px;margin-right:5px;border-radius:50%;background:#3bd5a5;box-shadow:0 0 9px #3bd5a5}.consoleBody{padding:28px}.consoleHeading{display:flex;align-items:start;justify-content:space-between;gap:20px}.consoleHeading small{color:#4fbaf2;font-family:var(--font-mono);font-size:8px;letter-spacing:.15em}.consoleHeading h2{margin:7px 0 0;color:#f4f8fc;font-family:var(--font-display);font-size:24px;letter-spacing:-.03em}.consoleHeading>span{padding:6px 9px;border:1px solid #255470;border-radius:99px;color:#90cfea;background:#102537;font-size:8px}.checks{display:grid;gap:9px;margin:27px 0}.check{display:grid;grid-template-columns:25px 1fr auto;align-items:center;gap:10px;padding:11px 12px;border:1px solid #1d3449;border-radius:10px;background:#0d1926;opacity:.36;animation:checkReveal 5s var(--delay) ease-in-out infinite}.checkIcon{display:grid;width:22px;height:22px;place-items:center;border-radius:6px;color:#55dcaf;background:#123a31;font-size:10px}.check strong{color:#dfe9f2;font-size:11px}.check small{color:#6f879b;font-family:var(--font-mono);font-size:8px}.terminal{display:grid;gap:7px;padding:15px;border:1px solid #24415b;border-radius:10px;background:#070e16;color:#78d7ff;font-family:var(--font-mono);font-size:9px}.prompt i{display:inline-block;width:6px;height:11px;margin-left:3px;background:#47dbae;vertical-align:middle;animation:blink 1s steps(1) infinite}.scanline{position:absolute;inset:46px 0 auto;height:70px;background:linear-gradient(transparent,rgb(73 190 247/8%),transparent);animation:scan 6s linear infinite;pointer-events:none}@keyframes statusPulse{50%{opacity:.5;box-shadow:0 0 4px #37d6a3}}@keyframes checkReveal{0%,15%,100%{opacity:.36}25%,72%{opacity:1;transform:translateX(3px)}}@keyframes blink{50%{opacity:0}}@keyframes scan{from{transform:translateY(-100px)}to{transform:translateY(420px)}}@keyframes contentIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}@keyframes visualIn{from{opacity:0;transform:translateX(30px) scale(.98)}to{opacity:1;transform:none}}@media(max-width:900px){.hero{padding:132px 0 92px}.container{grid-template-columns:1fr}.content{max-width:720px}.visual{width:min(100%,650px);margin:auto}}@media(max-width:560px){.hero{padding:112px 0 76px}.container{width:min(100% - 32px,1200px);gap:46px}.title{font-size:clamp(40px,12vw,52px)}.description{font-size:15px}.actions{align-items:stretch;flex-direction:column}.primaryButton,.secondaryButton{width:100%}.trustList{display:grid}.console{border-radius:14px;transform:none}.consoleBar{grid-template-columns:1fr auto}.consoleBar>span{display:none}.consoleBody{padding:20px 14px}.consoleHeading h2{font-size:19px}.consoleHeading>span{display:none}}@media(prefers-reduced-motion:reduce){.content,.visual,.eyebrow span,.check,.prompt i,.scanline{animation:none}.check{opacity:1}}
+/* Hero convertido para a paleta clara. O mock de diagnóstico, que antes era
+   um painel escuro, virou um cartão claro: ele ilustra o acompanhamento do
+   atendimento pela tela e não precisa mais imitar um terminal escuro.
+   O único botão em --color-action é o principal; o secundário é contorno. */
+
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  align-items: center;
+  overflow: hidden;
+  padding: 116px 0 72px;
+  color: var(--color-ink);
+  background: var(--color-page);
+  isolation: isolate;
+}
+
+.hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  content: '';
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.glow {
+  position: absolute;
+  z-index: -1;
+  top: -10%;
+  right: -15%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  max-height: 900px;
+  background: radial-gradient(circle, var(--color-brand-soft), transparent 65%);
+  pointer-events: none;
+}
+
+.container {
+  display: grid;
+  width: min(100% - 48px, 1200px);
+  margin: auto;
+  grid-template-columns: minmax(0, .95fr) minmax(440px, 1.05fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 92px);
+}
+
+.content {
+  animation: contentIn .7s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  color: var(--color-brand);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.eyebrow span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-brand);
+  animation: statusPulse 2.4s ease-in-out infinite;
+}
+
+.title {
+  max-width: 680px;
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(44px, 4.8vw, 66px);
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: 1.01;
+}
+
+.title span {
+  color: var(--color-brand);
+}
+
+.description {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: var(--color-ink-soft);
+  font-size: clamp(16px, 1.45vw, 19px);
+  line-height: 1.72;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 22px;
+  border-radius: 11px;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: .2s ease;
+}
+
+.primaryButton {
+  color: var(--color-page);
+  background: var(--color-action);
+  border: 1px solid var(--color-action);
+  box-shadow: 0 14px 34px var(--color-shadow);
+}
+
+.primaryButton:hover {
+  background: var(--color-action-strong);
+  border-color: var(--color-action-strong);
+}
+
+.secondaryButton {
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
+}
+
+.secondaryButton:hover {
+  background: var(--color-surface-alt);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 4px;
+}
+
+.availability {
+  margin-top: 20px;
+}
+
+.trustList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding: 0;
+  margin: 22px 0 0;
+  list-style: none;
+}
+
+.trustList li {
+  position: relative;
+  padding-left: 19px;
+  color: var(--color-ink-soft);
+  font-size: 14px;
+}
+
+.trustList li::before {
+  position: absolute;
+  left: 0;
+  color: var(--color-brand);
+  content: '✓';
+  font-weight: 900;
+}
+
+.visual {
+  position: relative;
+  animation: visualIn .85s .12s cubic-bezier(.22, 1, .36, 1) both;
+  perspective: 1200px;
+}
+
+/* ---- Mock de diagnóstico, agora claro ---- */
+
+.console {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  background: var(--color-page);
+  box-shadow: 0 34px 85px var(--color-shadow-strong);
+  transform: rotateY(-2deg) rotateX(1deg);
+}
+
+.consoleBar {
+  display: grid;
+  height: 46px;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-ink-faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.consoleBar > div {
+  display: flex;
+  gap: 6px;
+}
+
+.consoleBar i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-line-strong);
+}
+
+.consoleBar i:first-child {
+  background: var(--color-brand);
+}
+
+.consoleBar strong {
+  justify-self: end;
+  color: var(--color-brand);
+  font-size: 9px;
+}
+
+.consoleBar b {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: var(--color-brand);
+}
+
+.consoleBody {
+  padding: 28px;
+}
+
+.consoleHeading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.consoleHeading small {
+  color: var(--color-brand);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .15em;
+}
+
+.consoleHeading h2 {
+  margin: 7px 0 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: -.03em;
+}
+
+.consoleHeading > span {
+  padding: 6px 9px;
+  border: 1px solid var(--color-brand);
+  border-radius: 99px;
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  font-size: 9px;
+}
+
+.checks {
+  display: grid;
+  gap: 9px;
+  margin: 27px 0;
+}
+
+.check {
+  display: grid;
+  grid-template-columns: 25px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-surface);
+  opacity: .55;
+  animation: checkReveal 5s var(--delay) ease-in-out infinite;
+}
+
+.checkIcon {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 6px;
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  font-size: 10px;
+}
+
+.check strong {
+  color: var(--color-ink);
+  font-size: 12px;
+}
+
+.check small {
+  color: var(--color-ink-faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.terminal {
+  display: grid;
+  gap: 7px;
+  padding: 15px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-surface-alt);
+  color: var(--color-ink-soft);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.prompt i {
+  display: inline-block;
+  width: 6px;
+  height: 11px;
+  margin-left: 3px;
+  background: var(--color-brand);
+  vertical-align: middle;
+  animation: blink 1s steps(1) infinite;
+}
+
+.scanline {
+  position: absolute;
+  inset: 46px 0 auto;
+  height: 70px;
+  background: linear-gradient(transparent, var(--color-brand-soft), transparent);
+  animation: scan 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes statusPulse {
+  50% { opacity: .5; }
+}
+
+@keyframes checkReveal {
+  0%, 15%, 100% { opacity: .55; }
+  25%, 72% { opacity: 1; transform: translateX(3px); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes scan {
+  from { transform: translateY(-100px); }
+  to { transform: translateY(420px); }
+}
+
+@keyframes contentIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes visualIn {
+  from { opacity: 0; transform: translateX(30px) scale(.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 900px) {
+  .hero { padding: 132px 0 92px; }
+  .container { grid-template-columns: 1fr; }
+  .content { max-width: 720px; }
+  .visual { width: min(100%, 650px); margin: auto; }
+}
+
+@media (max-width: 560px) {
+  .hero { padding: 112px 0 76px; }
+  .container { width: min(100% - 32px, 1200px); gap: 46px; }
+  .title { font-size: clamp(40px, 12vw, 52px); }
+  .description { font-size: 16px; }
+  .actions { align-items: stretch; flex-direction: column; }
+  .primaryButton, .secondaryButton { width: 100%; }
+  .trustList { display: grid; }
+  .console { border-radius: 14px; transform: none; }
+  .consoleBar { grid-template-columns: 1fr auto; }
+  .consoleBar > span { display: none; }
+  .consoleBody { padding: 20px 14px; }
+  .consoleHeading h2 { font-size: 19px; }
+  .consoleHeading > span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content,
+  .visual,
+  .eyebrow span,
+  .check,
+  .prompt i,
+  .scanline {
+    animation: none;
+  }
+
+  .check { opacity: 1; }
+}

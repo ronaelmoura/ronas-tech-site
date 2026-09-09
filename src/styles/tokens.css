@@ -53,6 +53,13 @@
   /* Superfícies translúcidas, véus e sombras. Existem como token para que
      nenhum componente migrado precise escrever cor à mão. */
   --color-page-blur: rgb(255 255 255 / 85%);
+
+  /* Véus claros sobre os fundos fotográficos aplicados por ID em
+     global.css (#inicio, #loja, #sobre). Antes eram gradientes escuros;
+     agora deixam a foto aparecer sem comprometer a leitura em claro. */
+  --color-veil-strong: rgb(255 255 255 / 97%);
+  --color-veil: rgb(255 255 255 / 88%);
+  --color-veil-soft: rgb(255 255 255 / 62%);
   --color-scrim: rgb(13 17 23 / 48%);
   --color-shadow: rgb(13 17 23 / 10%);
   --color-shadow-strong: rgb(13 17 23 / 16%);
