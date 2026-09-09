@@ -510,10 +510,12 @@ section[aria-labelledby='safety-title'] article {
   font-size: 12px;
 }
 
-/* "Sobre": as etiquetas de tecnologia estavam em 3,4:1 e 9px. */
+/* "Sobre": as etiquetas de tecnologia estavam em 3,4:1 e 9px. O tom claro
+   que resolvia isso sobre o fundo escuro caiu para cerca de 1,1:1 quando a
+   secao virou clara, entao passa a marca. */
 .home #sobre [class*='stack'] span {
-  color: #cfe6fb;
-  font-size: 11px;
+  color: var(--color-brand);
+  font-size: 12px;
 }
 
 .home #sobre [class*='factGrid'] dd,

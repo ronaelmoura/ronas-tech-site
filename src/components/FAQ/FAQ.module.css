@@ -1,6 +1,6 @@
 .section {
   padding: 88px 0 94px;
-  background: #0b1016;
+  background: var(--color-page);
 }
 
 .container {
@@ -17,7 +17,7 @@
 
 .eyebrow {
   margin: 0 0 13px;
-  color: #60a5fa;
+  color: var(--color-brand);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -26,7 +26,7 @@
 
 .heading h2 {
   margin: 0;
-  color: #fff;
+  color: var(--color-ink);
   font-size: clamp(32px, 4vw, 46px);
   letter-spacing: -0.045em;
   line-height: 1.15;
@@ -34,8 +34,8 @@
 
 .heading > p:last-child {
   margin: 20px 0 0;
-  color: #9ca3af;
-  font-size: 15px;
+  color: var(--color-ink-soft);
+  font-size: 16px;
   line-height: 1.75;
 }
 
@@ -45,20 +45,20 @@
 }
 
 .item {
-  background: #111820;
-  border: 1px solid rgb(148 163 184 / 8%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 13px;
   transition: border-color 180ms ease, background-color 180ms ease;
 }
 
 .item[open] {
-  background: #121b26;
-  border-color: rgb(96 165 250 / 34%);
+  background: var(--color-surface-alt);
+  border-color: var(--color-brand);
 }
 
 .itemOpen {
-  background: #121b26;
-  border-color: rgb(96 165 250 / 34%);
+  background: var(--color-surface-alt);
+  border-color: var(--color-brand);
 }
 
 .itemTitle {
@@ -74,10 +74,10 @@
   justify-content: space-between;
   gap: 20px;
   padding: 18px 22px;
-  color: #f3f4f6;
+  color: var(--color-ink);
   cursor: pointer;
   font: inherit;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   text-align: left;
   background: none;
@@ -90,8 +90,8 @@
   height: 28px;
   flex: 0 0 auto;
   place-items: center;
-  color: #93c5fd;
-  background: rgb(37 99 235 / 13%);
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
   border-radius: 50%;
   font-size: 19px;
   line-height: 1;
@@ -105,13 +105,13 @@
 .panel p {
   padding: 0 22px 22px;
   margin: -2px 0 0;
-  color: #9ca3af;
-  font-size: 13px;
+  color: var(--color-ink-soft);
+  font-size: 16px;
   line-height: 1.75;
 }
 
 .item button:focus-visible {
-  outline: 2px solid #60a5fa;
+  outline: 2px solid var(--color-brand);
   outline-offset: -2px;
   border-radius: 13px;
 }
@@ -121,21 +121,21 @@
   gap: 8px;
   padding: 24px 26px;
   margin-top: 10px;
-  background: linear-gradient(140deg, #0c2b3f, #101f31);
-  border: 1px solid rgb(54 199 255 / 42%);
+  background: var(--color-brand-soft);
+  border: 1px solid var(--color-brand);
   border-radius: 16px;
 }
 
 .doubtCta strong {
-  color: #eaf8ff;
+  color: var(--color-ink);
   font-family: var(--font-display);
   font-size: 19px;
   line-height: 1.25;
 }
 
 .doubtCta span {
-  color: #9fbdd2;
-  font-size: 13px;
+  color: var(--color-ink-soft);
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -147,37 +147,38 @@
   min-height: 50px;
   padding: 13px 20px;
   margin-top: 8px;
-  color: #06131c;
+  color: var(--color-page);
   font: inherit;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
   border: 0;
   cursor: pointer;
   text-decoration: none;
-  background: linear-gradient(135deg, rgb(99 211 255), rgb(54 199 255));
+  background: var(--color-action);
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgb(54 199 255 / 22%);
+  box-shadow: 0 12px 30px var(--color-shadow);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .doubtButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 38px rgb(54 199 255 / 34%);
+  background: var(--color-action-strong);
+  box-shadow: 0 16px 38px var(--color-shadow-strong);
 }
 
 .doubtButton:focus-visible {
-  outline: 2px solid #bfe9ff;
+  outline: 2px solid var(--color-brand);
   outline-offset: 3px;
 }
 
 .showMore {
   min-height: 46px;
-  color: #b9dff7;
+  color: var(--color-brand);
   font: inherit;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
-  background: #101b27;
-  border: 1px solid rgb(96 165 250 / 20%);
+  background: var(--color-page);
+  border: 1px solid var(--color-brand);
   border-radius: 12px;
   cursor: pointer;
 }
@@ -209,7 +210,7 @@
   .item button {
     min-height: 66px;
     padding: 16px 18px;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .panel p {
