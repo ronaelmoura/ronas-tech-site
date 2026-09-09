@@ -401,7 +401,7 @@ section[aria-labelledby='safety-title'] article:hover {
 
 #sobre {
   background-image:
-    radial-gradient(circle at 78% 50%, rgb(9 20 31 / 28%), rgb(9 20 31 / 88%) 47%, #09141f 76%),
+    radial-gradient(circle at 78% 50%, var(--color-veil-soft), var(--color-veil) 47%, var(--color-veil-strong) 76%),
     url('/images/fundos/brasil-conectado.webp');
   background-position: center;
   background-size: cover;
@@ -518,8 +518,8 @@ section[aria-labelledby='safety-title'] article {
 
 .home #sobre [class*='factGrid'] dd,
 .home #sobre [class*='proofHeader'] small {
-  color: var(--text-muted);
-  font-size: 12px;
+  color: var(--color-ink-soft);
+  font-size: 14px;
 }
 
 /* Corpo de texto das seções: nada abaixo de 15px na home. */
