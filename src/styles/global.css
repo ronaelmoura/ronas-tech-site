@@ -524,7 +524,9 @@ section[aria-labelledby='safety-title'] article {
   font-size: 14px;
 }
 
-/* Corpo de texto das seções: nada abaixo de 15px na home. */
+/* Corpo de texto das seções: nada abaixo de 16px na home. O público chega
+   justamente porque o computador está difícil de usar, então o piso do
+   corpo de texto é o mesmo do restante da página. */
 .home #problemas [class*='card'] p,
 .home #loja [class*='card'] p,
 .home #loja [class*='card'] li,
@@ -533,7 +535,7 @@ section[aria-labelledby='safety-title'] article {
 .home #processo [class*='card'] p,
 .home #sobre [class*='content'] p {
   color: var(--color-ink-soft);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.65;
 }
 
