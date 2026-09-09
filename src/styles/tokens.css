@@ -94,4 +94,9 @@
      contra #0d1117, então o rodapé usa este tom mais claro (7,44:1). */
   --color-brand-on-dark: #60a5fa;
   --color-dark-glow: rgb(96 165 250 / 8%);
+
+  /* Halo do botão flutuante do WhatsApp. É o pulso de um botão de ação,
+     por isso deriva do verde de ação e não da marca. */
+  --color-action-halo: rgb(15 122 79 / 30%);
+  --color-action-halo-soft: rgb(15 122 79 / 0%);
 }
