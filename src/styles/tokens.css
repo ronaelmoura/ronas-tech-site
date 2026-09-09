@@ -86,5 +86,12 @@
   --color-dark-alt: #101b28;
   --color-dark-ink: #c8d4e2;
   --color-dark-ink-strong: #f5f8fc;
+  --color-dark-ink-faint: #94a3b8;
+  --color-dark-surface: #101b28;
   --color-dark-line: rgb(148 163 184 / 22%);
+
+  /* Marca sobre fundo escuro. O --color-brand tem contraste demais baixo
+     contra #0d1117, então o rodapé usa este tom mais claro (7,44:1). */
+  --color-brand-on-dark: #60a5fa;
+  --color-dark-glow: rgb(96 165 250 / 8%);
 }
