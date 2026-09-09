@@ -58,10 +58,33 @@ export function initializeAnalytics() {
   }
 }
 
+// Um visitante que abre o WhatsApp é um lead, mesmo que clique no botão do
+// topo, no do hero e no flutuante durante a mesma visita. O transaction_id
+// abaixo é o mesmo nos três cliques, então o Google Ads registra uma
+// conversão só e o lance automático não é treinado com volume inflado.
+const leadIdStorageKey = 'ronas_lead_id'
+
+export function getLeadId() {
+  if (typeof window === 'undefined') return ''
+  try {
+    const stored = window.sessionStorage.getItem(leadIdStorageKey)
+    if (stored) return stored
+    const id = `lead-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`
+    window.sessionStorage.setItem(leadIdStorageKey, id)
+    return id
+  } catch {
+    // sessionStorage bloqueado (aba anônima, cookies restritos): sem id não
+    // dá para deduplicar, mas a conversão ainda precisa ser enviada.
+    return ''
+  }
+}
+
 export function trackGoogleAdsConversion(parameters = {}) {
   if (!hasValidConversionLabel || typeof window === 'undefined' || !window.gtag) return
+  const leadId = getLeadId()
   window.gtag('event', 'conversion', {
     send_to: `${googleAdsId}/${googleAdsConversionLabel}`,
+    ...(leadId ? { transaction_id: leadId } : {}),
     ...parameters,
   })
 }
@@ -84,16 +107,36 @@ export function trackEvent(eventName, eventParameters = {}) {
   window.gtag('event', eventName, { ...eventParameters, ...attribution })
 }
 
+// Gatilho estável para o Google Tag Manager. Um acionador de GTM montado
+// sobre o texto do botão ("Continuar pelo WhatsApp", "Montar pedido") quebra
+// toda vez que a copy muda; este evento no dataLayer não muda de nome. No
+// GTM, use um acionador de Evento personalizado chamado
+// "ronas_whatsapp_click" — ou um acionador de clique com o seletor
+// [data-ronas-cta], que marca os mesmos botões no HTML.
+export function pushWhatsAppDataLayerEvent(location, leadId) {
+  if (typeof window === 'undefined') return
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({
+    event: 'ronas_whatsapp_click',
+    ronas_cta_location: location,
+    ronas_lead_id: leadId || undefined,
+  })
+}
+
 export function trackWhatsAppClick(location) {
   // Abrir o WhatsApp é o momento em que o visitante vira lead — por isso,
   // além do evento no GA4, isso também dispara a conversão do Google Ads e
   // o evento "Lead" do Meta Pixel, quando cada um estiver configurado.
+  // O evento do GA4 continua sendo enviado a cada clique — ele serve para
+  // entender qual botão traz mais contato. Só a conversão do Ads e o Lead da
+  // Meta é que são deduplicados pelo id da visita.
   trackEvent('whatsapp_click', {
     location,
     link_url: whatsappUrl,
   })
   trackGoogleAdsConversion({ location })
-  trackPixelEvent('Lead', { content_name: location })
+  trackPixelEvent('Lead', { content_name: location }, { eventID: getLeadId() })
+  pushWhatsAppDataLayerEvent(location, getLeadId())
 }
 
 export function trackContactFormSubmit(projectType) {

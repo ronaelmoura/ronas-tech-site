@@ -60,6 +60,26 @@
   --font-body: 'Manrope', sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* Tokens de superfície, texto e forma. O CSS antigo ainda tem cores
+     escritas à mão em cada módulo; o caminho daqui para frente é sempre
+     usar estas variáveis, para que o site tenha uma paleta só. Os tons de
+     texto abaixo foram escolhidos para passar em 4,5:1 sobre as duas
+     superfícies escuras. */
+  --surface: #0d1117;
+  --surface-alt: #0a141f;
+  --surface-raised: #101b28;
+  --line: rgb(148 163 184 / 22%);
+  --accent: #3fa8ef;
+  --accent-strong: #1475dc;
+  --text-strong: #f5f8fc;
+  --text: #c8d4e2;
+  --text-muted: #a7b6c7;
+  --text-faint: #94a3b8;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
   font-family: var(--font-body);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -458,4 +478,216 @@ section[aria-labelledby='safety-title'] article {
     padding-top: 56px;
     padding-bottom: 56px;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Legibilidade, contraste e área de toque
+   ---------------------------------------------------------------------------
+   O público da home chega justamente porque o computador está difícil de
+   usar; texto de 9px em cinza apagado trabalha contra isso. Os ajustes
+   abaixo elevam pisos mínimos de tamanho e contraste sem reescrever os 40
+   módulos CSS, e devem ser a referência enquanto a migração para os tokens
+   de :root não estiver concluída.
+   -------------------------------------------------------------------------- */
+
+/* Rodapé: rótulos e créditos estavam em 3,6:1–3,9:1, abaixo do mínimo AA. */
+.site-footer [class*='contactColumn'] address span,
+.site-footer [class*='contactColumn'] address small,
+.site-footer [class*='bottomBar'] p,
+.site-footer [class*='bottomBar'] a,
+.site-footer [class*='legalLinks'] a {
+  color: var(--text-muted);
+}
+
+.site-footer [class*='contactColumn'] address span,
+.site-footer [class*='contactColumn'] address small {
+  font-size: 12px;
+  letter-spacing: .1em;
+}
+
+.site-footer [class*='bottomBar'] p,
+.site-footer [class*='bottomBar'] a {
+  font-size: 12px;
+}
+
+/* "Sobre": as etiquetas de tecnologia estavam em 3,4:1 e 9px. */
+.home #sobre [class*='stack'] span {
+  color: #cfe6fb;
+  font-size: 11px;
+}
+
+.home #sobre [class*='factGrid'] dd,
+.home #sobre [class*='proofHeader'] small {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* Corpo de texto das seções: nada abaixo de 15px na home. */
+.home #problemas [class*='card'] p,
+.home #loja [class*='card'] p,
+.home #loja [class*='card'] li,
+.home #servicos [class*='card'] p,
+.home #servicos [class*='card'] li,
+.home #processo [class*='card'] p,
+.home #sobre [class*='content'] p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.home #problemas header > p:last-child,
+.home #loja header p:not([class*='eyebrow']),
+.home #processo [class*='subtitle'],
+.home #duvidas header p:not([class*='eyebrow']),
+.home #servicos header p:not([class*='eyebrow']) {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* Etiquetas em versalete: 9–11px é pequeno demais para texto em caixa alta. */
+.home #problemas [class*='card'] small,
+.home #loja [class*='category'],
+.home #servicos [class*='category'],
+.home [class*='eyebrow'] {
+  font-size: 12px;
+}
+
+/* Hierarquia: o H1 do hero precisa dominar o primeiro H2 da página. */
+.home #problemas header h2,
+.home #loja header h2,
+.home #processo header h2,
+.home #servicos header h2,
+.home #duvidas header h2,
+.home #sobre h2 {
+  font-size: clamp(28px, 3.4vw, 44px);
+}
+
+/* Área de toque: os links de apoio dos cards tinham 18px de altura. */
+.home #problemas [class*='card'] > a,
+.home #loja [class*='detailsLink'],
+.home #servicos [class*='detailsLink'] {
+  min-height: 44px;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------------------
+   Blocos de decisão da home
+   -------------------------------------------------------------------------- */
+
+/* Faixa de garantia: reúne num lugar só o que já é verdade espalhada pelo
+   site — triagem gratuita, valor aprovado antes e pagamento após o serviço.
+   É a objeção principal de quem nunca contratou suporte remoto. */
+.assurance {
+  width: min(100% - 48px, 1180px);
+  margin: -12px auto 0;
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+}
+
+.assurance > div {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+
+.assurance strong {
+  color: var(--text-strong);
+  font-family: var(--font-display);
+  font-size: 16px;
+}
+
+.assurance span {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.assurance b {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #6ee7b7;
+  background: rgb(52 211 153 / 12%);
+  border: 1px solid rgb(52 211 153 / 34%);
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .assurance {
+    width: min(100% - 32px, 1180px);
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* Indicador de etapa da loja: mostra que faltam dois passos, não uma compra
+   fechada. Reduz o receio de clicar e ser cobrado. */
+.store-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+.store-progress li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-faint);
+  font-size: 14px;
+}
+
+.store-progress li b {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.store-progress li[data-state='current'] {
+  color: var(--text-strong);
+}
+
+.store-progress li[data-state='current'] b {
+  color: #071520;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.store-progress li[data-state='done'] {
+  color: #6ee7b7;
+}
+
+.store-progress li[data-state='done'] b {
+  color: #6ee7b7;
+  border-color: rgb(52 211 153 / 45%);
+  background: rgb(52 211 153 / 12%);
+}
+
+/* Rodapé: links de navegação e ícones sociais como alvos de toque reais. */
+.site-footer nav a,
+.site-footer [class*='legalLinks'] a {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.site-footer [class*='socials'] a {
+  width: 44px;
+  height: 44px;
 }

@@ -49,7 +49,11 @@ export function initializeMetaPixel() {
   window.fbq('track', 'PageView')
 }
 
-export function trackPixelEvent(eventName, parameters = {}) {
+// O terceiro argumento carrega o eventID: quando dois cliques do mesmo
+// visitante mandam o mesmo id, a Meta conta um Lead só. É o mesmo id usado
+// no transaction_id do Google Ads, para os dois relatórios baterem.
+export function trackPixelEvent(eventName, parameters = {}, options = {}) {
   if (!hasValidPixelId || typeof window === 'undefined' || !window.fbq) return
-  window.fbq('track', eventName, parameters)
+  if (options.eventID) window.fbq('track', eventName, parameters, { eventID: options.eventID })
+  else window.fbq('track', eventName, parameters)
 }

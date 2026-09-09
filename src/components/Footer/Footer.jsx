@@ -7,9 +7,11 @@ import styles from './Footer.module.css'
 
 const navigationLinks = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Loja', href: '#loja' },
   { label: 'Problemas atendidos', href: '#problemas' },
   { label: 'Como funciona', href: '#processo' },
+  { label: 'Atendimentos', href: '#loja' },
+  { label: 'Sites e sistemas', href: '#servicos' },
+  { label: 'Dúvidas', href: '#duvidas' },
 ]
 
 const socialLinks = [
@@ -76,7 +78,7 @@ function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} site-footer`}>
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.brandColumn}>
@@ -122,6 +124,7 @@ function Footer() {
                 href={`https://wa.me/${siteConfig.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-ronas-cta="footer"
                 onClick={() => trackWhatsAppClick('footer')}
               >
                 <span>WhatsApp</span>
@@ -133,7 +136,7 @@ function Footer() {
               </a>
             </address>
             <a className={styles.cta} href="#loja">
-              Montar pedido
+              Ver atendimentos
             </a>
           </div>
         </div>

@@ -4,6 +4,7 @@ import Hero from './components/Hero/Hero'
 import Problems from './components/Problems/Problems'
 import Safety from './components/Safety/Safety'
 import TrustBand from './components/TrustBand/TrustBand'
+import Assurance from './components/Assurance/Assurance'
 import RemoteSupportStore from './components/RemoteSupportStore/RemoteSupportStore'
 import Services from './components/Services/Services'
 import Process from './components/Process/Process'
@@ -78,7 +79,7 @@ function App({ pathname: pathnameProp }) {
   else if (service) content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><ServicePage service={service} /></>
   else if (campaign) content = <CampaignPage campaign={campaign} />
   else if (pathname !== '/') content = <NotFound />
-  else content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" tabIndex="-1"><Hero /><Problems /><Safety /><TrustBand /><RemoteSupportStore /><Services /><Process /><About /><FAQ /></main><a className="floating-contact" href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Preciso de suporte técnico remoto para meu computador.')}`} target="_blank" rel="noopener noreferrer" aria-label="Pedir suporte técnico remoto pelo WhatsApp" onClick={() => trackWhatsAppClick('floating_button')}><span className="floating-contact__brand" aria-hidden="true"><img src="/whatsapp.svg" alt="" width="25" height="25" /></span><span className="floating-contact__copy"><small>Suporte pelo</small><strong>WhatsApp</strong></span></a><Footer /></>
+  else content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" className="home" tabIndex="-1"><Hero /><Problems /><Safety /><TrustBand /><Process /><Assurance /><RemoteSupportStore /><Services /><About /><FAQ /></main><a className="floating-contact" data-ronas-cta="floating_button" href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá! Preciso de suporte técnico remoto para meu computador.')}`} target="_blank" rel="noopener noreferrer" aria-label="Pedir suporte técnico remoto pelo WhatsApp" onClick={() => trackWhatsAppClick('floating_button')}><span className="floating-contact__brand" aria-hidden="true"><img src="/whatsapp.svg" alt="" width="25" height="25" /></span><span className="floating-contact__copy"><small>Suporte pelo</small><strong>WhatsApp</strong></span></a><Footer /></>
 
   return <>{content}<CookieNotice /></>
 }
