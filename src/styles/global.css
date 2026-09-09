@@ -587,9 +587,9 @@ section[aria-labelledby='safety-title'] article {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px 28px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
-  background: var(--surface-raised);
+  background: var(--color-surface);
 }
 
 .assurance > div {
@@ -599,14 +599,14 @@ section[aria-labelledby='safety-title'] article {
 }
 
 .assurance strong {
-  color: var(--text-strong);
+  color: var(--color-ink);
   font-family: var(--font-display);
   font-size: 16px;
 }
 
 .assurance span {
-  color: var(--text-muted);
-  font-size: 14px;
+  color: var(--color-ink-soft);
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -616,9 +616,9 @@ section[aria-labelledby='safety-title'] article {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: #6ee7b7;
-  background: rgb(52 211 153 / 12%);
-  border: 1px solid rgb(52 211 153 / 34%);
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  border: 1px solid var(--color-brand);
   font-size: 13px;
 }
 

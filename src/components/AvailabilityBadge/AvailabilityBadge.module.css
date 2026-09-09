@@ -7,13 +7,13 @@
 }
 
 .badge strong {
-  color: var(--text-strong);
+  color: var(--color-ink);
   font-size: 13px;
   font-weight: 700;
 }
 
 .detail {
-  color: var(--text-muted);
+  color: var(--color-ink-soft);
   font-size: 13px;
   line-height: 1.55;
 }
@@ -27,25 +27,25 @@
 }
 
 .open .dot {
-  background: #34d399;
-  box-shadow: 0 0 0 4px rgb(52 211 153 / 16%);
+  background: var(--color-brand);
+  box-shadow: 0 0 0 4px var(--color-brand-soft);
 }
 
 .closed .dot {
-  background: #fbbf24;
-  box-shadow: 0 0 0 4px rgb(251 191 36 / 16%);
+  background: var(--color-ink-faint);
+  box-shadow: 0 0 0 4px var(--color-surface-alt);
 }
 
-.open strong { color: #6ee7b7; }
-.closed strong { color: #fcd34d; }
+.open strong { color: var(--color-brand); }
+.closed strong { color: var(--color-ink-soft); }
 
 .card {
   padding: 16px 18px;
   display: grid;
   gap: 6px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-line);
   border-radius: var(--radius-md);
-  background: rgb(255 255 255 / 3%);
+  background: var(--color-surface);
 }
 
 .card .dot {
