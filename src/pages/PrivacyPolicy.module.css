@@ -1,7 +1,7 @@
 .page {
   min-height: 100vh;
-  color: #9ca3af;
-  background: #0a0f16;
+  color: var(--color-ink-soft);
+  background: var(--color-page);
 }
 
 .header {
@@ -12,14 +12,14 @@
   justify-content: space-between;
   gap: 24px;
   margin-inline: auto;
-  border-bottom: 1px solid rgb(148 163 184 / 10%);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  color: #f8fafc;
+  color: var(--color-ink);
   font-size: 17px;
   font-weight: 700;
   text-decoration: none;
@@ -33,8 +33,8 @@
 }
 
 .backLink {
-  color: #93c5fd;
-  font-size: 12px;
+  color: var(--color-brand);
+  font-size: 15px;
   font-weight: 500;
   text-decoration: none;
 }
@@ -47,13 +47,13 @@
 
 .introduction {
   padding-bottom: 40px;
-  border-bottom: 1px solid rgb(148 163 184 / 12%);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .introduction > p:first-child {
   margin: 0 0 12px;
-  color: #60a5fa;
-  font-size: 11px;
+  color: var(--color-brand);
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -61,7 +61,7 @@
 
 .introduction h1 {
   margin: 0;
-  color: #fff;
+  color: var(--color-ink);
   font-size: clamp(36px, 7vw, 56px);
   letter-spacing: -0.045em;
   line-height: 1.1;
@@ -70,7 +70,7 @@
 .introduction > p:last-child {
   max-width: 690px;
   margin: 20px 0 0;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
 }
 
@@ -82,13 +82,13 @@
 
 .content section {
   padding: 30px 0;
-  border-bottom: 1px solid rgb(148 163 184 / 9%);
+  border-bottom: 1px solid var(--color-line);
   scroll-margin-top: 24px;
 }
 
 .content h2 {
   margin: 0 0 13px;
-  color: #e8edf4;
+  color: var(--color-ink);
   font-size: clamp(18px, 3vw, 22px);
   letter-spacing: -0.025em;
   line-height: 1.35;
@@ -96,7 +96,7 @@
 
 .content p,
 .content li {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.85;
 }
 
@@ -114,12 +114,12 @@
 }
 
 .content li::marker {
-  color: #22d3ee;
+  color: var(--color-brand);
 }
 
 .content a,
 .pageFooter a {
-  color: #60a5fa;
+  color: var(--color-brand);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition: color 180ms ease;
@@ -128,7 +128,7 @@
 .content a:hover,
 .pageFooter a:hover,
 .backLink:hover {
-  color: #22d3ee;
+  color: var(--color-brand-strong);
 }
 
 .content address {
@@ -139,7 +139,7 @@
 }
 
 .content address strong {
-  color: #f1f5f9;
+  color: var(--color-ink);
 }
 
 .pageFooter {
@@ -153,14 +153,14 @@
 .pageFooter p,
 .pageFooter a {
   margin: 0;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .brand:focus-visible,
 .backLink:focus-visible,
 .content a:focus-visible,
 .pageFooter a:focus-visible {
-  outline: 2px solid #60a5fa;
+  outline: 2px solid var(--color-brand);
   outline-offset: 4px;
   border-radius: 3px;
 }
@@ -188,7 +188,7 @@
   }
 
   .backLink {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .pageFooter {

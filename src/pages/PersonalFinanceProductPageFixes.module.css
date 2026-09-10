@@ -33,7 +33,8 @@
 .insideVisual > div {
   right: 18px;
   bottom: 18px;
-  background: rgb(11 36 43 / 95%);
+  background: var(--color-page);
+  border-color: var(--color-line);
 }
 
 .previewTrack figure img {

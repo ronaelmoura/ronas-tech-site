@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   padding: 86px 0 92px;
-  background: #0d1117;
+  background: var(--color-page);
 }
 
 .section::after {
@@ -12,7 +12,7 @@
   left: -180px;
   width: 420px;
   height: 420px;
-  background: radial-gradient(circle, rgb(37 99 235 / 7%), transparent 70%);
+  background: radial-gradient(circle, var(--color-brand-soft), transparent 70%);
   content: '';
   pointer-events: none;
 }
@@ -32,7 +32,7 @@
 
 .eyebrow {
   margin: 0 0 13px;
-  color: #60a5fa;
+  color: var(--color-brand);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -41,7 +41,7 @@
 
 .heading h2 {
   margin: 0;
-  color: #fff;
+  color: var(--color-ink);
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 700;
   letter-spacing: -0.045em;
@@ -51,7 +51,7 @@
 .subtitle {
   max-width: 680px;
   margin: 20px auto 0;
-  color: #9ca3af;
+  color: var(--color-ink-soft);
   font-size: 16px;
   line-height: 1.75;
 }
@@ -80,7 +80,7 @@
   left: 47px;
   width: calc(100% + 16px);
   height: 1px;
-  background: linear-gradient(90deg, rgb(37 99 235 / 55%), rgb(34 211 238 / 16%));
+  background: var(--color-line-strong);
   content: '';
 }
 
@@ -96,11 +96,10 @@
   height: 48px;
   margin: 0 0 20px 22px;
   place-items: center;
-  color: #93c5fd;
-  background: #0e1724;
-  border: 1px solid rgb(37 99 235 / 55%);
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  border: 1px solid var(--color-brand);
   border-radius: 13px;
-  box-shadow: 0 0 22px rgb(37 99 235 / 10%);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -117,10 +116,9 @@
   bottom: -5px;
   width: 9px;
   height: 9px;
-  background: #22d3ee;
-  border: 3px solid #0d1117;
+  background: var(--color-brand);
+  border: 3px solid var(--color-page);
   border-radius: 50%;
-  box-shadow: 0 0 10px rgb(34 211 238 / 55%);
   content: '';
 }
 
@@ -128,8 +126,8 @@
   min-height: 174px;
   box-sizing: border-box;
   padding: 21px;
-  background: #111820;
-  border: 1px solid rgb(148 163 184 / 11%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 15px;
   transition:
     background-color 220ms ease,
@@ -139,24 +137,23 @@
 }
 
 .step:hover .card {
-  background: #121b25;
-  border-color: rgb(37 99 235 / 40%);
-  box-shadow: 0 16px 38px rgb(0 0 0 / 20%);
+  background: var(--color-surface-alt);
+  border-color: var(--color-brand);
+  box-shadow: 0 16px 38px var(--color-shadow);
   transform: translateY(-4px);
 }
 
 .step:hover .marker {
-  color: #67e8f9;
-  background: #122033;
-  border-color: #22d3ee;
-  box-shadow: 0 0 24px rgb(34 211 238 / 14%);
+  color: var(--color-page);
+  background: var(--color-brand);
+  border-color: var(--color-brand);
 }
 
 .stepLabel {
   display: block;
   margin-bottom: 8px;
-  color: #60a5fa;
-  font-size: 10px;
+  color: var(--color-brand);
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -164,7 +161,7 @@
 
 .card h3 {
   margin: 0 0 12px;
-  color: #f9fafb;
+  color: var(--color-ink);
   font-size: 19px;
   font-weight: 600;
   letter-spacing: -0.025em;
@@ -173,8 +170,8 @@
 
 .card p {
   margin: 0;
-  color: #8f99a8;
-  font-size: 14px;
+  color: var(--color-ink-soft);
+  font-size: 15px;
   line-height: 1.7;
 }
 
@@ -212,7 +209,7 @@
 
   .subtitle {
     margin-top: 17px;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
   }
 
@@ -229,7 +226,7 @@
     bottom: 24px;
     left: 23px;
     width: 1px;
-    background: linear-gradient(to bottom, #2563eb, #22d3ee 80%, transparent);
+    background: linear-gradient(to bottom, var(--color-brand), var(--color-line) 80%, transparent);
     content: '';
   }
 

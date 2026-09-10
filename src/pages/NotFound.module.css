@@ -2,9 +2,9 @@
   min-height: 100vh;
   padding: 28px clamp(20px, 5vw, 72px);
   background:
-    radial-gradient(circle at 75% 20%, rgb(19 98 255 / 18%), transparent 30rem),
-    #070b14;
-  color: #f8fafc;
+    radial-gradient(circle at 75% 20%, var(--color-brand-soft), transparent 30rem),
+    var(--color-page);
+  color: var(--color-ink);
 }
 
 .brand {
@@ -23,7 +23,7 @@
 
 .code {
   margin: 0 0 18px;
-  color: #31d6e8;
+  color: var(--color-brand);
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -40,7 +40,7 @@
 .content > p:not(.code) {
   max-width: 580px;
   margin: 28px 0 36px;
-  color: #aeb8c9;
+  color: var(--color-ink-soft);
   font-size: 1.12rem;
   line-height: 1.7;
 }
@@ -51,8 +51,8 @@
   gap: 12px;
   padding: 15px 20px;
   border-radius: 12px;
-  background: #2768ee;
-  color: #fff;
+  background: var(--color-action);
+  color: var(--color-page);
   font-weight: 800;
   text-decoration: none;
 }

@@ -1,9 +1,9 @@
 .footer {
   position: relative;
   overflow: hidden;
-  color: #8d98a8;
-  background: #080d13;
-  border-top: 1px solid rgb(96 165 250 / 10%);
+  color: var(--color-dark-ink);
+  background: var(--color-dark);
+  border-top: 1px solid var(--color-dark-line);
 }
 
 .footer::before {
@@ -12,7 +12,7 @@
   left: -160px;
   width: 560px;
   height: 560px;
-  background: radial-gradient(circle, rgb(37 99 235 / 8%), transparent 68%);
+  background: radial-gradient(circle, var(--color-dark-glow), transparent 68%);
   content: '';
   pointer-events: none;
 }
@@ -34,7 +34,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: #f8fafc;
+  color: var(--color-dark-ink-strong);
   font-size: 19px;
   font-weight: 600;
   letter-spacing: -0.04em;
@@ -49,14 +49,14 @@
 }
 
 .brand strong {
-  color: #f8fafc;
+  color: var(--color-dark-ink-strong);
   font-weight: 700;
 }
 
 .brandColumn > p {
   max-width: 355px;
   margin: 18px 0 0;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.75;
 }
 
@@ -71,9 +71,9 @@
   width: 36px;
   height: 36px;
   place-items: center;
-  color: #9ca8b8;
-  background: #0d141d;
-  border: 1px solid rgb(148 163 184 / 14%);
+  color: var(--color-dark-ink);
+  background: var(--color-dark-surface);
+  border: 1px solid var(--color-dark-line);
   border-radius: 9px;
   transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
@@ -85,32 +85,32 @@
 }
 
 .socials .iconCutout {
-  fill: #0d141d;
+  fill: var(--color-dark-surface);
 }
 
 .socials .iconStroke {
   fill: none;
-  stroke: #0d141d;
+  stroke: var(--color-dark-surface);
   stroke-width: 1.5;
 }
 
 .socials a:hover {
-  color: #fff;
-  background: #2563eb;
-  border-color: #3b82f6;
+  color: var(--color-dark-ink-strong);
+  background: var(--color-brand);
+  border-color: var(--color-brand);
   transform: translateY(-2px);
 }
 
 .socials a:hover .iconCutout,
 .socials a:hover .iconStroke {
-  fill: #2563eb;
-  stroke: #2563eb;
+  fill: var(--color-brand);
+  stroke: var(--color-brand);
 }
 
 .column h2 {
   margin: 3px 0 20px;
-  color: #f1f5f9;
-  font-size: 13px;
+  color: var(--color-dark-ink-strong);
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -127,8 +127,8 @@
 .linkList a,
 .contactColumn address a,
 .bottomBar a {
-  color: #8490a0;
-  font-size: 11px;
+  color: var(--color-dark-ink);
+  font-size: 14px;
   text-decoration: none;
   transition: color 180ms ease;
 }
@@ -136,7 +136,7 @@
 .linkList a:hover,
 .contactColumn address a:hover,
 .bottomBar a:hover {
-  color: #60a5fa;
+  color: var(--color-brand-on-dark);
 }
 
 .contactColumn address {
@@ -152,13 +152,13 @@
   margin: 0;
   overflow-wrap: anywhere;
   flex-direction: column;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.55;
 }
 
 .contactColumn address span {
-  color: #647184;
-  font-size: 9px;
+  color: var(--color-dark-ink-faint);
+  font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -172,20 +172,19 @@
   gap: 8px;
   padding: 0 16px;
   margin-top: 19px;
-  color: #fff;
-  background: #2563eb;
-  border: 1px solid #3b82f6;
+  color: var(--color-page);
+  background: var(--color-action);
+  border: 1px solid var(--color-action);
   border-radius: 9px;
-  box-shadow: 0 9px 22px rgb(37 99 235 / 18%);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .cta:hover {
-  background: #1d4ed8;
-  box-shadow: 0 11px 26px rgb(37 99 235 / 28%);
+  background: var(--color-action-strong);
+  border-color: var(--color-action-strong);
   transform: translateY(-2px);
 }
 
@@ -197,23 +196,23 @@
   gap: 16px;
   padding: 16px 18px;
   margin-bottom: 32px;
-  background: rgb(255 255 255 / 1.5%);
-  border: 1px solid rgb(148 163 184 / 10%);
+  background: var(--color-dark-surface);
+  border: 1px solid var(--color-dark-line);
   border-radius: 12px;
 }
 
 .partnerTitle {
   margin: 0 0 4px;
-  color: #97a2b3;
-  font-size: 11px;
+  color: var(--color-dark-ink-strong);
+  font-size: 14px;
   font-weight: 600;
 }
 
 .partnerText {
   max-width: 620px;
   margin: 0;
-  color: #667080;
-  font-size: 11px;
+  color: var(--color-dark-ink);
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -223,11 +222,11 @@
   align-items: center;
   gap: 6px;
   padding: 8px 13px;
-  color: #9aa4b3;
+  color: var(--color-dark-ink);
   background: transparent;
-  border: 1px solid rgb(148 163 184 / 20%);
+  border: 1px solid var(--color-dark-line);
   border-radius: 8px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -235,12 +234,12 @@
 }
 
 .partnerCta:hover {
-  color: #cbd5e1;
-  border-color: rgb(148 163 184 / 40%);
+  color: var(--color-dark-ink-strong);
+  border-color: var(--color-brand-on-dark);
 }
 
 .partnerCta:focus-visible {
-  outline: 2px solid #60a5fa;
+  outline: 2px solid var(--color-brand-on-dark);
   outline-offset: 3px;
 }
 
@@ -250,17 +249,17 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  border-top: 1px solid rgb(148 163 184 / 10%);
+  border-top: 1px solid var(--color-dark-line);
 }
 
 .bottomBar p {
   margin: 0;
-  color: #606c7c;
-  font-size: 10px;
+  color: var(--color-dark-ink-faint);
+  font-size: 13px;
 }
 
 .bottomBar a {
-  color: #aab4c2;
+  color: var(--color-dark-ink);
   font-weight: 500;
 }
 
@@ -280,7 +279,7 @@
 .linkList a:focus-visible,
 .contactColumn a:focus-visible,
 .bottomBar a:focus-visible {
-  outline: 2px solid #60a5fa;
+  outline: 2px solid var(--color-brand-on-dark);
   outline-offset: 3px;
   border-radius: 4px;
 }

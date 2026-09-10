@@ -1,7 +1,7 @@
 .page {
   min-height: 100vh;
-  color: #9ca3af;
-  background: #090e14;
+  color: var(--color-ink-soft);
+  background: var(--color-page);
 }
 
 .header {
@@ -12,14 +12,14 @@
   justify-content: space-between;
   gap: 24px;
   margin-inline: auto;
-  border-bottom: 1px solid rgb(148 163 184 / 10%);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  color: #f8fafc;
+  color: var(--color-ink);
   font-size: 17px;
   font-weight: 700;
   text-decoration: none;
@@ -33,8 +33,8 @@
 }
 
 .backLink {
-  color: #93c5fd;
-  font-size: 12px;
+  color: var(--color-brand);
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
 }
@@ -47,8 +47,8 @@
   overflow: hidden;
   place-items: center;
   background:
-    radial-gradient(circle at 75% 35%, rgb(37 99 235 / 15%), transparent 35%),
-    linear-gradient(145deg, #090e14 25%, #0d1520 100%);
+    radial-gradient(circle at 75% 35%, var(--color-brand-soft), transparent 35%),
+    var(--color-page);
 }
 
 .hero::before,
@@ -61,8 +61,8 @@
 .hero::before {
   inset: 0;
   background-image:
-    linear-gradient(rgb(96 165 250 / 4%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(96 165 250 / 4%) 1px, transparent 1px);
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
 }
@@ -70,11 +70,8 @@
 .hero::after {
   width: 500px;
   height: 500px;
-  border: 1px solid rgb(34 211 238 / 8%);
+  border: 1px solid var(--color-line);
   border-radius: 50%;
-  box-shadow:
-    0 0 0 80px rgb(37 99 235 / 3%),
-    0 0 0 160px rgb(37 99 235 / 2%);
   transform: translate(75%, -15%);
 }
 
@@ -88,7 +85,7 @@
 .eyebrow,
 .sectionHeading > p {
   margin: 0 0 14px;
-  color: #60a5fa;
+  color: var(--color-brand);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.11em;
@@ -98,7 +95,7 @@
 .hero h1 {
   max-width: 900px;
   margin: 0 auto;
-  color: #fff;
+  color: var(--color-ink);
   font-size: clamp(42px, 6vw, 72px);
   letter-spacing: -0.055em;
   line-height: 1.05;
@@ -107,7 +104,7 @@
 .lead {
   max-width: 760px;
   margin: 26px auto 0;
-  color: #aeb7c4;
+  color: var(--color-ink-soft);
   font-size: clamp(16px, 2vw, 19px);
   line-height: 1.8;
 }
@@ -129,7 +126,7 @@
   gap: 10px;
   padding: 0 23px;
   border-radius: 11px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
   transition:
@@ -140,15 +137,16 @@
 }
 
 .primaryAction {
-  color: #fff;
-  background: #2563eb;
-  border: 1px solid #3b82f6;
-  box-shadow: 0 12px 30px rgb(37 99 235 / 24%);
+  color: var(--color-page);
+  background: var(--color-action);
+  border: 1px solid var(--color-action);
+  box-shadow: 0 12px 30px var(--color-shadow);
 }
 
 .primaryAction:hover {
-  background: #1d4ed8;
-  box-shadow: 0 16px 35px rgb(37 99 235 / 30%);
+  background: var(--color-action-strong);
+  border-color: var(--color-action-strong);
+  box-shadow: 0 16px 35px var(--color-shadow-strong);
   transform: translateY(-2px);
 }
 
@@ -162,14 +160,14 @@
 }
 
 .secondaryAction {
-  color: #dbeafe;
-  background: rgb(15 23 42 / 55%);
-  border: 1px solid rgb(96 165 250 / 22%);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
 }
 
 .secondaryAction:hover {
-  background: rgb(37 99 235 / 10%);
-  border-color: rgb(96 165 250 / 42%);
+  background: var(--color-surface-alt);
+  border-color: var(--color-brand);
 }
 
 .trustList {
@@ -182,13 +180,13 @@
 }
 
 .trustList li {
-  color: #8591a1;
-  font-size: 12px;
+  color: var(--color-ink-soft);
+  font-size: 15px;
 }
 
 .trustList li::before {
   margin-right: 8px;
-  color: #22d3ee;
+  color: var(--color-brand);
   content: '✓';
 }
 
@@ -197,8 +195,8 @@
 }
 
 .sectionMuted {
-  background: #0c121a;
-  border-block: 1px solid rgb(148 163 184 / 7%);
+  background: var(--color-surface);
+  border-block: 1px solid var(--color-line);
 }
 
 .container {
@@ -215,7 +213,7 @@
 .audience h2,
 .ctaContent h2 {
   margin: 0;
-  color: #f8fafc;
+  color: var(--color-ink);
   font-size: clamp(30px, 4vw, 46px);
   letter-spacing: -0.045em;
   line-height: 1.15;
@@ -229,8 +227,8 @@
 
 .card {
   padding: 30px;
-  background: #101720;
-  border: 1px solid rgb(148 163 184 / 11%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 16px;
 }
 
@@ -240,16 +238,16 @@
   height: 38px;
   margin-bottom: 24px;
   place-items: center;
-  color: #67e8f9;
-  background: rgb(34 211 238 / 9%);
-  border: 1px solid rgb(34 211 238 / 18%);
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  border: 1px solid var(--color-brand);
   border-radius: 10px;
 }
 
 .card h3,
 .processGrid h3 {
   margin: 0;
-  color: #eef2f7;
+  color: var(--color-ink);
   font-size: 18px;
   letter-spacing: -0.025em;
 }
@@ -259,8 +257,8 @@
 .sectionText,
 .audience > p,
 .faqList p {
-  color: #96a0ae;
-  font-size: 14px;
+  color: var(--color-ink-soft);
+  font-size: 16px;
   line-height: 1.8;
 }
 
@@ -298,15 +296,15 @@
   align-items: center;
   gap: 14px;
   padding: 14px 18px;
-  color: #c8d0db;
-  background: #111923;
-  border: 1px solid rgb(148 163 184 / 10%);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 11px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .checkList span {
-  color: #22d3ee;
+  color: var(--color-brand);
   font-weight: 700;
 }
 
@@ -321,16 +319,16 @@
 
 .processGrid li {
   padding: 27px 24px;
-  background: linear-gradient(145deg, #101720, #0c131c);
-  border: 1px solid rgb(148 163 184 / 10%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 14px;
 }
 
 .processGrid li > span {
   display: block;
   margin-bottom: 28px;
-  color: #3b82f6;
-  font-size: 12px;
+  color: var(--color-brand);
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
@@ -361,15 +359,15 @@
 
 .faqList details {
   padding: 20px 22px;
-  background: #101720;
-  border: 1px solid rgb(148 163 184 / 10%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 12px;
 }
 
 .faqList summary {
-  color: #e8edf4;
+  color: var(--color-ink);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -379,14 +377,14 @@
 
 .related {
   padding: 34px 0;
-  background: #090e14;
-  border-top: 1px solid rgb(148 163 184 / 8%);
+  background: var(--color-page);
+  border-top: 1px solid var(--color-line);
 }
 
 .related p {
   margin: 0 0 18px;
-  color: #6f7c8d;
-  font-size: 11px;
+  color: var(--color-ink-faint);
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -403,25 +401,25 @@
   align-items: center;
   gap: 9px;
   padding: 10px 13px;
-  color: #b8c5d6;
-  background: #101720;
-  border: 1px solid rgb(148 163 184 / 11%);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 9px;
-  font-size: 12px;
+  font-size: 15px;
   text-decoration: none;
 }
 
 .relatedLinks a:hover {
-  color: #fff;
-  border-color: rgb(96 165 250 / 38%);
+  color: var(--color-brand);
+  border-color: var(--color-brand);
 }
 
 .ctaSection {
   padding: 100px 24px;
   background:
-    radial-gradient(circle at 50% 100%, rgb(37 99 235 / 18%), transparent 45%),
-    #0c121a;
-  border-top: 1px solid rgb(96 165 250 / 12%);
+    radial-gradient(circle at 50% 100%, var(--color-brand-soft), transparent 45%),
+    var(--color-surface);
+  border-top: 1px solid var(--color-line);
 }
 
 .ctaContent {
@@ -432,7 +430,7 @@
 
 .ctaContent > p {
   margin: 0 0 14px;
-  color: #60a5fa;
+  color: var(--color-brand);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -456,8 +454,8 @@
 .footer p,
 .footer a {
   margin: 0;
-  color: #7d8795;
-  font-size: 11px;
+  color: var(--color-ink-soft);
+  font-size: 14px;
 }
 
 .footer div {
@@ -471,7 +469,7 @@
 
 .backLink:hover,
 .footer a:hover {
-  color: #22d3ee;
+  color: var(--color-brand);
 }
 
 .brand:focus-visible,
@@ -481,7 +479,7 @@
 .footer a:focus-visible,
 .relatedLinks a:focus-visible,
 .faqList summary:focus-visible {
-  outline: 2px solid #60a5fa;
+  outline: 2px solid var(--color-brand);
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -534,7 +532,7 @@
   }
 
   .lead {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .actions,

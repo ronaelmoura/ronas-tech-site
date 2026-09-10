@@ -1,1 +1,216 @@
-.section{position:relative;padding:104px 0;background:#0a141f;border-block:1px solid rgb(96 165 250 / 10%);overflow:hidden}.section::after{position:absolute;right:-180px;top:-180px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgb(37 99 235 / 13%),transparent 68%);content:'';pointer-events:none}.container{position:relative;z-index:1;width:min(100% - 48px,1200px);margin:auto;display:grid;grid-template-columns:.92fr 1.08fr;gap:72px;align-items:center}.eyebrow{margin:0 0 13px;color:#60a5fa;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}.content h2{max-width:600px;margin:0 0 24px;color:#fff;font-size:clamp(32px,4vw,48px);letter-spacing:-.045em;line-height:1.14}.content p{max-width:610px;margin:0;color:#8f9dad;font-size:14px;line-height:1.8}.content .lead{margin-bottom:14px;color:#b2becb;font-size:15px}.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}.actions a{min-height:46px;padding:0 17px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:10px;font-size:12px;font-weight:600;text-decoration:none;transition:transform .18s,border-color .18s,background .18s}.actions a:hover{transform:translateY(-2px)}.primary{color:#fff;background:#2563eb;border:1px solid #3b82f6}.secondary{color:#d8e7f5;background:transparent;border:1px solid rgb(148 163 184 / 22%)}.secondary:hover{border-color:#60a5fa}.proof{padding:30px;border:1px solid rgb(96 165 250 / 20%);border-radius:18px;background:linear-gradient(145deg,#111f2c,#0d1822);box-shadow:0 28px 65px rgb(0 0 0 / 22%)}.proofHeader{padding-bottom:24px;border-bottom:1px solid rgb(148 163 184 / 11%)}.proofHeader span,.proofHeader strong,.proofHeader small{display:block}.proofHeader span{color:#60a5fa;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.proofHeader strong{margin:6px 0 3px;color:#f4f8fc;font-size:23px}.proofHeader small{color:#788b9d;font-size:11px}.factGrid{margin:0;padding:24px 0;display:grid;grid-template-columns:1fr 1fr;gap:18px;border-bottom:1px solid rgb(148 163 184 / 11%)}.factGrid div{min-width:0}.factGrid dt{color:#e8f3fd;font-size:19px;font-weight:700}.factGrid dd{margin:3px 0 0;color:#7f91a2;font-size:10px;line-height:1.45}.stack{padding-top:20px;display:flex;flex-wrap:wrap;gap:7px}.stack span{padding:6px 9px;color:#a9d6fa;background:rgb(37 99 235 / 8%);border:1px solid rgb(96 165 250 / 15%);border-radius:7px;font-size:9px;font-weight:600}@media(max-width:850px){.container{grid-template-columns:1fr;gap:44px}.content{max-width:720px}.proof{max-width:720px}}@media(max-width:620px){.section{padding:78px 0}.container{width:min(100% - 32px,1200px)}.content h2{font-size:clamp(30px,9vw,39px)}.actions{flex-direction:column}.actions a{width:100%;box-sizing:border-box}.proof{padding:23px}.factGrid{gap:17px 12px}.proofHeader strong{font-size:20px}}@media(prefers-reduced-motion:reduce){.actions a{transition-duration:.01ms}}
+/* Seção "sobre" convertida para claro. O cartão de credenciais à direita
+   passa a ser superfície clara com borda de marca — é ele que carrega a
+   autoridade da seção, e por isso usa --color-brand, não verde. */
+
+.section {
+  position: relative;
+  padding: 104px 0;
+  background: var(--color-page);
+  border-block: 1px solid var(--color-line);
+  overflow: hidden;
+}
+
+.section::after {
+  position: absolute;
+  right: -180px;
+  top: -180px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-brand-soft), transparent 68%);
+  content: '';
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 48px, 1200px);
+  margin: auto;
+  display: grid;
+  grid-template-columns: .92fr 1.08fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 13px;
+  color: var(--color-brand);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.content h2 {
+  max-width: 600px;
+  margin: 0 0 24px;
+  color: var(--color-ink);
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -.045em;
+  line-height: 1.14;
+}
+
+.content p {
+  max-width: 610px;
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.content .lead {
+  margin-bottom: 14px;
+  color: var(--color-ink);
+  font-size: 17px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  margin-top: 30px;
+}
+
+.actions a {
+  min-height: 46px;
+  padding: 0 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .18s, border-color .18s, background .18s;
+}
+
+.actions a:hover {
+  transform: translateY(-2px);
+}
+
+/* Leva ao contato, que é a ação desta seção. */
+.primary {
+  color: var(--color-page);
+  background: var(--color-action);
+  border: 1px solid var(--color-action);
+}
+
+.primary:hover {
+  background: var(--color-action-strong);
+  border-color: var(--color-action-strong);
+}
+
+.secondary {
+  color: var(--color-ink);
+  background: var(--color-page);
+  border: 1px solid var(--color-line-strong);
+}
+
+.secondary:hover {
+  border-color: var(--color-brand);
+}
+
+.proof {
+  padding: 30px;
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  background: var(--color-surface);
+  box-shadow: 0 28px 65px var(--color-shadow);
+}
+
+.proofHeader {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.proofHeader span,
+.proofHeader strong,
+.proofHeader small {
+  display: block;
+}
+
+.proofHeader span {
+  color: var(--color-brand);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.proofHeader strong {
+  margin: 6px 0 3px;
+  color: var(--color-ink);
+  font-size: 23px;
+}
+
+.proofHeader small {
+  color: var(--color-ink-faint);
+  font-size: 14px;
+}
+
+.factGrid {
+  margin: 0;
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.factGrid div {
+  min-width: 0;
+}
+
+/* Número grande: papel de autoridade do token de marca. */
+.factGrid dt {
+  color: var(--color-brand);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.factGrid dd {
+  margin: 3px 0 0;
+  color: var(--color-ink-soft);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.stack {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.stack span {
+  padding: 6px 9px;
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  border: 1px solid var(--color-line);
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 850px) {
+  .container { grid-template-columns: 1fr; gap: 44px; }
+  .content { max-width: 720px; }
+  .proof { max-width: 720px; }
+}
+
+@media (max-width: 620px) {
+  .section { padding: 78px 0; }
+  .container { width: min(100% - 32px, 1200px); }
+  .content h2 { font-size: clamp(30px, 9vw, 39px); }
+  .actions { flex-direction: column; }
+  .actions a { width: 100%; box-sizing: border-box; }
+  .proof { padding: 23px; }
+  .factGrid { gap: 17px 12px; }
+  .proofHeader strong { font-size: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .actions a { transition-duration: .01ms; }
+}

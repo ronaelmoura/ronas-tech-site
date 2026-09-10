@@ -4,7 +4,7 @@ const safeguards = [
   ['Você autoriza', 'O acesso só começa depois da sua confirmação. Nenhuma conexão é feita escondida.'],
   ['Você acompanha', 'A tela permanece visível durante o serviço e você pode encerrar a sessão quando quiser.'],
   ['Você aprova', 'O problema, o que será feito e o valor são explicados antes de qualquer serviço.'],
-  ['Você mantém suas senhas', 'Não pedimos senhas pessoais. Quando necessário, você mesmo digita os dados.'],
+  ['Você mantém suas senhas', 'Não peço suas senhas pessoais. Quando necessário, você mesmo digita os dados.'],
 ]
 
 function Safety() {

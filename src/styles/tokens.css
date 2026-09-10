@@ -1,0 +1,102 @@
+/* ---------------------------------------------------------------------------
+   Tokens de cor — Ronas Tech
+   ---------------------------------------------------------------------------
+   Este arquivo só declara custom properties. Nada muda de aparência até um
+   componente referenciar um token, então a migração do site escuro para o
+   claro pode ser feita um componente por vez, com o site funcionando entre
+   cada passo.
+
+   Papéis (ver seção 3 da especificação de redesign):
+     - fundo da página em --color-page, cartões em --color-surface,
+       bordas em --color-line;
+     - texto principal --color-ink, secundário --color-ink-soft,
+       apoio --color-ink-faint. Nunca um cinza mais claro que
+       --color-ink-faint sobre branco;
+     - --color-brand carrega autoridade: títulos de destaque, números
+       grandes, bordas de cartão em evidência;
+     - --color-action é EXCLUSIVO de botão de ação. Sem texto verde, sem
+       borda verde decorativa, sem ícone verde.
+
+   Contraste verificado (mínimo AA: 4,5:1 texto normal, 3:1 texto grande):
+     --color-ink        18,92:1 sobre page   17,79:1 sobre surface
+     --color-ink-soft    8,18:1 sobre page    7,69:1 sobre surface
+     --color-ink-faint   5,35:1 sobre page    5,03:1 sobre surface
+     --color-brand       5,33:1 sobre page    5,01:1 sobre surface
+     --color-action      5,36:1 sobre page    5,04:1 sobre surface
+     branco sobre --color-action  5,36:1
+     branco sobre --color-brand   5,33:1
+     --color-dark-ink sobre --color-dark  12,59:1
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Superfícies claras */
+  --color-page: #ffffff;
+  --color-surface: #f6f8fb;
+  --color-surface-alt: #eef2f7;
+  --color-line: #dfe5ec;
+  --color-line-strong: #c4ced9;
+
+  /* Texto sobre superfícies claras */
+  --color-ink: #0d1117;
+  --color-ink-soft: #45505f;
+  --color-ink-faint: #5f6c7d;
+
+  /* Marca: autoridade, não ação */
+  --color-brand: #1069cf;
+  --color-brand-strong: #0b4f9e;
+  --color-brand-soft: #eaf2fd;
+
+  /* Ação: somente botão de ação */
+  --color-action: #0f7a4f;
+  --color-action-strong: #0b5c3b;
+
+  /* Superfícies translúcidas, véus e sombras. Existem como token para que
+     nenhum componente migrado precise escrever cor à mão. */
+  --color-page-blur: rgb(255 255 255 / 85%);
+
+  /* Véus claros sobre os fundos fotográficos aplicados por ID em
+     global.css (#inicio, #loja, #sobre). Antes eram gradientes escuros;
+     agora deixam a foto aparecer sem comprometer a leitura em claro. */
+  --color-veil-strong: rgb(255 255 255 / 97%);
+  --color-veil: rgb(255 255 255 / 88%);
+  --color-veil-soft: rgb(255 255 255 / 62%);
+  --color-scrim: rgb(13 17 23 / 48%);
+  --color-shadow: rgb(13 17 23 / 10%);
+  --color-shadow-strong: rgb(13 17 23 / 16%);
+
+  /* Acento da categoria gamer na loja. É identidade de categoria, não
+     ação — por isso não usa --color-action. */
+  --color-accent-gamer: #6d28d9;
+  --color-accent-gamer-soft: #f3eefe;
+
+  /* Estados de alerta usados nas ilustrações (disco cheio, erro do
+     Windows). Não são cor de ação: nunca em botão. */
+  --color-danger: #b3261e;
+  --color-warn: #a8410a;
+
+  /* Marcas desenhadas por cima de fotografia. A foto é escura, então
+     estas continuam claras — é o único lugar onde isso é correto. */
+  --color-on-media: #ffffff;
+  --color-on-media-soft: rgb(255 255 255 / 30%);
+  --color-media-scrim: rgb(13 17 23 / 58%);
+  --color-media-panel: rgb(13 17 23 / 78%);
+
+  /* Faixas escuras que permanecem escuras (rodapé, no máximo uma seção) */
+  --color-dark: #0d1117;
+  --color-dark-alt: #101b28;
+  --color-dark-ink: #c8d4e2;
+  --color-dark-ink-strong: #f5f8fc;
+  --color-dark-ink-faint: #94a3b8;
+  --color-dark-surface: #101b28;
+  --color-dark-line: rgb(148 163 184 / 22%);
+
+  /* Marca sobre fundo escuro. O --color-brand tem contraste demais baixo
+     contra #0d1117, então o rodapé usa este tom mais claro (7,44:1). */
+  --color-brand-on-dark: #60a5fa;
+  --color-dark-glow: rgb(96 165 250 / 8%);
+
+  /* Halo do botão flutuante do WhatsApp. É o pulso de um botão de ação,
+     por isso deriva do verde de ação e não da marca. */
+  --color-action-halo: rgb(15 122 79 / 30%);
+  --color-action-halo-soft: rgb(15 122 79 / 0%);
+}

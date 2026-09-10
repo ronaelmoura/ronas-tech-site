@@ -1,3 +1,7 @@
+/* Bloco de preço e oferta secundária das páginas de serviço, em claro.
+   O valor fica em --color-ink e o rótulo em --color-brand: quem carrega
+   autoridade aqui é a marca, não o verde, que segue exclusivo de botão. */
+
 .servicePrice {
   display: grid;
   gap: 4px;
@@ -5,27 +9,27 @@
   max-width: 100%;
   padding: 14px 18px;
   margin: 24px 0 0;
-  background: rgb(14 38 57 / 78%);
-  border: 1px solid #315a78;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 14px;
 }
 
 .servicePrice small {
-  color: #7dd3fc;
-  font-size: 11px;
+  color: var(--color-brand);
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
 
 .servicePrice strong {
-  color: #fff;
-  font-size: clamp(16px, 2vw, 20px);
+  color: var(--color-ink);
+  font-size: clamp(18px, 2vw, 22px);
 }
 
 .servicePrice span {
-  color: #afc4d5;
-  font-size: 12px;
+  color: var(--color-ink-soft);
+  font-size: 15px;
 }
 
 .secondaryOffer {
@@ -36,15 +40,16 @@
   width: min(100%, 520px);
   padding: 13px 16px;
   margin-top: 12px;
-  color: #bad0df;
+  color: var(--color-ink-soft);
   text-decoration: none;
-  background: rgb(12 27 40 / 72%);
-  border: 1px solid rgb(70 127 167 / 34%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 12px;
+  font-size: 15px;
 }
 
 .secondaryOffer strong {
-  color: #7dd3fc;
+  color: var(--color-brand);
   white-space: nowrap;
 }
 

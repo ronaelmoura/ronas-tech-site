@@ -1,10 +1,248 @@
-.section{padding:112px 24px;background:#090f17}.container{max-width:1180px;margin:auto}.eyebrow{margin:0;color:#58c4fb;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.15em;font-size:10px;font-weight:700}.section header h2{max-width:760px;margin:14px 0 16px;color:#f5f8fc;font-family:var(--font-display);font-size:clamp(34px,4.3vw,56px);letter-spacing:-.04em;line-height:1.08}.section header>p:last-child{max-width:620px;margin:0;color:#9fadc0;font-size:15px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}.card{overflow:hidden;padding:10px 10px 22px;border:1px solid #21364b;border-radius:18px;background:linear-gradient(145deg,#0e1925,#0b131d);transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease}.card:hover{border-color:#3f789c;box-shadow:0 22px 50px rgb(0 0 0/28%);transform:translateY(-5px)}.illustration{position:relative;height:180px;margin-bottom:22px;overflow:hidden;border:1px solid #24445e;border-radius:12px;background:#08131e;isolation:isolate}.illustration:after{position:absolute;inset:0;background:linear-gradient(to top,rgb(5 13 21/58%),transparent 52%);content:'';pointer-events:none}.illustration img{width:100%;height:100%;display:block;object-fit:cover;transform:scale(1.025);animation:cameraDrift 9s ease-in-out infinite alternate;transition:filter .3s ease}.card:hover .illustration img{filter:saturate(1.12) brightness(1.06)}.screenGlow{position:absolute;z-index:1;inset:15% 22%;border-radius:50%;background:radial-gradient(circle,rgb(54 199 255/20%),transparent 67%);mix-blend-mode:screen;animation:screenBreathe 3.2s var(--delay) ease-in-out infinite}.scan{position:absolute;z-index:2;left:0;right:0;top:-35%;height:38%;background:linear-gradient(transparent,rgb(99 211 255/11%),transparent);animation:imageScan 5.5s var(--delay) linear infinite}.card>small,.card>h3,.card>p,.card>a{margin-left:8px;margin-right:8px}.card small{color:#54bcf2;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em}.card h3{margin-top:9px;margin-bottom:9px;color:#edf5fb;font-family:var(--font-display);font-size:20px}.card p{min-height:66px;margin-top:0;margin-bottom:0;color:#98a8b8;font-size:13px;line-height:1.65}.card a{display:inline-flex;margin-top:18px;color:#bde9ff;font-size:11px;font-weight:800;text-decoration:none}.card a:after{width:5px;height:5px;margin:4px 0 0 10px;border-top:1px solid #5bd1ff;border-right:1px solid #5bd1ff;content:'';transform:rotate(45deg);transition:transform .2s ease}.card a:hover:after{transform:translateX(3px) rotate(45deg)}.note{display:flex;max-width:900px;gap:18px;padding:20px 22px;margin-top:28px;border-left:2px solid #36a9e1;background:#0d1823}.note strong{flex:0 0 auto;color:#e9f5fb;font-size:13px}.note span{color:#91a3b4;font-size:12px;line-height:1.6}@keyframes cameraDrift{from{transform:scale(1.025) translate3d(-.5%,0,0)}to{transform:scale(1.075) translate3d(.7%,-.7%,0)}}@keyframes screenBreathe{50%{opacity:.35;transform:scale(1.12)}}@keyframes imageScan{from{transform:translateY(-100%)}to{transform:translateY(430%)}}@media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.section{padding:78px 18px}.grid{grid-template-columns:1fr;margin-top:30px}.illustration{height:190px}.card p{min-height:0}.note{flex-direction:column;gap:5px}}@media(prefers-reduced-motion:reduce){.illustration img,.screenGlow,.scan{animation:none}.card,.card a:after{transition:none}}
+/* Seção de sintomas convertida para a paleta clara.
+
+   Uma ressalva sobre as animações mais abaixo: elas são desenhadas por
+   cima das fotografias de cada card, que continuam escuras. Por isso as
+   marcas ali usam --color-on-media e companhia, e não os tons de texto
+   da página — sobre foto escura, marca clara é o que tem contraste. */
+
+.section {
+  padding: 112px 24px;
+  background: var(--color-page);
+}
+
+.container {
+  max-width: 1180px;
+  margin: auto;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--color-brand);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.section header h2 {
+  max-width: 760px;
+  margin: 14px 0 16px;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.3vw, 56px);
+  letter-spacing: -.04em;
+  line-height: 1.08;
+}
+
+.section header > p:last-child {
+  max-width: 620px;
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.card {
+  overflow: hidden;
+  padding: 10px 10px 22px;
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  background: var(--color-surface);
+  transition:
+    border-color .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.card:hover {
+  border-color: var(--color-brand);
+  box-shadow: 0 22px 50px var(--color-shadow);
+  transform: translateY(-5px);
+}
+
+.illustration {
+  position: relative;
+  height: 180px;
+  margin-bottom: 22px;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  background: var(--color-surface-alt);
+  isolation: isolate;
+}
+
+.illustration::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--color-media-scrim), transparent 52%);
+  content: '';
+  pointer-events: none;
+}
+
+.illustration img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: scale(1.025);
+  animation: cameraDrift 9s ease-in-out infinite alternate;
+  transition: filter .3s ease;
+}
+
+.card:hover .illustration img {
+  filter: saturate(1.12) brightness(1.06);
+}
+
+.screenGlow {
+  position: absolute;
+  z-index: 1;
+  inset: 15% 22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-on-media-soft), transparent 67%);
+  mix-blend-mode: screen;
+  animation: screenBreathe 3.2s var(--delay) ease-in-out infinite;
+}
+
+.scan {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: -35%;
+  height: 38%;
+  background: linear-gradient(transparent, var(--color-on-media-soft), transparent);
+  animation: imageScan 5.5s var(--delay) linear infinite;
+}
+
+.card > small,
+.card > h3,
+.card > p,
+.card > a {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.card small {
+  color: var(--color-brand);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.card h3 {
+  margin-top: 9px;
+  margin-bottom: 9px;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 20px;
+}
+
+.card p {
+  min-height: 66px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--color-ink-soft);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.card a {
+  display: inline-flex;
+  margin-top: 18px;
+  color: var(--color-brand);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.card a::after {
+  width: 5px;
+  height: 5px;
+  margin: 4px 0 0 10px;
+  border-top: 1px solid var(--color-brand);
+  border-right: 1px solid var(--color-brand);
+  content: '';
+  transform: rotate(45deg);
+  transition: transform .2s ease;
+}
+
+.card a:hover::after {
+  transform: translateX(3px) rotate(45deg);
+}
+
+.note {
+  display: flex;
+  max-width: 900px;
+  gap: 18px;
+  padding: 20px 22px;
+  margin-top: 28px;
+  border-left: 2px solid var(--color-brand);
+  background: var(--color-surface);
+}
+
+.note strong {
+  flex: 0 0 auto;
+  color: var(--color-ink);
+  font-size: 15px;
+}
+
+.note span {
+  color: var(--color-ink-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@keyframes cameraDrift {
+  from { transform: scale(1.025) translate3d(-.5%, 0, 0); }
+  to { transform: scale(1.075) translate3d(.7%, -.7%, 0); }
+}
+
+@keyframes screenBreathe {
+  50% { opacity: .35; transform: scale(1.12); }
+}
+
+@keyframes imageScan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(430%); }
+}
+
+@media (max-width: 880px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 620px) {
+  .section { padding: 78px 18px; }
+  .grid { grid-template-columns: 1fr; margin-top: 30px; }
+  .illustration { height: 190px; }
+  .card p { min-height: 0; }
+  .note { flex-direction: column; gap: 5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .illustration img,
+  .screenGlow,
+  .scan { animation: none; }
+
+  .card,
+  .card a::after { transition: none; }
+}
 
 /* Animações que contam o sintoma de cada card.
    Elas rodam três vezes quando o card entra na tela (classe .playing,
    aplicada pelo IntersectionObserver) e voltam a rodar enquanto o
    ponteiro estiver sobre o card. Fora disso ficam paradas: nada de
-   looping permanente gastando bateria em seis imagens ao mesmo tempo. */
+   looping permanente gastando bateria em seis imagens ao mesmo tempo.
+
+   Todas ficam sobre a fotografia do card, por isso usam os tokens
+   --color-on-media* e não os tons de texto da página. */
 .loader,
 .freeze,
 .popup,
@@ -39,10 +277,9 @@
   width: 40px;
   height: 40px;
   margin: -20px 0 0 -20px;
-  border: 2px solid rgb(99 211 255 / 22%);
-  border-top-color: rgb(99 211 255 / 95%);
+  border: 2px solid var(--color-on-media-soft);
+  border-top-color: var(--color-on-media);
   border-radius: 50%;
-  box-shadow: 0 0 18px rgb(54 199 255 / 30%);
   animation: problemSpin 1.15s linear 3;
 }
 
@@ -55,7 +292,7 @@
   left: 14px;
   height: 4px;
   overflow: hidden;
-  background: rgb(8 19 30 / 75%);
+  background: var(--color-media-panel);
   border-radius: 99px;
 }
 
@@ -63,7 +300,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgb(54 199 255), rgb(99 211 255));
+  background: var(--color-on-media);
   border-radius: 99px;
   transform-origin: 0 50%;
   animation: problemStutter 3.4s ease-in-out 3;
@@ -84,10 +321,9 @@
   display: block;
   width: 46px;
   height: 14px;
-  background: rgb(99 211 255 / 26%);
-  border: 1px solid rgb(99 211 255 / 55%);
+  background: var(--color-on-media-soft);
+  border: 1px solid var(--color-on-media);
   border-radius: 3px;
-  box-shadow: 0 4px 14px rgb(0 0 0 / 35%);
   opacity: 0;
   animation: problemPopIn 2.6s ease-in-out 3;
 }
@@ -106,8 +342,8 @@
   width: 58px;
   height: 34px;
   margin: -17px 0 0 -29px;
-  background: rgb(10 22 34 / 82%);
-  border: 1px solid rgb(248 113 113 / 62%);
+  background: var(--color-media-panel);
+  border: 1px solid var(--color-danger);
   border-radius: 4px;
   animation: problemShake 2.8s ease-in-out 3;
 }
@@ -119,7 +355,7 @@
   width: 24px;
   height: 2px;
   margin-left: -12px;
-  background: rgb(248 113 113 / 85%);
+  background: var(--color-danger);
   border-radius: 99px;
 }
 
@@ -132,8 +368,8 @@
   width: 54px;
   height: 5px;
   overflow: hidden;
-  background: rgb(8 19 30 / 78%);
-  border: 1px solid rgb(99 211 255 / 30%);
+  background: var(--color-media-panel);
+  border: 1px solid var(--color-on-media-soft);
   border-radius: 99px;
 }
 
@@ -141,7 +377,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgb(54 199 255), rgb(251 146 60));
+  background: var(--color-warn);
   transform-origin: 0 50%;
   animation: problemFill 3.6s ease-in-out 3;
 }
@@ -158,11 +394,11 @@
   width: 26px;
   height: 26px;
   place-items: center;
-  color: #08131e;
+  color: var(--color-on-media);
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 800;
-  background: rgb(99 211 255 / 92%);
+  background: var(--color-danger);
   border-radius: 7px;
   animation: problemAlert 2.4s ease-in-out 3;
 }
