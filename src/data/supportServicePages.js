@@ -62,7 +62,7 @@ export const supportServicePages = {
     metaTitle: 'Remoção de Vírus e Anúncios do PC | Suporte Remoto',
     metaDescription: 'Remoção remota de vírus, anúncios, extensões e programas indesejados no Windows. Atendimento seguro e acompanhado para todo o Brasil.',
     introduction: 'Pop-ups, páginas abrindo sozinhas, extensões desconhecidas e programas que você não instalou podem indicar software indesejado. A revisão remota ajuda a limpar o sistema e reduzir o risco de novos problemas.',
-    priceLabel: 'Atendimento a partir de R$ 109',
+    priceLabel: 'Atendimento a partir de R$ 80',
     outcomes: [
       { title: 'Menos interrupções', description: 'Investigação de anúncios, redirecionamentos e notificações suspeitas.' },
       { title: 'Navegador revisado', description: 'Análise de extensões, permissões e configurações alteradas sem necessidade.' },
@@ -73,7 +73,7 @@ export const supportServicePages = {
     faq: [
       { question: 'Vocês pedem minhas senhas?', answer: 'Não. Senhas pessoais não devem ser compartilhadas. Quando algum acesso for necessário, você mesmo digita os dados sem informar a senha ao técnico.' },
       { question: 'A remoção garante que nunca terei vírus novamente?', answer: 'Nenhum serviço sério pode prometer risco zero. A limpeza remove o que for identificado e inclui orientações para reduzir novas infecções.' },
-      { question: 'Quanto custa a remoção?', answer: 'O serviço começa em R$ 109. O valor final depende dos sintomas e do trabalho necessário, sendo confirmado antes do atendimento.' },
+      { question: 'Quanto custa a remoção?', answer: 'O serviço começa em R$ 80. O valor final depende dos sintomas e do trabalho necessário, sendo confirmado antes do atendimento.' },
     ],
   },
   '/corrigir-erros-windows': {
@@ -106,7 +106,7 @@ export const supportServicePages = {
     metaTitle: 'Suporte Técnico Remoto para PC e Notebook | Ronas Tech',
     metaDescription: 'Suporte técnico remoto para PC e notebook Windows em todo o Brasil. Atendimento acompanhado para lentidão, erros, programas, backup e segurança.',
     introduction: 'Você explica o problema pelo WhatsApp, recebe uma avaliação inicial e, quando o acesso remoto é indicado, acompanha todo o atendimento pela tela. O valor é confirmado antes de começar.',
-    priceLabel: 'Triagem gratuita · Diagnóstico a partir de R$ 29',
+    priceLabel: 'Avulso simples a partir de R$ 60 · Hora técnica R$ 70/hora',
     outcomes: [
       { title: 'Sem deslocamento', description: 'Atendimento para todo o Brasil quando o computador liga e consegue acessar a internet.' },
       { title: 'Controle durante o acesso', description: 'A sessão começa com sua autorização e pode ser encerrada por você a qualquer momento.' },
@@ -115,6 +115,7 @@ export const supportServicePages = {
     deliverables: ['Triagem inicial gratuita pelo WhatsApp', 'Diagnóstico técnico remoto a partir de R$ 29', 'Otimização e correção de falhas de software', 'Instalação e configuração de programas compatíveis', 'Backup e organização de arquivos quando possível', 'Resumo do atendimento e orientações finais'],
     audience: 'Pessoas, profissionais e pequenos negócios que precisam resolver problemas de software no Windows sem levar o computador a uma assistência física.',
     faq: [
+      { question: 'Quanto custa o suporte remoto?', answer: 'A triagem pelo WhatsApp é gratuita. O diagnóstico técnico começa em R$ 29, o atendimento avulso simples em R$ 60 e a hora técnica custa R$ 70. O serviço indicado, o tempo necessário e o valor final são confirmados antes de começar.' },
       { question: 'Como vocês acessam meu computador?', answer: 'Quando o suporte remoto é indicado, você recebe orientação para iniciar uma sessão temporária. O acesso só começa com sua autorização e permanece visível na tela.' },
       { question: 'Alguém pode entrar depois?', answer: 'Não pela sessão encerrada. Um novo acesso exige uma nova autorização. Você também pode remover a ferramenta utilizada depois do atendimento.' },
       { question: 'Qual é o horário?', answer: 'O atendimento funciona todos os dias, das 09h à meia-noite, com resposta inicial em até uma hora dentro desse período. O serviço pode ser agendado conforme a disponibilidade.' },
@@ -162,7 +163,7 @@ export const supportServicePages = {
     ogImage: '/og-ronas-tech.png',
     ogImageAlt: 'Ronas Tech — soluções de tecnologia para empresas',
     introduction: 'Um canal técnico para empresas que precisam reduzir interrupções na rotina de trabalho. O atendimento é destinado exclusivamente a computadores de uso empresarial e é dimensionado conforme a equipe, as máquinas e a demanda do negócio.',
-    priceLabel: 'Planos empresariais a partir de R$ 289 por mês',
+    priceLabel: 'Plano empresarial de 1 a 5 PCs por R$ 250 por mês',
     responseLabel: 'Atendimento remoto em todo o Brasil',
     responseDetail: 'Escopo, horários e limites definidos na proposta',
     heroCtaLabel: 'Solicitar avaliação empresarial',
@@ -183,7 +184,7 @@ export const supportServicePages = {
     audience: 'Exclusivamente empresas, escritórios, profissionais com CNPJ e equipes que utilizam computadores na operação do negócio. Esta oferta não é destinada ao público residencial.',
     faq: [
       { question: 'Este serviço atende pessoas físicas?', answer: 'Não. Esta oferta é exclusiva para empresas, escritórios, profissionais com CNPJ e equipamentos utilizados na atividade do negócio.' },
-      { question: 'Quantos computadores estão incluídos?', answer: 'A quantidade é definida antes da contratação. O plano inicial parte de R$ 289 por mês e varia conforme máquinas, usuários, volume de chamados e prioridade.' },
+      { question: 'Quantos computadores estão incluídos?', answer: 'O plano de R$ 250 por mês atende de 1 a 5 computadores. Chamados, horários e prioridade são definidos na proposta. Para mais computadores, solicite um orçamento.' },
       { question: 'O atendimento é ilimitado?', answer: 'Não necessariamente. Chamados, horários, limites e tempo de resposta ficam descritos na proposta para que a empresa saiba exatamente o que está contratando.' },
       { question: 'Inclui peças ou visita presencial?', answer: 'Não. O serviço é remoto e voltado a software, configurações e orientação. Equipamentos, peças, reparos físicos e visitas presenciais não estão incluídos.' },
     ],
@@ -198,7 +199,7 @@ export const supportServicePages = {
     metaTitle: 'Plano Mensal de Suporte de TI para Pequenas Empresas | Ronas Tech',
     metaDescription: 'Plano mensal de suporte de TI remoto para pequenas empresas. Atendimento a Windows, Microsoft 365, programas e rotina da equipe em todo o Brasil.',
     introduction: 'Tenha um contato técnico para acompanhar problemas recorrentes de software, orientar a equipe e reduzir o tempo perdido com falhas no computador. O plano é definido conforme a quantidade de máquinas e a demanda do negócio.',
-    priceLabel: 'Planos a partir de R$ 289 por mês',
+    priceLabel: 'Plano de 1 a 5 PCs por R$ 250 por mês',
     outcomes: [
       { title: 'Custo previsível', description: 'Uma mensalidade definida conforme o número de computadores e a necessidade de atendimento.' },
       { title: 'Contato técnico direto', description: 'Sua equipe fala com quem realmente analisa o problema, sem repasses desnecessários.' },
@@ -207,7 +208,7 @@ export const supportServicePages = {
     deliverables: ['Suporte remoto a computadores com Windows', 'Ajuda com Microsoft 365, Outlook e Teams', 'Instalação e atualização de programas compatíveis', 'Correção de falhas de software e configurações', 'Orientação básica de backup e segurança', 'Condições de chamados e prioridade definidas na contratação'],
     audience: 'Pequenas empresas, escritórios e equipes que dependem diariamente de computadores com Windows e desejam um ponto de contato contínuo para problemas de software. Equipamentos, visitas presenciais e reparos físicos não estão incluídos.',
     faq: [
-      { question: 'Quantos computadores estão incluídos?', answer: 'A quantidade é definida antes da contratação. O plano inicial parte de R$ 289 por mês e pode variar conforme máquinas, usuários, volume de chamados e prioridade.' },
+      { question: 'Quantos computadores estão incluídos?', answer: 'O plano de R$ 250 por mês atende de 1 a 5 computadores. Chamados, horários e prioridade são definidos na proposta. Para mais computadores, solicite um orçamento.' },
       { question: 'O atendimento é ilimitado?', answer: 'Não necessariamente. A quantidade de chamados, horários e limites ficam descritos na proposta para evitar dúvidas e garantir um serviço sustentável.' },
       { question: 'Inclui visita presencial e peças?', answer: 'Não. O plano é remoto e voltado a software, configurações e orientação. Defeitos físicos, peças e visitas presenciais não estão incluídos.' },
       { question: 'Existe fidelidade?', answer: 'A duração, renovação e cancelamento são apresentados claramente na proposta antes da contratação.' },
