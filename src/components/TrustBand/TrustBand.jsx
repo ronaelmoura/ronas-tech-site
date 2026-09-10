@@ -6,7 +6,7 @@ import styles from './TrustBand.module.css'
 const reasons = [
   ['Atendimento sem intermediários', 'Quem avalia e mexe no seu computador é o Ronael — não uma equipe terceirizada.'],
   ['Resposta rápida', 'Retorno em até 1 hora, todos os dias, das 9h à meia-noite.'],
-  ['Preço fechado antes de começar', 'Diagnóstico a partir de R$ 29. Nada é cobrado sem sua aprovação do valor final.'],
+  ['Preço fechado antes de começar', 'Diagnóstico a partir de R$ 39. Nada é cobrado sem sua aprovação do valor final.'],
   ['Formação técnica reconhecida', 'Full Stack pelo SENAI, com experiência prática em suporte de TI.'],
 ]
 

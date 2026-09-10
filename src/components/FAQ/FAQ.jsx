@@ -6,7 +6,7 @@ import styles from './FAQ.module.css'
 const questions = [
   ['Como funciona o acesso remoto?', 'Se o atendimento remoto for indicado, você recebe pelo WhatsApp a orientação para iniciar uma sessão. O acesso só começa com a sua autorização, você acompanha a tela e pode encerrar quando quiser.'],
   ['É seguro dar acesso ao meu computador?', 'Sim. Você vê a tela inteira durante o atendimento, aprova cada etapa e pode encerrar o acesso quando quiser.'],
-  ['Quanto custa o atendimento?', 'A triagem inicial pelo WhatsApp é gratuita. Quando for necessário acessar o computador, o diagnóstico técnico começa em R$ 29; os demais serviços e o valor final são confirmados para sua aprovação antes do trabalho começar. O atendimento avulso simples começa em R$ 60, a hora técnica custa R$ 70 e a limpeza de vírus e programas indesejados começa em R$ 80. O plano mensal para empresas com 1 a 5 computadores custa R$ 250.'],
+  ['Quanto custa o atendimento?', 'A triagem inicial pelo WhatsApp é gratuita. Quando for necessário acessar o computador, o diagnóstico técnico começa em R$ 39; os demais serviços e o valor final são confirmados para sua aprovação antes do trabalho começar. O atendimento avulso simples começa em R$ 60, a hora técnica custa R$ 70 e a limpeza de vírus e programas indesejados começa em R$ 80. O plano mensal para empresas com 1 a 5 computadores custa R$ 250.'],
   ['Preciso instalar algum programa antes do atendimento?', 'Só quando for começar. Você acessa um link, autoriza por alguns minutos e acompanha tudo em tempo real.'],
   ['Quanto tempo demora um atendimento?', 'A maioria dos casos resolve entre 20 e 40 minutos, dependendo do problema.'],
   ['Como funciona o pagamento?', 'Só depois do atendimento, com o problema resolvido e você aprovando.'],

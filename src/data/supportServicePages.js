@@ -7,7 +7,7 @@ export const supportServicePages = {
     metaTitle: 'Computador Lento ou Travando? Suporte Remoto | Ronas Tech',
     metaDescription: 'Suporte remoto para computador lento ou travando. Diagnóstico, limpeza, revisão da inicialização e ajustes do Windows para todo o Brasil.',
     introduction: 'Se o PC demora para ligar, trava com programas simples ou ficou mais lento com o tempo, a análise remota identifica o que está consumindo recursos e quais ajustes realmente fazem sentido.',
-    priceLabel: 'Diagnóstico a partir de R$ 29 · Otimização a partir de R$ 109',
+    priceLabel: 'Diagnóstico a partir de R$ 39 · Otimização a partir de R$ 109',
     outcomes: [
       { title: 'Inicialização mais leve', description: 'Revisão dos programas e processos que começam junto com o Windows.' },
       { title: 'Uso mais responsivo', description: 'Análise de armazenamento, memória, atualizações e configurações que afetam a rotina.' },
@@ -18,7 +18,7 @@ export const supportServicePages = {
     faq: [
       { question: 'Todo computador lento pode ser resolvido remotamente?', answer: 'Não. Quando a causa provável é defeito no HD, superaquecimento, pouca memória ou outro componente, você recebe a orientação para uma avaliação física antes de gastar com otimização.' },
       { question: 'O atendimento apaga meus arquivos?', answer: 'A otimização não começa apagando documentos pessoais. Antes de remover qualquer item, explicamos o que foi encontrado e confirmamos sua autorização.' },
-      { question: 'Quanto custa?', answer: 'A triagem pelo WhatsApp é gratuita. O diagnóstico técnico remoto começa em R$ 29 e a otimização completa começa em R$ 109, com valor confirmado antes do serviço.' },
+      { question: 'Quanto custa?', answer: 'A triagem pelo WhatsApp é gratuita. O diagnóstico técnico remoto começa em R$ 39 e a otimização completa começa em R$ 109, com valor confirmado antes do serviço.' },
     ],
   },
   '/otimizacao-pc-gamer': {
@@ -29,7 +29,7 @@ export const supportServicePages = {
     metaTitle: 'Otimização de PC para Jogos | Mais FPS | Ronas Tech',
     metaDescription: 'Otimização remota de PC gamer: queda de FPS, travamentos em jogos, superaquecimento, drivers de vídeo desatualizados e ajuste das configurações gráficas.',
     introduction: 'Perder uma partida por causa de stutter, FPS instável ou um PC que esquenta demais não é normal. A análise remota identifica o que está segurando o desempenho — drivers, processos em segundo plano, energia, temperatura ou configuração gráfica — e ajusta o que realmente muda o jogo.',
-    priceLabel: 'Otimização gamer a partir de R$ 109',
+    priceLabel: 'Otimização gamer a partir de R$ 129',
     responseLabel: 'Atendimento remoto em todo o Brasil',
     heroCtaLabel: 'Analisar meu PC gamer',
     whatsappIntent: 'otimizar meu PC para jogos. Jogo principal: ___ | Placa de vídeo: ___ | O que acontece: ___',
@@ -51,7 +51,7 @@ export const supportServicePages = {
       { question: 'A otimização vai fazer meu PC rodar qualquer jogo?', answer: 'Não. O ajuste extrai o melhor do hardware que você já tem. Se a placa de vídeo, a memória ou o processador forem o limite real, você recebe essa informação com clareza em vez de uma promessa vazia.' },
       { question: 'Superaquecimento resolve remotamente?', answer: 'Em parte. Monitoramos a temperatura, identificamos throttling e ajustamos energia e configurações. Limpeza interna, troca de pasta térmica e problemas de ventoinha exigem atendimento físico — e você é avisado antes de contratar.' },
       { question: 'É seguro fazer overclock no meu PC?', answer: 'Não fazemos overclock arriscado. O trabalho é focado em drivers, sistema, processos e configuração gráfica, mantendo o hardware dentro das especificações do fabricante.' },
-      { question: 'Quanto custa?', answer: 'A triagem pelo WhatsApp é gratuita e a otimização gamer começa em R$ 109. O valor final é confirmado antes do início do serviço.' },
+      { question: 'Quanto custa?', answer: 'A triagem pelo WhatsApp é gratuita e a otimização gamer começa em R$ 129. O valor final é confirmado antes do início do serviço.' },
     ],
   },
   '/remocao-de-virus': {
@@ -112,10 +112,10 @@ export const supportServicePages = {
       { title: 'Controle durante o acesso', description: 'A sessão começa com sua autorização e pode ser encerrada por você a qualquer momento.' },
       { title: 'Explicação simples', description: 'Você entende o problema, o serviço indicado e o preço antes de decidir.' },
     ],
-    deliverables: ['Triagem inicial gratuita pelo WhatsApp', 'Diagnóstico técnico remoto a partir de R$ 29', 'Otimização e correção de falhas de software', 'Instalação e configuração de programas compatíveis', 'Backup e organização de arquivos quando possível', 'Resumo do atendimento e orientações finais'],
+    deliverables: ['Triagem inicial gratuita pelo WhatsApp', 'Diagnóstico técnico remoto a partir de R$ 39', 'Otimização e correção de falhas de software', 'Instalação e configuração de programas compatíveis', 'Backup e organização de arquivos quando possível', 'Resumo do atendimento e orientações finais'],
     audience: 'Pessoas, profissionais e pequenos negócios que precisam resolver problemas de software no Windows sem levar o computador a uma assistência física.',
     faq: [
-      { question: 'Quanto custa o suporte remoto?', answer: 'A triagem pelo WhatsApp é gratuita. O diagnóstico técnico começa em R$ 29, o atendimento avulso simples em R$ 60 e a hora técnica custa R$ 70. O serviço indicado, o tempo necessário e o valor final são confirmados antes de começar.' },
+      { question: 'Quanto custa o suporte remoto?', answer: 'A triagem pelo WhatsApp é gratuita. O diagnóstico técnico começa em R$ 39, o atendimento avulso simples em R$ 60 e a hora técnica custa R$ 70. O serviço indicado, o tempo necessário e o valor final são confirmados antes de começar.' },
       { question: 'Como vocês acessam meu computador?', answer: 'Quando o suporte remoto é indicado, você recebe orientação para iniciar uma sessão temporária. O acesso só começa com sua autorização e permanece visível na tela.' },
       { question: 'Alguém pode entrar depois?', answer: 'Não pela sessão encerrada. Um novo acesso exige uma nova autorização. Você também pode remover a ferramenta utilizada depois do atendimento.' },
       { question: 'Qual é o horário?', answer: 'O atendimento funciona todos os dias, das 09h à meia-noite, com resposta inicial em até uma hora dentro desse período. O serviço pode ser agendado conforme a disponibilidade.' },
