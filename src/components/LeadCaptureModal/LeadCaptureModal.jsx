@@ -4,10 +4,6 @@ import { setEnhancedConversionUserData, trackWhatsAppClick } from '../../utils/a
 import { isValidBrazilPhone, toE164BrazilPhone } from '../../utils/phone'
 import styles from './LeadCaptureModal.module.css'
 
-// Pequeno intervalo antes de abrir o WhatsApp para dar tempo do pixel de
-// conversão ser enviado pelo gtag.js antes da troca de aba.
-const REDIRECT_DELAY_MS = 150
-
 function defaultMessage(name) {
   return `Olá! Me chamo ${name}. Acessei o site da Ronas Tech e gostaria de explicar meu problema e solicitar atendimento.`
 }
@@ -28,7 +24,6 @@ function LeadCaptureModal({
   const [error, setError] = useState('')
   const nameInputRef = useRef(null)
   const dialogRef = useRef(null)
-  const redirectTimeoutRef = useRef(null)
 
   useEffect(() => {
     if (!open) return undefined
@@ -61,8 +56,6 @@ function LeadCaptureModal({
     }
   }, [open, onClose])
 
-  useEffect(() => () => clearTimeout(redirectTimeoutRef.current), [])
-
   if (!open) return null
 
   function handleSubmit(event) {
@@ -79,17 +72,22 @@ function LeadCaptureModal({
     }
     setError('')
 
+    // O window.open precisa acontecer de forma síncrona dentro do gesto do
+    // usuário: qualquer espera (setTimeout, Promise, await) faz o navegador
+    // perder a "user activation" e bloquear a aba silenciosamente — no Safari
+    // do iOS e em vários Android isso contava a conversão sem abrir o
+    // WhatsApp. O tracking vai logo depois, ainda de forma síncrona, porque o
+    // gtag.js envia os dados por sendBeacon e a navegação não cancela isso.
+    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(buildMessage(trimmedName))}`
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+
     const phoneE164 = toE164BrazilPhone(phone)
     setEnhancedConversionUserData({ name: trimmedName, phoneE164 })
     trackWhatsAppClick(trackingLocation)
 
-    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(buildMessage(trimmedName))}`
-    redirectTimeoutRef.current = setTimeout(() => {
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
-      setName('')
-      setPhone('')
-      onClose()
-    }, REDIRECT_DELAY_MS)
+    setName('')
+    setPhone('')
+    onClose()
   }
 
   return (
