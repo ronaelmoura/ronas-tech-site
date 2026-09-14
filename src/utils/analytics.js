@@ -46,7 +46,9 @@ export function initializeAnalytics() {
 
   window.gtag('js', new Date())
   if (hasValidMeasurementId) window.gtag('config', measurementId)
-  if (hasValidGoogleAdsId) window.gtag('config', googleAdsId)
+  // allow_enhanced_conversions liga o envio de user_data definido pelo código
+  // in-page (setEnhancedConversionUserData) junto com a conversão.
+  if (hasValidGoogleAdsId) window.gtag('config', googleAdsId, { allow_enhanced_conversions: true })
 
   const scriptTagId = measurementId || googleAdsId
   if (!document.getElementById('google-analytics-script')) {
@@ -89,16 +91,15 @@ export function trackGoogleAdsConversion(parameters = {}) {
   })
 }
 
-// Conversões Otimizadas: envia nome e telefone informados pelo visitante para
-// o gtag.js, que gera o hash (SHA-256) no próprio navegador antes de mandar
-// para o Google Ads — os dados brutos nunca saem do dispositivo.
-export function setEnhancedConversionUserData({ name, phoneE164 }) {
-  if (typeof window === 'undefined' || !window.gtag) return
-  const userData = {}
-  if (phoneE164) userData.phone_number = phoneE164
-  if (name) userData.address = { first_name: name }
-  if (!Object.keys(userData).length) return
-  window.gtag('set', 'user_data', userData)
+// Conversões Otimizadas (código in-page): envia o telefone informado pelo
+// visitante para o gtag.js, que gera o hash (SHA-256) no próprio navegador
+// antes de mandar para o Google Ads — os dados brutos nunca saem do
+// dispositivo. Precisa ser chamado ANTES de trackGoogleAdsConversion.
+// O nome não entra: o Google só aceita "address" com nome, sobrenome, CEP e
+// país juntos, e um address só com first_name é descartado como inválido.
+export function setEnhancedConversionUserData({ phoneE164 }) {
+  if (typeof window === 'undefined' || !window.gtag || !phoneE164) return
+  window.gtag('set', 'user_data', { phone_number: phoneE164 })
 }
 
 export function trackEvent(eventName, eventParameters = {}) {

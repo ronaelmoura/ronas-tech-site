@@ -82,7 +82,7 @@ function LeadCaptureModal({
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
 
     const phoneE164 = toE164BrazilPhone(phone)
-    setEnhancedConversionUserData({ name: trimmedName, phoneE164 })
+    setEnhancedConversionUserData({ phoneE164 })
     trackWhatsAppClick(trackingLocation)
 
     setName('')
