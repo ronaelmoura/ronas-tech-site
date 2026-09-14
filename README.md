@@ -4,7 +4,7 @@
 
 # Ronas Tech
 
-Site institucional da Ronas Tech, desenvolvido para apresentar serviços, projetos e canais de contato com uma experiência moderna, rápida e responsiva.
+Portfólio de Ronael Moura, desenvolvedor Full Stack, publicado sob a marca Ronas Tech: projetos, stack e canais de contato para recrutadores e clientes de projetos.
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
@@ -16,21 +16,22 @@ Site institucional da Ronas Tech, desenvolvido para apresentar serviços, projet
 
 ## Sobre o projeto
 
-O Ronas Tech Site é o canal digital oficial da Ronas Tech. O projeto apresenta a empresa, detalha suas soluções para presença online e reúne formas diretas de contato para novos clientes.
+O Ronas Tech Site apresenta o trabalho de Ronael Moura como desenvolvedor Full Stack. A home reúne projetos publicados, tecnologias, trajetória e contato, com dois caminhos: vagas (LinkedIn e e-mail) e projetos freelance (WhatsApp). O site também mantém o catálogo de produtos digitais (planilhas).
 
-A aplicação foi construída como uma Single Page Application em React, com páginas dedicadas aos serviços, conteúdo otimizado para mecanismos de busca e integrações opcionais de métricas.
+A aplicação é feita em React, com as páginas pré-renderizadas no build para SEO e integrações opcionais de métricas.
 
 ## Funcionalidades
 
-- Página inicial com apresentação, serviços, processo de trabalho e tecnologias.
-- Portfólio com projetos selecionados e links externos.
-- Páginas individuais para criação de sites, landing pages, manutenção e sistemas web.
-- Formulário de contato e acesso direto ao WhatsApp.
+- Página inicial com apresentação, projetos, stack, sobre e contato.
+- Portfólio com projetos publicados, links para a aplicação e para o código.
+- Catálogo e páginas de produtos digitais.
+- Formulário de contato que abre o WhatsApp com a mensagem preenchida.
+- Redirecionamentos 301 (em `vercel.json`) das antigas páginas de suporte, serviços e campanhas para a home.
 - Páginas de Política de Privacidade e Termos de Uso.
 - Layout responsivo para dispositivos móveis, tablets e desktops.
 - Metadados para SEO e compartilhamento em redes sociais.
 - Sitemap e arquivo `robots.txt`.
-- Google Analytics 4 opcional, sem envio dos dados pessoais preenchidos no formulário.
+- Google Analytics 4 e Google Ads opcionais. Nome e mensagem do formulário não são enviados; o telefone vai para as Conversões Otimizadas do Google Ads com hash gerado no navegador.
 - Estrutura de acessibilidade com link para pular ao conteúdo principal e marcação semântica.
 
 ## Tecnologias
@@ -51,8 +52,8 @@ ronas-tech-site/
 ├── src/
 │   ├── components/         # Seções e componentes da interface
 │   ├── config/             # Dados institucionais centralizados
-│   ├── data/               # Conteúdo das páginas de serviços
-│   ├── pages/              # Serviços, privacidade e termos
+│   ├── data/               # Conteúdo dos produtos digitais
+│   ├── pages/              # Produtos digitais, privacidade e termos
 │   ├── styles/             # Estilos globais
 │   ├── utils/              # Integrações e utilitários
 │   ├── App.jsx
@@ -134,10 +135,10 @@ Quando `VITE_GA_MEASUREMENT_ID` e `VITE_GOOGLE_ADS_ID` estão vazios, nenhum scr
 Os eventos implementados são:
 
 - `whatsapp_click`: cliques em links do WhatsApp;
-- `contact_form_submit`: envio válido do formulário, incluindo somente o tipo de projeto;
+- `contact_form_submit`: envio válido do formulário, incluindo somente o assunto (vaga CLT, vaga PJ, projeto freelance ou outro);
 - `external_link_click`: cliques em GitHub, LinkedIn, Instagram e portfólio.
 
-Nome, email, telefone, mensagem e demais dados pessoais do formulário não são enviados ao Google Analytics.
+Nome, empresa, telefone e mensagem do formulário não são enviados ao Google Analytics. No envio do formulário, o telefone é repassado ao Google Ads (`gtag('set', 'user_data')`, Conversões Otimizadas), que gera o hash no navegador antes de enviar.
 
 Todo clique em WhatsApp (`whatsapp_click`) é tratado como lead e, além do evento
 no GA4, também dispara:
@@ -153,7 +154,7 @@ a Política de Privacidade. A preferência de ter fechado o aviso fica salva no
 
 ## Deploy
 
-O projeto possui configuração de rewrite em `vercel.json` para que as rotas da SPA sejam direcionadas ao `index.html`.
+As páginas são pré-renderizadas no build (`scripts/prerender.mjs`). O `vercel.json` define `cleanUrls` e os redirecionamentos permanentes das URLs antigas de suporte, serviços e campanhas para a home.
 
 Para publicar na Vercel:
 

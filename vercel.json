@@ -2,5 +2,122 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/criacao-de-sites",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/criacao-de-portfolio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/landing-pages",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/automacao-para-pequenos-negocios",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sistemas-web",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/manutencao-de-sites",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/computador-lento",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/otimizacao-pc-gamer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/remocao-de-virus",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/corrigir-erros-windows",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/suporte-tecnico-remoto",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/suporte-ti-para-contadores",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/suporte-ti-para-empresas",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/plano-mensal-suporte-ti",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/presenca-essencial",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/kit-whatsapp-organizado",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/painel-clientes-orcamentos",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/agenda-digital",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/catalogo-digital",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/negocio-encontravel",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/check-up-digital",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contratar",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/meus-projetos",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }

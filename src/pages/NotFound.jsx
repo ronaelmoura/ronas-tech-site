@@ -13,7 +13,7 @@ function NotFound() {
         <h1>Esta página não está por aqui.</h1>
         <p>
           O endereço pode ter mudado ou deixado de existir. Volte ao início para
-          conhecer nossos serviços e projetos.
+          ver meus projetos.
         </p>
         <a className={styles.action} href="/">
           Voltar para a página inicial <span aria-hidden="true">→</span>

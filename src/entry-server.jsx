@@ -1,15 +1,12 @@
 import { renderToString } from 'react-dom/server'
 import App from './App'
-import { servicePages } from './data/servicePages'
 import { siteConfig } from './config/siteConfig'
-import { campaignPages } from './data/campaignPages'
-import { products } from './data/products'
 import { spreadsheetProducts } from './data/spreadsheetProducts'
 
 const homeMetadata = {
-  title: 'Loja de Suporte Técnico Remoto | Ronas Tech',
+  title: 'Ronael Moura | Desenvolvedor Full Stack · Ronas Tech',
   description:
-    'Loja de suporte técnico remoto para PC e notebook, para todo o Brasil. Escolha serviços de diagnóstico, otimização, segurança, configuração e backup, com preço confirmado antes de começar, e contrate pelo WhatsApp.',
+    'Portfólio de Ronael Moura, desenvolvedor Full Stack com formação pelo SENAI. Projetos com React, Node.js, Express e MySQL, testes automatizados e deploy em produção. Aberto a vagas e projetos freelance.',
   canonical: siteConfig.siteUrl,
 }
 
@@ -22,7 +19,7 @@ const legalMetadata = {
   '/termos-de-uso': {
     title: `Termos de Uso | ${siteConfig.companyName}`,
     description:
-      'Consulte as regras e condições para utilização do site e dos serviços apresentados pela Ronas Tech.',
+      'Consulte as regras e condições para utilização do site e dos produtos apresentados pela Ronas Tech.',
   },
 }
 
@@ -49,14 +46,6 @@ const spreadsheetProductMetadata = Object.fromEntries(spreadsheetProducts.map((p
 }]))
 
 const productMetadata = {
-  '/contratar': {
-    title: `Contratar serviços digitais | ${siteConfig.companyName}`,
-    description: 'Escolha um serviço, personalize seu projeto e envie um pré-pedido para a Ronas Tech.',
-  },
-  '/meus-projetos': {
-    title: `Meus projetos | ${siteConfig.companyName}`,
-    description: 'Área de acompanhamento de projetos da Ronas Tech em preparação.',
-  },
   '/produtos-digitais': {
     title: `Planilhas e Produtos Digitais | ${siteConfig.companyName}`,
     description: 'Conheça as planilhas inteligentes da Ronas Tech para finanças, vendas, estoque, precificação, serviços e organização de negócios.',
@@ -109,10 +98,8 @@ const productMetadata = {
 
 export const staticPaths = [
   '/',
-  ...Object.keys(servicePages),
   ...Object.keys(legalMetadata),
   ...Object.keys(productMetadata),
-  ...Object.keys(campaignPages),
 ]
 
 export function render(pathname) {
@@ -121,46 +108,6 @@ export function render(pathname) {
 
 export function getPageMetadata(pathname) {
   if (pathname === '/') return homeMetadata
-
-  const service = servicePages[pathname]
-  if (service) {
-    return {
-      title: service.metaTitle,
-      description: service.metaDescription,
-      canonical: `${siteConfig.siteUrl}${service.slug}`,
-      ogImage: service.ogImage ? `${siteConfig.siteUrl}${service.ogImage.replace(/^\//, '')}` : undefined,
-      ogImageAlt: service.ogImageAlt,
-      structuredData: {
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'Service',
-            name: service.eyebrow,
-            description: service.metaDescription,
-            url: `${siteConfig.siteUrl}${service.slug}`,
-            areaServed: { '@type': 'Country', name: 'Brasil' },
-            audience: service.businessOnly ? { '@type': 'BusinessAudience', audienceType: 'Empresas e profissionais com CNPJ' } : undefined,
-            serviceType: service.businessOnly ? 'Suporte de TI remoto empresarial' : undefined,
-            provider: {
-              '@type': 'Organization',
-              name: siteConfig.companyName,
-              url: siteConfig.siteUrl,
-              email: siteConfig.email,
-              sameAs: [siteConfig.github, siteConfig.linkedin, siteConfig.instagram],
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: service.faq.map(({ question, answer }) => ({
-              '@type': 'Question',
-              name: question,
-              acceptedAnswer: { '@type': 'Answer', text: answer },
-            })),
-          },
-        ],
-      },
-    }
-  }
 
   const legal = legalMetadata[pathname]
   if (legal) {
@@ -175,24 +122,6 @@ export function getPageMetadata(pathname) {
     return {
       ...product,
       canonical: product.canonical || `${siteConfig.siteUrl}${pathname.slice(1)}`,
-    }
-  }
-
-  const campaign = campaignPages[pathname]
-  if (campaign) {
-    const product = products.find((item) => item.id === campaign.productId)
-    return {
-      title: `${campaign.title} | ${siteConfig.companyName}`,
-      description: campaign.description,
-      canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
-      structuredData: {
-        '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: product?.name || campaign.title,
-        description: campaign.description,
-        offers: product ? { '@type': 'Offer', price: product.price.replace(/[^0-9]/g, ''), priceCurrency: 'BRL' } : undefined,
-        provider: { '@type': 'Organization', name: siteConfig.companyName, url: siteConfig.siteUrl },
-      },
     }
   }
 
