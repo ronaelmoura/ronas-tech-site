@@ -1,96 +1,63 @@
 import { useState } from 'react'
 import { siteConfig } from '../../config/siteConfig'
 import {
+  setEnhancedConversionUserData,
   trackContactFormSubmit,
+  trackExternalLink,
   trackWhatsAppClick,
 } from '../../utils/analytics'
+import { isValidBrazilPhone, toE164BrazilPhone } from '../../utils/phone'
 import styles from './Contact.module.css'
 
 const initialFormData = {
   name: '',
-  business: '',
+  company: '',
   phone: '',
-  projectType: '',
+  reason: '',
   message: '',
 }
 
-const projectTypes = [
-  'Site ou Landing Page',
-  'Automação de Processo',
-  'Sistema Web',
-  'Manutenção ou Correção',
-  'Ainda não sei qual solução preciso',
+const reasons = ['Vaga CLT', 'Vaga PJ', 'Projeto freelance', 'Outro assunto']
+
+// Recrutadores costumam preferir LinkedIn ou e-mail; quem quer um projeto
+// costuma preferir o WhatsApp. Os dois caminhos ficam lado a lado.
+const paths = [
+  {
+    title: 'Vagas e oportunidades',
+    text: 'Para recrutadores e empresas contratando desenvolvedor Full Stack.',
+    links: [
+      { label: 'LinkedIn', href: siteConfig.linkedin, platform: 'linkedin', external: true },
+      { label: siteConfig.email, href: `mailto:${siteConfig.email}` },
+    ],
+  },
+  {
+    title: 'Projetos freelance',
+    text: 'Para quem precisa de um sistema web, uma API ou uma interface.',
+    links: [
+      { label: `WhatsApp ${siteConfig.whatsappDisplay}`, href: `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá, Ronael! Vi seu site e quero conversar sobre um projeto.')}`, whatsapp: true, external: true },
+      { label: 'GitHub', href: siteConfig.github, platform: 'github', external: true },
+    ],
+  },
 ]
-
-const directWhatsappMessage =
-  'Olá! Conheci a Ronas Tech pelo site e gostaria de conversar sobre uma necessidade do meu negócio.'
-const directWhatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(directWhatsappMessage)}`
-
-const contactIcons = {
-  whatsapp: (
-    <>
-      <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.4-4.7A8.5 8.5 0 1 1 20.5 11.6Z" />
-      <path d="M8.2 7.5c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .5.4l.8 2c.1.2.1.4-.1.6l-.7.8c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.8 2.7.2.1.4.1.6-.1l.9-1c.2-.2.4-.3.7-.2l1.9.9c.3.1.4.3.4.5 0 .3-.2 1.4-.9 2-.6.6-1.5.8-2.4.6-1.2-.3-2.8-.9-4.7-2.6-1.5-1.4-2.6-3.1-2.9-4.3-.3-1.2.1-2 .4-2.5Z" />
-    </>
-  ),
-  email: (
-    <>
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="m4 7 8 6 8-6" />
-    </>
-  ),
-  location: (
-    <>
-      <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
-      <circle cx="12" cy="10" r="2.5" />
-    </>
-  ),
-}
-
-function ContactIcon({ name }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <g
-        stroke="currentColor"
-        strokeWidth="1.55"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {contactIcons[name]}
-      </g>
-    </svg>
-  )
-}
 
 function validateForm(formData) {
   const errors = {}
-
-  if (!formData.name.trim()) errors.name = 'Informe seu nome.'
-  if (!formData.business.trim()) {
-    errors.business = 'Informe a empresa ou negócio.'
-  }
-
-  if (!formData.phone.trim()) errors.phone = 'Informe seu WhatsApp.'
-  if (!formData.projectType) {
-    errors.projectType = 'Selecione o tipo de serviço.'
-  }
-  if (!formData.message.trim()) {
-    errors.message = 'Descreva o projeto em uma frase curta.'
-  }
-
+  if (formData.name.trim().length < 2) errors.name = 'Informe seu nome.'
+  if (!isValidBrazilPhone(formData.phone)) errors.phone = 'Informe um telefone com DDD, por exemplo (88) 99302-1946.'
+  if (!formData.reason) errors.reason = 'Selecione o assunto.'
+  if (!formData.message.trim()) errors.message = 'Escreva uma mensagem curta.'
   return errors
 }
 
 function createWhatsAppMessage(formData) {
   return [
-    'Olá! Gostaria de solicitar um orçamento sem compromisso pela Ronas Tech.',
+    'Olá, Ronael! Vim pelo seu site.',
     '',
     `Nome: ${formData.name.trim()}`,
-    `Empresa/Negócio: ${formData.business.trim()}`,
-    `WhatsApp: ${formData.phone.trim()}`,
-    `Tipo de serviço: ${formData.projectType}`,
-    `Descrição do projeto: ${formData.message.trim()}`,
-  ].join('\n')
+    formData.company.trim() ? `Empresa: ${formData.company.trim()}` : null,
+    `Assunto: ${formData.reason}`,
+    `Mensagem: ${formData.message.trim()}`,
+  ].filter((line) => line !== null).join('\n')
 }
 
 function Contact() {
@@ -100,11 +67,9 @@ function Contact() {
 
   function handleChange(event) {
     const { name, value } = event.target
-
     setFormData((currentData) => ({ ...currentData, [name]: value }))
     setErrors((currentErrors) => {
       if (!currentErrors[name]) return currentErrors
-
       const nextErrors = { ...currentErrors }
       delete nextErrors[name]
       return nextErrors
@@ -114,256 +79,127 @@ function Contact() {
 
   function handleSubmit(event) {
     event.preventDefault()
-
     const validationErrors = validateForm(formData)
     setErrors(validationErrors)
     setSubmitError('')
 
     if (Object.keys(validationErrors).length > 0) {
-      const firstInvalidField = Object.keys(validationErrors)[0]
-      document.getElementById(`contact-${firstInvalidField}`)?.focus()
+      document.getElementById(`contact-${Object.keys(validationErrors)[0]}`)?.focus()
       return
     }
 
-    const message = createWhatsAppMessage(formData)
-    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`
+    // O window.open precisa acontecer de forma síncrona dentro do gesto do
+    // usuário, antes do tracking: qualquer espera faz o navegador bloquear
+    // a aba. O gtag.js envia os eventos por sendBeacon logo em seguida.
+    const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(createWhatsAppMessage(formData))}`
     const whatsappWindow = window.open(whatsappUrl, '_blank')
-
     if (!whatsappWindow) {
-      setSubmitError(
-        'Não foi possível abrir o WhatsApp. Permita pop-ups no navegador e tente novamente.',
-      )
+      setSubmitError('Não foi possível abrir o WhatsApp. Permita pop-ups no navegador ou escreva para ' + siteConfig.email + '.')
       return
     }
-
     whatsappWindow.opener = null
+
+    setEnhancedConversionUserData({ phoneE164: toE164BrazilPhone(formData.phone) })
     trackWhatsAppClick('contact_form')
-    trackContactFormSubmit(formData.projectType)
+    trackContactFormSubmit(formData.reason)
     setFormData(initialFormData)
     setErrors({})
   }
 
   function fieldAccessibility(fieldName) {
     const hasError = Boolean(errors[fieldName])
-
     return {
       'aria-invalid': hasError,
       'aria-describedby': hasError ? `${fieldName}-error` : undefined,
     }
   }
 
+  function handlePathLink(link) {
+    if (link.whatsapp) trackWhatsAppClick('contact_freelance')
+    else if (link.platform) trackExternalLink(link.platform)
+  }
+
   return (
-    <section
-      id="contato"
-      className={styles.section}
-      aria-labelledby="contact-title"
-    >
+    <section id="contato" className={`${styles.section} reveal`} aria-labelledby="contact-title">
       <div className={styles.container}>
         <div className={styles.information}>
-          <p className={styles.eyebrow}>Entre em contato</p>
-          <h2 id="contact-title">Conte o que está dificultando a rotina do seu negócio</h2>
+          <p className={styles.eyebrow}>Contato</p>
+          <h2 id="contact-title">Tem uma vaga ou um projeto? Vamos conversar.</h2>
           <p className={styles.subtitle}>
-            Você não precisa chegar com a solução pronta. Explique o problema e
-            vamos avaliar juntos se a tecnologia pode ajudar.
+            Respondo pessoalmente. Escolha o canal que for mais prático para você ou use o formulário.
           </p>
 
-          <address className={styles.contactList}>
-            <a
-              href={directWhatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.contactItem}
-              onClick={() => trackWhatsAppClick('contact')}
-            >
-              <span className={styles.contactIcon}>
-                <ContactIcon name="whatsapp" />
-              </span>
-              <span>
-                <small>WhatsApp</small>
-                <strong>{siteConfig.whatsappDisplay}</strong>
-              </span>
-            </a>
-
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className={styles.contactItem}
-            >
-              <span className={styles.contactIcon}>
-                <ContactIcon name="email" />
-              </span>
-              <span>
-                <small>E-mail</small>
-                <strong>{siteConfig.email}</strong>
-              </span>
-            </a>
-
-            <div className={styles.contactItem}>
-              <span className={styles.contactIcon}>
-                <ContactIcon name="location" />
-              </span>
-              <span>
-                <small>Localização</small>
-                <strong>{siteConfig.location} — Atendimento online para todo o Brasil</strong>
-              </span>
-            </div>
-          </address>
-
-          <p className={styles.supportText}>
-            O primeiro contato é direto com Ronael Moura, sem compromisso e sem
-            linguagem técnica desnecessária.
-          </p>
-
-          <a
-            className={styles.whatsappButton}
-            href={directWhatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackWhatsAppClick('contact')}
-          >
-            <ContactIcon name="whatsapp" />
-            Falar pelo WhatsApp
-            <span aria-hidden="true">→</span>
-          </a>
+          <div className={styles.paths}>
+            {paths.map(({ title, text, links }) => (
+              <article className={styles.path} key={title}>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <ul>
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        data-ronas-cta={link.whatsapp ? 'contact_freelance' : undefined}
+                        target={link.external ? '_blank' : undefined}
+                        rel={link.external ? 'noopener noreferrer' : undefined}
+                        onClick={() => handlePathLink(link)}
+                      >
+                        {link.label} <span aria-hidden="true">→</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div className={styles.formCard}>
           <header className={styles.formHeader}>
-            <span>Conversa inicial sem compromisso</span>
-            <h3>Descreva sua necessidade</h3>
-            <p>Preencha os campos e a conversa continuará pelo WhatsApp.</p>
+            <h3>Enviar mensagem</h3>
+            <p>A mensagem abre no WhatsApp já preenchida, pronta para enviar.</p>
           </header>
 
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             <div className={styles.fieldRow}>
               <div className={styles.field}>
                 <label htmlFor="contact-name">Nome</label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={handleChange}
-                  autoComplete="name"
-                  required
-                  placeholder="Seu nome"
-                  className={errors.name ? styles.invalid : ''}
-                  {...fieldAccessibility('name')}
-                />
-                {errors.name && (
-                  <span id="name-error" className={styles.error}>
-                    {errors.name}
-                  </span>
-                )}
+                <input id="contact-name" name="name" type="text" value={formData.name} onChange={handleChange} autoComplete="name" required placeholder="Seu nome" {...fieldAccessibility('name')} />
+                {errors.name && <span id="name-error" className={styles.error}>{errors.name}</span>}
               </div>
-
               <div className={styles.field}>
-                <label htmlFor="contact-business">Empresa ou negócio</label>
-                <input
-                  id="contact-business"
-                  name="business"
-                  type="text"
-                  value={formData.business}
-                  onChange={handleChange}
-                  autoComplete="organization"
-                  required
-                  placeholder="Nome da empresa"
-                  className={errors.business ? styles.invalid : ''}
-                  {...fieldAccessibility('business')}
-                />
-                {errors.business && (
-                  <span id="business-error" className={styles.error}>
-                    {errors.business}
-                  </span>
-                )}
+                <label htmlFor="contact-company">Empresa <small>(opcional)</small></label>
+                <input id="contact-company" name="company" type="text" value={formData.company} onChange={handleChange} autoComplete="organization" placeholder="Onde você trabalha" />
               </div>
             </div>
 
             <div className={styles.fieldRow}>
               <div className={styles.field}>
                 <label htmlFor="contact-phone">Telefone / WhatsApp</label>
-                <input
-                  id="contact-phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  autoComplete="tel"
-                  inputMode="tel"
-                  required
-                  placeholder="(00) 0 0000-0000"
-                  className={errors.phone ? styles.invalid : ''}
-                  {...fieldAccessibility('phone')}
-                />
-                {errors.phone && (
-                  <span id="phone-error" className={styles.error}>
-                    {errors.phone}
-                  </span>
-                )}
+                <input id="contact-phone" name="phone" type="tel" inputMode="tel" value={formData.phone} onChange={handleChange} autoComplete="tel" required placeholder="(00) 00000-0000" {...fieldAccessibility('phone')} />
+                {errors.phone && <span id="phone-error" className={styles.error}>{errors.phone}</span>}
               </div>
-
               <div className={styles.field}>
-                <label htmlFor="contact-projectType">Tipo de serviço</label>
-                <select
-                  id="contact-projectType"
-                  name="projectType"
-                  value={formData.projectType}
-                  onChange={handleChange}
-                  required
-                  className={errors.projectType ? styles.invalid : ''}
-                  {...fieldAccessibility('projectType')}
-                >
-                  <option value="" disabled>
-                    Selecione uma opção
-                  </option>
-                  {projectTypes.map((projectType) => (
-                    <option value={projectType} key={projectType}>
-                      {projectType}
-                    </option>
-                  ))}
+                <label htmlFor="contact-reason">Assunto</label>
+                <select id="contact-reason" name="reason" value={formData.reason} onChange={handleChange} required {...fieldAccessibility('reason')}>
+                  <option value="" disabled>Selecione</option>
+                  {reasons.map((reason) => <option value={reason} key={reason}>{reason}</option>)}
                 </select>
-                {errors.projectType && (
-                  <span id="projectType-error" className={styles.error}>
-                    {errors.projectType}
-                  </span>
-                )}
+                {errors.reason && <span id="reason-error" className={styles.error}>{errors.reason}</span>}
               </div>
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="contact-message">Qual problema você quer resolver?</label>
-              <textarea
-                id="contact-message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows="5"
-                required
-                placeholder="Conte brevemente o que hoje dá trabalho, causa atraso ou impede o negócio de avançar..."
-                className={errors.message ? styles.invalid : ''}
-                {...fieldAccessibility('message')}
-              />
-              {errors.message && (
-                <span id="message-error" className={styles.error}>
-                  {errors.message}
-                </span>
-              )}
+              <label htmlFor="contact-message">Mensagem</label>
+              <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="Conte sobre a vaga ou o projeto em poucas linhas." {...fieldAccessibility('message')} />
+              {errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}
             </div>
 
-            {submitError && (
-              <p className={styles.submitError} role="alert">
-                {submitError}
-              </p>
-            )}
+            {submitError && <p className={styles.submitError} role="alert">{submitError}</p>}
 
             <button className={styles.submitButton} type="submit">
-              Iniciar conversa pelo WhatsApp
-              <span aria-hidden="true">→</span>
+              Abrir no WhatsApp <span aria-hidden="true">→</span>
             </button>
-
-            <p className={styles.privacyNote}>
-              Seu pedido é enviado pelo WhatsApp e pode ser respondido sem
-              compromisso.
-            </p>
           </form>
         </div>
       </div>

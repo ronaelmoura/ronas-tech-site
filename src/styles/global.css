@@ -154,97 +154,6 @@ section[id] {
   transform: translateY(0);
 }
 
-.floating-contact {
-  position: fixed;
-  z-index: 900;
-  right: 22px;
-  bottom: 22px;
-  min-height: 58px;
-  padding: 7px 8px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--color-page);
-  background: var(--color-action);
-  border: 1px solid var(--color-action);
-  border-radius: 999px;
-  box-shadow: 0 16px 38px var(--color-shadow-strong);
-  backdrop-filter: blur(12px);
-  text-decoration: none;
-  isolation: isolate;
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-}
-
-.floating-contact__brand {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  /* O whatsapp.svg é branco. Antes ele ficava sobre um círculo verde do
-     WhatsApp; agora o botão inteiro já é --color-action, então o ícone vai
-     direto sobre ele e o círculo fica transparente. */
-  background: transparent;
-  border-radius: 50%;
-}
-
-.floating-contact__brand::after {
-  position: absolute;
-  inset: -4px;
-  border: 1px solid var(--color-action-halo);
-  border-radius: 50%;
-  content: '';
-}
-
-.floating-contact__brand img { width: 24px; height: 24px; display: block; }
-
-.floating-contact__copy {
-  min-width: 74px;
-  display: grid;
-  padding-right: 2px;
-  line-height: 1.1;
-}
-
-.floating-contact__copy small { color: var(--color-page); font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.floating-contact__copy strong { margin-top: 4px; color: var(--color-page); font-size: 13px; font-weight: 700; }
-
-.floating-contact:hover { background: var(--color-action-strong); border-color: var(--color-action-strong); box-shadow: 0 19px 44px var(--color-shadow-strong); transform: translateY(-3px); }
-.floating-contact:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; }
-
-@media (max-width: 620px) {
-  .floating-contact { right: 16px; bottom: 16px; min-height: 54px; padding: 6px 7px; gap: 8px; }
-  .floating-contact__brand { width: 40px; height: 40px; }
-}
-
-.quick-pick{display:grid;grid-template-columns:210px 1fr;gap:24px;align-items:center;padding:20px 22px;margin:0 0 26px;border:1px solid #28506f;border-radius:16px;background:#0b1723}.quick-pick>div:first-child{display:grid;gap:5px}.quick-pick small{color:#5fc8fb;font-family:var(--font-mono);font-size:8px;letter-spacing:.14em}.quick-pick strong{color:#f2f8fc;font-family:var(--font-display);font-size:16px}.quick-pick>div:last-child{display:flex;flex-wrap:wrap;gap:8px}.quick-pick button{display:flex;min-height:39px;align-items:center;gap:10px;padding:8px 12px;border:1px solid #2b4b65;border-radius:99px;color:#c6d5e1;background:#101f2d;font:inherit;font-size:11px;cursor:pointer}.quick-pick button span{color:#5fcafa;font-size:16px}.quick-pick button[aria-pressed=true]{border-color:#3bbbf5;color:#fff;background:#153951}.selection-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-
-.home-cta {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 34px 24px 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-}
-
-.home-cta p {
-  margin: 0 0 8px;
-  color: #55bcff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-
-.home-cta h2 { margin: 0 0 8px; color: #f5f7fb; font-size: clamp(24px, 3vw, 38px); line-height: 1.15; }
-.home-cta span { color: #9eabbc; }
-.home-cta > a { display: inline-flex; gap: 18px; padding: 14px 18px; border: 1px solid #3fa8ef; border-radius: 10px; background: #155f9c; color: #fff; text-decoration: none; font-size: 12px; font-weight: 700; white-space: nowrap; }
-.home-contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
-.home-contact-links a { color: #c6e9ff; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 700px) { .home-cta { padding: 20px 18px 70px; flex-direction: column; align-items: flex-start; } .quick-pick{grid-template-columns:1fr;padding:18px}.quick-pick>div:last-child{display:grid}.quick-pick button{justify-content:space-between} }
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -303,181 +212,28 @@ body.has-custom-cursor, body.has-custom-cursor * { cursor: none; }
 /* A home é longa: adiar o layout das seções fora da tela reduz o trabalho
    da primeira renderização. O tamanho estimado evita que a barra de
    rolagem pule enquanto o visitante desce a página. */
-#problemas,
-#loja,
-#servicos,
-#processo,
+#projetos,
+#stack,
 #sobre,
-#duvidas {
+#contato {
   content-visibility: auto;
   contain-intrinsic-size: auto 1200px;
 }
 
-/* Microinterações — elevação e brilho ciano nos cards das seções da home */
-#problemas article,
-#loja article,
-#servicos article,
-section[aria-labelledby='safety-title'] article {
-  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
-}
-
-#problemas article:hover,
-#loja article:hover,
-#servicos article:hover,
-section[aria-labelledby='safety-title'] article:hover {
-  border-color: var(--color-brand);
-  box-shadow: 0 18px 40px var(--color-shadow);
-  transform: translateY(-4px);
-}
-
-/* Categoria gamer: mesmo card, acento roxo-neon */
-#loja article[data-accent='gamer'] {
-  border-color: var(--color-accent-gamer);
-}
-
-#loja article[data-accent='gamer']:hover {
-  border-color: var(--color-accent-gamer);
-  box-shadow: 0 18px 40px var(--color-shadow);
-}
-
-/* Pulso de atenção no botão flutuante — finito, para não virar um piscar constante */
-.floating-contact__brand::before {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0 var(--color-action-halo);
-  animation: floating-contact-pulse 2.6s ease-out 6;
-  content: '';
-}
-
-@keyframes floating-contact-pulse {
-  0% { box-shadow: 0 0 0 0 var(--color-action-halo); }
-  70% { box-shadow: 0 0 0 12px var(--color-action-halo-soft); }
-  100% { box-shadow: 0 0 0 0 var(--color-action-halo-soft); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .floating-contact__brand::before {
-    animation: none;
-  }
-
-  #problemas article:hover,
-  #loja article:hover,
-  #servicos article:hover,
-  section[aria-labelledby='safety-title'] article:hover {
-    transform: none;
-  }
-}
-
-/* Fundos fotográficos com contraste preservado para leitura */
-#inicio {
-  background-image:
-    radial-gradient(circle, var(--color-line) 0 1px, transparent 2px),
-    linear-gradient(90deg, var(--color-veil-strong) 0%, var(--color-veil) 49%, var(--color-veil-soft) 100%),
-    url('/images/fundos/hero-escritorio.webp');
-  background-position: 0 0, center, center;
-  background-size: 96px 96px, cover, cover;
-  background-repeat: repeat, no-repeat, no-repeat;
-}
-
-#loja {
-  background-image:
-    linear-gradient(var(--color-veil-strong), var(--color-veil-strong)),
-    url('/images/fundos/servicos-componentes.webp');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#sobre {
-  background-image:
-    radial-gradient(circle at 78% 50%, var(--color-veil-soft), var(--color-veil) 47%, var(--color-veil-strong) 76%),
-    url('/images/fundos/brasil-conectado.webp');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-body > #root > footer {
-  background-image:
-    linear-gradient(rgb(13 17 23 / 88%), rgb(13 17 23 / 94%)),
-    url('/images/fundos/rodape-bancada.webp');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-@media (max-width: 700px) {
-  #inicio { background-position: 0 0, 62% center, 62% center; }
-  #sobre { background-position: 66% center; }
-}
-
-#problemas,
-#loja,
-#processo,
-#duvidas,
-#sobre {
+#projetos,
+#stack,
+#sobre,
+#contato {
   scroll-margin-top: 96px;
 }
 
-@media (max-width: 680px) {
-  .floating-contact {
-    width: 54px;
-    height: 54px;
-    padding: 0;
-    border-radius: 50%;
-  }
-
-  .floating-contact__copy {
-    display: none;
-  }
-}
-
-/* Compactação visual da página de suporte */
-#problemas,
-#loja {
-  padding-top: 88px;
-  padding-bottom: 88px;
-}
-
-section[aria-labelledby='safety-title'] {
-  padding-top: 68px;
-  padding-bottom: 68px;
-}
-
-#sobre {
-  padding-top: 84px;
-  padding-bottom: 84px;
-}
-
-#problemas article,
-#loja article,
-section[aria-labelledby='safety-title'] article {
-  border-color: var(--color-line);
-}
-
-@media (max-width: 680px) {
-  #problemas,
-  #loja,
-  #sobre {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
-
-  section[aria-labelledby='safety-title'] {
-    padding-top: 56px;
-    padding-bottom: 56px;
-  }
+/* Rodapé escuro, sem foto de fundo. */
+body > #root > footer {
+  background: var(--color-dark);
 }
 
 /* ---------------------------------------------------------------------------
    Legibilidade, contraste e área de toque
-   ---------------------------------------------------------------------------
-   O público da home chega justamente porque o computador está difícil de
-   usar; texto de 9px em cinza apagado trabalha contra isso. Os ajustes
-   abaixo elevam pisos mínimos de tamanho e contraste sem reescrever os 40
-   módulos CSS, e devem ser a referência enquanto a migração para os tokens
-   de :root não estiver concluída.
    -------------------------------------------------------------------------- */
 
 /* Rodapé: rótulos e créditos estavam em 3,6:1–3,9:1, abaixo do mínimo AA. */
@@ -500,9 +256,7 @@ section[aria-labelledby='safety-title'] article {
   font-size: 13px;
 }
 
-/* "Sobre": as etiquetas de tecnologia estavam em 3,4:1 e 9px. O tom claro
-   que resolvia isso sobre o fundo escuro caiu para cerca de 1,1:1 quando a
-   secao virou clara, entao passa a marca. */
+/* "Sobre": etiquetas de tecnologia e fatos com contraste AA. */
 .home #sobre [class*='stack'] span {
   color: var(--color-brand);
   font-size: 12px;
@@ -514,164 +268,20 @@ section[aria-labelledby='safety-title'] article {
   font-size: 14px;
 }
 
-/* Corpo de texto das seções: nada abaixo de 16px na home. O público chega
-   justamente porque o computador está difícil de usar, então o piso do
-   corpo de texto é o mesmo do restante da página. */
-.home #problemas [class*='card'] p,
-.home #loja [class*='card'] p,
-.home #loja [class*='card'] li,
-.home #servicos [class*='card'] p,
-.home #servicos [class*='card'] li,
-.home #processo [class*='card'] p,
 .home #sobre [class*='content'] p {
   color: var(--color-ink-soft);
   font-size: 16px;
   line-height: 1.65;
 }
 
-.home #problemas header > p:last-child,
-.home #loja header p:not([class*='eyebrow']),
-.home #processo [class*='subtitle'],
-.home #duvidas header p:not([class*='eyebrow']),
-.home #servicos header p:not([class*='eyebrow']) {
-  color: var(--color-ink-soft);
-  font-size: 16px;
-}
-
 /* Etiquetas em versalete: 9–11px é pequeno demais para texto em caixa alta. */
-.home #problemas [class*='card'] small,
-.home #loja [class*='category'],
-.home #servicos [class*='category'],
 .home [class*='eyebrow'] {
   font-size: 12px;
 }
 
 /* Hierarquia: o H1 do hero precisa dominar o primeiro H2 da página. */
-.home #problemas header h2,
-.home #loja header h2,
-.home #processo header h2,
-.home #servicos header h2,
-.home #duvidas header h2,
 .home #sobre h2 {
   font-size: clamp(28px, 3.4vw, 44px);
-}
-
-/* Área de toque: os links de apoio dos cards tinham 18px de altura. */
-.home #problemas [class*='card'] > a,
-.home #loja [class*='detailsLink'],
-.home #servicos [class*='detailsLink'] {
-  min-height: 44px;
-  align-items: center;
-  font-size: 14px;
-}
-
-/* ---------------------------------------------------------------------------
-   Blocos de decisão da home
-   -------------------------------------------------------------------------- */
-
-/* Faixa de garantia: reúne num lugar só o que já é verdade espalhada pelo
-   site — triagem gratuita, valor aprovado antes e pagamento após o serviço.
-   É a objeção principal de quem nunca contratou suporte remoto. */
-.assurance {
-  width: min(100% - 48px, 1180px);
-  margin: -12px auto 0;
-  padding: 22px 24px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px 28px;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-}
-
-.assurance > div {
-  display: grid;
-  gap: 4px;
-  align-content: start;
-}
-
-.assurance strong {
-  color: var(--color-ink);
-  font-family: var(--font-display);
-  font-size: 16px;
-}
-
-.assurance span {
-  color: var(--color-ink-soft);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.assurance b {
-  width: 26px;
-  height: 26px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  color: var(--color-brand);
-  background: var(--color-brand-soft);
-  border: 1px solid var(--color-brand);
-  font-size: 13px;
-}
-
-@media (max-width: 860px) {
-  .assurance {
-    width: min(100% - 32px, 1180px);
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-}
-
-/* Indicador de etapa da loja: mostra que faltam dois passos, não uma compra
-   fechada. Reduz o receio de clicar e ser cobrado. */
-.store-progress {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  margin: 0 0 22px;
-  padding: 0;
-  list-style: none;
-}
-
-.store-progress li {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--color-ink-faint);
-  font-size: 14px;
-}
-
-.store-progress li b {
-  width: 24px;
-  height: 24px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--color-line-strong);
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.store-progress li[data-state='current'] {
-  color: var(--color-ink);
-}
-
-.store-progress li[data-state='current'] b {
-  color: var(--color-page);
-  background: var(--color-brand);
-  border-color: var(--color-brand);
-}
-
-/* Etapa concluída. Era verde, mas verde aqui é estado, não ação: passa a
-   marca, para o único verde da seção continuar sendo o botão de enviar. */
-.store-progress li[data-state='done'] {
-  color: var(--color-brand);
-}
-
-.store-progress li[data-state='done'] b {
-  color: var(--color-brand);
-  border-color: var(--color-brand);
-  background: var(--color-brand-soft);
 }
 
 /* Rodapé: links de navegação e ícones sociais como alvos de toque reais. */

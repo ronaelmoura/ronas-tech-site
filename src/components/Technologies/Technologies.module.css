@@ -1,8 +1,11 @@
+/* Stack na paleta clara: cartões em --color-surface sobre a página branca,
+   ícones em --color-brand. */
+
 .section {
   position: relative;
   overflow: hidden;
-  padding: 112px 0 120px;
-  background: #0b1016;
+  padding: 104px 0;
+  background: var(--color-page);
 }
 
 .section::before {
@@ -11,7 +14,7 @@
   right: -180px;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, rgb(34 211 238 / 6%), transparent 70%);
+  background: radial-gradient(circle, var(--color-brand-soft), transparent 70%);
   content: '';
   pointer-events: none;
 }
@@ -29,17 +32,17 @@
 
 .eyebrow {
   margin: 0 0 13px;
-  color: #60a5fa;
+  color: var(--color-brand);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .heading h2 {
   margin: 0;
-  color: #fff;
-  font-size: clamp(32px, 4vw, 48px);
+  color: var(--color-ink);
+  font-size: clamp(30px, 3.6vw, 46px);
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1.15;
@@ -48,7 +51,7 @@
 .subtitle {
   max-width: 680px;
   margin: 20px 0 0;
-  color: #9ca3af;
+  color: var(--color-ink-soft);
   font-size: 16px;
   line-height: 1.75;
 }
@@ -62,8 +65,8 @@
 .group {
   min-width: 0;
   padding: 30px;
-  background: #111820;
-  border: 1px solid rgb(148 163 184 / 11%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 17px;
 }
 
@@ -73,12 +76,12 @@
   justify-content: space-between;
   gap: 20px;
   padding-bottom: 22px;
-  border-bottom: 1px solid rgb(148 163 184 / 10%);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .groupHeader h3 {
   margin: 0;
-  color: #f9fafb;
+  color: var(--color-ink);
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.025em;
@@ -87,8 +90,8 @@
 
 .groupHeader p {
   margin: 6px 0 0;
-  color: #768191;
-  font-size: 12px;
+  color: var(--color-ink-soft);
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -98,11 +101,11 @@
   height: 27px;
   flex: 0 0 auto;
   place-items: center;
-  color: #60a5fa;
-  background: rgb(37 99 235 / 9%);
-  border: 1px solid rgb(96 165 250 / 15%);
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  border: 1px solid var(--color-line);
   border-radius: 8px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -123,8 +126,8 @@
   align-items: center;
   gap: 13px;
   padding: 11px 14px;
-  background: rgb(255 255 255 / 2%);
-  border: 1px solid rgb(148 163 184 / 9%);
+  background: var(--color-page);
+  border: 1px solid var(--color-line);
   border-radius: 12px;
   transition:
     background-color 200ms ease,
@@ -134,11 +137,8 @@
 }
 
 .technology:hover {
-  background: rgb(37 99 235 / 6%);
-  border-color: rgb(37 99 235 / 45%);
-  box-shadow:
-    0 12px 28px rgb(0 0 0 / 18%),
-    0 0 22px rgb(34 211 238 / 6%);
+  border-color: var(--color-brand);
+  box-shadow: 0 12px 28px var(--color-shadow);
   transform: translateY(-3px);
 }
 
@@ -148,9 +148,9 @@
   height: 39px;
   flex: 0 0 auto;
   place-items: center;
-  color: #60a5fa;
-  background: rgb(37 99 235 / 9%);
-  border: 1px solid rgb(96 165 250 / 14%);
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  border: 1px solid var(--color-line);
   border-radius: 10px;
   transition:
     color 200ms ease,
@@ -164,16 +164,16 @@
 }
 
 .technology:hover .icon {
-  color: #67e8f9;
-  background: rgb(34 211 238 / 8%);
-  border-color: rgb(34 211 238 / 22%);
+  color: var(--color-page);
+  background: var(--color-brand);
+  border-color: var(--color-brand);
 }
 
 .name {
   overflow: hidden;
-  color: #d7dce3;
-  font-size: 13px;
-  font-weight: 500;
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -235,5 +235,9 @@
   .technology,
   .icon {
     transition-duration: 0.01ms;
+  }
+
+  .technology:hover {
+    transform: none;
   }
 }
