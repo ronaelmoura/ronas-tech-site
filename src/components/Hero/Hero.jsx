@@ -4,7 +4,7 @@ import styles from './Hero.module.css'
 // Resumo do fluxo de entrega do Ronas Desk, o projeto em destaque do
 // portfólio: os números vêm do próprio projeto (testes, CI e deploy).
 const pipeline = [
-  { command: 'npm test', result: '122 testes passando' },
+  { command: 'testes + CI', result: '370 testes documentados' },
   { command: 'git push origin main', result: 'CI concluído' },
   { command: 'deploy', result: 'Ronas Desk em produção' },
 ]
