@@ -5,7 +5,7 @@ import styles from './About.module.css'
 const facts = [
   ['SENAI', 'Formação em desenvolvimento de sistemas'],
   ['4 projetos', 'Com código público no GitHub'],
-  ['122 testes', 'Automatizados no Ronas Desk, com CI'],
+  ['370 testes', 'Automatizados documentados no Ronas Desk'],
   ['Suporte de TI', 'Experiência com usuários e sistemas'],
 ]
 
