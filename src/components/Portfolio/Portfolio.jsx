@@ -7,9 +7,9 @@ const projects = [
     title: 'Ronas Desk',
     category: 'Sistema de gestão de chamados',
     need:
-      'Substituir solicitações espalhadas por um fluxo organizado para registrar, priorizar e acompanhar atendimentos.',
+      'Organizar solicitações que antes ficavam espalhadas e dar à equipe uma forma simples de registrar, priorizar e acompanhar cada atendimento.',
     solution:
-      'Sistema web publicado com acesso protegido, abertura e acompanhamento de chamados, controle de prioridade e status e painéis para usuários e administradores.',
+      'Foi criado um sistema web com acesso por perfil, abertura e acompanhamento de chamados, prioridades, status e painéis para usuários e administradores.',
     highlights: [
       'Testes automatizados',
       'Autenticação e permissões por perfil',
@@ -18,7 +18,7 @@ const projects = [
     stack: ['React 19', 'Express 5', 'MySQL', 'Docker'],
     status: 'Publicado',
     projectUrl: 'https://ronas-desk.onrender.com/',
-    actionLabel: 'Conhecer o Ronas Desk',
+    actionLabel: 'Ver o projeto',
     featured: true,
     visual: 'dashboard',
     repositoryUrl: 'https://github.com/ronaelmoura/ronas-desk',
@@ -27,9 +27,9 @@ const projects = [
     title: 'Nexo',
     category: 'Dashboard financeiro pessoal',
     need:
-      'Transformar movimentações financeiras em uma visão clara para acompanhar receitas, despesas e decisões do mês.',
+      'Reunir receitas e despesas em um único lugar para facilitar o acompanhamento financeiro do mês.',
     solution:
-      'Dashboard em React com gráficos, filtros por período e categoria, cadastro de transações, modo escuro persistente e experiência responsiva.',
+      'Foi criado um dashboard com gráficos, filtros, cadastro de transações e interface adaptada para diferentes telas.',
     highlights: [
       'Gráficos e filtros interativos',
       'Tema persistente',
@@ -39,16 +39,16 @@ const projects = [
     status: 'Publicado',
     projectUrl: 'https://ronaelmoura.github.io/nexo-dashboard-financeiro/',
     repositoryUrl: 'https://github.com/ronaelmoura/nexo-dashboard-financeiro',
-    actionLabel: 'Testar o dashboard',
+    actionLabel: 'Ver o projeto',
     visual: 'finance',
   },
   {
     title: 'StockFlow API',
     category: 'Backend de estoque e pedidos',
     need:
-      'Controlar estoque e pedidos sem perder consistência quando várias operações alteram os mesmos produtos.',
+      'Criar uma base para controlar estoque e pedidos com segurança quando várias operações acontecem ao mesmo tempo.',
     solution:
-      'API REST com Node.js, Express e MySQL, autenticação por perfis, reservas transacionais, idempotência, auditoria e documentação OpenAPI.',
+      'Foi desenvolvida uma API REST com autenticação, transações, reservas de estoque, auditoria e documentação para integração.',
     highlights: [
       'Transações e controle de concorrência',
       'Idempotência, auditoria e Outbox',
@@ -57,16 +57,16 @@ const projects = [
     stack: ['Node.js', 'Express', 'MySQL', 'OpenAPI'],
     status: 'Código público',
     repositoryUrl: 'https://github.com/ronaelmoura/stockflow-api',
-    actionLabel: 'Explorar a API',
+    actionLabel: 'Ver o projeto',
     visual: 'api',
   },
   {
     title: 'ClimaZen',
     category: 'Landing page comercial',
     need:
-      'Apresentar um serviço técnico de forma simples, profissional e orientada à geração de oportunidades comerciais.',
+      'Apresentar um serviço técnico de forma clara e levar o visitante até uma ação comercial.',
     solution:
-      'Landing page responsiva com posicionamento de marca, serviços, planos, prova social, simulador de economia e formulário de diagnóstico.',
+      'Foi criada uma landing page responsiva com apresentação do serviço, planos, simulador e formulário de diagnóstico.',
     highlights: [
       'Simulador interativo',
       'Formulário com validação',
@@ -76,7 +76,7 @@ const projects = [
     status: 'Publicado',
     projectUrl: 'https://ronaelmoura.github.io/climazen-landing-page/',
     repositoryUrl: 'https://github.com/ronaelmoura/climazen-landing-page',
-    actionLabel: 'Abrir a landing page',
+    actionLabel: 'Ver o projeto',
     visual: 'landing',
   },
 ]
@@ -286,10 +286,9 @@ function Portfolio() {
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Projetos e soluções</p>
-          <h2 id="portfolio-title">Experiência prática que vira solução para negócios</h2>
+          <h2 id="portfolio-title">Alguns exemplos do que podemos construir</h2>
           <p className={styles.subtitle}>
-            Frontend, backend e produto apresentados com contexto, decisões de
-            engenharia e links para você avaliar a entrega.
+            Projetos próprios que mostram como transformamos necessidades em sites, sistemas, dashboards e APIs. Sem inventar resultados de clientes.
           </p>
         </header>
 
