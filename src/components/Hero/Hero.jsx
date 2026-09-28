@@ -8,13 +8,13 @@ function Hero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <p className={styles.eyebrow}><span /> RONAS TECH · SOLUÇÕES DIGITAIS</p>
-          <h1 id="hero-title">Seu negócio tem um problema. A gente transforma isso em uma ferramenta que funciona.</h1>
+          <h1 id="hero-title">Seu problema de hoje pode virar uma solução digital que trabalha por você.</h1>
           <p className={styles.description}>
-            Sites, sistemas, automações e IA para organizar tarefas, atender clientes e colocar sua operação para funcionar melhor.
+            Criamos sites, sistemas, automações e soluções com IA para reduzir trabalho manual, organizar informações e melhorar a experiência dos seus clientes.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primary} href="#contato">Falar sobre meu projeto <span>→</span></a>
-            <a className={styles.secondary} href="#servicos">Ver como podemos ajudar</a>
+            <a className={styles.primary} href="#contato">Conversar sobre meu problema <span>→</span></a>
+            <a className={styles.secondary} href="#servicos">Conhecer as soluções</a>
           </div>
           <div className={styles.trust}>
             <span>Projetos sob medida</span>
