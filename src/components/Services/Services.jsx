@@ -23,11 +23,11 @@ function Services() {
         <header className="services-heading">
           <div>
             <p className="services-eyebrow">Soluções digitais</p>
-            <h2 id="services-title">Você traz o problema. A gente encontra o formato da solução.</h2>
+            <h2 id="services-title">Você traz o problema. A gente ajuda a definir o que vale a pena construir.</h2>
           </div>
           <div className="services-intro">
-            <strong>Não sabe se precisa de um site, sistema, automação ou IA?</strong>
-            <span>Tudo bem. A primeira conversa serve justamente para entender o cenário e definir o que faz sentido.</span>
+            <strong>Não sabe qual dessas soluções faz sentido para você?</strong>
+            <span>Tudo bem. Não é preciso escolher o serviço antes da conversa.</span>
           </div>
         </header>
 
@@ -39,7 +39,7 @@ function Services() {
               <h3>{service.title}</h3>
               <p>{service.text}</p>
               <ul>{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
-              <a href={'/servicos/' + slugs[service.title]}>Explorar solução <span aria-hidden="true">→</span></a>
+              <a href={'/servicos/' + slugs[service.title]}>Ver como funciona <span aria-hidden="true">→</span></a>
             </article>
           ))}
         </div>
@@ -48,7 +48,7 @@ function Services() {
           <span>06 frentes de solução</span>
           <i />
           <strong>Uma tecnologia só entra quando ela ajuda a resolver o problema.</strong>
-          <a href="#contato">Falar sobre meu projeto →</a>
+          <a href="#contato">Descobrir o que faz sentido →</a>
         </div>
       </div>
     </section>
