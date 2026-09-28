@@ -2,9 +2,9 @@ import styles from './HowItWorks.module.css'
 
 const steps = [
   { number: '01', title: 'Você conta o que está acontecendo', description: 'Pode ser um site que não gera contatos, uma tarefa repetitiva ou uma rotina que virou uma bagunça de planilhas.' },
-  { number: '02', title: 'A gente entende a rotina', description: 'Conversamos sobre o problema, o jeito que sua empresa trabalha e o que precisa mudar.' },
-  { number: '03', title: 'Definimos o que faz sentido', description: 'Só então escolhemos o caminho: site, automação, sistema, dashboard ou alguma combinação dessas soluções.' },
-  { number: '04', title: 'Colocamos para funcionar', description: 'Desenvolvemos, testamos e entregamos a solução com espaço para evoluir quando o negócio precisar.' },
+  { number: '02', title: 'Entendemos o problema', description: 'Entendemos como o problema acontece hoje, quem é afetado e o que precisa melhorar.' },
+  { number: '03', title: 'Apresentamos o caminho', description: 'Explicamos a solução, o que será entregue e os próximos passos antes de começar.' },
+  { number: '04', title: 'Desenvolvemos e entregamos', description: 'Construímos, testamos e colocamos a solução para funcionar. Depois, ela pode evoluir conforme a necessidade.' },
 ]
 
 function HowItWorks() {
@@ -13,8 +13,8 @@ function HowItWorks() {
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Como funciona</p>
-          <h2 id="how-title">Do primeiro contato até a solução funcionando.</h2>
-          <p className={styles.subtitle}>Você não precisa chegar sabendo qual tecnologia precisa. Começamos pelo problema.</p>
+          <h2 id="how-title">Sem surpresa no caminho.</h2>
+          <p className={styles.subtitle}>Você explica o que está acontecendo. Antes de qualquer proposta, deixamos claro o que será feito, como será feito e qual é o próximo passo.</p>
         </header>
         <div className={styles.grid}>
           {steps.map((step) => (
@@ -25,8 +25,8 @@ function HowItWorks() {
           ))}
         </div>
         <div className={styles.note}>
-          <strong>Uma conversa antes de qualquer orçamento.</strong>
-          <span>O objetivo é entender o que realmente precisa ser feito antes de falar em tecnologia.</span>
+          <strong>Primeiro entendemos. Depois propomos.</strong>
+          <span>Se a solução não fizer sentido para o problema, a gente não força uma tecnologia só porque ela parece interessante.</span>
         </div>
       </div>
     </section>
