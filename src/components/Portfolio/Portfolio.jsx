@@ -133,8 +133,8 @@ function ProjectVisual({ type }) {
         <div className={styles.dataPortfolioScreen}>
           <div className={styles.dataIntro}>
             <small>Visão do mês</small>
-            <strong>R$ 8.420</strong>
-            <span>Saldo disponível para acompanhar.</span>
+            <strong>Visão financeira</strong>
+            <span>Receitas, despesas e evolução reunidas.</span>
           </div>
           <div className={styles.dataChart}>
             <i />
@@ -286,9 +286,9 @@ function Portfolio() {
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Projetos e soluções</p>
-          <h2 id="portfolio-title">Veja o tipo de solução que podemos construir</h2>
+          <h2 id="portfolio-title">Projetos que mostram como a solução ganha forma</h2>
           <p className={styles.subtitle}>
-            São projetos desenvolvidos pela própria Ronas Tech para mostrar, na prática, como pensamos, construímos e entregamos soluções digitais.
+            Cada projeto mostra uma necessidade diferente — e como transformamos essa necessidade em uma interface, sistema, API ou fluxo funcional.
           </p>
         </header>
 
