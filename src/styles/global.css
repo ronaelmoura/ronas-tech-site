@@ -183,11 +183,11 @@ section[id] {
 .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 80; background: var(--color-line); pointer-events: none; }
 .scroll-progress i { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: var(--color-brand); }
 
-.aurora { position: fixed; inset: -15% -10%; z-index: -3; pointer-events: none; filter: blur(90px); opacity: 0.5; }
+.aurora { position: fixed; inset: -15% -10%; z-index: -3; pointer-events: none; filter: blur(70px); opacity: 0.82; }
 .aurora i { position: absolute; border-radius: 50%; }
-.aurora i:nth-child(1) { width: 44vw; height: 44vw; left: -8%; top: -6%; background: radial-gradient(circle, var(--color-brand-soft), transparent 65%); animation: aurora-a 24s ease-in-out infinite; }
-.aurora i:nth-child(2) { width: 36vw; height: 36vw; right: -6%; top: 8%; background: radial-gradient(circle, var(--color-brand-soft), transparent 65%); animation: aurora-b 28s ease-in-out infinite; }
-.aurora i:nth-child(3) { width: 32vw; height: 32vw; left: 32%; bottom: -12%; background: radial-gradient(circle, var(--color-brand-soft), transparent 65%); animation: aurora-c 32s ease-in-out infinite; }
+.aurora i:nth-child(1) { width: 44vw; height: 44vw; left: -8%; top: -6%; background: radial-gradient(circle, rgb(22 119 255 / 34%), transparent 65%); animation: aurora-a 24s ease-in-out infinite; }
+.aurora i:nth-child(2) { width: 36vw; height: 36vw; right: -6%; top: 8%; background: radial-gradient(circle, rgb(124 58 237 / 28%), transparent 65%); animation: aurora-b 28s ease-in-out infinite; }
+.aurora i:nth-child(3) { width: 32vw; height: 32vw; left: 32%; bottom: -12%; background: radial-gradient(circle, rgb(6 182 212 / 22%), transparent 65%); animation: aurora-c 32s ease-in-out infinite; }
 @keyframes aurora-a { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(6vw, 4vw) scale(1.15); } }
 @keyframes aurora-b { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-5vw, 5vw) scale(1.1); } }
 @keyframes aurora-c { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(4vw, -4vw) scale(1.2); } }
@@ -297,3 +297,12 @@ body > #root > footer {
   width: 44px;
   height: 44px;
 }
+
+
+.home #inicio{background:radial-gradient(circle at 8% 18%,rgb(22 119 255 / 12%),transparent 28%),radial-gradient(circle at 92% 28%,rgb(124 58 237 / 10%),transparent 25%)}
+.home #problemas{background:linear-gradient(180deg,rgb(241 245 255 / 72%),rgb(255 255 255 / 92%)),radial-gradient(circle at 85% 25%,rgb(6 182 212 / 10%),transparent 30%)}
+.home #servicos{background:radial-gradient(circle at 8% 35%,rgb(22 119 255 / 8%),transparent 25%),radial-gradient(circle at 92% 70%,rgb(124 58 237 / 8%),transparent 25%)}
+.home #como-funciona{background:linear-gradient(135deg,rgb(236 245 255 / 72%),rgb(247 243 255 / 72%))}
+.home #projetos{background:linear-gradient(180deg,rgb(247 250 255 / 92%),rgb(237 245 255 / 76%)),radial-gradient(circle at 75% 30%,rgb(22 119 255 / 10%),transparent 28%)}
+.home #por-que-ronas{background:radial-gradient(circle at 15% 30%,rgb(236 72 153 / 7%),transparent 25%),radial-gradient(circle at 85% 70%,rgb(124 58 237 / 8%),transparent 28%)}
+.home #contato{background:linear-gradient(135deg,rgb(239 246 255 / 86%),rgb(250 245 255 / 86%))}
