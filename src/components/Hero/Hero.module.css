@@ -5,8 +5,8 @@
 .content{max-width:720px}
 .eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 20px;color:var(--color-brand);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:.12em}
 .eyebrow span{width:8px;height:8px;border-radius:50%;background:var(--color-brand);box-shadow:0 0 18px var(--color-brand)}
-h1{margin:0;color:var(--color-ink);font-family:var(--font-display);font-size:clamp(46px,5.25vw,72px);line-height:.98;letter-spacing:-.06em}
-.description{max-width:650px;margin:28px 0 0;color:var(--color-ink-soft);font-size:clamp(17px,1.5vw,20px);line-height:1.7}
+h1{margin:0;color:var(--color-ink);font-family:var(--font-display);font-size:clamp(46px,5.05vw,70px);line-height:.98;letter-spacing:-.06em}
+.description{max-width:620px;margin:24px 0 0;color:var(--color-ink-soft);font-size:clamp(17px,1.5vw,20px);line-height:1.7}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .primary,.secondary{display:inline-flex;min-height:54px;align-items:center;justify-content:center;padding:0 22px;border-radius:11px;font-size:14px;font-weight:800;text-decoration:none;transition:.2s ease}
 .primary{gap:14px;color:var(--color-page);background:var(--color-action);border:1px solid var(--color-action);box-shadow:0 15px 35px var(--color-shadow)}
