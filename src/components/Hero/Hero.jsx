@@ -13,13 +13,13 @@ function Hero() {
             Sites, sistemas, automações e IA para organizar tarefas, atender clientes e colocar sua operação para funcionar melhor.
           </p>
           <div className={styles.actions}>
-            <a className={styles.primary} href="#servicos">Conhecer serviços <span>→</span></a>
-            <a className={styles.secondary} href="#contato">Falar com a Ronas Tech</a>
+            <a className={styles.primary} href="#contato">Falar sobre meu projeto <span>→</span></a>
+            <a className={styles.secondary} href="#servicos">Ver como podemos ajudar</a>
           </div>
           <div className={styles.trust}>
-            <span>Desenvolvimento sob medida</span>
-            <span>Automação</span>
-            <span>Inteligência artificial</span>
+            <span>Projetos sob medida</span>
+            <span>Atendimento remoto</span>
+            <span>Tianguá · CE</span>
           </div>
         </div>
         <div className={styles.visual}>
