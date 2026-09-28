@@ -1,38 +1,47 @@
-const slugs = {\n  'Sites Profissionais': 'sites-profissionais',\n  'Landing Pages': 'landing-pages',\n  'IA para Empresas': 'ia-para-empresas',\n  'Automação de Processos': 'automacao-de-processos',\n  'Sistemas Web': 'sistemas-web',\n  'Dashboards e Integrações': 'dashboards-e-integracoes',\n}\n\nconst services = [
+const slugs = {
+  'Sites Profissionais': 'sites-profissionais',
+  'Landing Pages': 'landing-pages',
+  'IA para Empresas': 'ia-para-empresas',
+  'Automação de Processos': 'automacao-de-processos',
+  'Sistemas Web': 'sistemas-web',
+  'Dashboards e Integrações': 'dashboards-e-integracoes',
+}
+
+const services = [
   {
     number: '01',
     title: 'Sites Profissionais',
-    text: 'Sites rápidos, responsivos e pensados para transformar presença digital em oportunidades de negócio.',
+    text: 'Sites rápidos e responsivos para apresentar sua empresa e facilitar o contato com clientes.',
     items: ['Design responsivo', 'WhatsApp e formulários', 'SEO técnico básico'],
   },
   {
     number: '02',
     title: 'Landing Pages',
-    text: 'Páginas focadas em campanhas, produtos e serviços, com uma jornada clara até o contato ou conversão.',
+    text: 'Páginas para divulgar produtos, serviços e campanhas com uma chamada clara para ação.',
     items: ['Estrutura orientada à conversão', 'Integrações e formulários', 'Performance e responsividade'],
   },
   {
     number: '03',
     title: 'IA para Empresas',
-    text: 'Soluções práticas de IA para atendimento, vendas, produtividade e análise de informações.',
+    text: 'IA aplicada a tarefas de atendimento, organização, análise e produção de conteúdo.',
     items: ['Assistentes e chatbots', 'IA conectada aos processos', 'Automação de tarefas inteligentes'],
   },
   {
     number: '04',
     title: 'Automação de Processos',
-    text: 'Conectamos ferramentas e eliminamos tarefas repetitivas para sua equipe ganhar tempo.',
+    text: 'Ligamos ferramentas e automatizamos tarefas que hoje precisam ser feitas manualmente.',
     items: ['Integrações entre sistemas', 'Fluxos automáticos', 'Formulários e notificações'],
   },
   {
     number: '05',
     title: 'Sistemas Web',
-    text: 'Sistemas sob medida para processos que precisam de mais controle, segurança e organização.',
+    text: 'Sistemas web feitos para organizar informações e rotinas específicas da sua empresa.',
     items: ['Painéis administrativos', 'Clientes, pedidos e estoque', 'Autenticação e permissões'],
   },
   {
     number: '06',
     title: 'Dashboards e Integrações',
-    text: 'Transformamos dados espalhados em informações úteis e conectamos sistemas que precisam conversar.',
+    text: 'Painéis e integrações para reunir dados e fazer diferentes sistemas trabalharem juntos.',
     items: ['Dashboards personalizados', 'APIs e integrações', 'Dados centralizados'],
   },
 ]
@@ -44,9 +53,9 @@ function Services() {
         <header className="services-heading">
           <div>
             <p className="services-eyebrow">Soluções digitais</p>
-            <h2 id="services-title">Tecnologia aplicada ao que sua empresa precisa resolver.</h2>
+            <h2 id="services-title">Ferramentas digitais para resolver problemas do dia a dia da sua empresa.</h2>
           </div>
-          <p className="services-intro">Do primeiro site a sistemas e automações mais complexos, cada solução parte do processo real do negócio.</p>
+          <p className="services-intro">Do site ao sistema interno, o trabalho começa entendendo o que precisa ser feito.</p>
         </header>
         <div className="services-grid">
           {services.map((service) => (
