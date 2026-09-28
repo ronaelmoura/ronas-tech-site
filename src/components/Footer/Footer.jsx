@@ -63,10 +63,10 @@ function Footer() {
         <div className={styles.footerCta}>
           <div>
             <span>PRONTO PARA O PRÓXIMO PASSO?</span>
-            <h2>Tem um problema que a tecnologia pode resolver?</h2>
-            <p>Conte o que está acontecendo. A conversa começa pelo problema, não pelo orçamento.</p>
+            <h2>Tem uma ideia, um gargalo ou uma tarefa que poderia funcionar melhor?</h2>
+            <p>Conte o que está acontecendo. A primeira conversa serve para entender se existe uma solução que faça sentido para sua empresa.</p>
           </div>
-          <a href="/#contato">Falar sobre meu projeto <span>→</span></a>
+          <a href="/#contato">Começar uma conversa <span>→</span></a>
         </div>
         <div className={styles.grid}>
           <div className={styles.brandColumn}>
