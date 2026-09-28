@@ -73,7 +73,7 @@ function Contact() {
           <p className={styles.eyebrow}>Contato</p>
           <h2 id="contact-title">Vamos conversar sobre o que sua empresa precisa.</h2>
           <p className={styles.subtitle}>Não precisa saber qual tecnologia usar. Explique o que está acontecendo e a gente avalia o caminho mais adequado.</p>
-          <div className={styles.promise}>
+          <div className={styles.trustLine}><span>✓</span> Resposta inicial pelo WhatsApp <span>✓</span> Sem compromisso</div><div className={styles.promise}>
             <span>O que acontece depois?</span>
             <strong>Você conta o problema. A gente conversa sobre o caminho.</strong>
             <div><b>01</b> Entendemos o cenário <b>02</b> Avaliamos a solução <b>03</b> Combinamos o próximo passo</div>
@@ -86,8 +86,8 @@ function Contact() {
         <div className={styles.formCard}>
           <header className={styles.formHeader}>
             <span className={styles.formKicker}>COMECE POR AQUI</span>
-            <h3>Conte o que está acontecendo</h3>
-            <p>Não precisa explicar em termos técnicos. Quanto melhor entendermos a situação, melhor conseguimos conversar sobre a solução.</p>
+            <h3>Comece pelo problema. A solução a gente conversa depois.</h3>
+            <p>Você não precisa preparar uma especificação. Diga o que está acontecendo hoje e, se puder, onde isso está tomando tempo, gerando retrabalho ou perdendo oportunidades.</p>
           </header>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             <div className={styles.fieldRow}>
@@ -100,7 +100,7 @@ function Contact() {
             </div>
             <div className={styles.field}><label htmlFor="contact-message">O que você precisa resolver?</label><textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="Ex.: hoje fazemos isso manualmente e está tomando muito tempo da equipe." {...fieldAccessibility('message')} />{errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}</div>
             {submitError && <p className={styles.submitError} role="alert">{submitError}</p>}
-            <button className={styles.submitButton} type="submit"><span>Enviar pelo WhatsApp</span><span aria-hidden="true">→</span></button>
+            <button className={styles.submitButton} type="submit"><span>Quero conversar sobre isso</span><span aria-hidden="true">→</span></button>
             <small className={styles.formNote}>A conversa abre diretamente no WhatsApp. Sem compromisso.</small>
           </form>
         </div>
