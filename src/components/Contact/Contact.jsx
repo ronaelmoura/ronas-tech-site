@@ -70,15 +70,15 @@ function Contact() {
       <div className={styles.container}>
         <div className={styles.information}>
           <p className={styles.eyebrow}>Contato</p>
-          <h2 id="contact-title">Tem um problema de negócio para resolver?</h2>
-          <p className={styles.subtitle}>Conte o que sua empresa precisa. A conversa começa pelo problema, não pela tecnologia.</p>
+          <h2 id="contact-title">Vamos conversar sobre o que sua empresa precisa.</h2>
+          <p className={styles.subtitle}>Não precisa saber qual tecnologia usar. Explique o que está acontecendo e a gente avalia o caminho mais adequado.</p>
           <div className={styles.paths}>
             <article className={styles.path}><h3>Projetos digitais</h3><p>Sites, sistemas, automações e soluções com IA para empresas.</p><ul><li><a href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá, Ronael! Quero conversar sobre uma solução digital para minha empresa.')}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('contact_project')}>WhatsApp <span>→</span></a></li><li><a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink('linkedin')}>LinkedIn <span>→</span></a></li></ul></article>
             <article className={styles.path}><h3>Conheça os projetos</h3><p>Veja sistemas e aplicações desenvolvidos pela Ronas Tech.</p><ul><li><a href="#projetos">Ver projetos <span>→</span></a></li><li><a href={siteConfig.github} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink('github')}>GitHub <span>→</span></a></li></ul></article>
           </div>
         </div>
         <div className={styles.formCard}>
-          <header className={styles.formHeader}><h3>Solicitar orçamento</h3><p>A mensagem será aberta no WhatsApp já preenchida.</p></header>
+          <header className={styles.formHeader}><h3>Conte o que está acontecendo</h3><p>Preencha o básico. O WhatsApp abre com a mensagem pronta para continuarmos a conversa.</p></header>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             <div className={styles.fieldRow}>
               <div className={styles.field}><label htmlFor="contact-name">Nome</label><input id="contact-name" name="name" type="text" value={formData.name} onChange={handleChange} autoComplete="name" required placeholder="Seu nome" {...fieldAccessibility('name')} />{errors.name && <span id="name-error" className={styles.error}>{errors.name}</span>}</div>
@@ -88,9 +88,9 @@ function Contact() {
               <div className={styles.field}><label htmlFor="contact-phone">Telefone / WhatsApp</label><input id="contact-phone" name="phone" type="tel" inputMode="tel" value={formData.phone} onChange={handleChange} autoComplete="tel" required placeholder="(00) 00000-0000" {...fieldAccessibility('phone')} />{errors.phone && <span id="phone-error" className={styles.error}>{errors.phone}</span>}</div>
               <div className={styles.field}><label htmlFor="contact-reason">Serviço</label><select id="contact-reason" name="reason" value={formData.reason} onChange={handleChange} required {...fieldAccessibility('reason')}><option value="" disabled>Selecione</option>{reasons.map((reason) => <option value={reason} key={reason}>{reason}</option>)}</select>{errors.reason && <span id="reason-error" className={styles.error}>{errors.reason}</span>}</div>
             </div>
-            <div className={styles.field}><label htmlFor="contact-message">O que você precisa resolver?</label><textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="Ex.: precisamos de um site, automatizar um processo ou criar um sistema interno." {...fieldAccessibility('message')} />{errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}</div>
+            <div className={styles.field}><label htmlFor="contact-message">O que você precisa resolver?</label><textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="Ex.: hoje fazemos isso manualmente e está tomando muito tempo da equipe." {...fieldAccessibility('message')} />{errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}</div>
             {submitError && <p className={styles.submitError} role="alert">{submitError}</p>}
-            <button className={styles.submitButton} type="submit">Conversar pelo WhatsApp <span aria-hidden="true">→</span></button>
+            <button className={styles.submitButton} type="submit">Enviar pelo WhatsApp <span aria-hidden="true">→</span></button>
           </form>
         </div>
       </div>
