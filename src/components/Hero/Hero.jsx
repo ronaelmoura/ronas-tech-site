@@ -22,19 +22,60 @@ function Hero() {
             <span>Tianguá · CE</span>
           </div>
         </div>
-        <div className={styles.visual}>
-          <div className={styles.panel}>
-            <div className={styles.panelTop}><span>RONAS TECH</span><b>ONLINE</b></div>
-            <div className={styles.panelBody}>
-              <small>MAPA DE SOLUÇÕES</small>
-              <h2>Seu trabalho.</h2>
-              <h2 className={styles.accent}>Uma ferramenta feita para ele.</h2>
-              <div className={styles.flow}>
-                <div><i>01</i><span>Entender</span></div>
-                <div><i>02</i><span>Construir</span></div>
-                <div><i>03</i><span>Automatizar</span></div>
-              </div>
-              <div className={styles.status}><span /> Projeto pronto para o próximo passo</div>
+
+        <div className={styles.visual} aria-label="Exemplos de soluções digitais">
+          <div className={styles.workspace}>
+            <div className={styles.workspaceBar}>
+              <span className={styles.brandMark}>RT</span>
+              <span>WORKSPACE / SOLUÇÕES</span>
+              <b><i /> ATIVO</b>
+            </div>
+
+            <div className={styles.workspaceGrid}>
+              <article className={styles.solutionCard}>
+                <div className={styles.cardIcon}>↗</div>
+                <small>01 · PRESENÇA</small>
+                <h2>Site & Landing Page</h2>
+                <p>Uma vitrine digital pensada para apresentar e gerar contato.</p>
+                <div className={styles.miniBrowser}>
+                  <span /><span /><span />
+                  <div />
+                </div>
+              </article>
+
+              <article className={styles.solutionCard}>
+                <div className={styles.cardIcon}>▦</div>
+                <small>02 · OPERAÇÃO</small>
+                <h2>Sistema Web</h2>
+                <p>Informações organizadas em uma ferramenta feita para sua rotina.</p>
+                <div className={styles.miniChart}>
+                  <span /><span /><span /><span /><span />
+                </div>
+              </article>
+
+              <article className={styles.solutionCard}>
+                <div className={styles.cardIcon}>⌁</div>
+                <small>03 · FLUXO</small>
+                <h2>Automação</h2>
+                <p>Tarefas conectadas para reduzir trabalho manual e repetitivo.</p>
+                <div className={styles.miniFlow}>
+                  <span>Entrada</span><b>→</b><span>Processo</span><b>→</b><span>Ação</span>
+                </div>
+              </article>
+
+              <article className={styles.solutionCard}>
+                <div className={styles.cardIcon}>✦</div>
+                <small>04 · INTELIGÊNCIA</small>
+                <h2>IA aplicada</h2>
+                <p>IA usada onde existe uma tarefa real para simplificar.</p>
+                <div className={styles.aiPulse}><span /><span /><span /><b>IA</b></div>
+              </article>
+            </div>
+
+            <div className={styles.workspaceFooter}>
+              <span><i /> Problema identificado</span>
+              <strong>→</strong>
+              <span><i /> Solução em construção</span>
             </div>
           </div>
         </div>
@@ -42,4 +83,5 @@ function Hero() {
     </section>
   )
 }
+
 export default Hero
