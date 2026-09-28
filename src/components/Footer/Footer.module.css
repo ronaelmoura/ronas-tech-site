@@ -37,7 +37,7 @@
     var(--color-dark-surface);
   box-shadow:0 24px 60px rgba(0,0,0,.2);
 }
-.footerCta > div{max-width:680px}
+.footerCta > div{max-width:720px}
 .footerCta > div > span{
   display:block;
   margin-bottom:7px;
@@ -77,7 +77,7 @@
   transition:transform 180ms ease,background 180ms ease,box-shadow 180ms ease;
 }
 .footerCta > a:hover{transform:translateY(-2px);background:var(--color-brand-strong);box-shadow:0 16px 34px rgba(22,119,255,.28)}
-.grid {
+.footerCta > a:focus-visible{outline:2px solid #fff;outline-offset:3px}.grid {
   display: grid;
   padding: 68px 0 56px;
   grid-template-columns: 1.65fr 0.8fr 1.25fr;
