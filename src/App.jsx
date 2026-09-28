@@ -3,6 +3,8 @@ import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import Services from './components/Services/Services'
 import Problems from './components/Problems/Problems'
+import HowItWorks from './components/HowItWorks/HowItWorks'
+import WhyRonasTech from './components/WhyRonasTech/WhyRonasTech'
 import Portfolio from './components/Portfolio/Portfolio'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
@@ -50,7 +52,7 @@ function App({ pathname: pathnameProp }) {
   else if (spreadsheetProduct) content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><SpreadsheetProductPage product={spreadsheetProduct} /></>
   else if (LegalPage) content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><LegalPage /></>
   else if (pathname !== '/') content = <NotFound />
-  else content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" className="home"><Hero /><Problems /><Services /><Portfolio /><About /><Contact /></main><Footer /></>
+  else content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" className="home"><Hero /><Problems /><Services /><HowItWorks /><WhyRonasTech /><Portfolio /><About /><Contact /></main><Footer /></>
 
   return <>{content}<CookieNotice /></>
 }
