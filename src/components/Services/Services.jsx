@@ -1,4 +1,4 @@
-const services = [
+const slugs = {\n  'Sites Profissionais': 'sites-profissionais',\n  'Landing Pages': 'landing-pages',\n  'IA para Empresas': 'ia-para-empresas',\n  'Automação de Processos': 'automacao-de-processos',\n  'Sistemas Web': 'sistemas-web',\n  'Dashboards e Integrações': 'dashboards-e-integracoes',\n}\n\nconst services = [
   {
     number: '01',
     title: 'Sites Profissionais',
@@ -55,7 +55,7 @@ function Services() {
               <h3>{service.title}</h3>
               <p>{service.text}</p>
               <ul>{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
-              <a href="#contato">Conversar sobre este serviço <span aria-hidden="true">→</span></a>
+              <a href={`/servicos/${slugs[service.title]}`}>Conhecer este serviço <span aria-hidden="true">→</span></a>
             </article>
           ))}
         </div>
