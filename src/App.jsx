@@ -14,10 +14,12 @@ import PersonalFinanceProductPage from './pages/PersonalFinanceProductPage'
 import KitFinanceProductPage from './pages/KitFinanceProductPage'
 import DigitalProductsCatalogPage from './pages/DigitalProductsCatalogPage'
 import SpreadsheetProductPage from './pages/SpreadsheetProductPage'
+import ServicePage from './pages/ServicePage'
 import { spreadsheetProductsByPath } from './data/spreadsheetProducts'
 import './components/Services/Services.css'
 
 const legalPages = { '/politica-de-privacidade': PrivacyPolicy, '/termos-de-uso': TermsOfUse }
+const serviceSlugs = ['sites-profissionais', 'landing-pages', 'ia-para-empresas', 'automacao-de-processos', 'sistemas-web', 'dashboards-e-integracoes']
 
 function HomeMotion() {
   const [Motion, setMotion] = useState(null)
@@ -36,11 +38,13 @@ function App({ pathname: pathnameProp }) {
   const pathname = currentPathname.replace(/\/$/, '') || '/'
   const LegalPage = legalPages[pathname]
   const spreadsheetProduct = spreadsheetProductsByPath[pathname]
+  const serviceSlug = pathname.startsWith('/servicos/') ? pathname.replace('/servicos/', '') : null
 
   let content
   if (pathname === '/produtos-digitais') content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><DigitalProductsCatalogPage /></>
   else if (pathname === '/produtos-digitais/planilha-financeira-pessoal') content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><PersonalFinanceProductPage /></>
   else if (pathname === '/produtos-digitais/kit-financeiro-mei') content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><KitFinanceProductPage /></>
+  else if (serviceSlug && serviceSlugs.includes(serviceSlug)) content = <ServicePage slug={serviceSlug} />
   else if (spreadsheetProduct) content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><SpreadsheetProductPage product={spreadsheetProduct} /></>
   else if (LegalPage) content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><LegalPage /></>
   else if (pathname !== '/') content = <NotFound />
