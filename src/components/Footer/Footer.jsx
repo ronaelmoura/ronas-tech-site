@@ -8,7 +8,7 @@ import styles from './Footer.module.css'
 const navigationLinks = [
   { label: 'Início', href: '/#inicio' },
   { label: 'Projetos', href: '/#projetos' },
-  { label: 'Stack', href: '/#stack' },
+  { label: 'Serviços', href: '/#servicos' },
   { label: 'Sobre', href: '/#sobre' },
   { label: 'Contato', href: '/#contato' },
   { label: 'Produtos digitais', href: '/produtos-digitais' },
@@ -81,7 +81,7 @@ function Footer() {
               <strong>{siteConfig.companyName}</strong>
             </a>
             <p>
-              Ronael Moura, desenvolvedor Full Stack. Sistemas web, APIs e interfaces.
+              Sites, sistemas web, automações e ferramentas digitais para empresas.
             </p>
             <div className={styles.socials} aria-label="Redes sociais">
               {socialLinks.map(({ label, href, icon }) => (
