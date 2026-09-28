@@ -12,12 +12,12 @@ function Problems() {
       <div className="problems-container">
         <header className="problems-heading">
           <div>
-            <p className="problems-eyebrow">Comece pelo problema</p>
-            <h2 id="problems-title">O que está travando sua empresa?</h2>
+            <p className="problems-eyebrow">Talvez seu problema esteja aqui</p>
+            <h2 id="problems-title">Onde sua operação poderia funcionar melhor?</h2>
           </div>
           <div className="problems-intro">
-            <strong>Você não precisa saber qual tecnologia usar.</strong>
-            <span>Conte o que acontece hoje. A gente ajuda a transformar o problema em um caminho possível.</span>
+            <strong>Você não precisa chegar com a solução pronta.</strong>
+            <span>Conte o que acontece hoje. A partir daí, encontramos o caminho digital que faz sentido.</span>
           </div>
         </header>
         <div className="problems-grid">
@@ -27,13 +27,13 @@ function Problems() {
               <div className="problem-icon">{problem.icon}</div>
               <h3>{problem.title}</h3>
               <div className="problem-answer"><small>COMO PODEMOS AJUDAR</small><p>{problem.answer}</p></div>
-              <a href="#contato" aria-label={'Conversar sobre: ' + problem.title}>Falar sobre isso <span>→</span></a>
+              <a href="#contato" aria-label={'Conversar sobre: ' + problem.title}>Conversar sobre isso <span>→</span></a>
             </article>
           ))}
         </div>
         <div className="problems-bridge">
           <i />
-          <div><strong>Problema → caminho → solução</strong><span>A tecnologia entra depois que entendemos o que realmente precisa ser resolvido.</span></div>
+          <div><strong>Você traz o contexto → a gente encontra o caminho → construímos a solução</strong><span>Sem começar pelo código. Primeiro entendemos o que realmente precisa ser resolvido.</span></div>
         </div>
       </div>
     </section>
