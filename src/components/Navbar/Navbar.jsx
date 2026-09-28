@@ -2,11 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { siteConfig } from '../../config/siteConfig'
 import styles from './Navbar.module.css'
 
-// A ordem dos itens acompanha a ordem da página: projetos primeiro, porque
-// é o que recrutadores e clientes vêm avaliar.
 const navigationItems = [
+  { label: 'Serviços', href: '#servicos' },
   { label: 'Projetos', href: '#projetos' },
-  { label: 'Stack', href: '#stack' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Contato', href: '#contato' },
 ]
@@ -51,11 +49,10 @@ function Navbar() {
       <div className={`${styles.menuBackdrop} ${isMenuOpen ? styles.open : ''}`} onClick={closeMenu} aria-hidden="true" />
       <div id="main-navigation" className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
         <ul className={styles.links}>{navigationItems.map(({ label, href }, index) => <li key={href}><a ref={index === 0 ? firstLinkRef : undefined} className={styles.link} href={href} onClick={closeMenu}>{label}</a></li>)}</ul>
-        <a className={styles.cta} href="#contato" onClick={closeMenu}>Falar comigo</a>
+        <a className={styles.cta} href="#contato" onClick={closeMenu}>Solicitar orçamento</a>
       </div>
       <button ref={menuButtonRef} className={`${styles.menuButton} ${isMenuOpen ? styles.open : ''}`} type="button" aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'} aria-controls="main-navigation" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((isOpen) => !isOpen)}><span /><span /><span /></button>
     </nav>
   </header>
 }
-
 export default Navbar
