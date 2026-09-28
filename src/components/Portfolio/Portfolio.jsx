@@ -285,8 +285,8 @@ function Portfolio() {
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Projetos publicados</p>
-          <h2 id="portfolio-title">Projetos que mostram como eu resolvo problemas</h2>
+          <p className={styles.eyebrow}>Projetos e soluções</p>
+          <h2 id="portfolio-title">Experiência prática que vira solução para negócios</h2>
           <p className={styles.subtitle}>
             Frontend, backend e produto apresentados com contexto, decisões de
             engenharia e links para você avaliar a entrega.
