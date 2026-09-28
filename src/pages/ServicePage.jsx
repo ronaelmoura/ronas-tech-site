@@ -57,7 +57,10 @@ function ServicePage({ slug }) {
   const service = services[slug]
   const [open, setOpen] = useState(null)
 
-  useEffect(() => { window.scrollTo(0, 0) }, [slug])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    document.title = `${service?.eyebrow?.replace(/^\\d+ · /, '') || 'Serviço'} | Ronas Tech`
+  }, [slug])
 
   if (!service) return null
 
