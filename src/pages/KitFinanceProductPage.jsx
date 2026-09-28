@@ -106,6 +106,12 @@ function KitFinanceProductPage() {
         <div className={`${styles.heroVisual} ${kit.heroVisual}`}>
           <div className={kit.productCover}><img src="/capa-kit-financeiro-mei-v2.webp" alt="Capa do Kit Financeiro Inteligente para MEI" width="1280" height="720" /></div>
           <div className={styles.floatCard}><span>Visão do negócio</span><strong>Lucro e pendências em segundos</strong></div>
+          <div className={kit.liveDemo} aria-hidden="true">
+            <div className={kit.liveTop}><span>CONTROLE FINANCEIRO</span><i>● atualizado</i></div>
+            <div className={kit.liveValue}><small>Saldo disponível</small><strong>R$ 6.315</strong><b>+12,8%</b></div>
+            <div className={kit.liveChart}><span/><span/><span/><span/><span/><span/><span/></div>
+            <div className={kit.liveBottom}><span>Receitas ↑ &nbsp; Despesas ↓</span><em>✓</em></div>
+          </div>
         </div>
       </section>
 
