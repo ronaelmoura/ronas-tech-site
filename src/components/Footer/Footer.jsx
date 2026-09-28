@@ -60,6 +60,14 @@ function Footer() {
   return (
     <footer className={`${styles.footer} site-footer`}>
       <div className={styles.container}>
+        <div className={styles.footerCta}>
+          <div>
+            <span>PRONTO PARA O PRÓXIMO PASSO?</span>
+            <h2>Tem um problema que a tecnologia pode resolver?</h2>
+            <p>Conte o que está acontecendo. A conversa começa pelo problema, não pelo orçamento.</p>
+          </div>
+          <a href="/#contato">Falar sobre meu projeto <span>→</span></a>
+        </div>
         <div className={styles.grid}>
           <div className={styles.brandColumn}>
             <a className={styles.brand} href="/#inicio" aria-label={`${siteConfig.companyName} — início`}>
@@ -115,8 +123,8 @@ function Footer() {
                 {siteConfig.email}
               </a>
             </address>
-            <a className={styles.cta} href="/#projetos">
-              Ver projetos
+            <a className={styles.cta} href="/#contato">
+              Falar sobre meu projeto <span>→</span>
             </a>
           </div>
         </div>
