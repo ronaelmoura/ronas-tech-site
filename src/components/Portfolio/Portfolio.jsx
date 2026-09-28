@@ -16,7 +16,7 @@ const projects = [
       'CI e deploy em produção',
     ],
     stack: ['React 19', 'Express 5', 'MySQL', 'Docker'],
-    status: 'Publicado',
+    status: 'Projeto próprio',
     projectUrl: 'https://ronas-desk.onrender.com/',
     actionLabel: 'Ver o projeto',
     featured: true,
@@ -55,7 +55,7 @@ const projects = [
       'OpenAPI e integração contínua',
     ],
     stack: ['Node.js', 'Express', 'MySQL', 'OpenAPI'],
-    status: 'Código público',
+    status: 'Projeto próprio',
     repositoryUrl: 'https://github.com/ronaelmoura/stockflow-api',
     actionLabel: 'Ver o projeto',
     visual: 'api',
@@ -200,7 +200,7 @@ function ProjectCard({ project }) {
     >
       <div className={styles.visual}>
         {project.featured && (
-          <span className={styles.featuredBadge}>Projeto em destaque</span>
+          <span className={styles.featuredBadge}>Projeto próprio</span>
         )}
         <ProjectVisual type={project.visual} />
       </div>
@@ -286,9 +286,9 @@ function Portfolio() {
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>Projetos e soluções</p>
-          <h2 id="portfolio-title">Alguns exemplos do que podemos construir</h2>
+          <h2 id="portfolio-title">Veja o tipo de solução que podemos construir</h2>
           <p className={styles.subtitle}>
-            Projetos próprios que mostram como transformamos necessidades em sites, sistemas, dashboards e APIs. Sem inventar resultados de clientes.
+            São projetos desenvolvidos pela própria Ronas Tech para mostrar, na prática, como pensamos, construímos e entregamos soluções digitais.
           </p>
         </header>
 
