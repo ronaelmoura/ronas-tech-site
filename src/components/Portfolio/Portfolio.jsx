@@ -11,7 +11,7 @@ const projects = [
     solution:
       'Sistema web publicado com acesso protegido, abertura e acompanhamento de chamados, controle de prioridade e status e painéis para usuários e administradores.',
     highlights: [
-      '370 testes automatizados documentados',
+      'Testes automatizados',
       'Autenticação e permissões por perfil',
       'CI e deploy em produção',
     ],
