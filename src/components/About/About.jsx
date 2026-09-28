@@ -5,7 +5,7 @@ import styles from './About.module.css'
 const facts = [
   ['6', 'serviços digitais'],
   ['Full Stack', 'desenvolvimento sob medida'],
-  ['IA + Automação', 'soluções para processos reais'],
+  ['IA e automação', 'para tarefas do dia a dia'],
   ['Tianguá, CE', 'atendimento remoto'],
 ]
 
@@ -15,9 +15,9 @@ function About() {
       <div className={styles.container}>
         <div className={styles.content}>
           <p className={styles.eyebrow}>Sobre a Ronas Tech</p>
-          <h2 id="about-title">Tecnologia com contexto de negócio.</h2>
-          <p className={styles.lead}>A Ronas Tech nasceu para transformar problemas reais de empresas em soluções digitais simples de usar e fáceis de evoluir.</p>
-          <p>Antes de escolher uma tecnologia, entendemos o processo, as regras e os pontos onde sua operação perde tempo. A partir disso, construímos a solução adequada — de uma landing page a um sistema web integrado com automações e IA.</p>
+          <h2 id="about-title">Tecnologia para o trabalho real.</h2>
+          <p className={styles.lead}>A Ronas Tech nasceu para ajudar empresas a resolver problemas do dia a dia com tecnologia feita sob medida.</p>
+          <p>Antes de programar, procuramos entender como o trabalho é feito, onde estão os gargalos e o que precisa melhorar. Só depois definimos o que será desenvolvido.</p>
           <div className={styles.actions}>
             <a className={styles.primary} href="#contato">Falar com a Ronas Tech</a>
             <a className={styles.secondary} href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => trackExternalLink('linkedin')}>LinkedIn</a>
