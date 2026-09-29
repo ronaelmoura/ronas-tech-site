@@ -5,7 +5,7 @@
 .eyebrow{margin:0 0 13px;color:var(--color-brand);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
 .information h2{margin:0;color:var(--color-ink);font-size:clamp(32px,4vw,50px);letter-spacing:-.045em;line-height:1.05}
 .subtitle{margin:18px 0 0;color:var(--color-ink-soft);font-size:16px;line-height:1.75}
-.availability{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;padding:7px 10px;border:1px solid rgba(15,122,79,.15);border-radius:999px;color:#0b6a45;background:#effbf5;font:800 10px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+.diagnosticLabel{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;color:var(--color-ink-faint);font:800 9px/1 var(--font-mono);letter-spacing:.1em}.diagnosticLabel i{width:34px;height:1px;background:linear-gradient(90deg,var(--color-brand),var(--color-violet))}.availability{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;padding:7px 10px;border:1px solid rgba(15,122,79,.15);border-radius:999px;color:#0b6a45;background:#effbf5;font:800 10px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
 .availability i{width:7px;height:7px;border-radius:50%;background:#16a36a;box-shadow:0 0 0 5px rgba(22,163,106,.1)}
 .trustLine{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:18px;color:var(--color-ink-faint);font-size:12px}.trustLine span{color:#0b8a5a;font-weight:900}.promise{margin-top:22px;padding:20px 22px;border:1px solid rgba(22,119,255,.13);border-radius:18px;background:rgba(255,255,255,.7);box-shadow:0 14px 34px rgba(24,47,80,.06)}
 .promise span{display:block;margin-bottom:6px;color:var(--color-brand);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
@@ -23,7 +23,7 @@
 .formCard{position:relative;overflow:hidden;padding:32px;border:1px solid rgba(22,119,255,.15);border-radius:24px;background:rgba(255,255,255,.9);box-shadow:0 28px 70px rgba(24,47,80,.11)}
 .formCard::before{content:'';position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,#1677ff,#7c3aed,#06b6d4)}
 .formHeader{padding-bottom:22px;border-bottom:1px solid var(--color-line)}
-.formKicker{display:block;margin-bottom:7px;color:var(--color-brand);font:800 10px/1 var(--font-mono);letter-spacing:.12em}
+.formKicker{display:block;margin-bottom:8px;color:var(--color-brand);font:800 10px/1 var(--font-mono);letter-spacing:.12em}
 .formHeader h3{margin:0;color:var(--color-ink);font-size:25px;line-height:1.18;letter-spacing:-.025em}
 .formHeader p{margin:7px 0 0;color:var(--color-ink-soft);font-size:14px;line-height:1.65}
 .form{display:grid;gap:16px;margin-top:24px}
@@ -37,10 +37,10 @@
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--color-brand);outline:2px solid var(--color-brand-soft)}
 .field [aria-invalid='true']{border-color:var(--color-danger)}
 .error,.submitError{color:var(--color-danger);font-size:13px}.submitError{margin:0}
-.submitButton{display:inline-flex;min-height:54px;align-items:center;justify-content:center;gap:12px;border:1px solid var(--color-action);border-radius:12px;color:var(--color-page);background:var(--color-action);font-size:15px;font-weight:800;cursor:pointer;transition:transform .18s,background .18s,box-shadow .18s}
+.submitButton{position:relative;display:inline-flex;min-height:54px;align-items:center;justify-content:center;gap:12px;border:1px solid var(--color-action);border-radius:12px;color:var(--color-page);background:var(--color-action);font-size:15px;font-weight:800;cursor:pointer;transition:transform .18s,background .18s,box-shadow .18s}
 .submitButton:hover{transform:translateY(-2px);background:var(--color-action-strong);border-color:var(--color-action-strong);box-shadow:0 12px 26px rgba(15,122,79,.18)}
 .formNote{display:block;margin-top:-7px;text-align:center;color:var(--color-ink-faint);font-size:11px}
 .path a:focus-visible,.submitButton:focus-visible{outline:2px solid var(--color-brand);outline-offset:3px}
 @media(max-width:900px){.container{grid-template-columns:1fr}.information{max-width:760px}.formCard{max-width:760px}}
-@media(max-width:620px){.section{padding:5.5rem 0}.container{width:min(100% - 32px,1200px)}.paths{grid-template-columns:1fr}.fieldRow{grid-template-columns:1fr}.formCard{padding:23px 18px}.promise{padding:18px}.promise div{display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:6px}.formHeader h3{font-size:22px}}
+.diagnosticLabel{margin-bottom:14px}.diagnosticLabel i{width:22px}@media(max-width:620px){.section{padding:5.5rem 0}.container{width:min(100% - 32px,1200px)}.paths{grid-template-columns:1fr}.fieldRow{grid-template-columns:1fr}.formCard{padding:23px 18px}.promise{padding:18px}.promise div{display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:6px}.formHeader h3{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.path,.submitButton{transition-duration:.01ms}}
