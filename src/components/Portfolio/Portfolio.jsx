@@ -8,6 +8,7 @@ const projects = [
     category: 'Sistema de gestão de chamados',
     need:
       'Organizar solicitações que antes ficavam espalhadas e dar à equipe uma forma simples de registrar, priorizar e acompanhar cada atendimento.',
+    decision: 'Centralizar a operação em um fluxo único, sem transformar o sistema em uma ferramenta difícil de usar.',
     solution:
       'Foi criado um sistema web com acesso por perfil, abertura e acompanhamento de chamados, prioridades, status e painéis para usuários e administradores.',
     highlights: [
@@ -28,6 +29,7 @@ const projects = [
     category: 'Dashboard financeiro pessoal',
     need:
       'Reunir receitas e despesas em um único lugar para facilitar o acompanhamento financeiro do mês.',
+    decision: 'Priorizar leitura rápida e interação direta, deixando os dados importantes visíveis sem excesso de elementos.',
     solution:
       'Foi criado um dashboard com gráficos, filtros, cadastro de transações e interface adaptada para diferentes telas.',
     highlights: [
@@ -47,6 +49,7 @@ const projects = [
     category: 'Backend de estoque e pedidos',
     need:
       'Criar uma base para controlar estoque e pedidos com segurança quando várias operações acontecem ao mesmo tempo.',
+    decision: 'Tratar consistência, concorrência e rastreabilidade como parte do produto desde a arquitetura.',
     solution:
       'Foi desenvolvida uma API REST com autenticação, transações, reservas de estoque, auditoria e documentação para integração.',
     highlights: [
@@ -65,6 +68,7 @@ const projects = [
     category: 'Landing page comercial',
     need:
       'Apresentar um serviço técnico de forma clara e levar o visitante até uma ação comercial.',
+    decision: 'Construir uma jornada curta: explicar o serviço, reduzir dúvidas e conduzir o visitante para uma ação.',
     solution:
       'Foi criada uma landing page responsiva com apresentação do serviço, planos, simulador e formulário de diagnóstico.',
     highlights: [
@@ -219,8 +223,9 @@ function ProjectCard({ project }) {
         <h3>{project.title}</h3>
 
         <div className={styles.caseSummary}>
-          <p><strong>Desafio:</strong> {project.need}</p>
-          <p><strong>Solução:</strong> {project.solution}</p>
+          <div className={styles.caseStep}><span>01 · PROBLEMA</span><p>{project.need}</p></div>
+          <div className={styles.caseStep}><span>02 · DECISÃO</span><p>{project.decision}</p></div>
+          <div className={styles.caseStep}><span>03 · SOLUÇÃO</span><p>{project.solution}</p></div>
         </div>
 
         <ul className={styles.highlights} aria-label="Destaques técnicos">
@@ -288,7 +293,7 @@ function Portfolio() {
           <p className={styles.eyebrow}>Projetos e soluções</p>
           <h2 id="portfolio-title">Veja o tipo de solução que podemos construir</h2>
           <p className={styles.subtitle}>
-            Não é só sobre a tecnologia usada. É sobre transformar uma necessidade em uma experiência, sistema ou fluxo que faça sentido para quem vai usar.
+            Cada projeto começa por uma necessidade concreta. Abaixo, mostramos o problema, a decisão de produto e o que foi construído — sem inventar resultados que o projeto ainda não mediu.
           </p>
         </header>
 
