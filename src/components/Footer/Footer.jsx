@@ -8,7 +8,7 @@ import styles from './Footer.module.css'
 const navigationLinks = [
   { label: 'Início', href: '/#inicio' },
   { label: 'Projetos', href: '/#projetos' },
-  { label: 'Serviços', href: '/#servicos' },
+  { label: 'Soluções', href: '/#solucoes' },
   { label: 'Sobre', href: '/#sobre' },
   { label: 'Contato', href: '/#contato' },
   { label: 'Produtos digitais', href: '/produtos-digitais' },
@@ -62,8 +62,8 @@ function Footer() {
       <div className={styles.container}>
         <div className={styles.footerCta}>
           <div>
-            <span>PRONTO PARA O PRÓXIMO PASSO?</span>
-            <h2>Tem uma ideia, um gargalo ou uma tarefa que poderia funcionar melhor?</h2>
+            <span>RONAS TECH · PRÓXIMO PASSO</span>
+            <h2>Uma boa solução começa por entender o problema certo.</h2>
             <p>Conte o que está acontecendo. A primeira conversa serve para entender se existe uma solução que faça sentido para sua empresa.</p>
           </div>
           <a href="/#contato">Começar uma conversa <span>→</span></a>
@@ -81,7 +81,7 @@ function Footer() {
               <strong>{siteConfig.companyName}</strong>
             </a>
             <p>
-              Sites, sistemas web, automações e ferramentas digitais para empresas.
+              Soluções digitais para empresas: presença, operação, automação e inteligência.
             </p>
             <div className={styles.socials} aria-label="Redes sociais">
               {socialLinks.map(({ label, href, icon }) => (
