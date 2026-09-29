@@ -99,11 +99,10 @@
      por isso deriva do verde de ação e não da marca. */
   --color-action-halo: rgb(15 122 79 / 30%);
   --color-action-halo-soft: rgb(15 122 79 / 0%);
-}
-
   --color-accent-violet: #7c3aed;
   --color-accent-violet-soft: #ede9fe;
   --color-accent-cyan: #06b6d4;
   --color-accent-cyan-soft: #cffafe;
   --color-accent-pink: #ec4899;
   --color-accent-pink-soft: #fce7f3;
+}
