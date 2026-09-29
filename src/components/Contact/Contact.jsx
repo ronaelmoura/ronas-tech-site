@@ -5,13 +5,13 @@ import { isValidBrazilPhone, toE164BrazilPhone } from '../../utils/phone'
 import styles from './Contact.module.css'
 
 const initialFormData = { name: '', company: '', phone: '', reason: '', message: '' }
-const reasons = ['Sites Profissionais', 'Landing Pages', 'IA para Empresas', 'Automação de Processos', 'Sistemas Web', 'Dashboards e Integrações', 'Outro assunto']
+const reasons = ['Ainda não sei — quero entender o caminho', 'Sites Profissionais', 'Landing Pages', 'Sistemas Web', 'Automação de Processos', 'Dashboards e Integrações', 'IA para Empresas', 'Outro assunto']
 
 function validateForm(formData) {
   const errors = {}
   if (formData.name.trim().length < 2) errors.name = 'Informe seu nome.'
   if (!isValidBrazilPhone(formData.phone)) errors.phone = 'Informe um telefone com DDD, por exemplo (88) 99302-1946.'
-  if (!formData.reason) errors.reason = 'Selecione o serviço.'
+  if (!formData.reason) errors.reason = 'Selecione como podemos começar.'
   if (!formData.message.trim()) errors.message = 'Conte brevemente o que sua empresa precisa.'
   return errors
 }
@@ -69,13 +69,14 @@ function Contact() {
     <section id="contato" className={`${styles.section} reveal`} aria-labelledby="contact-title">
       <div className={styles.container}>
         <div className={styles.information}>
+          <div className={styles.diagnosticLabel}><span>DIAGNÓSTICO INICIAL</span><i /><span>~ 2 MINUTOS</span></div>
           <div className={styles.availability}><i /> Atendimento para novos projetos</div>
           <p className={styles.eyebrow}>Contato</p>
-          <h2 id="contact-title">Vamos conversar sobre o que sua empresa precisa.</h2>
-          <p className={styles.subtitle}>Não precisa saber qual tecnologia usar. Explique o que está acontecendo e a gente avalia o caminho mais adequado.</p>
+          <h2 id="contact-title">Seu problema não precisa chegar com uma solução pronta.</h2>
+          <p className={styles.subtitle}>Conte o que está acontecendo hoje. A partir disso, identificamos onde uma solução digital pode simplificar, automatizar, integrar ou organizar sua operação.</p>
           <div className={styles.trustLine}><span>✓</span> Resposta inicial pelo WhatsApp <span>✓</span> Sem compromisso</div><div className={styles.promise}>
-            <span>O que acontece depois?</span>
-            <strong>Você conta o problema. A gente conversa sobre o caminho.</strong>
+            <span>Depois desta mensagem</span>
+            <strong>Você explica o cenário. A primeira conversa ajuda a definir o próximo passo.</strong>
             <div><b>01</b> Entendemos o cenário <b>02</b> Avaliamos a solução <b>03</b> Combinamos o próximo passo</div>
           </div>
           <div className={styles.paths}>
@@ -85,9 +86,9 @@ function Contact() {
         </div>
         <div className={styles.formCard}>
           <header className={styles.formHeader}>
-            <span className={styles.formKicker}>COMECE POR AQUI</span>
-            <h3>Comece pelo problema. A solução a gente conversa depois.</h3>
-            <p>Você não precisa preparar uma especificação. Diga o que está acontecendo hoje e, se puder, onde isso está tomando tempo, gerando retrabalho ou perdendo oportunidades.</p>
+            <span className={styles.formKicker}>DIAGNÓSTICO INICIAL · 01</span>
+            <h3>Vamos descobrir o que realmente precisa funcionar melhor.</h3>
+            <p>Sem briefing técnico e sem precisar escolher uma tecnologia. Explique a situação com suas palavras — o que acontece hoje, o que atrasa sua rotina e o que você gostaria que funcionasse melhor.</p>
           </header>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             <div className={styles.fieldRow}>
@@ -96,11 +97,11 @@ function Contact() {
             </div>
             <div className={styles.fieldRow}>
               <div className={styles.field}><label htmlFor="contact-phone">Telefone / WhatsApp</label><input id="contact-phone" name="phone" type="tel" inputMode="tel" value={formData.phone} onChange={handleChange} autoComplete="tel" required placeholder="(00) 00000-0000" {...fieldAccessibility('phone')} />{errors.phone && <span id="phone-error" className={styles.error}>{errors.phone}</span>}</div>
-              <div className={styles.field}><label htmlFor="contact-reason">Serviço</label><select id="contact-reason" name="reason" value={formData.reason} onChange={handleChange} required {...fieldAccessibility('reason')}><option value="" disabled>Selecione</option>{reasons.map((reason) => <option value={reason} key={reason}>{reason}</option>)}</select>{errors.reason && <span id="reason-error" className={styles.error}>{errors.reason}</span>}</div>
+              <div className={styles.field}><label htmlFor="contact-reason">Como podemos começar?</label><select id="contact-reason" name="reason" value={formData.reason} onChange={handleChange} required {...fieldAccessibility('reason')}><option value="" disabled>Escolha uma opção</option>{reasons.map((reason) => <option value={reason} key={reason}>{reason}</option>)}</select>{errors.reason && <span id="reason-error" className={styles.error}>{errors.reason}</span>}</div>
             </div>
-            <div className={styles.field}><label htmlFor="contact-message">O que você precisa resolver?</label><textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="Ex.: hoje fazemos isso manualmente e está tomando muito tempo da equipe." {...fieldAccessibility('message')} />{errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}</div>
+            <div className={styles.field}><label htmlFor="contact-message">O que está acontecendo hoje?</label><textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="Ex.: hoje controlamos isso por planilhas e WhatsApp, e está tomando muito tempo da equipe." {...fieldAccessibility('message')} />{errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}</div>
             {submitError && <p className={styles.submitError} role="alert">{submitError}</p>}
-            <button className={styles.submitButton} type="submit"><span>Quero conversar sobre isso</span><span aria-hidden="true">→</span></button>
+            <button className={styles.submitButton} type="submit"><span>Enviar diagnóstico pelo WhatsApp</span><span aria-hidden="true">→</span></button>
             <small className={styles.formNote}>A conversa abre diretamente no WhatsApp. Sem compromisso.</small>
           </form>
         </div>
