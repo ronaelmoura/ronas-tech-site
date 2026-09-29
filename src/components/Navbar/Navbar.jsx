@@ -3,10 +3,10 @@ import { siteConfig } from '../../config/siteConfig'
 import styles from './Navbar.module.css'
 
 const navigationItems = [
-  { label: 'Serviços', href: '#servicos' },
+  { label: 'Soluções', href: '#solucoes' },
   { label: 'Projetos', href: '#projetos' },
+  { label: 'Processo', href: '#como-funciona' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
 ]
 
 function Navbar() {
@@ -45,11 +45,16 @@ function Navbar() {
 
   return <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
     <nav className={styles.navbar} aria-label="Navegação principal">
-      <a className={styles.brand} href="#inicio" onClick={closeMenu}><img className={styles.logo} src={siteConfig.logoPath} alt="" width="47" height="44" loading="eager" /><span className={styles.brandName}>{siteConfig.companyName}</span></a>
+      <a className={styles.brand} href="#inicio" onClick={closeMenu}>
+        <img className={styles.logo} src={siteConfig.logoPath} alt="" width="47" height="44" loading="eager" />
+        <span className={styles.brandName}>{siteConfig.companyName}</span>
+      </a>
       <div className={`${styles.menuBackdrop} ${isMenuOpen ? styles.open : ''}`} onClick={closeMenu} aria-hidden="true" />
       <div id="main-navigation" className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
-        <ul className={styles.links}>{navigationItems.map(({ label, href }, index) => <li key={href}><a ref={index === 0 ? firstLinkRef : undefined} className={styles.link} href={href} onClick={closeMenu}>{label}</a></li>)}</ul>
-        <a className={styles.cta} href="#contato" onClick={closeMenu}>Solicitar orçamento</a>
+        <ul className={styles.links}>
+          {navigationItems.map(({ label, href }, index) => <li key={href}><a ref={index === 0 ? firstLinkRef : undefined} className={styles.link} href={href} onClick={closeMenu}>{label}</a></li>)}
+        </ul>
+        <a className={styles.cta} href="#contato" onClick={closeMenu}>Começar uma conversa <span>→</span></a>
       </div>
       <button ref={menuButtonRef} className={`${styles.menuButton} ${isMenuOpen ? styles.open : ''}`} type="button" aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'} aria-controls="main-navigation" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((isOpen) => !isOpen)}><span /><span /><span /></button>
     </nav>
