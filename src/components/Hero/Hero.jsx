@@ -1,87 +1,41 @@
-import styles from './Hero.module.css'
-
 function Hero() {
   return (
-    <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
-      <div className={styles.grid} aria-hidden="true" />
-      <div className={styles.glow} aria-hidden="true" />
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <p className={styles.eyebrow}><span /> RONAS TECH · SOLUÇÕES DIGITAIS</p>
-          <h1 id="hero-title">Seu problema de hoje pode virar uma solução digital que trabalha por você.</h1>
-          <p className={styles.description}>
-            Criamos sites, sistemas, automações e soluções com IA para reduzir trabalho manual, organizar informações e melhorar a experiência dos seus clientes.
-          </p>
-          <div className={styles.actions}>
-            <a className={styles.primary} href="#contato">Conversar sobre meu problema <span>→</span></a>
-            <a className={styles.secondary} href="#servicos">Conhecer as soluções</a>
+    <section id="inicio" className="rt-hero" aria-labelledby="hero-title">
+      <div className="rt-hero-grid" aria-hidden="true" />
+      <div className="rt-hero-glow rt-hero-glow-one" aria-hidden="true" />
+      <div className="rt-hero-glow rt-hero-glow-two" aria-hidden="true" />
+      <div className="rt-hero-container">
+        <div className="rt-hero-copy">
+          <p className="rt-kicker"><span /> RONAS TECH · DIGITAL STUDIO</p>
+          <h1 id="hero-title">Problemas reais.<br /><em>Soluções digitais.</em></h1>
+          <p className="rt-hero-description">Criamos sistemas, sites, automações e soluções com IA para transformar tarefas complicadas em processos mais simples.</p>
+          <div className="rt-hero-actions">
+            <a className="rt-button rt-button-primary" href="#contato">Quero resolver um problema <span>→</span></a>
+            <a className="rt-button rt-button-ghost" href="#projetos">Ver projetos</a>
           </div>
-          <div className={styles.trust}>
-            <span>Projetos sob medida</span>
-            <span>Atendimento remoto</span>
-            <span>Tianguá · CE</span>
-          </div>
+          <div className="rt-hero-meta"><span>Projetos sob medida</span><span>Atendimento remoto</span><span>Tianguá · CE</span></div>
         </div>
 
-        <div className={styles.visual} aria-label="Exemplos de soluções digitais">
-          <div className={styles.workspace}>
-            <div className={styles.workspaceBar}>
-              <span className={styles.brandMark}>RT</span>
-              <span>WORKSPACE / SOLUÇÕES</span>
-              <b><i /> ATIVO</b>
+        <div className="rt-transformation" aria-label="Da necessidade à solução digital">
+          <div className="rt-transform-head"><span>RONAS TECH / WORKFLOW</span><i>AO VIVO</i></div>
+          <div className="rt-transform-body">
+            <div className="rt-transform-column">
+              <small>01 · PROBLEMA</small>
+              <strong>O trabalho não deveria depender disso.</strong>
+              <div className="rt-chip-list"><span>Planilhas</span><span>WhatsApp</span><span>Retrabalho</span><span>Dados espalhados</span></div>
             </div>
-
-            <div className={styles.workspaceGrid}>
-              <article className={styles.solutionCard}>
-                <div className={styles.cardIcon}>↗</div>
-                <small>01 · PRESENÇA</small>
-                <h2>Site & Landing Page</h2>
-                <p>Uma vitrine digital pensada para apresentar e gerar contato.</p>
-                <div className={styles.miniBrowser}>
-                  <span /><span /><span />
-                  <div />
-                </div>
-              </article>
-
-              <article className={styles.solutionCard}>
-                <div className={styles.cardIcon}>▦</div>
-                <small>02 · OPERAÇÃO</small>
-                <h2>Sistema Web</h2>
-                <p>Informações organizadas em uma ferramenta feita para sua rotina.</p>
-                <div className={styles.miniChart}>
-                  <span /><span /><span /><span /><span />
-                </div>
-              </article>
-
-              <article className={styles.solutionCard}>
-                <div className={styles.cardIcon}>⌁</div>
-                <small>03 · FLUXO</small>
-                <h2>Automação</h2>
-                <p>Tarefas conectadas para reduzir trabalho manual e repetitivo.</p>
-                <div className={styles.miniFlow}>
-                  <span>Entrada</span><b>→</b><span>Processo</span><b>→</b><span>Ação</span>
-                </div>
-              </article>
-
-              <article className={styles.solutionCard}>
-                <div className={styles.cardIcon}>✦</div>
-                <small>04 · INTELIGÊNCIA</small>
-                <h2>IA aplicada</h2>
-                <p>IA usada onde existe uma tarefa real para simplificar.</p>
-                <div className={styles.aiPulse}><span /><span /><span /><b>IA</b></div>
-              </article>
-            </div>
-
-            <div className={styles.workspaceFooter}>
-              <span><i /> Problema identificado</span>
-              <strong>→</strong>
-              <span><i /> Solução em construção</span>
+            <div className="rt-transform-arrow"><span>→</span><small>ENTENDEMOS</small></div>
+            <div className="rt-transform-column solution">
+              <small>02 · SOLUÇÃO</small>
+              <strong>Um processo que trabalha melhor.</strong>
+              <div className="rt-solution-flow"><span>Sistema</span><span>Automação</span><span>Integração</span><span>IA</span></div>
             </div>
           </div>
+          <div className="rt-transform-foot"><span><b /> Problema identificado</span><span>→</span><strong>Solução em construção</strong></div>
         </div>
       </div>
+      <div className="rt-hero-bottom"><span>01</span><i /><span>DESCOBRIR O CAMINHO</span></div>
     </section>
   )
 }
-
 export default Hero
