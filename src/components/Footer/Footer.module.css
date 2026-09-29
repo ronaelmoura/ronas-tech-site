@@ -24,6 +24,7 @@
 }
 
 .footerCta{
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -37,7 +38,7 @@
     var(--color-dark-surface);
   box-shadow:0 24px 60px rgba(0,0,0,.2);
 }
-.footerCta > div{max-width:720px}
+.footerCta > div{max-width:720px}.footerCta::after{content:'→';position:absolute;right:34px;top:18px;color:rgb(96 165 250 / 18%);font:700 88px/1 var(--font-display);pointer-events:none}.footerCta > a{position:relative;z-index:1}
 .footerCta > div > span{
   display:block;
   margin-bottom:7px;
