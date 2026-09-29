@@ -1,6 +1,4 @@
-/* Projetos na paleta clara. Cada cartão tem uma ilustração em CSS (não é
-   captura de tela) e os links para o projeto publicado e o código. O verde
-   de --color-action fica só no botão principal de cada cartão. */
+/* Cases de produto: contexto, decisão, solução e implementação. */
 
 .section {
   position: relative;
@@ -159,12 +157,7 @@
   letter-spacing: -.03em;
 }
 
-.caseSummary {
-  display: grid;
-  gap: 10px;
-}
-
-.caseSummary{position:relative}.caseSummary::before{content:'COMO A SOLUÇÃO TOMA FORMA';display:block;margin-bottom:10px;color:var(--color-ink-faint);font:800 9px/1 var(--font-mono);letter-spacing:.1em}.caseSummary p {
+.caseSummary {\n  display: grid;\n  gap: 14px;\n  margin-top: 2px;\n}\n\n.caseStep {\n  position: relative;\n  padding-left: 14px;\n  border-left: 2px solid var(--color-brand-soft);\n}\n\n.caseStep:nth-child(2) { border-left-color: var(--color-violet-soft); }\n.caseStep:nth-child(3) { border-left-color: var(--color-cyan-soft); }\n\n.caseStep span {\n  display: block;\n  margin-bottom: 5px;\n  color: var(--color-ink-faint);\n  font: 800 9px/1 var(--font-mono);\n  letter-spacing: .1em;\n}\n\n.caseSummary p {
   margin: 0;
   color: var(--color-ink-soft);
   font-size: 16px;
