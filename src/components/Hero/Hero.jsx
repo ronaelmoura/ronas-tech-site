@@ -1,3 +1,5 @@
+import './Hero.css'
+
 function Hero() {
   return (
     <section id="inicio" className="rt-hero" aria-labelledby="hero-title">
@@ -15,7 +17,6 @@ function Hero() {
           </div>
           <div className="rt-hero-meta"><span>Projetos sob medida</span><span>Atendimento remoto</span><span>Tianguá · CE</span></div>
         </div>
-
         <div className="rt-transformation" aria-label="Da necessidade à solução digital">
           <div className="rt-transform-head"><span>RONAS TECH / WORKFLOW</span><i>AO VIVO</i></div>
           <div className="rt-transform-body">
