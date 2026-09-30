@@ -44,12 +44,13 @@
   display: grid;
   width: min(100% - 48px, 1200px);
   margin: auto;
-  grid-template-columns: minmax(0, .95fr) minmax(440px, 1.05fr);
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
   align-items: center;
   gap: clamp(48px, 7vw, 92px);
 }
 
 .content {
+  min-width: 0;
   animation: contentIn .7s cubic-bezier(.22, 1, .36, 1) both;
 }
 
@@ -177,6 +178,8 @@
 
 .visual {
   position: relative;
+  width: min(100%, 650px);
+  min-width: 0;
   animation: visualIn .85s .12s cubic-bezier(.22, 1, .36, 1) both;
   perspective: 1200px;
 }
@@ -185,6 +188,8 @@
 
 .console {
   position: relative;
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid var(--color-line);
   border-radius: 20px;
@@ -274,6 +279,7 @@
 
 .checks {
   display: grid;
+  min-width: 0;
   gap: 9px;
   margin: 27px 0;
   padding: 0;
@@ -282,7 +288,8 @@
 
 .check {
   display: grid;
-  grid-template-columns: 25px 1fr auto;
+  min-width: 0;
+  grid-template-columns: 25px minmax(0, 1fr) minmax(0, auto);
   align-items: center;
   gap: 10px;
   padding: 11px 12px;
@@ -303,15 +310,20 @@
 }
 
 .check code {
+  min-width: 0;
   color: var(--color-ink);
   font-family: var(--font-mono);
   font-size: 12px;
+  overflow-wrap: anywhere;
 }
 
 .check small {
+  min-width: 0;
   color: var(--color-ink-faint);
   font-family: var(--font-mono);
   font-size: 9px;
+  text-align: right;
+  overflow-wrap: anywhere;
 }
 
 .terminal {
@@ -334,15 +346,15 @@
 }
 
 @keyframes visualIn {
-  from { opacity: 0; transform: translateX(30px) scale(.98); }
+  from { opacity: 0; transform: translateX(12px) scale(.98); }
   to { opacity: 1; transform: none; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .hero { padding: 132px 0 92px; }
-  .container { grid-template-columns: 1fr; }
+  .container { grid-template-columns: minmax(0, 1fr); }
   .content { max-width: 720px; }
-  .visual { width: min(100%, 650px); margin: auto; }
+  .visual { margin: auto; }
 }
 
 @media (max-width: 560px) {
