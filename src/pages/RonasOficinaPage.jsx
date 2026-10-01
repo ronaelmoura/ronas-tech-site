@@ -3,24 +3,66 @@ import { oficinaPlans } from "../data/oficinaPlans";
 import styles from "./RonasOficinaPage.module.css";
 
 const wa = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Olá! Quero conhecer o Ronas Oficina.")}`;
+function WhatsAppIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-hidden="true"
+    >
+      <path d="M20.5 11.8a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7A8.5 8.5 0 1 1 20.5 11.8Z" />
+      <path d="M8.5 7.8c-.8.3-1 1.3-.7 2.2 1 3 3.1 5 6 5.7 1 .2 1.9-.3 2.1-1.1l-2.2-1.4-.9 1c-1.5-.6-2.8-1.8-3.4-3.3l.9-.9-1.1-2.2Z" />
+    </svg>
+  );
+}
 export function OficinaHeader() {
   return (
-    <header className={styles.nav}>
-      <a className={styles.brand} href="/ronas-oficina">
-        <span className={styles.brandIcon} aria-hidden="true">
-          R↗
-        </span>
-        <span>
-          ronas<span className={styles.brandLight}>oficina</span>
-        </span>
-      </a>
-      <nav aria-label="Navegação Ronas Oficina">
-        <a href="/ronas-oficina#recursos">Recursos</a>
-        <a href="/ronas-oficina#planos">Planos</a>
-        <a className={styles.navLogin} href="/ronas-oficina/entrar">
-          Entrar ↗
+    <header className={styles.header}>
+      <div className={styles.nav}>
+        <a
+          className={styles.brand}
+          href="/"
+          aria-label="Ronas Tech, página inicial"
+        >
+          <span className={styles.logoFrame}>
+            <img
+              src="/images/ronas-tech-brand.png"
+              width="1024"
+              height="1024"
+              alt=""
+            />
+          </span>
+          <span>
+            RONAS <span className={styles.brandLight}>TECH</span>
+          </span>
         </a>
-      </nav>
+        <nav aria-label="Navegação Ronas Oficina">
+          <a className={styles.desktopLink} href="/">
+            Início
+          </a>
+          <a className={styles.desktopLink} href="/ronas-oficina#recursos">
+            Recursos
+          </a>
+          <a className={styles.currentLink} href="/ronas-oficina">
+            Ronas Oficina
+          </a>
+          <a href="/ronas-oficina#planos">Planos</a>
+          <a href="/ronas-oficina/entrar">Entrar</a>
+        </nav>
+        <a
+          className={styles.navContact}
+          href={wa}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <WhatsAppIcon />
+          <span>Falar no WhatsApp</span>
+        </a>
+      </div>
     </header>
   );
 }
@@ -45,85 +87,46 @@ export default function RonasOficinaPage() {
       <OficinaHeader />
       <main id="conteudo-principal">
         <section className={styles.hero}>
-          <div>
-            <p className={styles.eyebrow}>● SUA PRÓXIMA ETAPA COMEÇA AQUI</p>
+          <img
+            className={styles.heroImage}
+            src="/images/ronas-oficina-workshop.png"
+            width="1536"
+            height="1024"
+            alt=""
+            fetchPriority="high"
+          />
+          <div className={styles.heroShade} aria-hidden="true" />
+          <div className={styles.heroContent}>
+            <p className={styles.eyebrow}>
+              <span>
+                RONAS <b>OFICINA</b>
+              </span>
+            </p>
             <h1>
-              Cuide dos veículos.
+              Sua oficina merece
               <br />
-              <em>
-                A gente organiza
-                <br />o caminho.
-              </em>
+              uma rotina mais
+              <br />
+              <em>organizada.</em>
             </h1>
             <p className={styles.lead}>
-              Menos anotações espalhadas. Mais clareza para sua oficina. Uma
-              proposta de gestão de clientes, veículos e serviços em um só
-              lugar.
+              Conheça uma proposta de sistema para acompanhar atendimentos,
+              serviços e informações em um só lugar.
             </p>
             <div className={styles.actions}>
-              <a className={styles.button} href="/ronas-oficina/cadastro">
-                Criar conta de teste →
+              <a
+                className={styles.button}
+                href={wa}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <WhatsAppIcon />
+                Quero conhecer a proposta <span aria-hidden="true">→</span>
               </a>
-              <a className={styles.textLink} href="#planos">
-                Conhecer os planos ↓
-              </a>
             </div>
-            <p className={styles.note}>
-              Cadastro disponível no ambiente de teste. Gestão da oficina em
-              desenvolvimento.
-            </p>
-          </div>
-          <div
-            className={styles.visual}
-            role="img"
-            aria-label="Exemplo ilustrativo do futuro painel: 12 serviços, 4 em andamento, 8 concluídos. Não são dados reais."
-          >
-            <div className={styles.visualTop}>
-              <span>R / OFICINA</span>
-              <span className={styles.live}>PAINEL ILUSTRATIVO</span>
-            </div>
-            <div className={styles.visualTitle}>
-              Tudo pronto para o dia.
-              <small>Acompanhe cada etapa da sua oficina.</small>
-            </div>
-            <div className={styles.stats}>
-              <div>
-                <small>Serviços do dia</small>
-                <strong>12</strong>
-                <small>+ organização</small>
-              </div>
-              <div>
-                <small>Em andamento</small>
-                <strong>04</strong>
-                <small>em acompanhamento</small>
-              </div>
-              <div>
-                <small>Concluídos</small>
-                <strong>08</strong>
-                <small>prontos para entrega</small>
-              </div>
-            </div>
-            <div className={styles.tableHead}>
-              <span>ATENDIMENTO</span>
-              <span>ETAPA</span>
-            </div>
-            {[
-              ["01", "Revisão preventiva", "Veículo recebido", "Entrada"],
-              ["02", "Troca de óleo", "Serviço em execução", "Andamento"],
-              ["03", "Sistema de freios", "Pronto para entrega", "Concluído"],
-            ].map(([n, t, d, s]) => (
-              <div className={styles.task} key={n}>
-                <span className={styles.taskNumber}>{n}</span>
-                <div>
-                  <b>{t}</b>
-                  <small>{d}</small>
-                </div>
-                <span className={styles.tag}>{s}</span>
-              </div>
-            ))}
-            <div className={styles.visualFoot}>
-              <span>● Visão geral da operação</span>
-              <span>Dados de exemplo</span>
+            <div className={styles.heroSecondary}>
+              <a href="/ronas-oficina/cadastro">Criar conta de teste ↗</a>
+              <span>Produto em desenvolvimento</span>
             </div>
           </div>
         </section>

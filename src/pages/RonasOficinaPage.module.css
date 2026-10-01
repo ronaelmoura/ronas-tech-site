@@ -1,17 +1,15 @@
 .page {
-  --bg: #090e17;
-  --line: #283449;
-  --muted: #aebbd0;
+  --bg: #030b12;
+  --line: #172a39;
+  --muted: #aebdce;
   min-height: 100vh;
   background: var(--bg);
-  color: #f4f7ff;
+  color: #f5f8fc;
 }
 .page :focus-visible {
-  outline: 3px solid #94bdff;
+  outline: 3px solid #68c4ff;
   outline-offset: 5px;
 }
-.nav,
-.hero,
 .features,
 .plans,
 .process,
@@ -21,84 +19,176 @@
   width: min(1180px, calc(100% - 64px));
   margin-inline: auto;
 }
+.header {
+  background: linear-gradient(110deg, #02090e, #02121f);
+  border-bottom: 1px solid #1c2b36;
+}
 .nav {
-  min-height: 96px;
+  width: min(1360px, calc(100% - 64px));
+  margin: auto;
+  min-height: 94px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  border-bottom: 1px solid var(--line);
+  gap: 28px;
 }
 .brand {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  text-decoration: none;
+  gap: 9px;
   color: #fff;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  text-decoration: none;
 }
 .brandLight {
-  font-weight: 400;
-  margin-left: 5px;
-  color: #b4c1d6;
+  color: #008eff;
 }
-.brandIcon {
-  width: 37px;
-  height: 37px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  background: #2563eb;
-  font-size: 18px;
+.logoFrame {
+  position: relative;
+  display: block;
+  width: 67px;
+  height: 60px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.logoFrame img {
+  position: absolute;
+  max-width: none;
+  width: 94px;
+  height: 94px;
+  top: -19px;
+  left: -13px;
+  object-fit: contain;
 }
 .nav nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 27px;
 }
 .nav nav a {
-  color: #cbd6e7;
+  color: #e0e8ef;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
+  padding: 17px 0;
+  white-space: nowrap;
 }
-.nav nav .navLogin {
-  border: 1px solid #40516b;
-  border-radius: 7px;
-  padding: 9px 18px;
+.nav nav .currentLink {
+  border-bottom: 1px solid #009aff;
   color: #fff;
 }
-.hero {
-  min-height: 665px;
-  padding-block: 85px 94px;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
+.navContact {
+  display: inline-flex;
   align-items: center;
-  gap: 54px;
+  gap: 9px;
+  padding: 12px 18px;
+  border: 1px solid #009dff;
+  background: linear-gradient(150deg, #062135, #00121f);
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 690px;
+  width: min(1680px, 100%);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 44%;
+  z-index: -3;
+}
+.heroShade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      #020b13 0%,
+      #020b13f2 24%,
+      #020b13c9 39%,
+      #020b1345 60%,
+      transparent 78%
+    ),
+    linear-gradient(0deg, #030b1255, transparent 30%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  clip-path: polygon(0 0, 34% 0, 26% 25%, 43% 73%, 35% 100%, 0 100%);
+  background: linear-gradient(135deg, #00111e25, #00121c85);
+  border-right: 1px solid #008fff;
+  pointer-events: none;
+}
+.heroContent {
+  width: min(1360px, calc(100% - 64px));
+  margin: auto;
+  padding: 80px 0 92px;
 }
 .eyebrow,
 .kicker {
-  color: #91b8ff;
-  font-size: 10px;
+  color: #18a2ff;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin: 0 0 25px;
+}
+.eyebrow span {
+  background: linear-gradient(100deg, #003a66, #002249);
+  border: 1px solid #00508c;
+  padding: 7px 15px;
+  border-radius: 30px;
+}
+.eyebrow b {
+  color: #9acaf2;
+  font-weight: 600;
+}
+.eyebrow::after {
+  content: "";
+  width: 54px;
+  height: 1px;
+  background: #008dd6;
 }
 .hero h1 {
-  font-size: clamp(40px, 4.8vw, 65px);
-  line-height: 1.08;
-  letter-spacing: -0.055em;
-  margin: 24px 0;
+  max-width: 690px;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(40px, 4.25vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 0 0 23px;
 }
 .hero h1 em {
   font-style: normal;
-  color: #91b8ff;
+  color: #0099ff;
 }
 .lead {
-  max-width: 510px;
-  font-size: 16px;
-  line-height: 1.85;
-  color: var(--muted);
+  max-width: 560px;
+  font-size: 19px;
+  line-height: 1.55;
+  color: #bdc8d3;
+  margin: 0;
 }
 .actions {
   display: flex;
@@ -112,11 +202,11 @@
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding: 13px 19px;
-  border-radius: 7px;
-  background: #2563eb;
-  border: 1px solid #3976f7;
+  gap: 15px;
+  padding: 14px 21px;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #009eff, #0073ff);
+  border: 1px solid #149fff;
   color: #fff;
   text-decoration: none;
   font-size: 13px;
@@ -125,19 +215,47 @@
   line-height: 1.6;
 }
 .button:hover {
-  background: #1d4ed8;
+  background: #006fe5;
 }
 .outlineButton {
   background: transparent;
-  border-color: #445875;
+  border-color: #37627c;
 }
 .outlineButton:hover {
-  background: #1b2b44;
+  background: #0b2941;
 }
 .button:disabled,
 .outlineButton:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+.hero .button {
+  font-size: 16px;
+  padding: 17px 25px;
+  box-shadow: 0 8px 32px #007bff15;
+}
+.hero .button > span {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+  margin-left: 18px;
+}
+.heroSecondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 21px;
+  font-size: 11px;
+  align-items: center;
+}
+.heroSecondary a {
+  color: #d4eaff;
+  text-underline-offset: 4px;
+}
+.heroSecondary > span {
+  color: #a2b6c7;
+  border-left: 1px solid #466072;
+  padding-left: 15px;
 }
 .textLink {
   color: #cbd8ed;
@@ -154,125 +272,6 @@
   color: #9dadc4;
   margin-top: 20px;
   max-width: 420px;
-}
-.visual {
-  padding: 24px;
-  border: 1px solid #334663;
-  border-radius: 12px;
-  background: linear-gradient(130deg, #17243a, #0e1726);
-  box-shadow: 0 24px 80px #0005;
-  transform: rotate(-1deg);
-}
-.visualTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  color: #c0d0e7;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-.live {
-  font-size: 8px;
-  color: #a7bddd;
-  border: 1px solid #3b506e;
-  border-radius: 4px;
-  padding: 4px 6px;
-}
-.visualTitle {
-  font-size: 23px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin: 29px 0 22px;
-}
-.visualTitle small {
-  display: block;
-  font-size: 10px;
-  font-weight: 400;
-  color: #a7b6cd;
-  margin-top: 5px;
-  letter-spacing: 0;
-}
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-.stats > div {
-  padding: 13px 10px;
-  border: 1px solid #31435e;
-  background: #17253a;
-  border-radius: 7px;
-}
-.stats small {
-  font-size: 9px;
-  color: #b5c4da;
-}
-.stats strong {
-  display: block;
-  font-size: 30px;
-  line-height: 1.4;
-}
-.stats small:last-child {
-  font-size: 7px;
-}
-.tableHead {
-  display: flex;
-  justify-content: space-between;
-  font-size: 8px;
-  color: #91a7c6;
-  letter-spacing: 0.07em;
-  margin: 28px 0 10px;
-}
-.task {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 0;
-  border-top: 1px solid #2a3a51;
-}
-.taskNumber {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 29px;
-  height: 30px;
-  background: #233652;
-  border-radius: 5px;
-  font-size: 10px;
-  color: #c3d6f2;
-}
-.task b {
-  font-size: 11px;
-  font-weight: 600;
-}
-.task small {
-  display: block;
-  font-size: 9px;
-  color: #a4b5ce;
-}
-.tag {
-  margin-left: auto;
-  color: #c2d4f0;
-  font-size: 8px;
-  border-radius: 4px;
-  background: #243754;
-  padding: 3px 6px;
-}
-.task:nth-last-child(2) .tag {
-  background: #153e38;
-  color: #a8e3ce;
-}
-.visualFoot {
-  display: flex;
-  justify-content: space-between;
-  gap: 6px;
-  border-top: 1px solid #2a3a51;
-  padding-top: 16px;
-  margin-top: 8px;
-  font-size: 8px;
-  color: #afc0d9;
 }
 .strip {
   display: flex;
@@ -354,7 +353,7 @@
   background: #0f1826;
 }
 .featuredPlan {
-  border-color: #6195ee;
+  border-color: #008fff;
   background: linear-gradient(150deg, #172b49, #101c2e);
 }
 .planAudience {
@@ -670,12 +669,37 @@
 .accountCard .outlineButton {
   margin-top: 16px;
 }
-@media (max-width: 1000px) {
-  .hero {
-    gap: 30px;
+
+@media (max-width: 1100px) {
+  .nav {
+    gap: 18px;
+    width: calc(100% - 48px);
   }
-  .visual {
-    padding: 17px;
+  .brand {
+    font-size: 19px;
+  }
+  .nav nav {
+    gap: 20px;
+  }
+  .navContact {
+    padding: 10px 12px;
+  }
+  .hero {
+    min-height: 560px;
+  }
+  .heroContent {
+    width: calc(100% - 56px);
+    padding-block: 75px;
+  }
+  .hero h1 {
+    font-size: clamp(39px, 4.5vw, 50px);
+  }
+  .lead {
+    max-width: 440px;
+    font-size: 16px;
+  }
+  .hero .button {
+    font-size: 14px;
   }
   .featureGrid {
     grid-template-columns: 1fr 1fr;
@@ -687,19 +711,43 @@
     gap: 30px;
   }
 }
-@media (max-width: 780px) {
+@media (max-width: 850px) {
+  .nav {
+    min-height: 82px;
+    gap: 15px;
+  }
+  .nav nav {
+    gap: 18px;
+  }
+  .nav nav .desktopLink {
+    display: none;
+  }
+  .navContact span {
+    display: none;
+  }
+  .navContact {
+    padding: 10px;
+  }
   .hero {
-    grid-template-columns: 1fr;
-    padding-block: 55px 65px;
-    gap: 40px;
+    min-height: 590px;
+  }
+  .heroImage {
+    object-position: 63% center;
+  }
+  .heroShade {
+    background: linear-gradient(
+      90deg,
+      #020b13f5,
+      #020b13d9 40%,
+      #020b1360 70%,
+      #020b1310
+    );
   }
   .hero h1 {
-    font-size: clamp(43px, 7.5vw, 60px);
+    font-size: 42px;
   }
-  .visual {
-    max-width: 550px;
-    width: 100%;
-    transform: none;
+  .lead {
+    max-width: 400px;
   }
   .strip {
     flex-direction: column;
@@ -726,49 +774,98 @@
     padding-block: 64px;
   }
 }
-@media (max-width: 480px) {
-  .nav,
-  .hero,
+@media (max-width: 600px) {
+  .nav {
+    width: calc(100% - 32px);
+    min-height: 76px;
+    gap: 10px;
+  }
+  .brand {
+    font-size: 16px;
+    gap: 3px;
+  }
+  .logoFrame {
+    width: 47px;
+    height: 44px;
+  }
+  .logoFrame img {
+    width: 67px;
+    height: 67px;
+    top: -14px;
+    left: -10px;
+  }
+  .nav nav {
+    gap: 16px;
+  }
+  .nav nav a {
+    font-size: 11px;
+  }
+  .nav nav .currentLink,
+  .navContact {
+    display: none;
+  }
+  .hero {
+    min-height: 780px;
+    align-items: flex-end;
+  }
+  .heroImage {
+    height: 440px;
+    object-position: 74% top;
+  }
+  .heroShade {
+    background: linear-gradient(
+      0deg,
+      #030b12 0%,
+      #030b12 43%,
+      #030b12e6 54%,
+      #030b1240 78%,
+      #030b1210
+    );
+  }
+  .hero::after {
+    display: none;
+  }
+  .heroContent {
+    width: calc(100% - 40px);
+    padding: 320px 0 42px;
+  }
+  .hero h1 {
+    font-size: clamp(31px, 7.7vw, 43px);
+    letter-spacing: -0.04em;
+    margin-bottom: 18px;
+  }
+  .eyebrow {
+    margin-bottom: 20px;
+    font-size: 10px;
+  }
+  .lead {
+    font-size: 15px;
+    max-width: 400px;
+  }
+  .hero .button {
+    font-size: 13px;
+    width: 100%;
+    padding: 15px 17px;
+    justify-content: center;
+    gap: 10px;
+  }
+  .hero .button > span {
+    margin-left: auto;
+  }
+  .heroSecondary {
+    font-size: 10px;
+    gap: 10px;
+  }
+  .heroSecondary > span {
+    padding-left: 10px;
+  }
   .features,
   .plans,
   .process,
   .faq,
   .cta,
   .footer {
-    width: calc(100% - 36px);
-  }
-  .nav {
-    min-height: 80px;
-    gap: 12px;
-  }
-  .brand {
-    font-size: 18px;
-    gap: 7px;
-  }
-  .brandIcon {
-    width: 30px;
-    height: 32px;
-  }
-  .nav nav {
-    gap: 12px;
-  }
-  .nav nav a {
-    font-size: 11px;
-  }
-  .nav nav > a:first-child {
-    display: none;
-  }
-  .nav nav .navLogin {
-    padding: 7px 10px;
-  }
-  .hero h1 {
-    font-size: clamp(37px, 10.3vw, 49px);
-  }
-  .lead {
-    font-size: 14px;
-  }
-  .actions {
-    gap: 19px;
+    width: calc(100% - 40px);
   }
   .featureGrid {
     grid-template-columns: 1fr;
@@ -776,30 +873,6 @@
   }
   .feature h3 {
     margin-top: 15px;
-  }
-  .visual {
-    padding: 14px;
-  }
-  .stats strong {
-    font-size: 27px;
-  }
-  .stats > div {
-    padding: 10px 7px;
-  }
-  .stats small {
-    font-size: 8px;
-  }
-  .visualTitle {
-    font-size: 21px;
-  }
-  .task {
-    gap: 8px;
-  }
-  .task b {
-    font-size: 10px;
-  }
-  .tag {
-    font-size: 7px;
   }
   .accountMain {
     width: calc(100% - 36px);

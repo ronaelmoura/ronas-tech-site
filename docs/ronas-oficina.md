@@ -3,7 +3,7 @@
 ## Auditoria do PR #48
 
 - O build original falhava em `Portfolio.module.css`: sequências literais `\n` tinham sido gravadas como CSS. Corrigidas para quebras de linha reais. O erro já estava na base do PR.
-- A landing referenciava `/images/ronas-oficina-sistema-travado.png`, ausente no repositório. A seção foi substituída por conteúdo e ilustração em CSS, sem dependência de imagem inexistente.
+- A landing referenciava `/images/ronas-oficina-sistema-travado.png`, ausente no repositório. A referência quebrada foi removida. Na revisão visual solicitada, foi incluída a imagem local `public/images/ronas-oficina-workshop.png` e o logo fornecido pelo usuário em `public/images/ronas-tech-brand.png`.
 - As classes `problemPhoto` e `problemCopy` não estavam definidas. O layout foi refeito com estilos responsivos próprios.
 - Faltavam navegação de produto, comparação de planos e caminho para criar/acessar uma conta. Agora há os três planos, FAQ, cadastro, login e área da conta.
 - Incluídos link de pular conteúdo, foco visível, rótulos nos formulários, estados de erro/carregamento, metadados e `noindex` nas rotas de conta. As páginas de conta não inicializam os rastreadores de marketing do site.
@@ -63,3 +63,7 @@ Clientes/veículos, ordens de serviço, orçamentos, equipe, estoque e relatóri
 - Lint: sem erros, com dois avisos preexistentes em `ServicePage.jsx`.
 
 Nenhum merge ou deploy de produção é necessário para revisar esta etapa.
+
+## Revisão visual pela referência do usuário
+
+Cabeçalho com logo RT fornecido pelo usuário, marca RONAS TECH, fundo de oficina gerado com a ferramenta integrada imagegen, título branco/azul, CTA WhatsApp e acesso secundário ao cadastro. No celular a foto fica acima do texto para preservar legibilidade. Planos e autenticação permanecem disponíveis. Build e interface verificados em 1440, 950, 390 e 320 px; nenhuma mudança no backend.
