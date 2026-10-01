@@ -41,9 +41,14 @@ function RonasOficinaPage() {
       </section>
 
       <section className={styles.problem}>
-        <p className={styles.kicker}>A ROTINA DA OFICINA</p>
-        <h2>Quando as informações ficam espalhadas, acompanhar cada serviço pode ficar mais difícil.</h2>
-        <p>Conversas, papéis e planilhas podem dificultar a consulta de dados de clientes, veículos e serviços. A proposta é reunir essas informações em um fluxo simples.</p>
+        <div className={styles.problemPhoto}>
+          <img src="/images/ronas-oficina-sistema-travado.png" alt="Mecânico frustrado diante de um sistema de oficina que não responde" loading="lazy" />
+        </div>
+        <div className={styles.problemCopy}>
+          <p className={styles.kicker}>A ROTINA DA OFICINA</p>
+          <h2>Sua oficina não pode parar por causa de um sistema.</h2>
+          <p>Quando o sistema trava, os atendimentos atrasam, as informações se perdem e o trabalho acumula. A rotina da oficina precisa ser simples e organizada.</p>
+        </div>
       </section>
 
       <section className={styles.features}>
