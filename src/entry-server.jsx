@@ -46,6 +46,11 @@ const spreadsheetProductMetadata = Object.fromEntries(spreadsheetProducts.map((p
 }]))
 
 const productMetadata = {
+  '/ronas-oficina': {
+    title: 'Ronas Oficina | Organização digital para oficinas | Ronas Tech',
+    description: 'Conheça a proposta Ronas Oficina: uma solução digital em desenvolvimento para organizar clientes, veículos, serviços e orçamentos.',
+    canonical: `${siteConfig.siteUrl}ronas-oficina`,
+  },
   '/produtos-digitais': {
     title: `Planilhas e Produtos Digitais | ${siteConfig.companyName}`,
     description: 'Conheça as planilhas inteligentes da Ronas Tech para finanças, vendas, estoque, precificação, serviços e organização de negócios.',
