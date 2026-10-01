@@ -27,3 +27,6 @@ lighthouse-reports
 *.sw?
 .vercel
 .env*
+/data/
+.ssr/
+!server/.env.example

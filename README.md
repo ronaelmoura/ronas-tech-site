@@ -171,3 +171,7 @@ Desenvolvido por **Ronael Moura**.
 - [GitHub](https://github.com/ronaelmoura)
 - [LinkedIn](https://www.linkedin.com/in/ronael-moura)
 - [Instagram](https://www.instagram.com/ronas_tech/)
+
+## Ronas Oficina — evolução SaaS
+
+A landing `/ronas-oficina` e o ambiente local de contas estão documentados em [docs/ronas-oficina.md](docs/ronas-oficina.md). Para testar cadastro/login reais: Node 24+, `npm ci`, `npm run build` e `npm start`. Pagamentos dependem de configuração Stripe de teste e preços; o deploy Vercel atual continua sendo estático.

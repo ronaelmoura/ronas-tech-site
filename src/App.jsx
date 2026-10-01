@@ -19,6 +19,7 @@ import DigitalProductsCatalogPage from './pages/DigitalProductsCatalogPage'
 import SpreadsheetProductPage from './pages/SpreadsheetProductPage'
 import ServicePage from './pages/ServicePage'
 import RonasOficinaPage from './pages/RonasOficinaPage'
+import OficinaAccountPage from './pages/OficinaAccountPage'
 import { spreadsheetProductsByPath } from './data/spreadsheetProducts'
 import './components/Services/Services.css'
 import './components/Problems/Problems.css'
@@ -47,6 +48,7 @@ function App({ pathname: pathnameProp }) {
 
   let content
   if (pathname === '/ronas-oficina') content = <RonasOficinaPage />
+  else if (['/ronas-oficina/cadastro', '/ronas-oficina/entrar', '/ronas-oficina/conta'].includes(pathname)) content = <OficinaAccountPage mode={pathname.split('/').pop()} />
   else if (pathname === '/produtos-digitais') content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><DigitalProductsCatalogPage /></>
   else if (pathname === '/produtos-digitais/planilha-financeira-pessoal') content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><PersonalFinanceProductPage /></>
   else if (pathname === '/produtos-digitais/kit-financeiro-mei') content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><KitFinanceProductPage /></>
@@ -56,7 +58,7 @@ function App({ pathname: pathnameProp }) {
   else if (pathname !== '/') content = <NotFound />
   else content = <><a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><HomeMotion /><Navbar /><main id="conteudo-principal" className="home"><Hero /><Problems /><Services /><HowItWorks /><WhyRonasTech /><Portfolio /><About /><Contact /></main><Footer /></>
 
-  return <>{content}<CookieNotice /></>
+  return <>{content}{!pathname.startsWith('/ronas-oficina/') && <CookieNotice />}</>
 }
 
 export default App

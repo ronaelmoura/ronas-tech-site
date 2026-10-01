@@ -6,8 +6,10 @@ import App from './App.jsx'
 import { initializeAnalytics } from './utils/analytics'
 import { initializeMetaPixel } from './utils/metaPixel'
 
-initializeAnalytics()
-initializeMetaPixel()
+if (!window.location.pathname.startsWith('/ronas-oficina/')) {
+  initializeAnalytics()
+  initializeMetaPixel()
+}
 
 if (window.location.pathname === '/' && window.location.hash === '#produtos-digitais') {
   window.location.replace('/produtos-digitais')
