@@ -138,7 +138,7 @@ Os eventos implementados são:
 - `contact_form_submit`: envio válido do formulário, incluindo somente o assunto (vaga CLT, vaga PJ, projeto freelance ou outro);
 - `external_link_click`: cliques em GitHub, LinkedIn, Instagram e portfólio.
 
-Nome, empresa, telefone e mensagem do formulário não são enviados ao Google Analytics. No envio do formulário, o telefone é repassado ao Google Ads (`gtag('set', 'user_data')`, Conversões Otimizadas), que gera o hash no navegador antes de enviar.
+Nome, empresa, telefone e mensagem são usados apenas para montar a mensagem do WhatsApp. O site não envia esses campos ao Google Analytics, Google Ads ou Meta Pixel.
 
 Todo clique em WhatsApp (`whatsapp_click`) é tratado como lead e, além do evento
 no GA4, também dispara:
@@ -147,10 +147,17 @@ no GA4, também dispara:
   `VITE_GOOGLE_ADS_CONVERSION_LABEL` estiverem configurados;
 - o evento `Lead` do Meta Pixel, quando `VITE_META_PIXEL_ID` estiver configurado.
 
-Um aviso de cookies (`src/components/CookieNotice`) é exibido na primeira
-visita, informando o uso de Google Analytics, Google Ads e Meta, com link para
-a Política de Privacidade. A preferência de ter fechado o aviso fica salva no
-`localStorage` do navegador.
+O painel de cookies (`src/components/CookieNotice`) permite aceitar ou recusar
+o acompanhamento. As ferramentas e os eventos só são ativados após aceitar,
+quando os IDs estiverem configurados. A escolha fica em `ronas_tracking_consent_v1`
+no `localStorage`; a preferência pode ser alterada no final de qualquer página.
+Revogar uma autorização recarrega a página para remover os scripts já carregados.
+O telefone com DDD 55, a montagem da mensagem e as escolhas de cookies são
+cobertos pelos testes executados com `npm test`.
+
+As novas imagens editoriais e seus prompts estão documentados em
+[docs/design-assets.md](docs/design-assets.md). Elas são ilustrativas e não representam
+o escritório real do autor. As prévias dos produtos usam as capturas das planilhas.
 
 ## Deploy
 

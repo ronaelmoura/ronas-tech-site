@@ -1,5 +1,5 @@
 import { trackExternalLink } from '../../utils/analytics'
-import { useTilt } from '../../motion/hooks'
+import Icon from '../Icon/Icon'
 import styles from './Portfolio.module.css'
 
 const projects = [
@@ -185,18 +185,16 @@ function ProjectVisual({ type }) {
           <span />
           <button type="button" tabIndex="-1">Economize energia</button>
         </div>
-        <div className={styles.profileShape}>❄</div>
+        <div className={styles.profileShape}><Icon name="snowflake" size={36} /></div>
       </div>
     </div>
   )
 }
 
 function ProjectCard({ project }) {
-  const tiltRef = useTilt(4)
   return (
     <article
-      ref={tiltRef}
-      className={`${styles.card} tilt reveal ${project.featured ? styles.featured : ''}`}
+      className={`${styles.card} ${project.featured ? styles.featured : ''}`}
     >
       <div className={styles.visual}>
         {project.featured && (
@@ -207,7 +205,7 @@ function ProjectCard({ project }) {
 
       <div className={styles.content}>
         <div className={styles.meta}>
-          <span className={styles.category}>{project.category}</span>
+          <span className={styles.category}><Icon name={project.visual === 'api' ? 'server' : 'layout'} size={16} />{project.category}</span>
           <span
             className={`${styles.status} ${project.status === 'Publicado' ? styles.published : ''}`}
           >
@@ -285,8 +283,8 @@ function Portfolio() {
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Projetos publicados</p>
-          <h2 id="portfolio-title">Projetos que mostram como eu resolvo problemas</h2>
+          <p className={styles.eyebrow}>01 / Projetos selecionados</p>
+          <h2 id="portfolio-title">Código que resolve.<br />Projetos que demonstram.</h2>
           <p className={styles.subtitle}>
             Frontend, backend e produto apresentados com contexto, decisões de
             engenharia e links para você avaliar a entrega.

@@ -2,6 +2,14 @@
    ícones em --color-brand. */
 
 .section {
+  --color-page: #14253a;
+  --color-surface: #192d45;
+  --color-line: #354b66;
+  --color-ink: #f2f6fc;
+  --color-ink-soft: #c4d0df;
+  --color-ink-faint: #b0bfd3;
+  --color-brand: #a6ceff;
+  --color-brand-soft: #263e5c;
   position: relative;
   overflow: hidden;
   padding: 104px 0;
@@ -64,7 +72,7 @@
 
 .group {
   min-width: 0;
-  padding: 30px;
+  padding: 24px;
   background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: 17px;
@@ -240,4 +248,13 @@
   .technology:hover {
     transform: none;
   }
+}
+
+@media (min-width: 1100px) {
+  .groups { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .group { padding: 22px; }
+  .groupHeader { min-height: 114px; gap: 8px; }
+  .technologyList { grid-template-columns: 1fr; }
+  .technology { min-height: 58px; padding: 9px 12px; }
+  .icon { width: 32px; height: 32px; border: 0; border-radius: 8px; }
 }

@@ -3,7 +3,7 @@
   inset: 0 0 auto;
   z-index: 1000;
   height: 80px;
-  background: transparent;
+  background: var(--color-page-blur);
   border-bottom: 1px solid transparent;
   transition:
     background-color 250ms ease,
@@ -106,6 +106,7 @@
 }
 
 .cta {
+  gap: 12px;
   display: inline-flex;
   min-height: 44px;
   align-items: center;

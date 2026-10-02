@@ -77,7 +77,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
 }
+
+:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 4px; }
+::selection { color: #fff; background: #1069cf; }
+svg { vertical-align: middle; }
+h1, h2, h3 { text-wrap: balance; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 *,
 *::before,
@@ -207,17 +214,6 @@ body.has-custom-cursor, body.has-custom-cursor * { cursor: none; }
   .aurora i { animation: none !important; }
   .cursor-dot, .cursor-ring { display: none !important; }
   body.has-custom-cursor, body.has-custom-cursor * { cursor: auto; }
-}
-
-/* A home é longa: adiar o layout das seções fora da tela reduz o trabalho
-   da primeira renderização. O tamanho estimado evita que a barra de
-   rolagem pule enquanto o visitante desce a página. */
-#projetos,
-#stack,
-#sobre,
-#contato {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 1200px;
 }
 
 #projetos,

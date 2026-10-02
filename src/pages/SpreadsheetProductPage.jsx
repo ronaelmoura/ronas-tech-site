@@ -3,20 +3,16 @@ import { trackWhatsAppClick } from '../utils/analytics'
 import styles from './PersonalFinanceProductPage.module.css'
 import fixes from './PersonalFinanceProductPageFixes.module.css'
 import pageStyles from './SpreadsheetProductPage.module.css'
+import Icon from '../components/Icon/Icon'
+
+function BuyButton({ location, whatsappUrl }) {
+  return <a className={`${styles.buyButton} ${fixes.buyButton}`} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-location={location} onClick={() => trackWhatsAppClick(`planilha_${location}`)}>Quero esta planilha <Icon name="arrowUpRight" size={18} /></a>
+}
 
 function SpreadsheetProductPage({ product }) {
   const whatsappMessage = `Olá! Quero comprar ${product.title} por ${product.price}.`
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
   const [currency, amount] = product.price.split(' ')
-
-  const BuyButton = ({ location }) => <a
-    className={`${styles.buyButton} ${fixes.buyButton}`}
-    href={whatsappUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    data-location={location}
-    onClick={() => trackWhatsAppClick(`planilha_${location}`)}
-  >Quero esta planilha</a>
 
   return <div className={styles.page}>
     <header className={styles.header}>
@@ -31,11 +27,11 @@ function SpreadsheetProductPage({ product }) {
           <h1>{product.title}</h1>
           <p className={styles.lead}>{product.lead}</p>
           <div className={styles.trustRow}><span>✓ Painel automático</span><span>✓ Campos guiados</span><span>✓ Pagamento único</span></div>
-          <div className={styles.offer}><div><small>POR APENAS</small><strong><span>{currency}</span> {amount}</strong><p>sem mensalidade</p></div><BuyButton location="hero" /></div>
+          <div className={styles.offer}><div><small>POR APENAS</small><strong><span>{currency}</span> {amount}</strong><p>sem mensalidade</p></div><BuyButton whatsappUrl={whatsappUrl} location="hero" /></div>
           <p className={styles.support}>Atendimento direto com a Ronas Tech pelo WhatsApp.</p>
         </div>
         <div className={styles.heroVisual}>
-          <div className={styles.deviceDesktop}><span /><span /><span /><img src={product.image} alt={`Painel automático de ${product.title}`} /></div>
+          <div className={styles.deviceDesktop}><span /><span /><span /><img src={product.previews[0][0]} alt={`Painel automático de ${product.title}`} /></div>
           <div className={styles.floatCard}><span>{product.highlight[0]}</span><strong>{product.highlight[1]}</strong></div>
         </div>
       </section>
@@ -51,8 +47,8 @@ function SpreadsheetProductPage({ product }) {
           <p className={styles.sectionLabel}>Tudo conectado</p>
           <h2>{product.insideTitle}</h2>
           <p>{product.insideText}</p>
-          <ul>{product.included.map((item) => <li key={item}><span>✓</span>{item}</li>)}</ul>
-          <BuyButton location="conteudo" />
+          <ul>{product.included.map((item) => <li key={item}><span><Icon name="check" size={17} /></span>{item}</li>)}</ul>
+          <BuyButton whatsappUrl={whatsappUrl} location="conteudo" />
         </div>
         <div className={`${styles.insideVisual} ${fixes.insideVisual}`}><img src={product.previews[2][0]} alt={product.previews[2][1]} /><div><small>{product.highlight[0]}</small><strong>{product.highlight[1]}</strong></div></div>
       </section>
@@ -74,10 +70,10 @@ function SpreadsheetProductPage({ product }) {
           ['Consigo usar no celular?', 'Sim, em aplicativos compatíveis com arquivos Excel. Para editar tabelas largas e analisar gráficos, o computador oferece mais conforto.'],
           ['Posso personalizar os dados?', 'Sim. Você pode trocar os exemplos e adaptar categorias, nomes e parâmetros à sua rotina.'],
           ['É um sistema com mensalidade?', `Não. O valor de ${product.price} é um pagamento único, sem assinatura mensal.`],
-        ].map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div>
+        ].map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<span><Icon name="plus" size={18} /></span></summary><p>{answer}</p></details>)}</div>
       </section>
 
-      <section className={`${styles.finalCta} ${pageStyles.finalCta}`}><div><p className={styles.sectionLabel}>Comece com mais clareza</p><h2>Leve esta planilha para sua rotina.</h2><p>{product.description}</p></div><div><strong><span>{currency}</span> {amount}</strong><small>pagamento único</small><BuyButton location="final" /></div></section>
+      <section className={`${styles.finalCta} ${pageStyles.finalCta}`}><div><p className={styles.sectionLabel}>Comece com mais clareza</p><h2>Leve esta planilha para sua rotina.</h2><p>{product.description}</p></div><div><strong><span>{currency}</span> {amount}</strong><small>pagamento único</small><BuyButton whatsappUrl={whatsappUrl} location="final" /></div></section>
     </main>
 
     <footer className={styles.footer}><a href="/"><img src={siteConfig.logoPath} alt="Ronas Tech" width="43" height="40" /></a><p>© {new Date().getFullYear()} Ronas Tech. Todos os direitos reservados.</p><div><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos</a></div></footer>

@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { siteConfig } from '../../config/siteConfig'
 import {
-  setEnhancedConversionUserData,
   trackContactFormSubmit,
   trackExternalLink,
   trackWhatsAppClick,
 } from '../../utils/analytics'
-import { isValidBrazilPhone, toE164BrazilPhone } from '../../utils/phone'
+import { isValidBrazilPhone } from '../../utils/phone'
+import { createWhatsAppMessage } from '../../utils/contact'
 import styles from './Contact.module.css'
+import Icon from '../Icon/Icon'
 
 const initialFormData = {
   name: '',
@@ -49,21 +50,11 @@ function validateForm(formData) {
   return errors
 }
 
-function createWhatsAppMessage(formData) {
-  return [
-    'Olá, Ronael! Vim pelo seu site.',
-    '',
-    `Nome: ${formData.name.trim()}`,
-    formData.company.trim() ? `Empresa: ${formData.company.trim()}` : null,
-    `Assunto: ${formData.reason}`,
-    `Mensagem: ${formData.message.trim()}`,
-  ].filter((line) => line !== null).join('\n')
-}
-
 function Contact() {
   const [formData, setFormData] = useState(initialFormData)
   const [errors, setErrors] = useState({})
   const [submitError, setSubmitError] = useState('')
+  const [messageUrl, setMessageUrl] = useState('')
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -75,6 +66,7 @@ function Contact() {
       return nextErrors
     })
     setSubmitError('')
+    setMessageUrl('')
   }
 
   function handleSubmit(event) {
@@ -92,17 +84,16 @@ function Contact() {
     // usuário, antes do tracking: qualquer espera faz o navegador bloquear
     // a aba. O gtag.js envia os eventos por sendBeacon logo em seguida.
     const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(createWhatsAppMessage(formData))}`
+    setMessageUrl(whatsappUrl)
     const whatsappWindow = window.open(whatsappUrl, '_blank')
     if (!whatsappWindow) {
-      setSubmitError('Não foi possível abrir o WhatsApp. Permita pop-ups no navegador ou escreva para ' + siteConfig.email + '.')
+      setSubmitError('O navegador bloqueou a nova aba. Use o link abaixo para continuar.')
       return
     }
     whatsappWindow.opener = null
 
-    setEnhancedConversionUserData({ phoneE164: toE164BrazilPhone(formData.phone) })
     trackWhatsAppClick('contact_form')
     trackContactFormSubmit(formData.reason)
-    setFormData(initialFormData)
     setErrors({})
   }
 
@@ -123,8 +114,8 @@ function Contact() {
     <section id="contato" className={`${styles.section} reveal`} aria-labelledby="contact-title">
       <div className={styles.container}>
         <div className={styles.information}>
-          <p className={styles.eyebrow}>Contato</p>
-          <h2 id="contact-title">Tem uma vaga ou um projeto? Vamos conversar.</h2>
+          <p className={styles.eyebrow}>04 / Vamos conversar</p>
+          <h2 id="contact-title">Seu próximo projeto começa com uma conversa.</h2>
           <p className={styles.subtitle}>
             Respondo pessoalmente. Escolha o canal que for mais prático para você ou use o formulário.
           </p>
@@ -132,7 +123,7 @@ function Contact() {
           <div className={styles.paths}>
             {paths.map(({ title, text, links }) => (
               <article className={styles.path} key={title}>
-                <h3>{title}</h3>
+                <h3><span className={styles.pathIcon}><Icon name={title === 'Vagas e oportunidades' ? 'briefcase' : 'code'} /></span>{title}</h3>
                 <p>{text}</p>
                 <ul>
                   {links.map((link) => (
@@ -144,7 +135,7 @@ function Contact() {
                         rel={link.external ? 'noopener noreferrer' : undefined}
                         onClick={() => handlePathLink(link)}
                       >
-                        {link.label} <span aria-hidden="true">→</span>
+                        {link.label} <Icon name="arrowUpRight" size={16} />
                       </a>
                     </li>
                   ))}
@@ -196,10 +187,12 @@ function Contact() {
             </div>
 
             {submitError && <p className={styles.submitError} role="alert">{submitError}</p>}
+            {messageUrl && <p className={styles.feedback} role="status">Sua mensagem está pronta. <a href={messageUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('contact_retry')}>Continuar no WhatsApp ↗</a> Você confirma o envio por lá.</p>}
 
             <button className={styles.submitButton} type="submit">
-              Abrir no WhatsApp <span aria-hidden="true">→</span>
+              <Icon name="message" size={19} /> Abrir no WhatsApp <Icon name="arrowUpRight" size={18} />
             </button>
+            <p className={styles.privacyNote}><Icon name="shield" size={15} /><span>Seus dados entram apenas na mensagem de contato. <a href="/politica-de-privacidade">Saiba como são usados.</a></span></p>
           </form>
         </div>
       </div>

@@ -1,14 +1,9 @@
-import { Aurora, CursorGlow, ScrollProgress } from './effects'
-import { useHeroIntro, useScrollReveals, useSmoothScroll } from './scroll'
+import { ScrollProgress } from './effects'
 
-// Todo o sistema de movimento da home (GSAP + Lenis) vive neste módulo,
-// que é carregado sob demanda depois da hidratação — assim o pacote
-// principal não carrega ~150 KB de animação antes do conteúdo aparecer.
+// A home mantém apenas um indicador de leitura; a rolagem é nativa e
+// nenhum conteúdo é escondido enquanto módulos são carregados.
 function HomeMotion() {
-  useSmoothScroll()
-  useScrollReveals()
-  useHeroIntro()
-  return <><Aurora /><CursorGlow /><ScrollProgress /></>
+  return <ScrollProgress />
 }
 
 export default HomeMotion

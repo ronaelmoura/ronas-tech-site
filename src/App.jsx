@@ -21,7 +21,7 @@ const legalPages = { '/politica-de-privacidade': PrivacyPolicy, '/termos-de-uso'
 // Motion is intentionally scoped to the homepage only — product and legal
 // pages stay untouched.
 //
-// O módulo de movimento (GSAP + Lenis) é carregado depois da hidratação,
+// O indicador de leitura é carregado depois da hidratação,
 // quando o navegador estiver ocioso: ele é decoração e não pode atrasar a
 // primeira renderização do conteúdo. Se o carregamento falhar, a home
 // continua completa e utilizável, apenas sem as animações.

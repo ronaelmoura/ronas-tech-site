@@ -214,3 +214,10 @@
 @media (prefers-reduced-motion: reduce) {
   .actions a { transition-duration: .01ms; }
 }
+
+/* Editorial image and compact professional credentials. */
+.workspace { position: relative; margin: -30px -30px 26px; overflow: hidden; border-radius: 18px 18px 0 0; }
+.workspace img { display: block; width: 100%; height: 270px; object-fit: cover; }
+.workspace figcaption { position: absolute; inset: auto 0 0; padding: 30px 22px 16px; color: white; background: linear-gradient(transparent, rgb(10 20 30 / 75%)); font-size: 12px; letter-spacing: .04em; }
+.proof { box-shadow: 0 14px 40px rgb(13 17 23 / 6%); }
+@media (max-width: 620px) { .workspace { margin: -23px -23px 24px; } .workspace img { height: 230px; } }

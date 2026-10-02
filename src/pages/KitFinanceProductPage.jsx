@@ -1,7 +1,9 @@
+import Icon from '../components/Icon/Icon'
 import { useEffect } from 'react'
 import { siteConfig } from '../config/siteConfig'
 import { trackConversion } from '../utils/analytics'
 import { trackPixelEvent } from '../utils/metaPixel'
+import { hasTrackingConsent } from '../utils/consent'
 import styles from './PersonalFinanceProductPage.module.css'
 import fixes from './PersonalFinanceProductPageFixes.module.css'
 import kit from './KitFinanceProductPage.module.css'
@@ -70,7 +72,7 @@ function trackCheckoutClick(location) {
 }
 
 function BuyButton({ location, label = 'Comprar agora' }) {
-  return <a className={`${styles.buyButton} ${fixes.buyButton} ${kit.buyButton}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer" data-location={location} onClick={() => trackCheckoutClick(location)}>{label}</a>
+  return <a className={`${styles.buyButton} ${fixes.buyButton} ${kit.buyButton}`} href={siteConfig.kiwifyCheckoutUrl} target="_blank" rel="noopener noreferrer" data-location={location} onClick={() => trackCheckoutClick(location)}>{label} <Icon name="arrowUpRight" size={18} /></a>
 }
 
 // Each route is its own document (no client-side router), so one page load must
@@ -80,10 +82,15 @@ let viewContentSent = false
 
 function KitFinanceProductPage() {
   useEffect(() => {
-    if (viewContentSent) return
-    viewContentSent = true
-    trackPixelEvent('ViewContent', contentPayload)
-    trackConversion('view_item', { product: product.id, value: product.value, currency: product.currency })
+    const sendView = () => {
+      if (viewContentSent || !hasTrackingConsent()) return
+      viewContentSent = true
+      trackPixelEvent('ViewContent', contentPayload)
+      trackConversion('view_item', { product: product.id, value: product.value, currency: product.currency })
+    }
+    sendView()
+    window.addEventListener('ronas:consent', sendView)
+    return () => window.removeEventListener('ronas:consent', sendView)
   }, [])
 
   return <div className={`${styles.page} ${kit.page}`}>
@@ -104,7 +111,7 @@ function KitFinanceProductPage() {
           <p className={styles.support}>Compra protegida por garantia de 7 dias.</p>
         </div>
         <div className={`${styles.heroVisual} ${kit.heroVisual}`}>
-          <div className={kit.productCover}><img src="/capa-kit-financeiro-mei-v2.webp" alt="Capa do Kit Financeiro Inteligente para MEI" width="1280" height="720" /></div>
+          <div className={kit.productCover}><img src="/kit-mei-dashboard.png" alt="Dashboard do Kit Financeiro Inteligente para MEI" /></div>
           <div className={styles.floatCard}><span>Visão do negócio</span><strong>Lucro e pendências em segundos</strong></div>
         </div>
       </section>
@@ -122,7 +129,7 @@ function KitFinanceProductPage() {
           <p className={styles.sectionLabel}>Tudo conectado em um único kit</p>
           <h2>Você registra a rotina. A planilha transforma dados em visão.</h2>
           <p>Preencha as movimentações do dia a dia e acompanhe automaticamente o caixa, os resultados, as contas e a formação dos seus preços.</p>
-          <ul>{included.map((item) => <li key={item}><span>✓</span>{item}</li>)}</ul>
+          <ul>{included.map((item) => <li key={item}><span><Icon name="check" size={17} /></span>{item}</li>)}</ul>
           <BuyButton location="conteudo" />
         </div>
         <div className={`${styles.insideVisual} ${fixes.insideVisual} ${kit.insideVisual}`}><img src="/kit-mei-precificacao.png" alt="Calculadora de precificação do Kit Financeiro para MEI" /><div><small>PREÇO SUSTENTÁVEL</small><strong>Custos, taxas e margem considerados</strong></div></div>
@@ -142,7 +149,7 @@ function KitFinanceProductPage() {
         <p className={styles.sectionLabel}>Antes de decidir</p>
         <h2 id="audience-title">Veja se o kit combina com o seu momento.</h2>
         <div className={kit.audienceGrid}>
-          <article className={kit.audienceFor}><h3>Para quem é</h3><ul>{audience.map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul></article>
+          <article className={kit.audienceFor}><h3>Para quem é</h3><ul>{audience.map((item) => <li key={item}><Icon name="check" size={17} />{item}</li>)}</ul></article>
           <article className={kit.audienceNot}><h3>Para quem não é</h3><ul>{notAudience.map((item) => <li key={item}><span aria-hidden="true">–</span>{item}</li>)}</ul></article>
         </div>
       </section>
@@ -162,7 +169,7 @@ function KitFinanceProductPage() {
           ['A planilha já vem com fórmulas automáticas?', 'Sim. Os cálculos, totais, indicadores e gráficos já estão configurados. Você preenche apenas os campos indicados.'],
           ['Como funciona a garantia?', 'Você tem 7 dias após a compra para conhecer o kit e solicitar o reembolso, se necessário.'],
           ['Substitui um contador?', 'Não. O kit ajuda na organização e na visão gerencial, mas não substitui orientação contábil ou fiscal.'],
-        ].map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div>
+        ].map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<span><Icon name="plus" size={18} /></span></summary><p>{answer}</p></details>)}</div>
       </section>
 
       <section className={`${styles.finalCta} ${kit.finalCta}`}><div><p className={styles.sectionLabel}>Organize o dinheiro do negócio</p><h2>Comece hoje a organizar melhor o seu negócio.</h2><p>Controle, acompanhe e tome decisões com informações organizadas.</p></div><div><strong><span>R$</span> 37,90</strong><small>pagamento único</small><BuyButton location="final" label="Quero acessar o Kit Financeiro MEI" /><p className={kit.finalCtaNote}>Pagamento seguro pela Kiwify • Acesso imediato após a aprovação</p></div></section>

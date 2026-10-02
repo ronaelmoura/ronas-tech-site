@@ -19,7 +19,7 @@
     </style>
     <script>
       try {
-        if (localStorage.getItem('ronas_cookie_notice_dismissed'))
+        if (['accepted', 'declined'].includes(localStorage.getItem('ronas_tracking_consent_v1')))
           document.documentElement.dataset.cookieNotice = 'dismissed'
       } catch (error) {}
     </script>

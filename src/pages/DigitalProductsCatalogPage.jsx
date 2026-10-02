@@ -2,6 +2,7 @@ import { siteConfig } from '../config/siteConfig'
 import { trackWhatsAppClick } from '../utils/analytics'
 import { spreadsheetProducts } from '../data/spreadsheetProducts'
 import styles from './DigitalProductsCatalogPage.module.css'
+import Icon from '../components/Icon/Icon'
 
 const products = [
   {
@@ -10,7 +11,7 @@ const products = [
     title: 'Kit Financeiro Inteligente para MEI',
     price: 'R$ 37,90',
     description: 'Dashboard, controle financeiro, precificação e fluxo de caixa para o pequeno negócio.',
-    image: '/capa-kit-financeiro-mei-v2.webp',
+    image: '/kit-mei-dashboard.png',
     featured: true,
   },
   {
@@ -19,7 +20,7 @@ const products = [
     title: 'Planilha Financeira Pessoal',
     price: 'R$ 37,90',
     description: 'Organize ganhos, gastos, cartões e metas com acompanhamento automático.',
-    image: '/og-planilha-financeira-pessoal.png',
+    image: '/planilha-pessoal-painel.png',
   },
   ...spreadsheetProducts,
 ]
@@ -33,16 +34,20 @@ function DigitalProductsCatalogPage() {
 
     <main id="conteudo-principal">
       <section className={styles.hero}>
+        <div className={styles.heroCopy}>
         <p>Produtos digitais Ronas Tech</p>
         <h1>Planilhas inteligentes para uma rotina mais organizada.</h1>
         <span>Escolha a solução ideal para controlar finanças, vendas, estoque, serviços ou conteúdo com cálculos automáticos e visual profissional.</span>
+        <a className={styles.catalogLink} href="#catalog-title">Explorar as planilhas <Icon name="arrowDown" size={18} /></a>
+        </div>
+        <figure className={styles.editorial}><img src="/planning-editorial.webp" alt="Cena ilustrativa de planejamento com caderno, café e notebook sobre uma mesa" width="960" height="640" fetchPriority="high" /><figcaption>Mais clareza para cuidar do que importa.</figcaption></figure>
       </section>
 
       <section className={styles.catalog} aria-labelledby="catalog-title">
         <div className={styles.catalogHeading}><div><p>Catálogo completo</p><h2 id="catalog-title">Conheça todos os produtos</h2></div><span>{products.length} soluções disponíveis</span></div>
         <div className={styles.grid}>{products.map((product) => <a className={`${styles.card} ${product.featured ? styles.featured : ''}`} href={product.path} key={product.path}>
-          <div className={styles.cover}><img src={product.image} alt={`Capa de ${product.title}`} loading="lazy" />{product.featured && <b>Mais completo</b>}</div>
-          <div className={styles.cardBody}><span className={styles.category}>{product.category}</span><h3>{product.title}</h3><p>{product.description}</p><div className={styles.cardBottom}><strong>Ver produto <span aria-hidden="true">→</span></strong><b>{product.price}</b></div></div>
+          <div className={styles.cover}><img src={product.previews?.[0]?.[0] || product.image} alt={`Prévia de ${product.title}`} loading="lazy" decoding="async" />{product.featured && <b>Kit completo</b>}</div>
+          <div className={styles.cardBody}><span className={styles.category}>{product.category}</span><h3>{product.title}</h3><p>{product.description}</p><div className={styles.cardBottom}><strong>Ver produto <Icon name="arrowUpRight" size={16} /></strong><b>{product.price}</b></div></div>
         </a>)}</div>
       </section>
 

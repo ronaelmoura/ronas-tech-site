@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { siteConfig } from '../config/siteConfig'
 import styles from './PrivacyPolicy.module.css'
 
-const LAST_UPDATED = '21 de julho de 2026'
+const LAST_UPDATED = '2 de outubro de 2026'
 
 function PrivacyPolicy() {
   useEffect(() => {
@@ -73,11 +73,13 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2>4. Google Analytics e Meta Pixel</h2>
+            <h2>4. Google Analytics, Google Ads e Meta Pixel</h2>
             <p>
-              O site pode utilizar o Google Analytics para obter estatísticas de
-              acesso. Nome, e-mail, telefone, mensagem e outros dados pessoais
-              preenchidos no formulário não são enviados ao Analytics.
+              Com sua autorização nas preferências de cookies, o site pode utilizar
+              Google Analytics para estatísticas de acesso, Google Ads para medir
+              cliques de contato e Meta Pixel para medir visitas e interesse nos
+              produtos. Nome, e-mail, telefone e conteúdo da mensagem preenchidos
+              no formulário não são enviados pelo site a essas ferramentas.
             </p>
             <p>
               Quando há campanhas ativas no Facebook e no Instagram, o site pode
@@ -89,9 +91,9 @@ function PrivacyPolicy() {
               quando a integração está ativa.
             </p>
             <p>
-              Você pode limitar esse acompanhamento pelas preferências de
-              anúncios da sua conta na Meta, pelas configurações de cookies do
-              navegador ou navegando em janela anônima.
+              Você pode aceitar ou recusar o acompanhamento e alterar sua escolha
+              em “Preferências de cookies”, no final de qualquer página. Ao recusar
+              após ter aceitado, a página é recarregada para interromper as ferramentas.
             </p>
           </section>
 
@@ -110,7 +112,9 @@ function PrivacyPolicy() {
             <p>
               Ferramentas de análise podem utilizar cookies ou tecnologias
               semelhantes para compreender a utilização do site. Esses recursos
-              somente serão utilizados quando a respectiva ferramenta estiver configurada.
+              somente são ativados quando a ferramenta está configurada e você aceita
+              o acompanhamento. A escolha é salva no navegador. Você pode usar o site,
+              consultar produtos e entrar em contato mesmo recusando esses recursos.
             </p>
           </section>
 

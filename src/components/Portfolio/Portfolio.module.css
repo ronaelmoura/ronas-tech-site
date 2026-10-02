@@ -16,8 +16,8 @@
 
 .heading {
   max-width: 760px;
-  margin: 0 auto 56px;
-  text-align: center;
+  margin: 0 0 48px;
+  text-align: left;
 }
 
 .eyebrow {
@@ -46,7 +46,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
 
@@ -58,7 +58,7 @@
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
   background: var(--color-page);
-  box-shadow: 0 18px 44px var(--color-shadow);
+  box-shadow: 0 4px 16px rgb(13 17 23 / 3%);
   transition: border-color 220ms ease, box-shadow 220ms ease;
 }
 
@@ -88,7 +88,7 @@
   display: grid;
   min-height: 250px;
   place-items: center;
-  padding: 34px 28px;
+  padding: 34px 18px;
   overflow: hidden;
   border-bottom: 1px solid var(--color-line);
   background:
@@ -113,7 +113,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 28px;
+  padding: 24px;
 }
 
 .meta {
@@ -125,8 +125,11 @@
 }
 
 .category {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   color: var(--color-brand);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -167,7 +170,7 @@
 .caseSummary p {
   margin: 0;
   color: var(--color-ink-soft);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.65;
 }
 

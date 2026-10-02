@@ -92,7 +92,7 @@ function Footer() {
                   title={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackExternalLink(label.toLowerCase())}
+                  onClick={() => trackExternalLink(label.toLowerCase(), href)}
                 >
                   <SocialIcon name={icon} />
                 </a>

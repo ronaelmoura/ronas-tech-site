@@ -1,54 +1,42 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { getTrackingConsent, setTrackingConsent } from '../../utils/consent'
 import styles from './CookieNotice.module.css'
+import Icon from '../Icon/Icon'
 
-const STORAGE_KEY = 'ronas_cookie_notice_dismissed'
-
-// Aviso de cookies/rastreamento — não bloqueia o carregamento do Google
-// Analytics, do Google Ads nem do Meta Pixel (eles já são opcionais e só
-// entram em ação quando os IDs estão configurados), mas garante que o
-// visitante veja o aviso antes de navegar, como recomenda a LGPD para o uso
-// de cookies de análise e publicidade.
-// O aviso já vem no HTML renderizado no servidor: ele é o maior bloco de
-// texto da página e, quando só aparecia depois da hidratação, era ele que
-// determinava o LCP da home. Para quem já aceitou, um script curto no
-// index.html marca o <html> antes da primeira pintura e o CSS esconde o
-// aviso — sem piscada e sem depender do React.
 function CookieNotice() {
   const [visible, setVisible] = useState(true)
-
+  const settingsRef = useRef(null)
+  const titleRef = useRef(null)
+  const reopened = useRef(false)
+  useEffect(() => { setVisible(!getTrackingConsent()) }, [])
   useEffect(() => {
-    try {
-      if (window.localStorage.getItem(STORAGE_KEY)) setVisible(false)
-    } catch {
-      /* localStorage indisponível — o aviso continua visível */
-    }
-  }, [])
+    if (visible && reopened.current) titleRef.current?.focus()
+  }, [visible])
 
-  function dismiss() {
-    setVisible(false)
+  function choose(choice) {
+    setTrackingConsent(choice)
     document.documentElement.dataset.cookieNotice = 'dismissed'
-    try {
-      window.localStorage.setItem(STORAGE_KEY, '1')
-    } catch {
-      /* localStorage indisponível — o aviso volta a aparecer na próxima visita */
-    }
+    setVisible(false)
+    if (reopened.current) settingsRef.current?.focus()
   }
 
-  if (!visible) return null
-
-  return (
-    <div className={`${styles.notice} cookie-notice`} role="dialog" aria-labelledby="cookie-notice-title">
-      <p id="cookie-notice-title">
-        Usamos cookies e ferramentas de análise (Google Analytics, Google Ads e
-        Meta) para entender o uso do site e mostrar anúncios mais relevantes.
-        Saiba mais na{' '}
-        <a href="/politica-de-privacidade">Política de Privacidade</a>.
-      </p>
-      <button type="button" onClick={dismiss}>
-        Entendi
-      </button>
+  return <>
+    <div className={styles.settingsBar}>
+      <button ref={settingsRef} type="button" onClick={() => {
+        reopened.current = true
+        delete document.documentElement.dataset.cookieNotice
+        setVisible(true)
+      }}>Preferências de cookies</button>
     </div>
-  )
+    {visible && <aside className={`${styles.notice} cookie-notice`} aria-labelledby="cookie-notice-title">
+      <h2 ref={titleRef} tabIndex="-1" id="cookie-notice-title"><Icon name="shield" size={20} />Sua privacidade, sua escolha.</h2>
+      <p>Podemos usar Google e Meta para medir visitas e anúncios. Essas ferramentas só são ativadas se você aceitar. <a href="/politica-de-privacidade">Saiba mais</a>.</p>
+      <div className={styles.actions}>
+        <button type="button" onClick={() => choose('declined')}>Só essenciais</button>
+        <button className={styles.accept} type="button" onClick={() => choose('accepted')}>Aceitar todos</button>
+      </div>
+    </aside>}
+  </>
 }
 
 export default CookieNotice

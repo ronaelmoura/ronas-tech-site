@@ -8,10 +8,13 @@
 // Kiwify itself — set the same pixel ID in the Kiwify dashboard, otherwise
 // Meta optimises against clicks it can never tie to a sale.
 
+import { hasTrackingConsent } from './consent'
+
 const pixelId = import.meta.env.VITE_META_PIXEL_ID?.trim()
 const hasValidPixelId = /^\d{10,20}$/.test(pixelId || '')
 
 export function initializeMetaPixel() {
+  if (!hasTrackingConsent()) return
   if (
     !hasValidPixelId ||
     typeof window === 'undefined' ||
@@ -53,6 +56,7 @@ export function initializeMetaPixel() {
 // visitante mandam o mesmo id, a Meta conta um Lead só. É o mesmo id usado
 // no transaction_id do Google Ads, para os dois relatórios baterem.
 export function trackPixelEvent(eventName, parameters = {}, options = {}) {
+  if (!hasTrackingConsent()) return
   if (!hasValidPixelId || typeof window === 'undefined' || !window.fbq) return
   if (options.eventID) window.fbq('track', eventName, parameters, { eventID: options.eventID })
   else window.fbq('track', eventName, parameters)

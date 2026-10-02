@@ -13,6 +13,6 @@ export function toE164BrazilPhone(input) {
 // aceitamos também o número já com o código do país (12 ou 13 dígitos).
 export function isValidBrazilPhone(input) {
   const digits = String(input || '').replace(/\D/g, '')
-  if (digits.startsWith('55')) return digits.length === 12 || digits.length === 13
-  return digits.length === 10 || digits.length === 11
+  const national = digits.startsWith('55') && digits.length >= 12 ? digits.slice(2) : digits
+  return /^[1-9]{2}(?:[2-5]\d{7}|9\d{8})$/.test(national)
 }

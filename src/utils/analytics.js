@@ -1,5 +1,6 @@
 import { siteConfig } from '../config/siteConfig'
 import { trackPixelEvent } from './metaPixel'
+import { hasTrackingConsent } from './consent'
 
 const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim()
 const hasValidMeasurementId = /^G-[A-Z0-9]+$/.test(measurementId || '')
@@ -26,6 +27,7 @@ const externalLinks = {
 }
 
 export function initializeAnalytics() {
+  if (!hasTrackingConsent()) return
   getCampaignAttribution()
   if (
     !hasAnyGoogleTag ||
@@ -46,11 +48,9 @@ export function initializeAnalytics() {
 
   window.gtag('js', new Date())
   if (hasValidMeasurementId) window.gtag('config', measurementId)
-  // allow_enhanced_conversions liga o envio de user_data definido pelo código
-  // in-page (setEnhancedConversionUserData) junto com a conversão.
-  if (hasValidGoogleAdsId) window.gtag('config', googleAdsId, { allow_enhanced_conversions: true })
+  if (hasValidGoogleAdsId) window.gtag('config', googleAdsId)
 
-  const scriptTagId = measurementId || googleAdsId
+  const scriptTagId = hasValidMeasurementId ? measurementId : googleAdsId
   if (!document.getElementById('google-analytics-script')) {
     const script = document.createElement('script')
     script.id = 'google-analytics-script'
@@ -67,6 +67,7 @@ export function initializeAnalytics() {
 const leadIdStorageKey = 'ronas_lead_id'
 
 export function getLeadId() {
+  if (!hasTrackingConsent()) return ''
   if (typeof window === 'undefined') return ''
   try {
     const stored = window.sessionStorage.getItem(leadIdStorageKey)
@@ -82,6 +83,7 @@ export function getLeadId() {
 }
 
 export function trackGoogleAdsConversion(parameters = {}) {
+  if (!hasTrackingConsent()) return
   if (!hasValidConversionLabel || typeof window === 'undefined' || !window.gtag) return
   const leadId = getLeadId()
   window.gtag('event', 'conversion', {
@@ -91,18 +93,8 @@ export function trackGoogleAdsConversion(parameters = {}) {
   })
 }
 
-// Conversões Otimizadas (código in-page): envia o telefone informado pelo
-// visitante para o gtag.js, que gera o hash (SHA-256) no próprio navegador
-// antes de mandar para o Google Ads — os dados brutos nunca saem do
-// dispositivo. Precisa ser chamado ANTES de trackGoogleAdsConversion.
-// O nome não entra: o Google só aceita "address" com nome, sobrenome, CEP e
-// país juntos, e um address só com first_name é descartado como inválido.
-export function setEnhancedConversionUserData({ phoneE164 }) {
-  if (typeof window === 'undefined' || !window.gtag || !phoneE164) return
-  window.gtag('set', 'user_data', { phone_number: phoneE164 })
-}
-
 export function trackEvent(eventName, eventParameters = {}) {
+  if (!hasTrackingConsent()) return
   if (!hasValidMeasurementId || typeof window === 'undefined' || !window.gtag) return
   const attribution = getCampaignAttribution()
   window.gtag('event', eventName, { ...eventParameters, ...attribution })
@@ -115,6 +107,7 @@ export function trackEvent(eventName, eventParameters = {}) {
 // "ronas_whatsapp_click" — ou um acionador de clique com o seletor
 // [data-ronas-cta], que marca os mesmos botões no HTML.
 export function pushWhatsAppDataLayerEvent(location, leadId) {
+  if (!hasTrackingConsent()) return
   if (typeof window === 'undefined') return
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
@@ -172,10 +165,14 @@ const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content',
 const campaignStorageKey = 'ronas_campaign_attribution'
 
 export function getCampaignAttribution() {
+  if (!hasTrackingConsent()) return {}
   if (typeof window === 'undefined') return {}
   const current = Object.fromEntries(new URLSearchParams(window.location.search).entries())
   const stored = (() => {
-    try { return JSON.parse(window.sessionStorage.getItem(campaignStorageKey) || '{}') } catch { return {} }
+    try {
+      const value = JSON.parse(window.sessionStorage.getItem(campaignStorageKey) || '{}')
+      return value && typeof value === 'object' && !Array.isArray(value) ? value : {}
+    } catch { return {} }
   })()
   const next = campaignKeys.reduce((result, key) => { if (current[key]) result[key] = current[key]; else if (stored[key]) result[key] = stored[key]; return result }, {})
   if (Object.keys(next).length) {

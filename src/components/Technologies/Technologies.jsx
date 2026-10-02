@@ -110,10 +110,10 @@ const technologyIcons = {
 
 function TechnologyIcon({ name }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
       <g
         stroke="currentColor"
-        strokeWidth="1.5"
+        strokeWidth="1.7"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -132,8 +132,8 @@ function Technologies() {
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Stack</p>
-          <h2 id="technologies-title">Tecnologias com que eu trabalho</h2>
+          <p className={styles.eyebrow}>02 / Minha caixa de ferramentas</p>
+          <h2 id="technologies-title">Da ideia à aplicação.<br />Uma stack conectada.</h2>
           <p className={styles.subtitle}>
             As mesmas ferramentas dos projetos acima: JavaScript de ponta a
             ponta, banco relacional e um fluxo de entrega com Git e Docker.

@@ -6,8 +6,12 @@ import App from './App.jsx'
 import { initializeAnalytics } from './utils/analytics'
 import { initializeMetaPixel } from './utils/metaPixel'
 
-initializeAnalytics()
-initializeMetaPixel()
+function initializeTracking() {
+  initializeAnalytics()
+  initializeMetaPixel()
+}
+initializeTracking()
+window.addEventListener('ronas:consent', initializeTracking)
 
 if (window.location.pathname === '/' && window.location.hash === '#produtos-digitais') {
   window.location.replace('/produtos-digitais')

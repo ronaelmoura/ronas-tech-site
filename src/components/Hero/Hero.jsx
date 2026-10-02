@@ -1,83 +1,54 @@
-import { useMagnetic, useTilt } from '../../motion/hooks'
 import styles from './Hero.module.css'
+import Icon from '../Icon/Icon'
 
-// Resumo do fluxo de entrega do Ronas Desk, o projeto em destaque do
-// portfólio: os números vêm do próprio projeto (testes, CI e deploy).
-const pipeline = [
-  { command: 'npm test', result: '122 testes passando' },
-  { command: 'git push origin main', result: 'CI concluído' },
-  { command: 'deploy', result: 'Ronas Desk em produção' },
+const layers = [
+  ['01', 'Interface', 'React', 'Uma experiência clara em cada tela.'],
+  ['02', 'Aplicação', 'Node.js + Express', 'Regras de negócio e acesso protegido.'],
+  ['03', 'Dados', 'MySQL', 'Informação organizada e consistente.'],
 ]
 
 function DeliveryCard() {
-  const cardRef = useTilt(4)
-  return (
-    <div ref={cardRef} className={`${styles.console} tilt`}>
-      <div className={styles.consoleBar}>
-        <div><i /><i /><i /></div>
-        <span>ronas-desk</span>
-        <strong>main</strong>
-      </div>
-      <div className={styles.consoleBody}>
-        <div className={styles.consoleHeading}>
-          <div>
-            <small>DO CÓDIGO À PRODUÇÃO</small>
-            <h2>React · Express · MySQL</h2>
-          </div>
-          <span>Full Stack</span>
-        </div>
-        <ol className={styles.checks}>
-          {pipeline.map(({ command, result }) => (
-            <li className={styles.check} key={command}>
-              <span className={styles.checkIcon} aria-hidden="true">✓</span>
-              <code>$ {command}</code>
-              <small>{result}</small>
-            </li>
-          ))}
-        </ol>
-        <div className={styles.terminal}>
-          <span>&gt; autenticação e permissões por perfil</span>
-          <span>&gt; painéis para usuários e administradores</span>
-        </div>
-      </div>
+  return <div className={styles.console}>
+    <div className={styles.consoleBar}>
+      <div aria-hidden="true"><i /><i /><i /></div>
+      <span>projeto / ronas-desk</span>
+      <strong><b />Em produção</strong>
     </div>
-  )
+    <div className={styles.consoleBody}>
+      <div className={styles.consoleHeading}>
+        <div><small>DA INTERFACE AO BANCO DE DADOS</small><h2>Uma solução.<br />Todas as camadas.</h2></div>
+        <span><Icon name="code" size={34} /></span>
+      </div>
+      <ol className={styles.layers}>
+        {layers.map(([number, name, tech, description]) => <li key={number}>
+          <span className={styles.number}><Icon name={{ '01': 'layout', '02': 'server', '03': 'database' }[number]} size={19} /></span>
+          <div><div className={styles.layerTitle}><strong>{name}</strong><code>{tech}</code></div><p>{description}</p></div>
+        </li>)}
+      </ol>
+      <div className={styles.delivery}><span><strong>122</strong> testes automatizados</span><span><Icon name="check" size={14} /> CI + deploy</span></div>
+    </div>
+    <a className={styles.projectLink} href="#projetos">Conheça o Ronas Desk <Icon name="arrowUpRight" size={18} /></a>
+  </div>
 }
 
 function Hero() {
-  // A animação de entrada do hero é disparada pelo módulo de movimento
-  // carregado sob demanda em App.jsx (ela usa seletores globais).
-  const primaryRef = useMagnetic(14)
-  const secondaryRef = useMagnetic(14)
-
-  return (
-    <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
-      <div className={styles.glow} aria-hidden="true" />
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <p className={`${styles.eyebrow} hero-eyebrow-anim`}><span aria-hidden="true" />Desenvolvedor Full Stack · Tianguá, CE</p>
-          <div className="hero-mask">
-            <h1 id="hero-title" className={styles.title}>Ronael Moura. Sistemas web <span>do banco de dados à interface.</span></h1>
-          </div>
-          <p className={`${styles.description} hero-desc-anim`}>
-            Desenvolvedor Full Stack com formação pelo SENAI. Construo aplicações com React, Node.js, Express e MySQL, com testes automatizados, integração contínua e deploy em produção.
-          </p>
-          <div className={`${styles.actions} hero-actions-anim`}>
-            <a ref={primaryRef} className={styles.primaryButton} href="#projetos">Ver projetos</a>
-            <a ref={secondaryRef} className={styles.secondaryButton} href="#contato">Falar comigo</a>
-          </div>
-          <ul className={`${styles.trustList} hero-actions-anim`}>
-            <li>Aberto a vagas CLT e PJ</li>
-            <li>Disponível para projetos freelance</li>
-            <li>Código público no GitHub</li>
-          </ul>
+  return <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <p className={styles.eyebrow}><span aria-hidden="true" />Disponível para novas oportunidades</p>
+        <p className={styles.intro}>Ronael Moura <span>/ Desenvolvedor Full Stack</span></p>
+        <h1 id="hero-title" className={styles.title}>Ideias claras.<br />Sistemas <span>bem construídos.</span></h1>
+        <p className={styles.description}>Transformo problemas do dia a dia em aplicações web. Da primeira interface ao banco de dados, com atenção à experiência, aos testes e à entrega.</p>
+        <div className={styles.actions}>
+          <a className={styles.primaryButton} href="#projetos">Explorar projetos <Icon name="arrowUpRight" size={18} /></a>
+          <a className={styles.secondaryButton} href="#contato">Vamos conversar <Icon name="arrowRight" size={18} /></a>
         </div>
-        <div className={`${styles.visual} hero-visual-anim`} role="img" aria-label="Cartão ilustrativo do fluxo de entrega do Ronas Desk: testes, integração contínua e deploy">
-          <DeliveryCard />
-        </div>
+        <div className={styles.signature}><span className={styles.monogram} aria-hidden="true">rm.</span><p>Formação pelo SENAI<strong>Tianguá, Ceará · Trabalho remoto</strong></p></div>
       </div>
-    </section>
-  )
+      <div className={styles.visual}><DeliveryCard /></div>
+    </div>
+    <div className={styles.bottomLine}><span>Do código à experiência.</span><ul aria-label="Tecnologias principais"><li>React</li><li>Node.js</li><li>Express</li><li>MySQL</li><li>Docker</li></ul><a href="#projetos" aria-label="Ir para os projetos">Role para conhecer <Icon name="arrowDown" size={16} /></a></div>
+  </section>
 }
 
 export default Hero

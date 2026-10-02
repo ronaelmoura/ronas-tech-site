@@ -1,3 +1,4 @@
+import Icon from '../components/Icon/Icon'
 import { siteConfig } from '../config/siteConfig'
 import { trackWhatsAppClick } from '../utils/analytics'
 import styles from './PersonalFinanceProductPage.module.css'
@@ -31,7 +32,7 @@ const previews = [
 ]
 
 function BuyButton({ location = 'pagina' }) {
-  return <a className={`${styles.buyButton} ${fixes.buyButton}`} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-location={location} onClick={() => trackWhatsAppClick(`financeira_${location}`)}>Quero a minha planilha</a>
+  return <a className={`${styles.buyButton} ${fixes.buyButton}`} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-location={location} onClick={() => trackWhatsAppClick(`financeira_${location}`)}>Quero a minha planilha <Icon name="arrowUpRight" size={18} /></a>
 }
 
 function PersonalFinanceProductPage() {
@@ -47,7 +48,7 @@ function PersonalFinanceProductPage() {
           <p className={styles.eyebrow}>Finanças pessoais • planilha automática</p>
           <h1>Planilha Financeira Pessoal</h1>
           <p className={styles.lead}>Organize ganhos, gastos, cartões e metas em um só lugar — com uma experiência simples, visual e pronta para acompanhar pelo celular.</p>
-          <div className={styles.trustRow}><span>✓ Acesso imediato</span><span>✓ Pagamento único</span><span>✓ Fácil de usar</span></div>
+          <div className={styles.trustRow}><span><Icon name="check" size={16} /> Entrega digital</span><span><Icon name="check" size={16} /> Pagamento único</span><span><Icon name="check" size={16} /> Fácil de usar</span></div>
           <div className={styles.offer}><div><small>POR APENAS</small><strong><span>R$</span> 37,90</strong><p>sem mensalidade</p></div><BuyButton location="hero" /></div>
           <p className={styles.support}>Dúvidas? Você fala diretamente com a Ronas Tech pelo WhatsApp.</p>
         </div>
@@ -69,7 +70,7 @@ function PersonalFinanceProductPage() {
           <p className={styles.sectionLabel}>Tudo em um único arquivo</p>
           <h2>Uma planilha que trabalha por você.</h2>
           <p>Você só registra as informações. Os totais, indicadores e acompanhamentos são atualizados automaticamente para mostrar a situação real das suas finanças.</p>
-          <ul>{included.map((item) => <li key={item}><span>✓</span>{item}</li>)}</ul>
+          <ul>{included.map((item) => <li key={item}><span><Icon name="check" size={17} /></span>{item}</li>)}</ul>
           <BuyButton location="conteudo" />
         </div>
         <div className={`${styles.insideVisual} ${fixes.insideVisual}`}><img src="/planilha-pessoal-cofrinhos.png" alt="Painel de metas financeiras e cofrinhos" width="390" height="844" /><div><small>METAS FINANCEIRAS</small><strong>Veja seu progresso sem fazer contas</strong></div></div>
@@ -92,7 +93,7 @@ function PersonalFinanceProductPage() {
           ['Consigo usar no celular?', 'Sim. A estrutura foi organizada para facilitar os lançamentos e as consultas pelo celular, além do computador.'],
           ['Existe mensalidade?', 'Não. O valor de R$ 37,90 é um pagamento único pela planilha.'],
           ['A planilha serve para casal ou família?', 'Sim. Você pode adaptar categorias, contas, cartões e metas para acompanhar as finanças da casa.'],
-        ].map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div>
+        ].map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<span><Icon name="plus" size={18} /></span></summary><p>{answer}</p></details>)}</div>
       </section>
 
       <section className={styles.finalCta}><div><p className={styles.sectionLabel}>Seu dinheiro merece clareza</p><h2>Comece hoje a organizar sua vida financeira.</h2><p>Tenha uma visão simples do presente e transforme seus planos em metas acompanháveis.</p></div><div><strong><span>R$</span> 37,90</strong><small>pagamento único</small><BuyButton location="final" /></div></section>
