@@ -157,7 +157,30 @@
   letter-spacing: -.03em;
 }
 
-.caseSummary {\n  display: grid;\n  gap: 14px;\n  margin-top: 2px;\n}\n\n.caseStep {\n  position: relative;\n  padding-left: 14px;\n  border-left: 2px solid var(--color-brand-soft);\n}\n\n.caseStep:nth-child(2) { border-left-color: var(--color-violet-soft); }\n.caseStep:nth-child(3) { border-left-color: var(--color-cyan-soft); }\n\n.caseStep span {\n  display: block;\n  margin-bottom: 5px;\n  color: var(--color-ink-faint);\n  font: 800 9px/1 var(--font-mono);\n  letter-spacing: .1em;\n}\n\n.caseSummary p {
+.caseSummary {
+  display: grid;
+  gap: 14px;
+  margin-top: 2px;
+}
+
+.caseStep {
+  position: relative;
+  padding-left: 14px;
+  border-left: 2px solid var(--color-brand-soft);
+}
+
+.caseStep:nth-child(2) { border-left-color: var(--color-violet-soft); }
+.caseStep:nth-child(3) { border-left-color: var(--color-cyan-soft); }
+
+.caseStep span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--color-ink-faint);
+  font: 800 9px/1 var(--font-mono);
+  letter-spacing: .1em;
+}
+
+.caseSummary p {
   margin: 0;
   color: var(--color-ink-soft);
   font-size: 16px;

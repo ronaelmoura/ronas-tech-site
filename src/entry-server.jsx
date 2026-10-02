@@ -46,6 +46,16 @@ const spreadsheetProductMetadata = Object.fromEntries(spreadsheetProducts.map((p
 }]))
 
 const productMetadata = {
+  ...Object.fromEntries(['cadastro', 'entrar', 'conta'].map((route) => [`/ronas-oficina/${route}`, {
+    title: `${({ cadastro: 'Criar conta', entrar: 'Entrar', conta: 'Minha conta' })[route]} | Ronas Oficina`,
+    description: 'Ambiente de teste do Ronas Oficina. Cadastro, acesso e planos para Pessoa Física e Empresa.',
+    noindex: true,
+  }])),
+  '/ronas-oficina': {
+    title: 'Ronas Oficina | Organização digital para oficinas | Ronas Tech',
+    description: 'Conheça a proposta Ronas Oficina: uma solução digital em desenvolvimento para organizar clientes, veículos, serviços e orçamentos.',
+    canonical: `${siteConfig.siteUrl}ronas-oficina`,
+  },
   '/produtos-digitais': {
     title: `Planilhas e Produtos Digitais | ${siteConfig.companyName}`,
     description: 'Conheça as planilhas inteligentes da Ronas Tech para finanças, vendas, estoque, precificação, serviços e organização de negócios.',
