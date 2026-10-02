@@ -12,6 +12,7 @@ const navigationLinks = [
   { label: 'Sobre', href: '/#sobre' },
   { label: 'Contato', href: '/#contato' },
   { label: 'Produtos digitais', href: '/produtos-digitais' },
+  { label: 'Ronas Oficina', href: '/ronas-oficina' },
 ]
 
 const socialLinks = [

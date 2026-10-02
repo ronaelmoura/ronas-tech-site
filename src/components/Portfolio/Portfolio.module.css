@@ -303,6 +303,7 @@
 .dashboardMockup,
 .dataPortfolioMockup,
 .apiMockup,
+.workshopMockup,
 .portfolioMockup {
   position: relative;
   width: min(100%, 460px);
@@ -312,6 +313,26 @@
   background: var(--color-page);
   box-shadow: 0 22px 50px var(--color-shadow);
 }
+
+.workshopMockup {
+  min-height: 250px;
+  padding: 18px;
+  color: #e8f4ff;
+  background: radial-gradient(circle at 90% 8%, rgb(0 154 255 / 24%), transparent 36%), linear-gradient(145deg, #06121d, #0a2032);
+  border-color: #284963;
+}
+
+.workshopTopbar { display: flex; align-items: center; justify-content: space-between; padding-bottom: 13px; border-bottom: 1px solid #284963; color: #7ec6fa; font: 800 8px/1 var(--font-mono); letter-spacing: .11em; }
+.workshopTopbar i { padding: 5px 7px; border-radius: 999px; color: #bfe5ff; background: #0d3049; font-style: normal; }
+.workshopVehicle { display: grid; gap: 6px; padding: 18px 0 15px; }
+.workshopVehicle small { color: #62baff; font: 800 8px/1 var(--font-mono); letter-spacing: .1em; }
+.workshopVehicle strong { color: #fff; font-size: 17px; letter-spacing: -.02em; }
+.workshopVehicle span { color: #a9bfd0; font-size: 11px; }
+.workshopFlow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.workshopFlow span { min-width: 0; padding: 10px 8px; border: 1px solid #24465f; border-radius: 7px; color: #b9cddd; background: rgb(5 18 29 / 74%); font-size: 8px; line-height: 1.45; }
+.workshopFlow b { display: block; margin-bottom: 4px; color: #55b5f7; font: 800 8px/1 var(--font-mono); }
+.workshopStatus { display: flex; align-items: center; gap: 7px; margin-top: 14px; color: #9ed9c2; font-size: 9px; }
+.workshopStatus i { width: 7px; height: 7px; border-radius: 50%; background: #25b47e; box-shadow: 0 0 0 4px rgb(37 180 126 / 12%); }
 
 .dashboardMockup {
   display: grid;

@@ -8,6 +8,7 @@ import Icon from '../Icon/Icon'
 const navigationItems = [
   { label: 'Projetos', href: '#projetos' },
   { label: 'Stack', href: '#stack' },
+  { label: 'Ronas Oficina', href: '/ronas-oficina' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Contato', href: '#contato' },
 ]

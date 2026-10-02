@@ -24,6 +24,24 @@ const projects = [
     repositoryUrl: 'https://github.com/ronaelmoura/ronas-desk',
   },
   {
+    title: 'Ronas Oficina',
+    category: 'Produto para oficinas mecânicas',
+    need:
+      'Reunir autorizações, peças, prazos e histórico de cada veículo sem depender de mensagens e informações guardadas na memória.',
+    solution:
+      'Produto próprio em validação, desenhado a partir da rotina real de oficinas para organizar atendimentos, ordens de serviço e o combinado com cada cliente.',
+    highlights: [
+      'Jornada baseada em situações reais',
+      'Cadastro e planos em ambiente de teste',
+      'Escopo e estágio apresentados com transparência',
+    ],
+    stack: ['React', 'Node.js', 'MySQL', 'Stripe'],
+    status: 'Em desenvolvimento',
+    projectUrl: '/ronas-oficina',
+    actionLabel: 'Conhecer o Ronas Oficina',
+    visual: 'workshop',
+  },
+  {
     title: 'Nexo',
     category: 'Dashboard financeiro pessoal',
     need:
@@ -169,6 +187,28 @@ function ProjectVisual({ type }) {
     )
   }
 
+  if (type === 'workshop') {
+    return (
+      <div className={styles.workshopMockup} aria-hidden="true">
+        <div className={styles.workshopTopbar}>
+          <span>RONAS / OFICINA</span>
+          <i>OS 0248</i>
+        </div>
+        <div className={styles.workshopVehicle}>
+          <small>VEÍCULO EM ATENDIMENTO</small>
+          <strong>Honda Civic · QWE-4A21</strong>
+          <span>Revisão do sistema de freios</span>
+        </div>
+        <div className={styles.workshopFlow}>
+          <span><b>01</b> Orçamento enviado</span>
+          <span><b>02</b> Cliente autorizou</span>
+          <span><b>03</b> Serviço em execução</span>
+        </div>
+        <div className={styles.workshopStatus}><i /> Autorização registrada</div>
+      </div>
+    )
+  }
+
   return (
     <div className={styles.portfolioMockup} aria-hidden="true">
       <div className={styles.browserBar}>
@@ -192,6 +232,7 @@ function ProjectVisual({ type }) {
 }
 
 function ProjectCard({ project }) {
+  const isInternalProject = project.projectUrl?.startsWith('/')
   return (
     <article
       className={`${styles.card} ${project.featured ? styles.featured : ''}`}
@@ -238,9 +279,9 @@ function ProjectCard({ project }) {
             <a
               className={styles.primaryButton}
               href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackExternalLink('portfolio', project.projectUrl)}
+              target={isInternalProject ? undefined : '_blank'}
+              rel={isInternalProject ? undefined : 'noopener noreferrer'}
+              onClick={isInternalProject ? undefined : () => trackExternalLink('portfolio', project.projectUrl)}
             >
               {project.actionLabel}
               <ExternalIcon />
