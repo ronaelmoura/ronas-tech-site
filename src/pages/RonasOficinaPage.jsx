@@ -3,7 +3,7 @@ import { oficinaPains } from "../data/oficinaPains";
 import { trackEvent } from "../utils/analytics";
 import OficinaConsent from "../components/Oficina/OficinaConsent";
 import { siteConfig } from "../config/siteConfig";
-import { oficinaPlans } from "../data/oficinaPlans";
+import { formatOficinaPrice, oficinaPlans } from "../data/oficinaPlans";
 import styles from "./RonasOficinaPage.module.css";
 
 const wa = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Olá! Quero conversar sobre a rotina da minha oficina e conhecer a proposta do Ronas Oficina.")}`;
@@ -276,10 +276,10 @@ export default function RonasOficinaPage() {
               </p>
             </div>
             <div>
-              <span>AINDA A DEFINIR</span>
+              <span>PRÓXIMA ETAPA</span>
               <p>
-                Preços, limites, implantação e disponibilidade. Não há
-                contratação ou cobrança nesta página.
+                Implantação e disponibilidade. Os preços mensais já foram
+                definidos, mas o checkout segue restrito ao ambiente de teste.
               </p>
             </div>
             {testAvailable && (
@@ -298,9 +298,8 @@ export default function RonasOficinaPage() {
               no seu jeito de trabalhar.
             </h2>
             <p>
-              Básico, Intermediário e Avançado são propostas de escopo para
-              Pessoa Física e Empresa. Converse sobre o que faz sentido para sua
-              operação.
+              O mesmo valor vale para Pessoa Física e Empresa. Escolha pelo
+              tamanho da sua rotina, não pelo tipo de cadastro.
             </p>
           </div>
           <div className={styles.planGrid}>
@@ -313,25 +312,14 @@ export default function RonasOficinaPage() {
                 <h3>{p.name}</h3>
                 <p>{p.description}</p>
                 <div className={styles.price}>
-                  A definir <span>/ mês</span>
+                  {formatOficinaPrice(p.monthlyPriceCents)} <span>/ mês</span>
                 </div>
                 <a
                   className={i === 1 ? styles.button : styles.outlineButton}
-                  href={
-                    "https://wa.me/" +
-                    siteConfig.whatsappNumber +
-                    "?text=" +
-                    encodeURIComponent(
-                      "Olá! Tenho interesse na proposta do plano " +
-                        p.name +
-                        " do Ronas Oficina. Quero entender o escopo previsto e a disponibilidade.",
-                    )
-                  }
-                  target="_blank"
-                  rel="noreferrer"
+                  href={`/ronas-oficina/cadastro?plano=${p.id}`}
                   data-oficina-cta={"plan-" + p.id}
                 >
-                  Conversar sobre o {p.name} ↗
+                  Criar conta de teste
                 </a>
                 <ul>
                   {p.features.map((f) => (
@@ -348,8 +336,9 @@ export default function RonasOficinaPage() {
             ))}
           </div>
           <p className={styles.disclaimer}>
-            Os valores ainda não foram definidos. Demonstrar interesse não
-            reserva um preço, não ativa uma assinatura e não gera cobrança.
+            Valores mensais de referência, sem taxa de implantação. Cadastro e
+            checkout continuam em ambiente de teste: criar uma conta não ativa
+            assinatura nem gera cobrança.
           </p>
         </section>
         <section className={styles.process}>
@@ -373,7 +362,7 @@ export default function RonasOficinaPage() {
               ],
               [
                 "O próximo passo fica combinado",
-                "Disponibilidade, valores e implantação precisam ser apresentados antes de qualquer contratação.",
+                "Disponibilidade e implantação precisam ser apresentadas antes de qualquer contratação. O preço mensal já está visível desde o começo.",
               ],
             ].map(([t, d], i) => (
               <li key={t}>
@@ -410,7 +399,7 @@ export default function RonasOficinaPage() {
             ],
             [
               "Criar uma conta gera cobrança?",
-              "Não. Os preços ainda estão em definição e nenhuma assinatura é ativada pelo cadastro. O pagamento será feito em um checkout separado, inicialmente apenas em modo de teste.",
+              "Não. O preço mensal do plano está visível, mas nenhuma assinatura é ativada pelo cadastro. O pagamento será feito em checkout separado, inicialmente apenas em modo de teste.",
             ],
             [
               "Posso mudar o plano escolhido?",

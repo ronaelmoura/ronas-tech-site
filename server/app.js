@@ -185,7 +185,7 @@ export function createApp({
     res.json({
       mode: "test",
       billingReady,
-      plans: oficinaPlans.map((p) => ({ ...p, price: null })),
+      plans: oficinaPlans,
     }),
   );
   app.post("/api/oficina/register", authLimiter, async (req, res) => {
@@ -237,13 +237,11 @@ export function createApp({
       throw error;
     }
     startSession(req, res, id);
-    res
-      .status(201)
-      .json({
-        account: publicAccount(
-          db.prepare("SELECT * FROM accounts WHERE id = ?").get(id),
-        ),
-      });
+    res.status(201).json({
+      account: publicAccount(
+        db.prepare("SELECT * FROM accounts WHERE id = ?").get(id),
+      ),
+    });
   });
   app.post("/api/oficina/login", authLimiter, async (req, res) => {
     const email = clean(req.body?.email, 254).toLowerCase();
@@ -378,13 +376,11 @@ export function createApp({
     res.status(404).json({ error: "Recurso não encontrado." }),
   );
   app.use((error, _req, res, _next) =>
-    res
-      .status(error.status || 500)
-      .json({
-        error: error.status
-          ? error.message
-          : "Não foi possível concluir a solicitação. Tente novamente.",
-      }),
+    res.status(error.status || 500).json({
+      error: error.status
+        ? error.message
+        : "Não foi possível concluir a solicitação. Tente novamente.",
+    }),
   );
   return { app, db };
 }

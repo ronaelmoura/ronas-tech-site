@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { OficinaHeader, OficinaFooter } from "./RonasOficinaPage";
-import { oficinaPlans } from "../data/oficinaPlans";
+import { formatOficinaPrice, oficinaPlans } from "../data/oficinaPlans";
 import styles from "./RonasOficinaPage.module.css";
 
 async function api(route, body) {
@@ -206,7 +206,13 @@ export default function OficinaAccountPage({ mode }) {
                     >
                       Salvar escolha
                     </button>
-                    <p>Valor mensal: a definir</p>
+                    <p>
+                      Valor mensal:{" "}
+                      {formatOficinaPrice(
+                        oficinaPlans.find((item) => item.id === plan)
+                          ?.monthlyPriceCents ?? 0,
+                      )}
+                    </p>
                   </section>
                 </div>
                 <section className={styles.accountCard}>
@@ -223,8 +229,9 @@ export default function OficinaAccountPage({ mode }) {
                   </p>
                   {!config?.billingReady && (
                     <p>
-                      Os preços e o pagamento de teste ainda estão em
-                      configuração. Nenhuma cobrança é feita ao criar sua conta.
+                      O preço do plano está definido. A conexão com o pagamento
+                      de teste ainda está em configuração; nenhuma cobrança é
+                      feita ao criar sua conta.
                     </p>
                   )}
                   {config?.billingReady && (
@@ -399,7 +406,7 @@ export default function OficinaAccountPage({ mode }) {
                     >
                       {oficinaPlans.map((p) => (
                         <option key={p.id} value={p.id}>
-                          {p.name} · preço a definir
+                          {p.name} · {formatOficinaPrice(p.monthlyPriceCents)}
                         </option>
                       ))}
                     </select>

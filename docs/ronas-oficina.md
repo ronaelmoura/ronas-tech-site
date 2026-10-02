@@ -31,11 +31,13 @@ Dados são persistidos em `data/oficina.sqlite`, ignorado pelo Git. Não version
 - Checkout de assinatura Stripe, portal de cobrança e webhook assinado, quando configurados. Preço e identidade vêm do servidor, não do navegador.
 - Confirmação do pagamento pelo provedor; voltar à URL de sucesso nunca ativa assinatura. Eventos repetidos são deduplicados e a assinatura atual é consultada para tratar eventos atrasados. Checkout pendente é reutilizado e tentativas após falha usam a mesma chave de idempotência até expirar.
 
-## Pagamento de teste: pendente de configuração
+## Preços e pagamento de teste
 
-O usuário ainda não definiu valores ou provedor. Stripe é uma integração inicial substituível, sem credenciais de produção. Nenhum preço foi inventado e nenhuma transação foi realizada.
+Os preços mensais de referência foram definidos a partir de valores públicos de concorrentes brasileiros: **Básico R$ 79,90**, **Intermediário R$ 149,90** e **Avançado R$ 249,90**. A grade posiciona a entrada entre ofertas de R$ 47 e R$ 119,90, o plano intermediário abaixo de alternativas de R$ 167 a R$ 300 e o avançado próximo de ofertas de gestão completa. A mesma tabela vale para Pessoa Física e Empresa; não há taxa de implantação nesta proposta.
 
-Copie `server/.env.example` para `server/.env`. Configure uma chave `sk_test_...`, o segredo do webhook e três preços mensais recorrentes de teste. Chaves de produção são rejeitadas na inicialização. Todos os segredos ficam no servidor.
+Stripe é uma integração inicial substituível, sem credenciais de produção. Os preços visíveis não criam cobrança por si só e nenhuma transação foi realizada.
+
+Copie `server/.env.example` para `server/.env`. Configure uma chave `sk_test_...`, o segredo do webhook e três preços mensais recorrentes de teste correspondentes a R$ 79,90, R$ 149,90 e R$ 249,90. Chaves de produção são rejeitadas na inicialização. Todos os segredos ficam no servidor.
 
 ```sh
 stripe listen --forward-to localhost:4173/api/oficina/webhook
@@ -53,7 +55,7 @@ O projeto Vercel existente continua hospedando o site estático. Ele **não hosp
 
 O backend foi preparado para um único processo Node com disco persistente. Antes de oferecer o SaaS publicamente, decidir hospedagem/banco gerenciado, configurar domínio e HTTPS, recuperação e verificação de e-mail, backups, monitoramento e limites distribuídos. Em ambiente HTTPS o cookie recebe `Secure`. Não usar SQLite em filesystem temporário de funções serverless. Os termos e a política do site devem ser adequados à contratação final antes de atender clientes reais.
 
-Clientes/veículos, ordens de serviço, orçamentos, equipe, estoque e relatórios ainda são **escopo proposto**, não módulos implementados. Preços, limites de uso e contratação fiscal PF/Empresa continuam a definir. A conta não coleta CPF/CNPJ nesta etapa, pois não há contratação real. Assinaturas canceladas continuam consultáveis no portal; uma nova contratação após cancelamento e mudanças entre planos com cobrança proporcional ficam para a próxima etapa.
+Clientes/veículos, ordens de serviço, orçamentos, equipe, estoque e relatórios ainda são **escopo proposto**, não módulos implementados. Limites de uso, implantação e contratação fiscal PF/Empresa continuam a definir. A conta não coleta CPF/CNPJ nesta etapa, pois não há contratação real. Assinaturas canceladas continuam consultáveis no portal; uma nova contratação após cancelamento e mudanças entre planos com cobrança proporcional ficam para a próxima etapa.
 
 ## Validação executada
 
@@ -75,3 +77,7 @@ A landing não usa depoimentos, quantidade de clientes, economia, prazo de impla
 As dores foram pesquisadas em publicações setoriais antes de escrever a página: a cartilha Sebrae-SP/Sindirepa descreve desafios de controles financeiros, retrabalho, compras de peças, atendimento e cadastros; o Sindirepa também destaca fluxo de caixa, entradas e saídas; e Oficina Brasil ressalta orçamento transparente e comunicação ao cliente. Fontes: [Sebrae-SP/Sindirepa](https://versoassessoriadeimprensa.com.br/wp-content/uploads/2015/07/Cartilha-Oficina-Mec--nica-Sebrae-Sindirepa.pdf), [Sindirepa](https://sindirepa.org.br/noticias/sua-empresa-fatura-bem-mas-o-dinheiro-nao-sobra-no-caixa-sindirepa-promove-workshop-sobre-gestao-financeira-para-o-setor/), [Oficina Brasil](https://oficinabrasil.com.br/ford-motorcraft/noticia/como-transformar-o-orcamento-tecnico-em-uma-ferramenta-de-fidelizacao-de-clientes-na-oficina-mecanica).
 
 A conversa pelo WhatsApp agora é contextual: o visitante escolhe como trabalha e a situação que mais pesa. Essas escolhas ficam somente na página até ele abrir o WhatsApp, onde a mensagem pode ser alterada antes do envio. A página não pede telefone, e-mail ou CNPJ para iniciar a conversa. Rastreadores opcionais permanecem desligados por padrão nas rotas Ronas Oficina; caso estejam configurados, a página pede uma escolha separada antes de iniciar análise ou publicidade.
+
+## Referência de mercado usada na precificação
+
+Foram consultadas páginas públicas de concorrentes em outubro de 2026: [Offista](https://www.offista.com.br/) (a partir de R$ 47,40/mês), [Gestor Oficina](https://gestoroficina.com.br/) (R$ 69,90, R$ 89,90 e R$ 119,90/mês), [BSAuto](https://www.bsauto.com.br/) (a partir de R$ 119,90/mês), [MecaX](https://www.mecax.com.br/) (R$ 97, R$ 179 e R$ 299/mês), [AutoFlow](https://autoflowapp.com.br/planos/) (R$ 150 e R$ 300/mês) e [Workly](https://www.worklyapp.com.br/) (R$ 167, R$ 297 e R$ 497/mês). A decisão privilegia uma entrada acessível, degraus simples e preço público antes do checkout. A coleta é uma referência comercial, não uma alegação de paridade funcional: os módulos Ronas Oficina ainda estão em desenvolvimento.
