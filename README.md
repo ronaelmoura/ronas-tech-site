@@ -111,23 +111,23 @@ VITE_GOOGLE_ADS_CONVERSION_LABEL=
 VITE_META_PIXEL_ID=
 ```
 
-| Variável | Finalidade |
-| --- | --- |
-| `VITE_GA_MEASUREMENT_ID` | Measurement ID do Google Analytics 4, no formato `G-XXXXXXXXXX`. |
-| `VITE_GOOGLE_SITE_VERIFICATION` | Código da meta tag de verificação do Google Search Console. |
-| `VITE_GOOGLE_ADS_ID` | ID da conta do Google Ads, no formato `AW-XXXXXXXXX`. |
+| Variável                           | Finalidade                                                                                                                          |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `VITE_GA_MEASUREMENT_ID`           | Measurement ID do Google Analytics 4, no formato `G-XXXXXXXXXX`.                                                                    |
+| `VITE_GOOGLE_SITE_VERIFICATION`    | Código da meta tag de verificação do Google Search Console.                                                                         |
+| `VITE_GOOGLE_ADS_ID`               | ID da conta do Google Ads, no formato `AW-XXXXXXXXX`.                                                                               |
 | `VITE_GOOGLE_ADS_CONVERSION_LABEL` | Rótulo da ação de conversão do Google Ads (ex: "Enviar mensagem no WhatsApp"), obtido ao criar a conversão no painel do Google Ads. |
-| `VITE_META_PIXEL_ID` | ID numérico do Meta Pixel (Gerenciador de Eventos do Facebook/Instagram). |
+| `VITE_META_PIXEL_ID`               | ID numérico do Meta Pixel (Gerenciador de Eventos do Facebook/Instagram).                                                           |
 
 Quando `VITE_GA_MEASUREMENT_ID` e `VITE_GOOGLE_ADS_ID` estão vazios, nenhum script do Google é carregado. Quando `VITE_META_PIXEL_ID` está vazio, o Meta Pixel não carrega. Todas as integrações são independentes entre si.
 
 ## Scripts disponíveis
 
-| Comando | Descrição |
-| --- | --- |
-| `npm run dev` | Inicia o ambiente de desenvolvimento. |
-| `npm run build` | Gera a versão otimizada para produção. |
-| `npm run lint` | Executa a análise estática com Oxlint. |
+| Comando           | Descrição                                 |
+| ----------------- | ----------------------------------------- |
+| `npm run dev`     | Inicia o ambiente de desenvolvimento.     |
+| `npm run build`   | Gera a versão otimizada para produção.    |
+| `npm run lint`    | Executa a análise estática com Oxlint.    |
 | `npm run preview` | Visualiza localmente o build de produção. |
 
 ## Analytics
@@ -178,3 +178,7 @@ Desenvolvido por **Ronael Moura**.
 - [GitHub](https://github.com/ronaelmoura)
 - [LinkedIn](https://www.linkedin.com/in/ronael-moura)
 - [Instagram](https://www.instagram.com/ronas_tech/)
+
+## Ronas Oficina — evolução SaaS
+
+A landing `/ronas-oficina` e o ambiente local de contas estão documentados em [docs/ronas-oficina.md](docs/ronas-oficina.md). Para testar cadastro/login reais: Node 24+, `npm ci`, `npm run build` e `npm start`. Os planos custam R$ 79,90, R$ 149,90 e R$ 249,90 por mês; o checkout ainda depende da configuração Stripe de teste. O deploy Vercel atual continua sendo estático.

@@ -33,6 +33,12 @@ function SpreadsheetProductPage({ product }) {
         <div className={styles.heroVisual}>
           <div className={styles.deviceDesktop}><span /><span /><span /><img src={product.previews[0][0]} alt={`Painel automático de ${product.title}`} /></div>
           <div className={styles.floatCard}><span>{product.highlight[0]}</span><strong>{product.highlight[1]}</strong></div>
+          <div className={styles.liveDemo} aria-hidden="true">
+            <div className={styles.liveTop}><span>RONAS TECH</span><i>● ao vivo</i></div>
+            <div className={styles.liveValue}>R$ <strong>12.480</strong><b>+8,4%</b></div>
+            <div className={styles.liveChart}><span/><span/><span/><span/><span/><span/><span/></div>
+            <div className={styles.liveBottom}><span>Atualização automática</span><em>✓</em></div>
+          </div>
         </div>
       </section>
 

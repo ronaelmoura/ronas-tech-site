@@ -30,9 +30,9 @@
 
 :root {
   /* Superfícies claras */
-  --color-page: #ffffff;
-  --color-surface: #f6f8fb;
-  --color-surface-alt: #eef2f7;
+  --color-page: #fbfcff;
+  --color-surface: #f1f5ff;
+  --color-surface-alt: #e8efff;
   --color-line: #dfe5ec;
   --color-line-strong: #c4ced9;
 
@@ -42,9 +42,9 @@
   --color-ink-faint: #5f6c7d;
 
   /* Marca: autoridade, não ação */
-  --color-brand: #1069cf;
-  --color-brand-strong: #0b4f9e;
-  --color-brand-soft: #eaf2fd;
+  --color-brand: #1677ff;
+  --color-brand-strong: #0b56c9;
+  --color-brand-soft: #dceaff;
 
   /* Ação: somente botão de ação */
   --color-action: #0f7a4f;
@@ -99,4 +99,10 @@
      por isso deriva do verde de ação e não da marca. */
   --color-action-halo: rgb(15 122 79 / 30%);
   --color-action-halo-soft: rgb(15 122 79 / 0%);
+  --color-accent-violet: #7c3aed;
+  --color-accent-violet-soft: #ede9fe;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-cyan-soft: #cffafe;
+  --color-accent-pink: #ec4899;
+  --color-accent-pink-soft: #fce7f3;
 }
