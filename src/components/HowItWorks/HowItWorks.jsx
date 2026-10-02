@@ -1,11 +1,12 @@
 import styles from './HowItWorks.module.css'
+import Icon from '../Icon/Icon'
 
 const steps = [
-  { number: '01', tag: 'PROBLEMA', title: 'Você explica o cenário', description: 'Você conta o que está acontecendo hoje — sem precisar saber qual tecnologia resolveria isso.' },
-  { number: '02', tag: 'DIAGNÓSTICO', title: 'Encontramos o gargalo', description: 'Entendemos a rotina, o atrito e o que realmente precisa mudar antes de pensar em código.' },
-  { number: '03', tag: 'DIREÇÃO', title: 'Desenhamos o caminho', description: 'Definimos a solução, prioridades, escopo e próximos passos de forma clara.' },
-  { number: '04', tag: 'CONSTRUÇÃO', title: 'Transformamos em produto', description: 'Design, desenvolvimento, integrações, automações e IA entram na medida certa.' },
-  { number: '05', tag: 'EVOLUÇÃO', title: 'Colocamos para funcionar', description: 'Testamos, publicamos e deixamos a base pronta para evoluir conforme a necessidade.' },
+  { number: '01', tag: 'PROBLEMA', title: 'Você explica o cenário', description: 'Você conta o que está acontecendo hoje — sem precisar saber qual tecnologia resolveria isso.', icon: 'message' },
+  { number: '02', tag: 'DIAGNÓSTICO', title: 'Encontramos o gargalo', description: 'Entendemos a rotina, o atrito e o que realmente precisa mudar antes de pensar em código.', icon: 'search' },
+  { number: '03', tag: 'DIREÇÃO', title: 'Desenhamos o caminho', description: 'Definimos a solução, prioridades, escopo e próximos passos de forma clara.', icon: 'route' },
+  { number: '04', tag: 'CONSTRUÇÃO', title: 'Transformamos em produto', description: 'Design, desenvolvimento, integrações, automações e IA entram na medida certa.', icon: 'code' },
+  { number: '05', tag: 'EVOLUÇÃO', title: 'Colocamos para funcionar', description: 'Testamos, publicamos e deixamos a base pronta para evoluir conforme a necessidade.', icon: 'check' },
 ]
 
 function HowItWorks() {
@@ -21,7 +22,7 @@ function HowItWorks() {
           {steps.map((step, index) => (
             <article className={styles.step} key={step.number}>
               <div className={styles.stepTop}><span className={styles.number}>{step.number}</span><span className={styles.tag}>{step.tag}</span></div>
-              <div className={styles.icon}>{['◌', '⌁', '→', '✦', '✓'][index]}</div>
+              <div className={styles.icon}><Icon name={step.icon} size={23} /></div>
               <h3>{step.title}</h3>
               <p>{step.description}</p>
               {index < steps.length - 1 && <span className={styles.arrow} aria-hidden="true">→</span>}
