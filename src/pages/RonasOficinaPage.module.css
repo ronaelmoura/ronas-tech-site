@@ -499,6 +499,431 @@
   display: flex;
   gap: 20px;
 }
+
+.heroExplore {
+  display: inline-block;
+  margin-top: 22px;
+  color: #cce8ff;
+  font-size: 12px;
+  text-decoration: none;
+  text-underline-offset: 5px;
+}
+
+.painSection {
+  width: min(1180px, calc(100% - 64px));
+  margin: auto;
+  padding-block: 112px;
+}
+
+.painIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 42px;
+}
+
+.painIntro h2,
+.honesty h2,
+.contactSection h2 {
+  margin: 16px 0 0;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -0.055em;
+}
+
+.painIntro > p:last-child,
+.honesty > div > p:last-child,
+.contactSection > div > p:not(.kicker) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.painWorkbench {
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  border: 1px solid #1e4056;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  background: #07121d;
+}
+
+.painChoices {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #1e4056;
+}
+
+.painChoices button {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 22px;
+  border: 0;
+  border-bottom: 1px solid #1e4056;
+  background: transparent;
+  color: #cdd9e8;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+}
+
+.painChoices button:last-child {
+  border-bottom: 0;
+}
+
+.painChoices button span,
+.painChoices button b {
+  color: #5cbaff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.painChoices button b {
+  opacity: 0;
+  font-size: 15px;
+}
+
+.painChoices button[aria-pressed="true"] {
+  background: linear-gradient(90deg, #063e66, #071c2c);
+  box-shadow: inset 3px 0 #009aff;
+  color: #fff;
+}
+
+.painChoices button[aria-pressed="true"] b {
+  opacity: 1;
+}
+
+.painStory {
+  padding: 35px 40px;
+}
+
+.sceneLabel,
+.record > span {
+  margin: 0 0 13px;
+  color: #69c1ff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.painStory h3 {
+  margin: 0 0 15px;
+  font-size: 26px;
+  letter-spacing: -0.035em;
+}
+
+.painStory > p {
+  max-width: 550px;
+  color: #c0cddd;
+  font-size: 14px;
+  line-height: 1.78;
+}
+
+.painStory .consequence {
+  margin: 21px 0;
+  color: #e6edf8;
+  font-weight: 650;
+}
+
+.record {
+  padding: 16px 18px;
+  border: 1px solid #294d66;
+  border-radius: 7px;
+  background: #0b1a29;
+}
+
+.record > span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.record p,
+.scope {
+  margin: 0;
+  color: #d1e1f4;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.painStory .scope {
+  margin-top: 16px;
+  color: #91aac2;
+  font-size: 11px;
+}
+
+.workOrder {
+  display: grid;
+  grid-template-columns: 0.72fr 1fr;
+  gap: 0 28px;
+  padding: 28px 34px;
+  border: 1px solid #1e4056;
+  border-top: 0;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(110deg, #091826, #07121d);
+}
+
+.paperHeader {
+  display: flex;
+  justify-content: space-between;
+  grid-column: 1 / -1;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #29435a;
+  color: #8cb1d3;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.paperCaption {
+  color: #91a5ba;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.workOrder dl {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  margin: 15px 0 8px;
+  overflow: hidden;
+  border: 1px solid #29435a;
+  border-radius: 7px;
+  background: #29435a;
+}
+
+.workOrder dl > div {
+  padding: 13px;
+  background: #0a1927;
+}
+
+.workOrder dt {
+  margin-bottom: 5px;
+  color: #75b8ed;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.workOrder dd {
+  margin: 0;
+  color: #e0e9f5;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.paperNote {
+  grid-column: 1 / -1;
+  margin: 3px 0 0;
+  color: #8199af;
+  font-size: 10px;
+}
+
+.painNext {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 30px;
+  border: 1px solid #23516f;
+  border-top: 0;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(90deg, #062841, #071623);
+}
+
+.painNext p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.honesty {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 90px;
+  padding: 95px max(32px, calc((100% - 1120px) / 2));
+  border-block: 1px solid var(--line);
+  background: #06101a;
+}
+
+.readiness {
+  border-left: 1px solid #33536a;
+}
+
+.readiness > div {
+  padding: 15px 0 18px 26px;
+  border-bottom: 1px solid #27435a;
+}
+
+.readiness > div span {
+  color: #63baff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.readiness > div p {
+  margin: 7px 0 0;
+  color: #c4d1e1;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.readiness > a {
+  display: inline-block;
+  margin: 20px 0 0 26px;
+  color: #a5d5ff;
+  font-size: 12px;
+}
+
+.contactSection {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 90px;
+  width: min(1120px, calc(100% - 64px));
+  margin: auto;
+  padding-block: 110px;
+}
+
+.contactSection h2 em {
+  color: #009aff;
+  font-style: normal;
+}
+
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  margin-top: 30px;
+  color: #a6bbd1;
+  font-size: 12px;
+}
+
+.identity strong {
+  color: #fff;
+  font-size: 14px;
+}
+
+.identity span,
+.identity a {
+  border-left: 1px solid #345067;
+  padding-left: 14px;
+}
+
+.identity a {
+  color: #9bcbf4;
+  text-underline-offset: 4px;
+}
+
+.contactForm {
+  padding: 32px;
+  border: 1px solid #29526d;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #102337, #091725);
+}
+
+.contactForm label {
+  display: block;
+  margin-bottom: 8px;
+  color: #d9e5f3;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.contactForm select {
+  width: 100%;
+  min-height: 47px;
+  margin-bottom: 21px;
+  padding: 10px 13px;
+  border: 1px solid #45647d;
+  border-radius: 7px;
+  background: #07131f;
+  color: #f4f8ff;
+  font: inherit;
+  font-size: 13px;
+}
+
+.messagePreview {
+  padding: 14px;
+  border-left: 3px solid #009aff;
+  background: #0a1c2b;
+  color: #b9cce1;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.messagePreview strong {
+  color: #e5f2ff;
+}
+
+.contactForm .button {
+  width: 100%;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.contactPrivacy,
+.plainContact {
+  display: block;
+  margin-top: 16px;
+  color: #9db2c7;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.plainContact {
+  color: #b7dfff;
+  text-underline-offset: 4px;
+}
+
+.consent {
+  position: fixed;
+  z-index: 20;
+  right: 22px;
+  bottom: 22px;
+  width: min(390px, calc(100% - 44px));
+  padding: 18px;
+  border: 1px solid #40637f;
+  border-radius: 10px;
+  background: #0b1928;
+  box-shadow: 0 20px 60px #0008;
+  color: #cbd8e8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.consent p {
+  margin: 0 0 14px;
+}
+.consent a {
+  color: #a3d5ff;
+}
+.consent div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.consent button {
+  padding: 8px 11px;
+  border: 1px solid #3f617e;
+  border-radius: 5px;
+  background: transparent;
+  color: #dceafa;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+}
+.consent button:last-child {
+  border-color: #008fff;
+  background: #007fe0;
+  color: white;
+}
 .accountMain {
   width: min(940px, calc(100% - 48px));
   min-height: 70vh;
@@ -896,5 +1321,125 @@
   }
   .dashboardTop .outlineButton {
     padding: 8px 12px;
+  }
+}
+
+@media (max-width: 850px) {
+  .painIntro,
+  .honesty,
+  .contactSection {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .painSection,
+  .contactSection {
+    padding-block: 76px;
+  }
+  .painWorkbench {
+    grid-template-columns: 1fr;
+  }
+  .painChoices {
+    border-right: 0;
+    border-bottom: 1px solid #1e4056;
+  }
+  .workOrder {
+    grid-template-columns: 1fr;
+  }
+  .paperCaption {
+    margin-bottom: 0;
+  }
+  .honesty {
+    padding: 75px 32px;
+  }
+  .contactSection {
+    width: min(720px, calc(100% - 48px));
+  }
+}
+
+@media (max-width: 600px) {
+  .painSection,
+  .contactSection {
+    width: calc(100% - 40px);
+    padding-block: 64px;
+  }
+  .painIntro {
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .painIntro h2,
+  .honesty h2,
+  .contactSection h2 {
+    font-size: 34px;
+  }
+  .painIntro > p:last-child,
+  .honesty > div > p:last-child,
+  .contactSection > div > p:not(.kicker) {
+    font-size: 14px;
+  }
+  .painChoices button {
+    grid-template-columns: 24px 1fr auto;
+    padding: 17px 15px;
+    font-size: 13px;
+  }
+  .painStory {
+    padding: 25px 19px;
+  }
+  .painStory h3 {
+    font-size: 22px;
+  }
+  .painStory > p {
+    font-size: 13px;
+  }
+  .workOrder {
+    padding: 20px 16px;
+    gap: 0;
+  }
+  .paperHeader {
+    gap: 10px;
+    font-size: 8px;
+  }
+  .workOrder dl {
+    grid-template-columns: 1fr;
+  }
+  .painNext {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+  .painNext p {
+    font-size: 16px;
+  }
+  .painNext .button {
+    justify-content: center;
+  }
+  .honesty {
+    padding: 64px 20px;
+  }
+  .readiness > div {
+    padding-left: 17px;
+  }
+  .readiness > a {
+    margin-left: 17px;
+  }
+  .identity {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+  .identity span,
+  .identity a {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .contactForm {
+    padding: 22px;
+  }
+  .consent {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+  }
+  .consent div {
+    flex-direction: column-reverse;
   }
 }

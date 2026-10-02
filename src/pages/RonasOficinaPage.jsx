@@ -1,8 +1,12 @@
+import { useEffect, useState } from "react";
+import { oficinaPains } from "../data/oficinaPains";
+import { trackEvent } from "../utils/analytics";
+import OficinaConsent from "../components/Oficina/OficinaConsent";
 import { siteConfig } from "../config/siteConfig";
 import { oficinaPlans } from "../data/oficinaPlans";
 import styles from "./RonasOficinaPage.module.css";
 
-const wa = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Olá! Quero conhecer o Ronas Oficina.")}`;
+const wa = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Olá! Quero conversar sobre a rotina da minha oficina e conhecer a proposta do Ronas Oficina.")}`;
 function WhatsAppIcon() {
   return (
     <svg
@@ -55,6 +59,7 @@ export function OficinaHeader() {
         </nav>
         <a
           className={styles.navContact}
+          data-oficina-cta="header"
           href={wa}
           target="_blank"
           rel="noreferrer"
@@ -79,14 +84,45 @@ export function OficinaFooter() {
   );
 }
 export default function RonasOficinaPage() {
+  const [painId, setPainId] = useState("aprovacao");
+  const [profile, setProfile] = useState("Trabalho sozinho");
+  const [testAvailable, setTestAvailable] = useState(false);
+  const pain = oficinaPains.find((item) => item.id === painId);
+  const personalizedWhatsApp =
+    "https://wa.me/" +
+    siteConfig.whatsappNumber +
+    "?text=" +
+    encodeURIComponent(
+      "Olá, Ronas Tech! Quero conversar sobre minha oficina.\nMinha rotina: " +
+        profile +
+        ".\nMinha principal dificuldade: " +
+        pain.label +
+        ".\nQuero entender a proposta do Ronas Oficina e o que já está disponível.",
+    );
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/oficina/config", { signal: controller.signal })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => setTestAvailable(data?.mode === "test"))
+      .catch(() => {});
+    return () => controller.abort();
+  }, []);
+  function measureClick(event) {
+    const link = event.target.closest("a[data-oficina-cta]");
+    if (link)
+      trackEvent("oficina_contact_intent", {
+        placement: link.dataset.oficinaCta,
+      });
+  }
+
   return (
-    <div className={styles.page}>
+    <div className={styles.page} onClick={measureClick}>
       <a className="skip-link" href="#conteudo-principal">
         Pular para o conteúdo principal
       </a>
       <OficinaHeader />
       <main id="conteudo-principal">
-        <section className={styles.hero}>
+        <section className={styles.hero} aria-label="Proposta Ronas Oficina">
           <img
             className={styles.heroImage}
             src="/images/ronas-oficina-workshop.png"
@@ -103,92 +139,168 @@ export default function RonasOficinaPage() {
               </span>
             </p>
             <h1>
-              Sua oficina merece
+              Carro no elevador.
               <br />
-              uma rotina mais
+              Orçamento no WhatsApp.
               <br />
-              <em>organizada.</em>
+              <em>Tudo na sua cabeça?</em>
             </h1>
             <p className={styles.lead}>
-              Conheça uma proposta de sistema para acompanhar atendimentos,
-              serviços e informações em um só lugar.
+              Entre a bancada e o balcão, você ainda precisa encontrar uma
+              autorização, conferir uma peça e responder o prazo. O Ronas
+              Oficina está sendo construído para reunir o combinado de cada
+              atendimento.
             </p>
             <div className={styles.actions}>
               <a
                 className={styles.button}
+                data-oficina-cta="hero"
                 href={wa}
                 target="_blank"
                 rel="noreferrer"
               >
                 <WhatsAppIcon />
-                Quero conhecer a proposta <span aria-hidden="true">→</span>
+                Conversar sobre minha oficina <span aria-hidden="true">→</span>
               </a>
             </div>
             <div className={styles.heroSecondary}>
-              <a href="/ronas-oficina/cadastro">Criar conta de teste ↗</a>
+              <span>Conversa sem compromisso</span>
               <span>Produto em desenvolvimento</span>
             </div>
+            <a className={styles.heroExplore} href="#recursos">
+              Ver situações do dia a dia ↓
+            </a>
           </div>
         </section>
         <div className={styles.strip}>
-          <span>DA ENTRADA À ENTREGA</span>
-          <p>Clientes → Veículos → Orçamentos → Serviços → Histórico</p>
+          <span>RONAS TECH · TIANGUÁ, CE</span>
+          <p>Conversa direta com quem desenvolve. Sem cadastro para falar.</p>
         </div>
-        <section id="recursos" className={styles.features}>
-          <div className={styles.sectionHead}>
-            <p className={styles.kicker}>UMA ROTINA MAIS CLARA</p>
-            <h2>
-              O que importa para sua oficina.
-              <br />
-              Sem perder o fio da meada.
-            </h2>
+        <section id="recursos" className={styles.painSection}>
+          <div className={styles.painIntro}>
+            <div>
+              <p className={styles.kicker}>ENTRE UM CARRO E OUTRO</p>
+              <h2>
+                Qual dessas perguntas
+                <br />
+                interrompe seu dia?
+              </h2>
+            </div>
             <p>
-              Estamos construindo as ferramentas da operação. Conheça o que está
-              previsto para o produto.
+              Toque na situação que você conhece de perto. A proposta começa
+              pelo que acontece na sua oficina.
             </p>
           </div>
-          <div className={styles.featureGrid}>
-            {[
-              [
-                "01",
-                "Clientes e veículos",
-                "Informações reunidas para encontrar o que você precisa a cada atendimento.",
-              ],
-              [
-                "02",
-                "Ordens de serviço",
-                "Da entrada à entrega, acompanhe o serviço e saiba qual é o próximo passo.",
-              ],
-              [
-                "03",
-                "Orçamentos",
-                "Organize as propostas e mantenha os detalhes do atendimento por perto.",
-              ],
-              [
-                "04",
-                "Histórico de atendimento",
-                "Consulte o que já foi feito e dê continuidade ao cuidado com cada veículo.",
-              ],
-            ].map(([n, t, d]) => (
-              <article className={styles.feature} key={n}>
-                <span>{n} /</span>
-                <h3>{t}</h3>
-                <p>{d}</p>
-              </article>
-            ))}
+          <div className={styles.painWorkbench}>
+            <div
+              className={styles.painChoices}
+              role="group"
+              aria-label="Situações da rotina da oficina"
+            >
+              {oficinaPains.map((item, index) => (
+                <button
+                  key={item.id}
+                  aria-pressed={painId === item.id}
+                  onClick={() => setPainId(item.id)}
+                >
+                  <span>0{index + 1}</span>
+                  {item.question}
+                  <b aria-hidden="true">↗</b>
+                </button>
+              ))}
+            </div>
+            <div className={styles.painStory} aria-live="polite">
+              <p className={styles.sceneLabel}>VOCÊ RECONHECE ESSA CENA?</p>
+              <h3>{pain.question}</h3>
+              <p>{pain.scene}</p>
+              <p className={styles.consequence}>{pain.consequence}</p>
+              <div className={styles.record}>
+                <span>O REGISTRO QUE FAZ FALTA</span>
+                <p>{pain.record}</p>
+              </div>
+              <p className={styles.scope}>{pain.proposal}</p>
+            </div>
+          </div>
+          <div className={styles.workOrder}>
+            <div className={styles.paperHeader}>
+              <span>RONAS / OFICINA</span>
+              <span>RASCUNHO DO FLUXO</span>
+            </div>
+            <p className={styles.paperCaption}>
+              Como essa informação poderia ficar reunida
+            </p>
+            <dl>
+              {pain.paper.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className={styles.paperNote}>
+              Exemplo ilustrativo. Não é uma tela de um módulo já disponível.
+            </p>
+          </div>
+          <div className={styles.painNext}>
+            <p>É isso que acontece por aí?</p>
+            <a className={styles.button} href="#conversar">
+              Quero contar minha rotina <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+        <section className={styles.honesty}>
+          <div>
+            <p className={styles.kicker}>O COMBINADO, DESDE O COMEÇO</p>
+            <h2>
+              Você merece saber
+              <br />
+              em que etapa estamos.
+            </h2>
+            <p>
+              Estamos validando a proposta. A conversa serve para entender sua
+              operação e explicar o que podemos construir a partir dela.
+            </p>
+          </div>
+          <div className={styles.readiness}>
+            <div>
+              <span>EM TESTE</span>
+              <p>
+                Cadastro PF/Empresa, login e escolha de plano no ambiente de
+                teste.
+              </p>
+            </div>
+            <div>
+              <span>EM DESENVOLVIMENTO</span>
+              <p>
+                Clientes, veículos, ordens de serviço, orçamentos e histórico.
+              </p>
+            </div>
+            <div>
+              <span>AINDA A DEFINIR</span>
+              <p>
+                Preços, limites, implantação e disponibilidade. Não há
+                contratação ou cobrança nesta página.
+              </p>
+            </div>
+            {testAvailable && (
+              <a href="/ronas-oficina/cadastro">
+                Conhecer o ambiente de contas de teste ↗
+              </a>
+            )}
           </div>
         </section>
         <section id="planos" className={styles.plans}>
           <div className={styles.sectionHead}>
-            <p className={styles.kicker}>UM PLANO PARA CADA ETAPA</p>
+            <p className={styles.kicker}>QUAL É O TAMANHO DA SUA ROTINA?</p>
             <h2>
-              Comece do seu jeito.
+              O plano precisa caber
               <br />
-              Cresça com a sua oficina.
+              no seu jeito de trabalhar.
             </h2>
             <p>
-              Os três planos aceitam Pessoa Física e Empresa. Escolha uma
-              proposta para sua conta de teste.
+              Básico, Intermediário e Avançado são propostas de escopo para
+              Pessoa Física e Empresa. Converse sobre o que faz sentido para sua
+              operação.
             </p>
           </div>
           <div className={styles.planGrid}>
@@ -205,9 +317,21 @@ export default function RonasOficinaPage() {
                 </div>
                 <a
                   className={i === 1 ? styles.button : styles.outlineButton}
-                  href={`/ronas-oficina/cadastro?plano=${p.id}`}
+                  href={
+                    "https://wa.me/" +
+                    siteConfig.whatsappNumber +
+                    "?text=" +
+                    encodeURIComponent(
+                      "Olá! Tenho interesse na proposta do plano " +
+                        p.name +
+                        " do Ronas Oficina. Quero entender o escopo previsto e a disponibilidade.",
+                    )
+                  }
+                  target="_blank"
+                  rel="noreferrer"
+                  data-oficina-cta={"plan-" + p.id}
                 >
-                  Escolher {p.name} ↗
+                  Conversar sobre o {p.name} ↗
                 </a>
                 <ul>
                   {p.features.map((f) => (
@@ -224,32 +348,32 @@ export default function RonasOficinaPage() {
             ))}
           </div>
           <p className={styles.disclaimer}>
-            Preços e limites de uso ainda serão definidos. Criar uma conta não
-            ativa uma assinatura nem gera cobrança.
+            Os valores ainda não foram definidos. Demonstrar interesse não
+            reserva um preço, não ativa uma assinatura e não gera cobrança.
           </p>
         </section>
         <section className={styles.process}>
           <div>
-            <p className={styles.kicker}>DO PRIMEIRO ACESSO EM DIANTE</p>
+            <p className={styles.kicker}>O QUE ACONTECE DEPOIS DO CLIQUE</p>
             <h2>
-              Uma conta.
+              A conversa começa
               <br />
-              Seu próximo passo.
+              pela sua oficina.
             </h2>
           </div>
           <ol className={styles.steps}>
             {[
               [
-                "Crie sua conta",
-                "Escolha Pessoa Física ou Empresa e informe seus dados de acesso.",
+                "Você conta o que está pegando",
+                "Quem atende, como os serviços são registrados e onde a informação se perde.",
               ],
               [
-                "Encontre seu plano",
-                "Compare Básico, Intermediário e Avançado. A escolha fica salva na sua conta.",
+                "A gente confere o que faz sentido",
+                "Relacionamos sua necessidade ao escopo proposto e explicamos o que ainda está em construção.",
               ],
               [
-                "Assine online quando disponível",
-                "O checkout de teste será liberado após a configuração de preços e pagamento.",
+                "O próximo passo fica combinado",
+                "Disponibilidade, valores e implantação precisam ser apresentados antes de qualquer contratação.",
               ],
             ].map(([t, d], i) => (
               <li key={t}>
@@ -269,7 +393,15 @@ export default function RonasOficinaPage() {
           </div>
           {[
             [
-              "O sistema já está pronto para minha oficina?",
+              "Vou ter que abandonar meu controle atual?",
+              "Não pedimos que você pare sua operação ou migre os dados nesta conversa. Primeiro precisamos entender seu controle atual. Migração e implantação ainda serão definidas.",
+            ],
+            [
+              "Falar no WhatsApp já me cadastra ou contrata algo?",
+              "Não. O link abre uma mensagem que você pode revisar antes de enviar. Não há criação automática de conta, assinatura ou cobrança.",
+            ],
+            [
+              "Consigo começar a usar na operação hoje?",
               "Ainda não. Cadastro, login e escolha de plano fazem parte desta etapa de teste. Os módulos de clientes, veículos, ordens de serviço, estoque e relatórios estão previstos e ainda não estão disponíveis.",
             ],
             [
@@ -294,29 +426,88 @@ export default function RonasOficinaPage() {
             </details>
           ))}
         </section>
-        <section className={styles.cta}>
-          <p className={styles.kicker}>MAIS TEMPO PARA O QUE VOCÊ FAZ BEM</p>
-          <h2>
-            O próximo capítulo
-            <br />
-            da sua oficina começa aqui.
-          </h2>
-          <div className={styles.actions}>
-            <a className={styles.button} href="/ronas-oficina/cadastro">
-              Criar conta de teste →
-            </a>
+        <section id="conversar" className={styles.contactSection}>
+          <div>
+            <p className={styles.kicker}>PODE CONTAR DO SEU JEITO</p>
+            <h2>
+              Qual parte da rotina
+              <br />
+              você gostaria de tirar
+              <br />
+              <em>da cabeça?</em>
+            </h2>
+            <p>
+              Selecione a situação mais próxima da sua. A mensagem já vai com
+              esse contexto e você pode editar antes de enviar.
+            </p>
+            <div className={styles.identity}>
+              <strong>Ronas Tech</strong>
+              <span>Tecnologia para negócios · {siteConfig.location}</span>
+              <a href={"mailto:" + siteConfig.email}>{siteConfig.email}</a>
+              <a href={"tel:+" + siteConfig.whatsappNumber}>
+                {siteConfig.whatsappDisplay}
+              </a>
+              <a href="/">Conhecer a Ronas Tech ↗</a>
+            </div>
+          </div>
+          <div className={styles.contactForm}>
+            <label htmlFor="workshop-profile">Como você trabalha hoje?</label>
+            <select
+              id="workshop-profile"
+              value={profile}
+              onChange={(event) => setProfile(event.target.value)}
+            >
+              <option>Trabalho sozinho</option>
+              <option>Tenho uma equipe pequena</option>
+              <option>Tenho uma operação maior</option>
+              <option>Estou abrindo minha oficina</option>
+            </select>
+            <label htmlFor="workshop-pain">
+              O que mais precisa de atenção?
+            </label>
+            <select
+              id="workshop-pain"
+              value={painId}
+              onChange={(event) => setPainId(event.target.value)}
+            >
+              {oficinaPains.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+            <p className={styles.messagePreview}>
+              Vamos conversar sobre <strong>{pain.label.toLowerCase()}</strong>{" "}
+              na sua oficina.
+            </p>
             <a
-              className={styles.textLink}
+              className={styles.button}
+              href={personalizedWhatsApp}
+              target="_blank"
+              rel="noreferrer"
+              data-oficina-cta="qualified-contact"
+            >
+              <WhatsAppIcon />
+              Levar essa conversa ao WhatsApp ↗
+            </a>
+            <p className={styles.contactPrivacy}>
+              Sem pedir seu telefone ou e-mail aqui. As escolhas só seguem na
+              mensagem quando você abre o WhatsApp; o envio depende de você.
+            </p>
+            <a
+              className={styles.plainContact}
               href={wa}
               target="_blank"
               rel="noreferrer"
+              data-oficina-cta="direct-contact"
             >
-              Conversar com a Ronas Tech ↗
+              Prefiro conversar sem escolher nada
             </a>
           </div>
         </section>
       </main>
       <OficinaFooter />
+      <OficinaConsent />
     </div>
   );
 }

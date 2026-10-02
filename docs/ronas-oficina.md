@@ -67,3 +67,11 @@ Nenhum merge ou deploy de produção é necessário para revisar esta etapa.
 ## Revisão visual pela referência do usuário
 
 Cabeçalho com logo RT fornecido pelo usuário, marca RONAS TECH, fundo de oficina gerado com a ferramenta integrada imagegen, título branco/azul, CTA WhatsApp e acesso secundário ao cadastro. No celular a foto fica acima do texto para preservar legibilidade. Planos e autenticação permanecem disponíveis. Build e interface verificados em 1440, 950, 390 e 320 px; nenhuma mudança no backend.
+
+## Revisão de mensagem e confiança
+
+A landing não usa depoimentos, quantidade de clientes, economia, prazo de implantação, garantia ou qualquer outra promessa sem evidência. Ela parte de quatro situações operacionais que o visitante pode reconhecer e alternar na própria página: autorização de orçamento, prazo/andamento, histórico do veículo e peças/custos/resultado. São cenários editoriais, não casos de clientes.
+
+As dores foram pesquisadas em publicações setoriais antes de escrever a página: a cartilha Sebrae-SP/Sindirepa descreve desafios de controles financeiros, retrabalho, compras de peças, atendimento e cadastros; o Sindirepa também destaca fluxo de caixa, entradas e saídas; e Oficina Brasil ressalta orçamento transparente e comunicação ao cliente. Fontes: [Sebrae-SP/Sindirepa](https://versoassessoriadeimprensa.com.br/wp-content/uploads/2015/07/Cartilha-Oficina-Mec--nica-Sebrae-Sindirepa.pdf), [Sindirepa](https://sindirepa.org.br/noticias/sua-empresa-fatura-bem-mas-o-dinheiro-nao-sobra-no-caixa-sindirepa-promove-workshop-sobre-gestao-financeira-para-o-setor/), [Oficina Brasil](https://oficinabrasil.com.br/ford-motorcraft/noticia/como-transformar-o-orcamento-tecnico-em-uma-ferramenta-de-fidelizacao-de-clientes-na-oficina-mecanica).
+
+A conversa pelo WhatsApp agora é contextual: o visitante escolhe como trabalha e a situação que mais pesa. Essas escolhas ficam somente na página até ele abrir o WhatsApp, onde a mensagem pode ser alterada antes do envio. A página não pede telefone, e-mail ou CNPJ para iniciar a conversa. Rastreadores opcionais permanecem desligados por padrão nas rotas Ronas Oficina; caso estejam configurados, a página pede uma escolha separada antes de iniciar análise ou publicidade.
