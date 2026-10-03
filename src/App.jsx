@@ -6,6 +6,7 @@ import Problems from "./components/Problems/Problems";
 import HowItWorks from "./components/HowItWorks/HowItWorks";
 import WhyRonasTech from "./components/WhyRonasTech/WhyRonasTech";
 import Portfolio from "./components/Portfolio/Portfolio";
+import Technologies from "./components/Technologies/Technologies";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
@@ -149,6 +150,7 @@ function App({ pathname: pathnameProp }) {
           <HowItWorks />
           <WhyRonasTech />
           <Portfolio />
+          <Technologies />
           <About />
           <Contact />
         </main>
