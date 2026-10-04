@@ -24,7 +24,7 @@ const projects = [
     repositoryUrl: 'https://github.com/ronaelmoura/ronas-desk',
   },
   {
-    title: 'Ronas Oficina',
+    title: 'BoxMotor',
     category: 'Produto para oficinas mecânicas',
     need:
       'Reunir autorizações, peças, prazos e histórico de cada veículo sem depender de mensagens e informações guardadas na memória.',
@@ -37,8 +37,8 @@ const projects = [
     ],
     stack: ['React', 'Node.js', 'MySQL', 'Stripe'],
     status: 'Em desenvolvimento',
-    projectUrl: '/ronas-oficina',
-    actionLabel: 'Conhecer o Ronas Oficina',
+    projectUrl: '/boxmotor',
+    actionLabel: 'Conhecer o BoxMotor',
     visual: 'workshop',
   },
   {
@@ -191,7 +191,7 @@ function ProjectVisual({ type }) {
     return (
       <div className={styles.workshopMockup} aria-hidden="true">
         <div className={styles.workshopTopbar}>
-          <span>RONAS / OFICINA</span>
+          <span>BOXMOTOR / OFICINA</span>
           <i>OS 0248</i>
         </div>
         <div className={styles.workshopVehicle}>

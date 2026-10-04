@@ -7,7 +7,7 @@ import { initializeAnalytics } from "./utils/analytics";
 import { initializeMetaPixel } from "./utils/metaPixel";
 
 function initializeTracking() {
-  if (window.location.pathname.startsWith('/ronas-oficina')) return
+  if (window.location.pathname.startsWith('/ronas-oficina') || window.location.pathname.startsWith('/boxmotor')) return
   initializeAnalytics()
   initializeMetaPixel()
 }

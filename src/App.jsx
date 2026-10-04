@@ -78,9 +78,12 @@ function App({ pathname: pathnameProp }) {
     : null;
 
   let content;
-  if (pathname === "/ronas-oficina") content = <RonasOficinaPage />;
+  if (["/boxmotor", "/ronas-oficina"].includes(pathname)) content = <RonasOficinaPage />;
   else if (
     [
+      "/boxmotor/cadastro",
+      "/boxmotor/entrar",
+      "/boxmotor/conta",
       "/ronas-oficina/cadastro",
       "/ronas-oficina/entrar",
       "/ronas-oficina/conta",
@@ -161,7 +164,7 @@ function App({ pathname: pathnameProp }) {
   return (
     <>
       {content}
-      {!pathname.startsWith("/ronas-oficina") && <CookieNotice />}
+      {!pathname.startsWith("/ronas-oficina") && !pathname.startsWith("/boxmotor") && <CookieNotice />}
     </>
   );
 }

@@ -56,7 +56,7 @@ export default function OficinaAccountPage({ mode }) {
         .catch((err) => {
           if (!cancelled) {
             if (err.status === 401)
-              window.location.replace("/ronas-oficina/entrar");
+              window.location.replace("/boxmotor/entrar");
             else setError(err.message);
           }
         })
@@ -94,7 +94,7 @@ export default function OficinaAccountPage({ mode }) {
         plan,
         acceptedTerms: form.get("terms") === "on",
       });
-      window.location.assign("/ronas-oficina/conta");
+      window.location.assign("/boxmotor/conta");
     } catch (err) {
       setError(err.message);
       setBusy(false);
@@ -115,7 +115,7 @@ export default function OficinaAccountPage({ mode }) {
             : "Status da conta atualizado.",
         );
       }
-      if (route === "logout") window.location.assign("/ronas-oficina/entrar");
+      if (route === "logout") window.location.assign("/boxmotor/entrar");
       if (data.url) window.location.assign(data.url);
     } catch (err) {
       setError(err.message);
@@ -282,7 +282,7 @@ export default function OficinaAccountPage({ mode }) {
         ) : (
           <div className={styles.accountGrid}>
             <div className={styles.accountIntro}>
-              <p className={styles.kicker}>RONAS OFICINA · AMBIENTE DE TESTE</p>
+              <p className={styles.kicker}>BOXMOTOR · AMBIENTE DE TESTE</p>
               <h1>
                 {register
                   ? "O primeiro passo para uma rotina mais organizada."
@@ -449,12 +449,12 @@ export default function OficinaAccountPage({ mode }) {
               <p className={styles.formFoot}>
                 {register ? (
                   <>
-                    Já tem conta? <a href="/ronas-oficina/entrar">Entrar</a>
+                    Já tem conta? <a href="/boxmotor/entrar">Entrar</a>
                   </>
                 ) : (
                   <>
                     Ainda não tem conta?{" "}
-                    <a href="/ronas-oficina/cadastro">Criar conta</a>
+                    <a href="/boxmotor/cadastro">Criar conta</a>
                   </>
                 )}
               </p>

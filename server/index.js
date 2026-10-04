@@ -22,7 +22,7 @@ const { app, db } = createApp({
 app.use(express.static(path.resolve("dist"), { extensions: ["html"] }));
 app.use((_req, res) => res.status(404).sendFile(path.resolve("dist/404.html")));
 const server = app.listen(port, process.env.HOST || "127.0.0.1", () =>
-  console.log(`Ronas Oficina (teste): ${origin}/ronas-oficina`),
+  console.log(`BoxMotor (teste): ${origin}/boxmotor`),
 );
 process.on("SIGTERM", () =>
   server.close(() => {

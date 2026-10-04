@@ -51,6 +51,12 @@
   white-space: nowrap;
   text-decoration: none;
 }
+.boxMotorLogo {
+  display: block;
+  width: 212px;
+  height: auto;
+  object-fit: contain;
+}
 .brandLight {
   color: #008eff;
 }
@@ -1159,6 +1165,7 @@
   .brand {
     font-size: 19px;
   }
+  .boxMotorLogo { width: 180px; }
   .nav nav {
     gap: 20px;
   }
@@ -1197,6 +1204,7 @@
     min-height: 82px;
     gap: 15px;
   }
+  .boxMotorLogo { width: 160px; }
   .nav nav {
     gap: 18px;
   }
@@ -1271,6 +1279,7 @@
     font-size: 16px;
     gap: 3px;
   }
+  .boxMotorLogo { width: 138px; }
   .logoFrame {
     width: 47px;
     height: 44px;

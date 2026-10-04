@@ -6,7 +6,7 @@ import { siteConfig } from "../config/siteConfig";
 import { formatOficinaPrice, oficinaPlans } from "../data/oficinaPlans";
 import styles from "./RonasOficinaPage.module.css";
 
-const wa = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Olá! Quero conversar sobre a rotina da minha oficina e conhecer a proposta do Ronas Oficina.")}`;
+const wa = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Olá! Quero conversar sobre a rotina da minha oficina e conhecer a proposta do BoxMotor.")}`;
 function WhatsAppIcon() {
   return (
     <svg
@@ -29,33 +29,23 @@ export function OficinaHeader() {
       <div className={styles.nav}>
         <a
           className={styles.brand}
-          href="/"
-          aria-label="Ronas Tech, página inicial"
+          href="/boxmotor"
+          aria-label="BoxMotor, página inicial"
         >
-          <span className={styles.logoFrame}>
-            <img
-              src="/images/ronas-tech-brand.png"
-              width="1024"
-              height="1024"
-              alt=""
-            />
-          </span>
-          <span>
-            RONAS <span className={styles.brandLight}>TECH</span>
-          </span>
+          <img className={styles.boxMotorLogo} src="/images/boxmotor-logo.png" width="2172" height="724" alt="BoxMotor" />
         </a>
-        <nav aria-label="Navegação Ronas Oficina">
+        <nav aria-label="Navegação BoxMotor">
           <a className={styles.desktopLink} href="/">
             Início
           </a>
-          <a className={styles.desktopLink} href="/ronas-oficina#recursos">
+          <a className={styles.desktopLink} href="/boxmotor#recursos">
             Recursos
           </a>
-          <a className={styles.currentLink} href="/ronas-oficina">
-            Ronas Oficina
+          <a className={styles.currentLink} href="/boxmotor">
+            BoxMotor
           </a>
-          <a href="/ronas-oficina#planos">Planos</a>
-          <a href="/ronas-oficina/entrar">Entrar</a>
+          <a href="/boxmotor#planos">Planos</a>
+          <a href="/boxmotor/entrar">Entrar</a>
         </nav>
         <a
           className={styles.navContact}
@@ -75,7 +65,7 @@ export function OficinaFooter() {
   return (
     <footer className={styles.footer}>
       <a href="/">Ronas Tech · Tianguá, CE</a>
-      <span>© {new Date().getFullYear()} Ronas Oficina</span>
+      <span>© {new Date().getFullYear()} BoxMotor</span>
       <div>
         <a href="/politica-de-privacidade">Privacidade</a>
         <a href="/termos-de-uso">Termos</a>
@@ -97,7 +87,7 @@ export default function RonasOficinaPage() {
         profile +
         ".\nMinha principal dificuldade: " +
         pain.label +
-        ".\nQuero entender a proposta do Ronas Oficina e o que já está disponível.",
+        ".\nQuero entender a proposta do BoxMotor e o que já está disponível.",
     );
   useEffect(() => {
     const controller = new AbortController();
@@ -122,7 +112,7 @@ export default function RonasOficinaPage() {
       </a>
       <OficinaHeader />
       <main id="conteudo-principal">
-        <section className={styles.hero} aria-label="Proposta Ronas Oficina">
+        <section className={styles.hero} aria-label="Proposta BoxMotor">
           <img
             className={styles.heroImage}
             src="/images/ronas-oficina-workshop.png"
@@ -134,9 +124,7 @@ export default function RonasOficinaPage() {
           <div className={styles.heroShade} aria-hidden="true" />
           <div className={styles.heroContent}>
             <p className={styles.eyebrow}>
-              <span>
-                RONAS <b>OFICINA</b>
-              </span>
+              <span>BOXMOTOR <b>PARA OFICINAS</b></span>
             </p>
             <h1>
               Carro no elevador.
@@ -147,8 +135,8 @@ export default function RonasOficinaPage() {
             </h1>
             <p className={styles.lead}>
               Entre a bancada e o balcão, você ainda precisa encontrar uma
-              autorização, conferir uma peça e responder o prazo. O Ronas
-              Oficina está sendo construído para reunir o combinado de cada
+              autorização, conferir uma peça e responder o prazo. O BoxMotor
+              está sendo construído para reunir o combinado de cada
               atendimento.
             </p>
             <div className={styles.actions}>
@@ -223,7 +211,7 @@ export default function RonasOficinaPage() {
           </div>
           <div className={styles.workOrder}>
             <div className={styles.paperHeader}>
-              <span>RONAS / OFICINA</span>
+              <span>BOXMOTOR / OFICINA</span>
               <span>RASCUNHO DO FLUXO</span>
             </div>
             <p className={styles.paperCaption}>
@@ -283,7 +271,7 @@ export default function RonasOficinaPage() {
               </p>
             </div>
             {testAvailable && (
-              <a href="/ronas-oficina/cadastro">
+              <a href="/boxmotor/cadastro">
                 Conhecer o ambiente de contas de teste ↗
               </a>
             )}
@@ -316,7 +304,7 @@ export default function RonasOficinaPage() {
                 </div>
                 <a
                   className={i === 1 ? styles.button : styles.outlineButton}
-                  href={`/ronas-oficina/cadastro?plano=${p.id}`}
+                  href={`/boxmotor/cadastro?plano=${p.id}`}
                   data-oficina-cta={"plan-" + p.id}
                 >
                   Criar conta de teste

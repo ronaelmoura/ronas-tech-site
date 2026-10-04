@@ -348,8 +348,8 @@ export function createApp({
           line_items: [{ price: priceIds[req.account.plan], quantity: 1 }],
           subscription_data: { metadata: { accountId } },
           expires_at: expires,
-          success_url: `${origin}/ronas-oficina/conta?checkout=retorno`,
-          cancel_url: `${origin}/ronas-oficina/conta?checkout=cancelado`,
+          success_url: `${origin}/boxmotor/conta?checkout=retorno`,
+          cancel_url: `${origin}/boxmotor/conta?checkout=cancelado`,
         },
         { idempotencyKey: `checkout-${accountId}-${expires}` },
       );
@@ -368,7 +368,7 @@ export function createApp({
       throw fail(409, "Não há assinatura para gerenciar.");
     const session = await stripe.billingPortal.sessions.create({
       customer: req.account.customer,
-      return_url: `${origin}/ronas-oficina/conta`,
+      return_url: `${origin}/boxmotor/conta`,
     });
     res.json({ url: session.url });
   });
