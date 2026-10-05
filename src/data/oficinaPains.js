@@ -10,7 +10,7 @@ export const oficinaPains = [
     record:
       "Serviço, valor apresentado e decisão do cliente ligados ao mesmo atendimento.",
     proposal:
-      "Orçamentos e aprovações fazem parte da proposta em desenvolvimento.",
+      "Orçamentos e decisão por link temporário foram implementados e testados localmente.",
     paper: [
       ["Serviço", "Revisão do sistema de freios"],
       ["Orçamento", "Enviado ao cliente"],
@@ -28,7 +28,7 @@ export const oficinaPains = [
       "Responder vira mais uma interrupção entre um serviço e outro.",
     record:
       "Etapa do serviço, pendência e próximo passo visíveis para quem atende.",
-    proposal: "Acompanhamento de ordens de serviço está previsto no produto.",
+    proposal: "Ordens de serviço e acompanhamento de etapas foram implementados e testados localmente.",
     paper: [
       ["Atendimento", "Troca do conjunto de embreagem"],
       ["Etapa", "Aguardando peça"],
@@ -46,7 +46,7 @@ export const oficinaPains = [
       "O atendimento recomeça procurando uma informação que já deveria estar à mão.",
     record:
       "Cliente, veículo e serviços anteriores associados, com as observações do atendimento.",
-    proposal: "Cadastro e histórico são parte da proposta inicial de gestão.",
+    proposal: "Clientes, veículos e ordens associados foram implementados e testados localmente.",
     paper: [
       ["Veículo", "Exemplo de retorno à oficina"],
       ["Consulta", "Serviços anteriores"],
@@ -65,7 +65,7 @@ export const oficinaPains = [
     record:
       "Peças, mão de obra e movimentações separados para uma análise mais clara.",
     proposal:
-      "Dor mapeada para validação. Gestão financeira ainda não está implementada nem tem escopo fechado.",
+      "Pagamentos parciais e saldo foram testados localmente; conciliação e estornos continuam planejados.",
     paper: [
       ["Na operação", "Serviços e peças movimentados"],
       ["Separar", "Peças e mão de obra"],
