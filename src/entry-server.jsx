@@ -23,6 +23,39 @@ const legalMetadata = {
   },
 }
 
+const serviceMetadata = {
+  '/servicos/sites-profissionais': {
+    title: `Sites Profissionais | ${siteConfig.companyName}`,
+    description:
+      'Tenha um site rápido, claro e fácil de usar, com as informações que seus clientes precisam para entrar em contato.',
+  },
+  '/servicos/landing-pages': {
+    title: `Landing Pages | ${siteConfig.companyName}`,
+    description:
+      'Uma página enxuta, com informações na ordem certa e uma chamada clara para o próximo passo.',
+  },
+  '/servicos/sistemas-web': {
+    title: `Sistemas Web | ${siteConfig.companyName}`,
+    description:
+      'Sistemas web feitos para reunir informações e organizar rotinas que não cabem bem em planilhas.',
+  },
+  '/servicos/dashboards-e-integracoes': {
+    title: `Dashboards e Integrações | ${siteConfig.companyName}`,
+    description:
+      'Painéis e integrações para reunir os dados importantes em um só lugar.',
+  },
+  '/servicos/automacao-de-processos': {
+    title: `Automação de Processos | ${siteConfig.companyName}`,
+    description:
+      'Automatize tarefas repetitivas e faça as ferramentas usadas pela equipe trocarem informações sem trabalho manual.',
+  },
+  '/servicos/ia-para-empresas': {
+    title: `IA para Empresas | ${siteConfig.companyName}`,
+    description:
+      'IA aplicada a tarefas específicas da empresa, como atendimento, organização de informações e análise de dados.',
+  },
+}
+
 const spreadsheetProductMetadata = Object.fromEntries(spreadsheetProducts.map((product) => [product.path, {
   title: `${product.title} | ${siteConfig.companyName}`,
   description: product.lead,
@@ -111,6 +144,7 @@ const productMetadata = {
 export const staticPaths = [
   '/',
   ...Object.keys(legalMetadata),
+  ...Object.keys(serviceMetadata),
   ...Object.keys(productMetadata),
 ]
 
@@ -120,6 +154,14 @@ export function render(pathname) {
 
 export function getPageMetadata(pathname) {
   if (pathname === '/') return homeMetadata
+
+  const service = serviceMetadata[pathname]
+  if (service) {
+    return {
+      ...service,
+      canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
+    }
+  }
 
   const legal = legalMetadata[pathname]
   if (legal) {
