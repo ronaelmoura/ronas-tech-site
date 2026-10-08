@@ -35,19 +35,19 @@ function Hero() {
   return <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
     <div className={styles.container}>
       <div className={styles.content}>
-        <p className={styles.eyebrow}><span aria-hidden="true" />Disponível para novas oportunidades</p>
-        <p className={styles.intro}>Ronael Moura <span>/ Desenvolvedor Full Stack</span></p>
-        <h1 id="hero-title" className={styles.title}>Ideias claras.<br />Sistemas <span>bem construídos.</span></h1>
-        <p className={styles.description}>Transformo problemas do dia a dia em aplicações web. Da primeira interface ao banco de dados, com atenção à experiência, aos testes e à entrega.</p>
+        <p className={styles.eyebrow}><span aria-hidden="true" />Projetos digitais com contato direto</p>
+        <p className={styles.intro}>Ronas Tech <span>/ Por Ronael Moura</span></p>
+        <h1 id="hero-title" className={styles.title}>Sites e sistemas web.<br /><span>Automação e IA.</span></h1>
+        <p className={styles.description}>Crio sites para apresentar seu negócio e sistemas web para organizar a operação. Também desenvolvo automações e aplicações de IA para tarefas bem definidas. Você conversa direto com quem planeja e constrói.</p>
         <div className={styles.actions}>
-          <a className={styles.primaryButton} href="#projetos">Explorar projetos <Icon name="arrowUpRight" size={18} /></a>
-          <a className={styles.secondaryButton} href="#contato">Vamos conversar <Icon name="arrowRight" size={18} /></a>
+          <a className={styles.primaryButton} href="#contato">Falar sobre meu projeto <Icon name="arrowUpRight" size={18} /></a>
+          <a className={styles.secondaryButton} href="#projetos">Ver projetos <Icon name="arrowRight" size={18} /></a>
         </div>
-        <div className={styles.signature}><span className={styles.monogram} aria-hidden="true">rm.</span><p>Formação pelo SENAI<strong>Tianguá, Ceará · Trabalho remoto</strong></p></div>
+        <div className={styles.signature}><span className={styles.monogram} aria-hidden="true">rm.</span><p>Desenvolvimento Full Stack · SENAI<strong>Tianguá, Ceará · Trabalho remoto</strong></p></div>
       </div>
       <div className={styles.visual}><DeliveryCard /></div>
     </div>
-    <div className={styles.bottomLine}><span>Do código à experiência.</span><ul aria-label="Tecnologias principais"><li>React</li><li>Node.js</li><li>Express</li><li>MySQL</li><li>Docker</li></ul><a href="#projetos" aria-label="Ir para os projetos">Role para conhecer <Icon name="arrowDown" size={16} /></a></div>
+    <div className={styles.bottomLine}><span>Clareza no processo. Cuidado na entrega.</span><ul aria-label="Tecnologias principais"><li>React</li><li>Node.js</li><li>Express</li><li>MySQL</li><li>Docker</li></ul><a href="#projetos" aria-label="Ir para os projetos">Role para conhecer <Icon name="arrowDown" size={16} /></a></div>
   </section>
 }
 

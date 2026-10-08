@@ -2,11 +2,36 @@ import styles from './HowItWorks.module.css'
 import Icon from '../Icon/Icon'
 
 const steps = [
-  { number: '01', tag: 'PROBLEMA', title: 'Você explica o cenário', description: 'Você conta o que está acontecendo hoje — sem precisar saber qual tecnologia resolveria isso.', icon: 'message' },
-  { number: '02', tag: 'DIAGNÓSTICO', title: 'Encontramos o gargalo', description: 'Entendemos a rotina, o atrito e o que realmente precisa mudar antes de pensar em código.', icon: 'search' },
-  { number: '03', tag: 'DIREÇÃO', title: 'Desenhamos o caminho', description: 'Definimos a solução, prioridades, escopo e próximos passos de forma clara.', icon: 'route' },
-  { number: '04', tag: 'CONSTRUÇÃO', title: 'Transformamos em produto', description: 'Design, desenvolvimento, integrações, automações e IA entram na medida certa.', icon: 'code' },
-  { number: '05', tag: 'EVOLUÇÃO', title: 'Colocamos para funcionar', description: 'Testamos, publicamos e deixamos a base pronta para evoluir conforme a necessidade.', icon: 'check' },
+  {
+    number: '01',
+    title: 'Conversa',
+    description: 'Você conta o que está travando a rotina — sem precisar chegar com a solução pronta.',
+    icon: 'message',
+  },
+  {
+    number: '02',
+    title: 'Diagnóstico',
+    description: 'Mapeamos o processo e identificamos o que realmente precisa mudar.',
+    icon: 'search',
+  },
+  {
+    number: '03',
+    title: 'Plano',
+    description: 'Definimos solução, prioridades, escopo e investimento antes de começar.',
+    icon: 'route',
+  },
+  {
+    number: '04',
+    title: 'Desenvolvimento',
+    description: 'Criamos e integramos a solução, validando cada etapa com você.',
+    icon: 'code',
+  },
+  {
+    number: '05',
+    title: 'Entrega e evolução',
+    description: 'Colocamos o produto em uso e preparamos a base para os próximos passos.',
+    icon: 'check',
+  },
 ]
 
 function HowItWorks() {
@@ -14,27 +39,36 @@ function HowItWorks() {
     <section id="como-funciona" className={styles.section} aria-labelledby="how-title">
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>Processo</p>
-          <h2 id="how-title">Antes do código, existe uma pergunta: o que realmente precisa mudar?</h2>
-          <p className={styles.subtitle}>A primeira conversa não é uma prova técnica. É o momento de entender o cenário e descobrir se existe uma solução digital que faça sentido.</p>
+          <div className={styles.headingCopy}>
+            <p className={styles.eyebrow}>Como trabalhamos</p>
+            <h2 id="how-title">Da primeira conversa ao produto em uso.</h2>
+          </div>
+          <p className={styles.subtitle}>
+            A tecnologia entra depois de entender o desafio. Assim, cada etapa
+            responde a uma necessidade real — e você sabe o que vem a seguir.
+          </p>
         </header>
-        <div className={styles.process} aria-label="Etapas do projeto">
-          {steps.map((step, index) => (
-            <article className={styles.step} key={step.number}>
-              <div className={styles.stepTop}><span className={styles.number}>{step.number}</span><span className={styles.tag}>{step.tag}</span></div>
-              <div className={styles.icon}><Icon name={step.icon} size={23} /></div>
-              <h3>{step.title}</h3>
+
+        <ol className={styles.process} aria-label="Etapas do processo de trabalho">
+          {steps.map((step) => (
+            <li className={styles.step} key={step.number}>
+              <span className={styles.number}>{step.number}</span>
+              <div className={styles.stepHeading}>
+                <span className={styles.icon}><Icon name={step.icon} size={20} /></span>
+                <h3>{step.title}</h3>
+              </div>
               <p>{step.description}</p>
-              {index < steps.length - 1 && <span className={styles.arrow} aria-hidden="true">→</span>}
-            </article>
+            </li>
           ))}
-        </div>
-        <div className={styles.note}>
-          <div className={styles.noteIcon}>RT</div>
-          <div><strong>Sem proposta no escuro.</strong><span>Você primeiro entende o caminho. Só depois decide se faz sentido avançar.</span></div>
-        </div>
+        </ol>
+
+        <aside className={styles.note} aria-label="Nosso compromisso">
+          <strong>Sem proposta no escuro.</strong>
+          <p>Você entende o caminho e o investimento antes de decidir avançar.</p>
+        </aside>
       </div>
     </section>
   )
 }
+
 export default HowItWorks

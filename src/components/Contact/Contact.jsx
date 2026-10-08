@@ -18,25 +18,25 @@ const initialFormData = {
   message: '',
 }
 
-const reasons = ['Vaga CLT', 'Vaga PJ', 'Projeto freelance', 'Outro assunto']
+const reasons = ['Site ou landing page', 'Sistema web ou dashboard', 'Automação ou integração', 'IA para meu negócio', 'Vaga CLT', 'Vaga PJ', 'Projeto freelance', 'Outro assunto']
 
-// Recrutadores costumam preferir LinkedIn ou e-mail; quem quer um projeto
-// costuma preferir o WhatsApp. Os dois caminhos ficam lado a lado.
+// Clientes encontram primeiro o caminho para projetos; recrutadores continuam
+// com acesso direto ao LinkedIn e ao e-mail.
 const paths = [
+  {
+    title: 'Projetos para empresas',
+    text: 'Para criar ou melhorar um site, sistema web, automação ou aplicação de IA.',
+    links: [
+      { label: `WhatsApp ${siteConfig.whatsappDisplay}`, href: `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá, Ronael! Vi seu site e quero conversar sobre um projeto.')}`, whatsapp: true, external: true },
+      { label: 'GitHub', href: siteConfig.github, platform: 'github', external: true },
+    ],
+  },
   {
     title: 'Vagas e oportunidades',
     text: 'Para recrutadores e empresas contratando desenvolvedor Full Stack.',
     links: [
       { label: 'LinkedIn', href: siteConfig.linkedin, platform: 'linkedin', external: true },
       { label: siteConfig.email, href: `mailto:${siteConfig.email}` },
-    ],
-  },
-  {
-    title: 'Projetos freelance',
-    text: 'Para quem precisa de um sistema web, uma API ou uma interface.',
-    links: [
-      { label: `WhatsApp ${siteConfig.whatsappDisplay}`, href: `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá, Ronael! Vi seu site e quero conversar sobre um projeto.')}`, whatsapp: true, external: true },
-      { label: 'GitHub', href: siteConfig.github, platform: 'github', external: true },
     ],
   },
 ]
@@ -182,7 +182,7 @@ function Contact() {
 
             <div className={styles.field}>
               <label htmlFor="contact-message">Mensagem</label>
-              <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="Conte sobre a vaga ou o projeto em poucas linhas." {...fieldAccessibility('message')} />
+              <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="O que você quer construir ou melhorar? Conte um pouco sobre o seu objetivo." {...fieldAccessibility('message')} />
               {errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}
             </div>
 

@@ -4,9 +4,9 @@ import { siteConfig } from './config/siteConfig'
 import { spreadsheetProducts } from './data/spreadsheetProducts'
 
 const homeMetadata = {
-  title: 'Ronael Moura | Desenvolvedor Full Stack · Ronas Tech',
+  title: 'Sites, sistemas web, automações e IA | Ronas Tech',
   description:
-    'Portfólio de Ronael Moura, desenvolvedor Full Stack com formação pelo SENAI. Projetos com React, Node.js, Express e MySQL, testes automatizados e deploy em produção. Aberto a vagas e projetos freelance.',
+    'A Ronas Tech desenvolve sites, sistemas web, automações e aplicações de IA para empresas. Conheça os projetos e fale diretamente com Ronael Moura.',
   canonical: siteConfig.siteUrl,
 }
 
@@ -20,6 +20,39 @@ const legalMetadata = {
     title: `Termos de Uso | ${siteConfig.companyName}`,
     description:
       'Consulte as regras e condições para utilização do site e dos produtos apresentados pela Ronas Tech.',
+  },
+}
+
+const serviceMetadata = {
+  '/servicos/sites-profissionais': {
+    title: `Sites Profissionais | ${siteConfig.companyName}`,
+    description:
+      'Tenha um site rápido, claro e fácil de usar, com as informações que seus clientes precisam para entrar em contato.',
+  },
+  '/servicos/landing-pages': {
+    title: `Landing Pages | ${siteConfig.companyName}`,
+    description:
+      'Uma página enxuta, com informações na ordem certa e uma chamada clara para o próximo passo.',
+  },
+  '/servicos/sistemas-web': {
+    title: `Sistemas Web | ${siteConfig.companyName}`,
+    description:
+      'Sistemas web feitos para reunir informações e organizar rotinas que não cabem bem em planilhas.',
+  },
+  '/servicos/dashboards-e-integracoes': {
+    title: `Dashboards e Integrações | ${siteConfig.companyName}`,
+    description:
+      'Painéis e integrações para reunir os dados importantes em um só lugar.',
+  },
+  '/servicos/automacao-de-processos': {
+    title: `Automação de Processos | ${siteConfig.companyName}`,
+    description:
+      'Automatize tarefas repetitivas e faça as ferramentas usadas pela equipe trocarem informações sem trabalho manual.',
+  },
+  '/servicos/ia-para-empresas': {
+    title: `IA para Empresas | ${siteConfig.companyName}`,
+    description:
+      'IA aplicada a tarefas específicas da empresa, como atendimento, organização de informações e análise de dados.',
   },
 }
 
@@ -111,6 +144,7 @@ const productMetadata = {
 export const staticPaths = [
   '/',
   ...Object.keys(legalMetadata),
+  ...Object.keys(serviceMetadata),
   ...Object.keys(productMetadata),
 ]
 
@@ -120,6 +154,14 @@ export function render(pathname) {
 
 export function getPageMetadata(pathname) {
   if (pathname === '/') return homeMetadata
+
+  const service = serviceMetadata[pathname]
+  if (service) {
+    return {
+      ...service,
+      canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
+    }
+  }
 
   const legal = legalMetadata[pathname]
   if (legal) {

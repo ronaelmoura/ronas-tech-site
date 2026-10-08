@@ -3,14 +3,13 @@ import { siteConfig } from '../../config/siteConfig'
 import styles from './Navbar.module.css'
 import Icon from '../Icon/Icon'
 
-// A ordem dos itens acompanha a ordem da página: projetos primeiro, porque
-// é o que recrutadores e clientes vêm avaliar.
+// A navegação acompanha a jornada de descoberta até o contato.
 const navigationItems = [
+  { label: 'Serviços', href: '#solucoes' },
   { label: 'Projetos', href: '#projetos' },
-  { label: 'Stack', href: '#stack' },
+  { label: 'Produtos', href: '/produtos-digitais' },
   { label: 'BoxMotor', href: '/boxmotor' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
 ]
 
 function Navbar() {
@@ -77,7 +76,7 @@ function Navbar() {
       <div className={`${styles.menuBackdrop} ${isMenuOpen ? styles.open : ''}`} onClick={closeMenu} aria-hidden="true" />
       <div id="main-navigation" className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
         <ul className={styles.links}>{navigationItems.map(({ label, href }, index) => <li key={href}><a ref={index === 0 ? firstLinkRef : undefined} className={styles.link} href={href} onClick={closeMenu}>{label}</a></li>)}</ul>
-        <a className={styles.cta} href="#contato" onClick={closeMenu}>Falar comigo <Icon name="arrowUpRight" size={17} /></a>
+        <a className={styles.cta} href="#contato" onClick={closeMenu}>Falar sobre meu projeto <Icon name="arrowUpRight" size={17} /></a>
       </div>
       <button ref={menuButtonRef} className={`${styles.menuButton} ${isMenuOpen ? styles.open : ''}`} type="button" aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'} aria-controls="main-navigation" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((isOpen) => !isOpen)}><span /><span /><span /></button>
     </nav>

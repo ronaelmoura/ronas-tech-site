@@ -133,7 +133,7 @@ function Technologies() {
       <div className={styles.container}>
         <header className={styles.heading}>
           <p className={styles.eyebrow}>02 / Minha caixa de ferramentas</p>
-          <h2 id="technologies-title">Da ideia à aplicação.<br />Uma stack conectada.</h2>
+          <h2 id="technologies-title">Da ideia à aplicação. Uma stack conectada.</h2>
           <p className={styles.subtitle}>
             As mesmas ferramentas dos projetos acima: JavaScript de ponta a
             ponta, banco relacional e um fluxo de entrega com Git e Docker.
@@ -148,15 +148,12 @@ function Technologies() {
                   <h3>{category}</h3>
                   <p>{description}</p>
                 </div>
-                <span aria-label={`${technologies.length} tecnologias`}>
-                  {String(technologies.length).padStart(2, '0')}
-                </span>
               </header>
 
               <ul className={styles.technologyList}>
                 {technologies.map(({ name, icon }) => (
                   <li className={styles.technology} key={name}>
-                    <span className={styles.icon}>
+                    <span className={styles.icon} aria-hidden="true">
                       <TechnologyIcon name={icon} />
                     </span>
                     <span className={styles.name}>{name}</span>

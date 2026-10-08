@@ -1,11 +1,24 @@
 import styles from './WhyRonasTech.module.css'
-import Icon from '../Icon/Icon'
 
 const reasons = [
-  { number:'01', label:'CONVERSA DIRETA', title:'Você fala com quem desenvolve', description:'A necessidade chega diretamente a quem vai pensar, construir e acompanhar a solução.', tone:'blue', icon:'message' },
-  { number:'02', label:'ANTES DO CÓDIGO', title:'Começamos pelo problema', description:'Primeiro entendemos o que está travando sua rotina. Depois decidimos se o caminho é site, sistema, automação, IA ou outra solução.', tone:'violet', icon:'search' },
-  { number:'03', label:'SEM ENROLAÇÃO', title:'Você sabe o que está sendo feito', description:'Explicamos a solução em linguagem clara, alinhamos o que entra no projeto e definimos o próximo passo antes de desenvolver.', tone:'cyan', icon:'eye' },
-  { number:'04', label:'FEITO PARA A ROTINA', title:'A tecnologia se adapta ao seu processo', description:'Quando uma ferramenta pronta não resolve, construímos o que falta sem transformar a operação em algo mais complicado.', tone:'pink', icon:'workflow' },
+  {
+    label: 'Responsabilidade',
+    title: 'Uma visão conecta todas as camadas do projeto.',
+    description: 'Planejamento, interface, aplicação e dados são tratados como partes da mesma solução. Isso reduz repasses e mantém as decisões técnicas ligadas ao objetivo do negócio.',
+    evidence: 'Frontend, backend, banco de dados e publicação',
+  },
+  {
+    label: 'Transparência',
+    title: 'Você consegue avaliar o que foi construído.',
+    description: 'O portfólio reúne produtos publicados, código aberto quando disponível e detalhes de implementação. O trabalho pode ser examinado além da apresentação comercial.',
+    evidence: 'Projetos publicados e repositórios públicos',
+  },
+  {
+    label: 'Qualidade técnica',
+    title: 'A entrega inclui critérios de manutenção.',
+    description: 'Testes, controle de acesso, integração contínua e documentação aparecem nos projetos quando o contexto exige. São decisões visíveis, não uma promessa abstrata de qualidade.',
+    evidence: 'Controle de acesso, integração contínua e documentação',
+  },
 ]
 
 function WhyRonasTech() {
@@ -14,29 +27,27 @@ function WhyRonasTech() {
       <div className={styles.container}>
         <div className={styles.intro}>
           <p className={styles.eyebrow}>Por que Ronas Tech</p>
-          <h2 id="why-title">Não é sobre usar mais tecnologia. É sobre fazer a tecnologia trabalhar para o seu negócio.</h2>
-          <p className={styles.lead}>A diferença está no processo: entender antes de construir, explicar antes de desenvolver e entregar algo que possa ser usado na rotina.</p>
+          <h2 id="why-title">Menos distância entre a decisão e a entrega.</h2>
+          <p className={styles.lead}>A Ronas Tech combina acompanhamento direto, desenvolvimento de ponta a ponta e trabalho que pode ser verificado.</p>
 
-          <div className={styles.signature}>
-            <span className={styles.signatureDot} />
-            <div><strong>Problema → solução → tecnologia</strong><span>nessa ordem.</span></div>
-          </div>
-
-          <div className={styles.principles}>
-            <span><b>01</b> Entender</span>
-            <span><b>02</b> Simplificar</span>
-            <span><b>03</b> Construir</span>
+          <div className={styles.actions}>
+            <a className={styles.primary} href="#projetos">Ver projetos reais <span aria-hidden="true">↓</span></a>
+            <a className={styles.secondary} href="#contato">Conversar sobre um projeto</a>
           </div>
         </div>
 
-        <div className={styles.grid}>
-          {reasons.map((reason) => (
-            <article className={`${styles.card} ${styles[reason.tone]}`} key={reason.number}>
-              <div className={styles.cardTop}><span className={styles.number}>{reason.number}</span><span className={styles.label}>{reason.label}</span></div>
-              <div className={styles.icon}><Icon name={reason.icon} size={23} /></div>
-              <h3>{reason.title}</h3>
-              <p>{reason.description}</p>
-              <div className={styles.cardLine} />
+        <div className={styles.reasons}>
+          {reasons.map((reason, index) => (
+            <article className={styles.reason} key={reason.label}>
+              <div className={styles.reasonMeta}>
+                <span aria-hidden="true">0{index + 1}</span>
+                <p>{reason.label}</p>
+              </div>
+              <div className={styles.reasonCopy}>
+                <h3>{reason.title}</h3>
+                <p>{reason.description}</p>
+                <small><span aria-hidden="true">✓</span>{reason.evidence}</small>
+              </div>
             </article>
           ))}
         </div>
