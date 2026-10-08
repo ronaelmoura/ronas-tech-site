@@ -1,25 +1,23 @@
-import Icon from '../Icon/Icon'
-
 const groups = [
   {
     number: '01', label: 'PRESENÇA', title: 'Sua empresa precisa ser encontrada e entendida.',
     text: 'Experiências digitais que apresentam seu negócio com clareza e levam o visitante até a próxima ação.',
-    color: 'blue', links: [['Sites profissionais','sites-profissionais'], ['Landing pages','landing-pages']], icon: 'globe',
+    links: [['Sites profissionais','sites-profissionais'], ['Landing pages','landing-pages']],
   },
   {
     number: '02', label: 'OPERAÇÃO', title: 'Sua rotina precisa de uma ferramenta que acompanhe o trabalho.',
     text: 'Sistemas, dashboards e APIs para organizar informações e transformar controles espalhados em uma operação mais clara.',
-    color: 'violet', links: [['Sistemas web','sistemas-web'], ['Dashboards e integrações','dashboards-e-integracoes']], icon: 'layout',
+    links: [['Sistemas web','sistemas-web'], ['Dashboards e integrações','dashboards-e-integracoes']],
   },
   {
     number: '03', label: 'AUTOMAÇÃO', title: 'O trabalho repetitivo não deveria ocupar o tempo da equipe.',
     text: 'Fluxos conectados para reduzir tarefas manuais, integrar ferramentas e fazer processos acontecerem com menos intervenção.',
-    color: 'cyan', links: [['Automação de processos','automacao-de-processos']], icon: 'workflow',
+    links: [['Automação de processos','automacao-de-processos']],
   },
   {
     number: '04', label: 'INTELIGÊNCIA', title: 'IA precisa resolver uma tarefa real — não só aparecer no projeto.',
     text: 'Aplicações práticas de IA para consultar informações, apoiar decisões, atender clientes ou automatizar partes da rotina.',
-    color: 'pink', links: [['IA para empresas','ia-para-empresas']], icon: 'sparkles',
+    links: [['IA para empresas','ia-para-empresas']],
   },
 ]
 
@@ -38,22 +36,28 @@ function Services() {
           </div>
         </header>
 
-        <div className="services-grid services-grid-four">
+        <div className="services-index">
           {groups.map((group) => (
-            <article className={`service-card service-card-${group.color}`} key={group.number}>
-              <div className="service-top"><span className="service-number">{group.number}</span><span className="service-type">{group.label}</span></div>
-              <div className="service-icon"><Icon name={group.icon} size={24} /></div>
-              <h3>{group.title}</h3>
-              <p>{group.text}</p>
-              <div className="service-links">{group.links.map(([label, slug]) => <a key={slug} href={`/servicos/${slug}`}>{label}<span>↗</span></a>)}</div>
+            <article className="service-row" key={group.number}>
+              <div className="service-identity">
+                <span className="service-number">{group.number}</span>
+                <p>{group.label}</p>
+              </div>
+              <div className="service-copy">
+                <h3>{group.title}</h3>
+                <p>{group.text}</p>
+              </div>
+              <nav className="service-links" aria-label={`Serviços de ${group.label.toLowerCase()}`}>
+                {group.links.map(([label, slug]) => <a key={slug} href={`/servicos/${slug}`}>{label}<span aria-hidden="true">↗</span></a>)}
+              </nav>
             </article>
           ))}
         </div>
 
         <div className="services-bottom">
-          <span>PROBLEMA → CAMINHO → SOLUÇÃO</span><i />
+          <span>Problema → caminho → solução</span>
           <strong>Uma tecnologia só entra quando ajuda a resolver o problema.</strong>
-          <a href="#contato">Descobrir o que faz sentido →</a>
+          <a href="#contato">Falar sobre o meu projeto <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
