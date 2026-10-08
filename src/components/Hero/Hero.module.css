@@ -1,4 +1,4 @@
-.hero { position: relative; overflow: clip; padding: 160px 0 0; color: var(--color-ink); background: linear-gradient(135deg, #fff 40%, #f0f5fc); }
+.hero { position: relative; overflow: clip; padding: 148px 0 0; color: var(--color-ink); background: linear-gradient(135deg, #fff 40%, #f0f5fc); }
 .hero::before { content: ''; position: absolute; inset: 0 0 0 50%; opacity: .4; background-image: radial-gradient(#a8bdd7 1px, transparent 1px); background-size: 24px 24px; mask-image: linear-gradient(90deg, transparent, black); pointer-events: none; }
 .container { position: relative; display: grid; width: min(100% - 80px, 1200px); margin: auto; grid-template-columns: 1.1fr 1fr; align-items: center; gap: clamp(40px, 6vw, 80px); padding-bottom: 80px; }
 .content, .visual { min-width: 0; }
@@ -6,12 +6,12 @@
 .eyebrow span { width: 6px; height: 6px; flex: none; border-radius: 50%; background: var(--color-brand); box-shadow: 0 0 0 4px var(--color-brand-soft); }
 .intro { margin: 0 0 16px; font-size: 14px; font-weight: 700; color: var(--color-ink); }
 .intro span { color: var(--color-ink-faint); font-weight: 400; }
-.title { margin: 0; max-width: 650px; font-size: clamp(48px, 5.2vw, 72px); font-weight: 600; letter-spacing: -.065em; line-height: 1.04; text-wrap: balance; }
+.title { margin: 0; max-width: 650px; font-size: clamp(48px, 5.5vw, 76px); font-weight: 600; letter-spacing: -.055em; line-height: 1.08; text-wrap: balance; }
 .title span { color: var(--color-brand); }
 .description { max-width: 510px; margin: 24px 0 0; color: var(--color-ink-soft); font-size: 16px; line-height: 1.85; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.primaryButton, .secondaryButton { display: inline-flex; align-items: center; justify-content: center; gap: 24px; min-height: 52px; padding: 0 20px; border-radius: 9px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
-.primaryButton { color: white; background: var(--color-action); box-shadow: 0 8px 20px rgb(15 122 79 / 12%); }
+.primaryButton, .secondaryButton { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 54px; padding: 0 20px; border-radius: 9px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
+.primaryButton { color: white; background: var(--color-action); box-shadow: 0 8px 20px rgb(15 122 79 / 16%); }
 .primaryButton:hover { background: var(--color-action-strong); transform: translateY(-2px); }
 .secondaryButton { color: var(--color-ink); border: 1px solid var(--color-line-strong); background: white; }
 .secondaryButton:hover { background: var(--color-surface); transform: translateY(-2px); }
@@ -29,7 +29,7 @@
 .consoleBar b { display: inline-block; width: 5px; height: 5px; margin-right: 5px; border-radius: 50%; background: #83baff; }
 .consoleBody { padding: 30px; }
 .consoleHeading { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.consoleHeading small { color: #afbed1; font-size: 9px; letter-spacing: .12em; }
+.consoleHeading small { color: #afbed1; font-size: 11px; letter-spacing: .08em; }
 .consoleHeading h2 { margin: 10px 0 0; font-size: 30px; line-height: 1.15; font-weight: 500; letter-spacing: -.04em; color: #f2f6fc; }
 .consoleHeading > span { color: #7eb3fa; font-family: var(--font-mono); font-size: 25px; }
 .layers { display: grid; gap: 10px; list-style: none; padding: 0; margin: 28px 0 24px; }
@@ -38,8 +38,8 @@
 .layerTitle { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .layerTitle strong { font-size: 13px; font-weight: 600; }
 .layerTitle code { color: #a7ccff; font-size: 10px; font-family: var(--font-mono); }
-.layers p { margin: 5px 0 0; font-size: 11px; color: #b1c1d6; }
-.delivery { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 10px; color: #b1c1d6; }
+.layers p { margin: 5px 0 0; font-size: 12px; color: #b1c1d6; }
+.delivery { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; color: #b1c1d6; }
 .delivery strong { color: #f2f6fc; font-size: 22px; font-family: var(--font-display); margin-right: 6px; }
 .delivery i { color: #a7ccff; font-style: normal; }
 .projectLink { display: flex; align-items: center; justify-content: space-between; min-height: 52px; padding: 14px 30px; background: #1b304a; border-top: 1px solid #30435c; color: #d8e8ff; font-size: 12px; text-decoration: none; }
@@ -52,3 +52,5 @@
 @media (max-width: 760px) { .container { grid-template-columns: minmax(0, 1fr); padding-bottom: 56px; gap: 44px; } .content { max-width: 580px; } .visual { width: 100%; max-width: 530px; margin: auto; } .title { font-size: clamp(44px, 8.5vw, 64px); max-width: 560px; } .layerTitle { flex-direction: row; align-items: center; } .bottomLine { flex-wrap: wrap; justify-content: center; gap: 0; padding: 16px 0; } .bottomLine a { display: none; } }
 @media (max-width: 420px) { .hero { padding-top: 112px; } .container { width: calc(100% - 36px); } .intro { font-size: 12px; } .eyebrow { font-size: 10px; margin-bottom: 24px; } .title { font-size: 44px; } .actions { gap: 8px; } .actions a { flex: 1; padding: 0 12px; gap: 10px; font-size: 12px; } .consoleBody { padding: 24px 16px; } .consoleBar > span { display: none; } .consoleHeading h2 { font-size: 28px; } .layers li { padding: 12px 10px; gap: 6px; } .layerTitle code { font-size: 9px; } .bottomLine ul { gap: 18px; font-size: 10px; } .visual::after { inset: 14px -6px -10px 14px; transform: rotate(2deg); } }
 @media (prefers-reduced-motion: reduce) { .actions a { transition: none; } }
+
+@media (max-width: 420px) { .actions { flex-direction: column; } .actions a { flex: auto; width: 100%; } .delivery { flex-wrap: wrap; } .title { font-size: clamp(38px, 11vw, 44px); } }

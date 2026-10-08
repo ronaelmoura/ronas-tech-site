@@ -4,9 +4,9 @@ import { siteConfig } from './config/siteConfig'
 import { spreadsheetProducts } from './data/spreadsheetProducts'
 
 const homeMetadata = {
-  title: 'Ronael Moura | Desenvolvedor Full Stack · Ronas Tech',
+  title: 'Sites, sistemas web, automações e IA | Ronas Tech',
   description:
-    'Portfólio de Ronael Moura, desenvolvedor Full Stack com formação pelo SENAI. Projetos com React, Node.js, Express e MySQL, testes automatizados e deploy em produção. Aberto a vagas e projetos freelance.',
+    'A Ronas Tech desenvolve sites, sistemas web, automações e aplicações de IA para empresas. Conheça os projetos e fale diretamente com Ronael Moura.',
   canonical: siteConfig.siteUrl,
 }
 
