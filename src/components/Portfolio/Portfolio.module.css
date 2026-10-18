@@ -677,3 +677,19 @@
 @media (prefers-reduced-motion: reduce) {
   .card, .primaryButton, .secondaryButton { transition-duration: .01ms; }
 }
+
+/* A vitrine compartilha a mesma escala e os mesmos alinhamentos da abertura. */
+.section { background: var(--color-page); padding: 88px 0; }
+.container { width: min(100% - 64px, 1200px); }
+.heading { max-width: 820px; }
+.eyebrow { text-transform: none; letter-spacing: 0; font-size: 13px; }
+.heading h2 { font-size: clamp(34px, 4vw, 52px); }
+.subtitle { max-width: 610px; margin-left: 0; }
+.featured .content, .showcase .content { padding: 36px; }
+.featured .visual { background: var(--color-brand-soft); }
+.category { text-transform: none; letter-spacing: 0; font-size: 12px; }
+@media (max-width: 620px) {
+  .section { padding: 64px 0; }
+  .container { width: calc(100% - 40px); }
+  .featured .content, .showcase .content { padding: 24px; }
+}

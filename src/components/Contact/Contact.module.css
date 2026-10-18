@@ -238,3 +238,20 @@
 .feedback a, .privacyNote a { color: var(--color-brand); text-underline-offset: 3px; }
 .privacyNote { display: flex; align-items: flex-start; gap: 8px; margin: 0; color: var(--color-ink-faint); font-size: 11px; line-height: 1.7; }
 .privacyNote svg { margin-top: 2px; }
+
+/* Contato do estúdio: painel azul e formulário claro. */
+.section { background: var(--color-brand); color: var(--color-on-media); padding: 100px 0; border: none; }
+.container { width: calc(100% - clamp(48px, 8.4vw, 144px)); max-width: none; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 110px); }
+.eyebrow { color: var(--color-on-media); text-transform: none; letter-spacing: 0; font-size: 13px; }
+.information h2 { color: var(--color-on-media); font-size: clamp(42px, 5.8vw, 84px); font-weight: 500; line-height: 1.02; letter-spacing: -.06em; }
+.subtitle { color: var(--color-on-media); max-width: 390px; }
+.path { background: none; border: 0; border-top: 1px solid var(--color-on-media-soft); padding: 24px 0; border-radius: 0; }
+.path h3, .path p, .path a, .path a:hover { color: var(--color-on-media); }
+.pathIcon { background: transparent; color: var(--color-on-media); width: 24px; }
+.path a { font-size: 14px; }
+.formCard { border-radius: 6px; padding: 36px; box-shadow: none; }
+.formHeader h3 { font-size: 26px; font-weight: 500; letter-spacing: -.04em; }
+.field input, .field select, .field textarea { border-radius: 4px; }
+.submitButton { border-radius: 50px; }
+@media(max-width:900px) { .container { grid-template-columns: 1fr; gap: 32px; } .information h2 { max-width: 700px; } }
+@media(max-width:560px) { .section { padding: 70px 0; } .container { width: calc(100% - 40px); } .information h2 { font-size: 46px; } .formCard { padding: 26px 20px; } }

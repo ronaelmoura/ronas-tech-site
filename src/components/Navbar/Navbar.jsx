@@ -7,6 +7,7 @@ import Icon from '../Icon/Icon'
 const navigationItems = [
   { label: 'Serviços', href: '#solucoes' },
   { label: 'Projetos', href: '#projetos' },
+  { label: 'Como funciona', href: '#como-funciona' },
   { label: 'Produtos', href: '/produtos-digitais' },
   { label: 'BoxMotor', href: '/boxmotor' },
   { label: 'Sobre', href: '#sobre' },
@@ -20,7 +21,7 @@ function Navbar() {
   const navigationRef = useRef(null)
 
   useEffect(() => {
-    const desktop = window.matchMedia('(min-width: 841px)')
+    const desktop = window.matchMedia('(min-width: 1101px)')
     const handleResize = () => { if (desktop.matches) setIsMenuOpen(false) }
     desktop.addEventListener('change', handleResize)
     return () => desktop.removeEventListener('change', handleResize)
@@ -37,16 +38,23 @@ function Navbar() {
     if (!isMenuOpen) return undefined
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    const main = document.querySelector('main')
-    const footer = document.querySelector('.site-footer')
-    if (main) main.inert = true
-    if (footer) footer.inert = true
-    const focusTimer = setTimeout(() => firstLinkRef.current?.focus(), 320)
+    // Isolate every background branch, including cookie controls outside the home.
+    const background = []
+    let branch = navigationRef.current.closest('header')
+    while (branch && branch !== document.body) {
+      for (const sibling of branch.parentElement.children) {
+        if (sibling !== branch) {
+          background.push([sibling, sibling.inert])
+          sibling.inert = true
+        }
+      }
+      branch = branch.parentElement
+    }
+    const focusFrame = requestAnimationFrame(() => firstLinkRef.current?.focus())
     return () => {
-      clearTimeout(focusTimer)
+      cancelAnimationFrame(focusFrame)
       document.body.style.overflow = previousOverflow
-      if (main) main.inert = false
-      if (footer) footer.inert = false
+      background.forEach(([element, inert]) => { element.inert = inert })
     }
   }, [isMenuOpen])
 
@@ -68,7 +76,19 @@ function Navbar() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isMenuOpen])
 
-  const closeMenu = () => setIsMenuOpen(false)
+  const closeMenu = (event) => {
+    if (!isMenuOpen) return
+    setIsMenuOpen(false)
+    const hash = event?.currentTarget.getAttribute('href')
+    requestAnimationFrame(() => {
+      const target = hash?.startsWith('#') ? document.getElementById(hash.slice(1)) : null
+      if (target) {
+        target.setAttribute('tabindex', '-1')
+        target.focus({ preventScroll: true })
+        target.scrollIntoView({ behavior: 'instant' })
+      } else menuButtonRef.current?.focus()
+    })
+  }
 
   return <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
     <nav ref={navigationRef} className={styles.navbar} aria-label="Navegação principal">

@@ -108,7 +108,7 @@ function ExternalIcon() {
   )
 }
 
-function ProjectVisual({ type }) {
+export function ProjectVisual({ type }) {
   if (type === 'dashboard') {
     return (
       <div className={styles.dashboardMockup} aria-hidden="true">
@@ -317,10 +317,10 @@ function Portfolio() {
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>01 / Projetos selecionados</p>
-          <h2 id="portfolio-title">Código que resolve.<br />Projetos que demonstram.</h2>
+          <p className={styles.eyebrow}>Projetos selecionados</p>
+          <h2 id="portfolio-title">Veja o que essas ideias<br />viram na prática.</h2>
           <p className={styles.subtitle}>
-            Frontend, backend e produto apresentados com contexto, decisões de
+            Conheça o desafio, a solução e o estágio de cada projeto. Explore as decisões de
             engenharia e links para você avaliar a entrega.
           </p>
         </header>

@@ -2,7 +2,7 @@ const kitFinanceCheckoutUrl = 'https://pay.kiwify.com.br/jliI4Lg'
 
 export const siteConfig = {
   companyName: 'Ronas Tech',
-  logoPath: '/logo-ronas-tech.webp',
+  logoPath: '/images/logo-ronas-tech-160.webp',
   siteUrl: 'https://www.ronastech.com.br/',
   email: 'contato@ronastech.com.br',
   whatsappDisplay: '(88) 99302-1946',

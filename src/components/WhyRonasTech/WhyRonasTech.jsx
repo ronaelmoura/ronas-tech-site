@@ -31,7 +31,7 @@ function WhyRonasTech() {
           <p className={styles.lead}>A Ronas Tech combina acompanhamento direto, desenvolvimento de ponta a ponta e trabalho que pode ser verificado.</p>
 
           <div className={styles.actions}>
-            <a className={styles.primary} href="#projetos">Ver projetos reais <span aria-hidden="true">↓</span></a>
+            <a className={styles.primary} href="#projetos">Ver projetos reais <span aria-hidden="true">↑</span></a>
             <a className={styles.secondary} href="#contato">Conversar sobre um projeto</a>
           </div>
         </div>

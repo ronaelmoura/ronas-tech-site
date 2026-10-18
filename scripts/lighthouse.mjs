@@ -31,8 +31,8 @@ const reportsDirectory = path.resolve('lighthouse-reports')
 // suporte e uma página de serviço de site.
 const pages = [
   { name: 'home', route: '/' },
-  { name: 'computador-lento', route: '/computador-lento' },
-  { name: 'criacao-de-sites', route: '/criacao-de-sites' },
+  { name: 'sistemas-web', route: '/servicos/sistemas-web' },
+  { name: 'criacao-de-sites', route: '/servicos/sites-profissionais' },
   { name: 'produtos-digitais', route: '/produtos-digitais' },
 ]
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { siteConfig } from '../config/siteConfig'
 import styles from './ServicePage.module.css'
+import { trackWhatsAppClick } from '../utils/analytics'
 
 const services = {
   'sites-profissionais': {
@@ -59,15 +60,17 @@ function ServicePage({ slug }) {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = `${service?.eyebrow?.replace(/^\\d+ · /, '') || 'Serviço'} | Ronas Tech`
+    document.title = `${service?.eyebrow?.replace(/^\d+ · /, '') || 'Serviço'} | Ronas Tech`
   }, [service?.eyebrow])
 
   if (!service) return null
 
-  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Olá, Ronael! Quero conversar sobre o serviço de ${service.eyebrow.replace(/^\\d+ · /, '')}.`)}`
+  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Olá, Ronael! Quero conversar sobre o serviço de ${service.eyebrow.replace(/^\d+ · /, '')}.`)}`
 
   return (
-    <main className={styles.page}>
+    <>
+    <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+    <main id="conteudo-principal" className={styles.page}>
       <header className={styles.nav}>
         <a href="/" className={styles.logo}><img src={siteConfig.logoPath} alt="" width="40" height="38" /><span>{siteConfig.companyName}</span></a>
         <a href="/" className={styles.back}>← Voltar para o início</a>
@@ -79,13 +82,14 @@ function ServicePage({ slug }) {
           <h1>{service.title}</h1>
           <p className={styles.intro}>{service.intro}</p>
           <div className={styles.actions}>
-            <a className={styles.primary} href={whatsappUrl} target="_blank" rel="noopener noreferrer">Solicitar orçamento <span>→</span></a>
+            <a className={styles.primary} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-ronas-cta={`service_${slug}_hero`} onClick={() => trackWhatsAppClick(`service_${slug}_hero`)}>Solicitar orçamento <span>→</span></a>
             <a className={styles.secondary} href="#como-funciona">Como funciona</a>
           </div>
+          <p className={styles.contactNote}>Atendimento direto com Ronael Moura. Escopo, prazo e investimento definidos antes de começar.</p>
         </div>
         <div className={styles.heroCard}>
           <small>RONAS TECH / SERVIÇO</small>
-          <strong>{service.eyebrow.replace(/^\\d+ · /, '')}</strong>
+          <strong>{service.eyebrow.replace(/^\d+ · /, '')}</strong>
           <div className={styles.line}><span /> Entendimento do problema</div>
           <div className={styles.line}><span /> Desenvolvimento da solução</div>
           <div className={styles.line}><span /> Implementação e evolução</div>
@@ -93,7 +97,7 @@ function ServicePage({ slug }) {
       </section>
 
       <section className={styles.problem}>
-        <div><p className={styles.label}>O problema</p><h2>Quando uma tarefa simples começa a tomar tempo demais da equipe.</h2></div>
+        <div><p className={styles.label}>O problema</p><h2>{['sites-profissionais', 'landing-pages'].includes(slug) ? 'Seu cliente precisa entender o que você oferece.' : 'Sua rotina pode funcionar melhor.'}</h2></div>
         <p>{service.problem}</p>
       </section>
 
@@ -106,9 +110,9 @@ function ServicePage({ slug }) {
         <header><p className={styles.label}>O que podemos entregar</p><h2>O que entra no projeto depende do que sua empresa precisa.</h2></header>
         <div className={styles.items}>
           {service.deliverables.map((item, index) => (
-            <button key={item} className={styles.item} type="button" onClick={() => setOpen(open === index ? null : index)}>
-              <span>0{index + 1}</span><strong>{item}</strong><i>{open === index ? '−' : '+'}</i>
-              {open === index && <em>A entrega é definida conforme o processo e o objetivo do projeto.</em>}
+            <button key={item} className={styles.item} type="button" aria-expanded={open === index} aria-controls={open === index ? `deliverable-${index}` : undefined} onClick={() => setOpen(open === index ? null : index)}>
+              <span>0{index + 1}</span><strong>{item}</strong><i aria-hidden="true">{open === index ? '−' : '+'}</i>
+              {open === index && <em id={`deliverable-${index}`}>A entrega é definida conforme o processo e o objetivo do projeto.</em>}
             </button>
           ))}
         </div>
@@ -125,13 +129,19 @@ function ServicePage({ slug }) {
         </div>
       </section>
 
+      <aside className={styles.proof} aria-label="Conheça o responsável pelo projeto">
+        <div><p className={styles.label}>Quem constrói com você</p><h2>Ronael Moura, da conversa à entrega.</h2><p>Desenvolvedor Full Stack formado pelo SENAI. Conheça os projetos, explore as soluções e veja como o trabalho é feito.</p></div>
+        <a className={styles.secondary} href="/#projetos">Conhecer os projetos</a>
+      </aside>
       <section className={styles.cta}>
         <p className={styles.label}>Vamos conversar?</p>
         <h2>Conte o que sua empresa precisa resolver.</h2>
         <p>Você não precisa saber qual tecnologia usar. Conte o que está acontecendo e avaliamos o caminho mais adequado.</p>
-        <a className={styles.primary} href={whatsappUrl} target="_blank" rel="noopener noreferrer">Falar com a Ronas Tech <span>→</span></a>
+        <a className={styles.primary} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-ronas-cta={`service_${slug}_footer`} onClick={() => trackWhatsAppClick(`service_${slug}_footer`)}>Falar com a Ronas Tech <span>→</span></a>
       </section>
     </main>
+    <footer className={styles.footer}><span>Ronas Tech · Tianguá, Ceará · Atendimento remoto</span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos de uso</a></footer>
+    </>
   )
 }
 

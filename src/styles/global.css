@@ -81,6 +81,7 @@ html {
 }
 
 :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 4px; }
+.cookie-notice[inert] { visibility: hidden; }
 ::selection { color: #fff; background: #1069cf; }
 svg { vertical-align: middle; }
 h1, h2, h3 { text-wrap: balance; }
@@ -299,6 +300,6 @@ body > #root > footer {
 .home { background: #fff; }
 .home #inicio { background: radial-gradient(ellipse at 90% 15%, #dae8ff 0%, transparent 52%), linear-gradient(135deg, #fff, #f4f7fc); }
 .home #problemas, .home #como-funciona, .home #sobre { background: #f4f7fb; }
-.home #solucoes, .home #por-que-ronas { background: #fff; }
+.home #por-que-ronas { background: #fff; }
 .home #projetos { background: #edf3fb; }
 .home #contato { background: linear-gradient(135deg, #eaf2ff, #f7f9fc); }

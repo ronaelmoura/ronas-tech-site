@@ -10,6 +10,7 @@ const navigationLinks = [
   { label: 'Projetos', href: '/#projetos' },
   { label: 'Soluções', href: '/#solucoes' },
   { label: 'Sobre', href: '/#sobre' },
+  { label: 'Dúvidas frequentes', href: '/#duvidas' },
   { label: 'Contato', href: '/#contato' },
   { label: 'Produtos digitais', href: '/produtos-digitais' },
   { label: 'BoxMotor', href: '/boxmotor' },
