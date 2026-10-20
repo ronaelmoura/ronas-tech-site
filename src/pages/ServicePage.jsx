@@ -6,19 +6,31 @@ import { trackWhatsAppClick } from '../utils/analytics'
 const services = {
   'sites-profissionais': {
     eyebrow: '01 · Sites Profissionais',
-    title: 'Um site profissional que trabalha pelo seu negócio.',
-    intro: 'Tenha um site rápido, claro e fácil de usar, com as informações que seus clientes precisam para entrar em contato.',
+    title: 'Criação de sites profissionais que geram confiança.',
+    intro: 'Tenha um site rápido, responsivo e fácil de usar, com as informações que seus clientes precisam para confiar e entrar em contato.',
     problem: 'Muitas empresas perdem contatos porque o site está desatualizado, confuso ou não funciona bem no celular.',
     solution: 'Criamos o site de acordo com os serviços da empresa, com versão para celular, informações organizadas e canais de contato.',
     deliverables: ['Layout responsivo para celular, tablet e desktop', 'Integração com WhatsApp e formulários', 'Estrutura preparada para SEO', 'Performance e acessibilidade', 'Publicação e configuração inicial'],
+    faq: [
+      ['Quanto custa criar um site profissional?', 'O investimento depende da quantidade de páginas, conteúdo e integrações. Antes do desenvolvimento, você recebe uma proposta com escopo, prazo e valor definidos.'],
+      ['O site funciona bem no celular?', 'Sim. O projeto é construído e testado para celular, tablet e computador, com navegação clara e botões de contato fáceis de usar.'],
+      ['Domínio, hospedagem e publicação estão incluídos?', 'A proposta informa o que será configurado e os custos externos envolvidos. Também podemos orientar ou executar a publicação inicial.'],
+      ['O site já fica preparado para o Google?', 'Entregamos estrutura semântica, títulos, descrições, sitemap, desempenho e indexação técnica. O crescimento orgânico também depende de conteúdo, concorrência e autoridade ao longo do tempo.'],
+    ],
   },
   'landing-pages': {
     eyebrow: '02 · Landing Pages',
-    title: 'Uma página direta para divulgar um produto, serviço ou campanha.',
-    intro: 'Uma página enxuta, com informações na ordem certa e uma chamada clara para o próximo passo.',
+    title: 'Criação de landing pages focadas em conversão.',
+    intro: 'Landing pages profissionais, rápidas e responsivas para apresentar sua oferta com clareza e apoiar campanhas no Google Ads.',
     problem: 'Seu anúncio gera visitas, mas a página não deixa claro o que você oferece, por que a pessoa deveria confiar ou qual ação deve tomar.',
-    solution: 'Criamos páginas objetivas, rápidas e orientadas à conversão, alinhando mensagem, estrutura, prova e chamada para ação.',
+    solution: 'Criamos páginas objetivas e orientadas à conversão, alinhando anúncio, mensagem, prova, chamada para ação e medição dos contatos.',
     deliverables: ['Estrutura de conversão', 'Copy e hierarquia visual orientadas ao objetivo', 'Formulário ou WhatsApp', 'Design responsivo', 'Medição e eventos básicos'],
+    faq: [
+      ['Quanto custa uma landing page?', 'O valor varia conforme a oferta, o conteúdo, as integrações e a medição necessária. Você recebe escopo, prazo e investimento definidos antes do início.'],
+      ['A página pode ser usada no Google Ads?', 'Sim. A estrutura pode ser alinhada ao anúncio, à palavra-chave e à ação esperada, com carregamento rápido e experiência adequada no celular.'],
+      ['É possível medir cliques no WhatsApp e formulários?', 'Sim. Configuramos eventos básicos e, quando você fornece os acessos necessários, integramos a página às ferramentas de medição da campanha.'],
+      ['Em quanto tempo a landing page fica pronta?', 'O prazo depende do conteúdo e das integrações. Projetos mais diretos costumam avançar rapidamente depois da aprovação do escopo e do envio dos materiais.'],
+    ],
   },
   'ia-para-empresas': {
     eyebrow: '03 · IA para Empresas',
@@ -117,6 +129,23 @@ function ServicePage({ slug }) {
           ))}
         </div>
       </section>
+
+      {service.faq && (
+        <section className={styles.faq} aria-labelledby="service-faq-title">
+          <header>
+            <p className={styles.label}>Dúvidas comuns</p>
+            <h2 id="service-faq-title">O que você precisa saber antes de começar.</h2>
+          </header>
+          <div className={styles.faqList}>
+            {service.faq.map(([question, answer]) => (
+              <details key={question}>
+                <summary>{question}</summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section id="como-funciona" className={styles.process}>
         <p className={styles.label}>Como funciona</p>

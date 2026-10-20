@@ -25,14 +25,14 @@ const legalMetadata = {
 
 const serviceMetadata = {
   '/servicos/sites-profissionais': {
-    title: `Sites Profissionais | ${siteConfig.companyName}`,
+    title: `Criação de Sites Profissionais | ${siteConfig.companyName}`,
     description:
-      'Tenha um site rápido, claro e fácil de usar, com as informações que seus clientes precisam para entrar em contato.',
+      'Criação de sites profissionais, rápidos e responsivos para apresentar sua empresa, gerar confiança e facilitar novos contatos.',
   },
   '/servicos/landing-pages': {
-    title: `Landing Pages | ${siteConfig.companyName}`,
+    title: `Criação de Landing Pages Profissionais | ${siteConfig.companyName}`,
     description:
-      'Uma página enxuta, com informações na ordem certa e uma chamada clara para o próximo passo.',
+      'Criação de landing pages rápidas, responsivas e focadas em conversão para campanhas no Google Ads. Solicite um orçamento à Ronas Tech.',
   },
   '/servicos/sistemas-web': {
     title: `Sistemas Web | ${siteConfig.companyName}`,
@@ -157,9 +157,46 @@ export function getPageMetadata(pathname) {
 
   const service = serviceMetadata[pathname]
   if (service) {
+    const canonical = `${siteConfig.siteUrl}${pathname.slice(1)}`
+    const serviceName = service.title.replace(` | ${siteConfig.companyName}`, '')
     return {
       ...service,
-      canonical: `${siteConfig.siteUrl}${pathname.slice(1)}`,
+      canonical,
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: serviceName,
+            description: service.description,
+            serviceType: serviceName,
+            url: canonical,
+            areaServed: { '@type': 'Country', name: 'Brasil' },
+            provider: {
+              '@type': 'Organization',
+              name: siteConfig.companyName,
+              url: siteConfig.siteUrl,
+            },
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Início',
+                item: siteConfig.siteUrl,
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: serviceName,
+                item: canonical,
+              },
+            ],
+          },
+        ],
+      },
     }
   }
 

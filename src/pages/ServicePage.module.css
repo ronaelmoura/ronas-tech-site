@@ -7,13 +7,21 @@
 .cta{padding:130px 24px;text-align:center;border-top:1px solid var(--color-line)}.cta h2{max-width:760px;margin:0 auto}.cta>p:not(.label){max-width:600px;margin:24px auto;color:var(--color-ink-soft);font-size:17px;line-height:1.7}.cta .primary{margin-top:20px}
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:45px}.problem,.solution{grid-template-columns:1fr;gap:25px}.steps{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.nav{width:min(100% - 32px,1200px)}.back{font-size:12px}.hero{width:min(100% - 32px,1200px);padding:120px 0 70px}.hero h1{font-size:clamp(42px,12vw,58px)}.intro{font-size:17px}.actions{flex-direction:column}.primary,.secondary{width:100%}.problem,.solution{width:min(100% - 32px,1200px);padding:75px 0}.solution{padding-left:16px;padding-right:16px}.deliverables{padding:75px 16px}.steps{grid-template-columns:1fr}.cta{padding:90px 20px}}
 .contactNote { margin: 20px 0 0; max-width: 520px; font-size: 13px; line-height: 1.8; color: var(--color-ink-soft); }
+.faq { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: 80px; width: min(100% - 48px, 1200px); margin: auto; padding: 100px 0; border-top: 1px solid var(--color-line); }
+.faq h2 { margin: 0; font: 500 clamp(32px, 4vw, 52px)/1.05 var(--font-display); letter-spacing: -.045em; text-wrap: balance; }
+.faqList { border-top: 1px solid var(--color-line-strong); }
+.faqList details { border-bottom: 1px solid var(--color-line-strong); }
+.faqList summary { min-height: 68px; padding: 22px 42px 22px 0; color: var(--color-ink); font-size: 17px; font-weight: 700; line-height: 1.45; cursor: pointer; }
+.faqList summary::marker { color: var(--color-brand); }
+.faqList summary:focus-visible { outline: 3px solid var(--color-brand); outline-offset: 4px; }
+.faqList p { margin: -4px 0 24px; max-width: 680px; color: var(--color-ink-soft); line-height: 1.75; }
 .proof { display: flex; align-items: center; justify-content: space-between; gap: 40px; width: min(100% - 48px, 1200px); margin: auto; padding: 64px 0; }
 .proof h2 { margin: 0; font-size: clamp(26px, 3vw, 38px); letter-spacing: -.04em; line-height: 1.2; }
 .proof p:not(.label) { max-width: 620px; color: var(--color-ink-soft); }
 .proof a { flex-shrink: 0; }
 .footer { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 24px; padding: 28px 24px; background: var(--color-dark); color: var(--color-dark-ink); font-size: 12px; }
 .footer a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-brand-on-dark); text-underline-offset: 4px; }
-@media(max-width:760px) { .proof { flex-direction: column; align-items: flex-start; gap: 16px; } }
+@media(max-width:760px) { .faq { grid-template-columns: 1fr; gap: 34px; width: min(100% - 32px, 1200px); padding: 75px 0; } .proof { flex-direction: column; align-items: flex-start; gap: 16px; } }
 @media(prefers-reduced-motion:reduce) { .primary:hover { transform: none; } }
 
 /* A linguagem do estúdio acompanha as páginas de destino das campanhas. */
@@ -23,7 +31,7 @@
 .back { border: 1px solid var(--color-on-media-soft); border-radius: 40px; padding: 9px 17px; min-height: 44px; display: inline-flex; align-items: center; }
 .hero { width: 100%; min-height: 860px; padding: 170px clamp(24px, 4.2vw, 72px) 100px; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .65fr); gap: 80px; color: var(--color-on-media); background: linear-gradient(90deg, rgb(15 61 151 / 85%), rgb(15 61 151 / 15%)), url('/images/studio-chrome.webp') center / cover, var(--color-brand); }
 .hero .eyebrow { color: var(--color-on-media); letter-spacing: 0; font: 500 13px var(--font-body); text-transform: none; }
-.hero h1 { font-size: clamp(48px, 5.6vw, 86px); font-weight: 500; line-height: 1.02; letter-spacing: -.06em; }
+.hero h1 { max-width: 780px; font-size: clamp(48px, 5.2vw, 80px); font-weight: 500; line-height: 1.02; letter-spacing: -.06em; text-wrap: balance; }
 .hero .intro, .contactNote { color: var(--color-on-media); }
 .hero .intro { font-size: 18px; }
 .hero .primary { border-radius: 50px; background: var(--color-on-media); border-color: var(--color-on-media); color: var(--color-brand); }
