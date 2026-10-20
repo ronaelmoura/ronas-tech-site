@@ -123,7 +123,14 @@ export function trackWhatsAppClick(location) {
     location,
     link_url: whatsappUrl,
   })
-  trackGoogleAdsConversion({ location })
+  // Mantém o evento alinhado ao snippet oficial da ação "Contato" no
+  // Google Ads. O valor é apenas o valor padrão da conversão configurada;
+  // não representa receita ou venda confirmada.
+  trackGoogleAdsConversion({
+    location,
+    value: 1,
+    currency: 'BRL',
+  })
   trackPixelEvent('Lead', { content_name: location }, { eventID: getLeadId() })
   pushWhatsAppDataLayerEvent(location, getLeadId())
 }
