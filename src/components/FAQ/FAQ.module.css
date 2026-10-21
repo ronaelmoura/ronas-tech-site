@@ -1,0 +1,22 @@
+.section { background: var(--color-page); padding: 88px 0; border-top: 1px solid var(--color-line); }
+.container { width: min(100% - 64px, 1200px); margin: auto; display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; }
+.heading > p { margin: 0 0 14px; color: var(--color-brand); font-size: 13px; font-weight: 700; }
+.heading h2 { margin: 0; color: var(--color-ink); font-size: clamp(34px, 3.6vw, 48px); line-height: 1.12; letter-spacing: -.05em; }
+.heading > span { display: block; max-width: 310px; margin: 20px 0; font-size: 15px; line-height: 1.8; }
+.heading a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--color-brand); font-size: 14px; font-weight: 700; text-underline-offset: 5px; }
+.questions { border-top: 1px solid var(--color-line-strong); }
+.questions details { border-bottom: 1px solid var(--color-line-strong); }
+.questions summary { display: flex; justify-content: space-between; align-items: center; gap: 24px; list-style: none; padding: 24px 0; color: var(--color-ink); font-size: 16px; font-weight: 600; cursor: pointer; }
+.questions summary::-webkit-details-marker { display: none; }
+.questions summary > span { flex: none; color: var(--color-brand); }
+.questions summary:hover { color: var(--color-brand); }
+.questions details[open] summary > span { transform: rotate(45deg); }
+.questions details > p { margin: 0; padding: 0 36px 24px 0; font-size: 15px; line-height: 1.8; }
+@media (max-width: 800px) { .container { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 620px) { .section { padding: 64px 0; } .container { width: calc(100% - 40px); } .questions summary { font-size: 15px; gap: 16px; } }
+
+.section { padding: 100px 0; }
+.container { width: calc(100% - clamp(48px, 8.4vw, 144px)); max-width: none; gap: 70px; }
+.heading h2 { font-size: clamp(40px, 4.6vw, 66px); font-weight: 500; letter-spacing: -.055em; }
+.questions summary { padding: 27px 0; font-size: 17px; font-weight: 500; }
+@media(max-width:620px) { .section { padding: 70px 0; } .container { width: calc(100% - 40px); gap: 30px; } .questions summary { font-size: 15px; } }

@@ -160,7 +160,7 @@
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 1100px) {
   .logo {
     height: 42px;
   }
@@ -233,6 +233,8 @@
     display: flex;
     width: min(82vw, 360px);
     height: 100dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     box-sizing: border-box;
     flex-direction: column;
     align-items: stretch;
@@ -245,7 +247,7 @@
     -webkit-backdrop-filter: blur(20px);
     transform: translateX(105%);
     visibility: hidden;
-    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), visibility 300ms;
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .menu.open {
@@ -296,3 +298,16 @@
     transition-duration: 0.01ms;
   }
 }
+
+/* Cabeçalho do novo estúdio: integrado à abertura azul. */
+.header { background: var(--color-brand); color: var(--color-on-media); border-bottom: 1px solid var(--color-on-media-soft); }
+.header.scrolled { background: var(--color-brand-strong); border-color: var(--color-on-media-soft); box-shadow: none; }
+.navbar { width: calc(100% - clamp(48px, 8.4vw, 144px)); max-width: none; }
+.brand, .brandName, .link, .link:hover, .link:focus-visible { color: var(--color-on-media); }
+.brandName { font-size: 22px; letter-spacing: -.05em; }
+.link { font-size: 12px; }
+.link::after { background: var(--color-on-media); }
+.cta { background: transparent; color: var(--color-on-media); border: 1px solid var(--color-on-media-soft); border-radius: 50px; box-shadow: none; font-size: 12px; }
+.cta:hover, .cta:focus-visible { background: var(--color-on-media); color: var(--color-brand); box-shadow: none; transform: none; }
+.brand:focus-visible, .link:focus-visible, .cta:focus-visible, .menuButton:focus-visible { outline-color: var(--color-on-media); }
+@media(max-width:1100px) { .navbar { width: calc(100% - 40px); } .menu { background: var(--color-brand); border-color: var(--color-on-media-soft); } .menuButton { border-color: var(--color-on-media-soft); background: transparent; } .menuButton span { background: var(--color-on-media); } .link { font-size: 20px; } }

@@ -18,25 +18,16 @@ const initialFormData = {
   message: '',
 }
 
-const reasons = ['Vaga CLT', 'Vaga PJ', 'Projeto freelance', 'Outro assunto']
+const reasons = ['Site ou landing page', 'Sistema web ou dashboard', 'Automação ou integração', 'IA para meu negócio', 'Outro assunto']
 
-// Recrutadores costumam preferir LinkedIn ou e-mail; quem quer um projeto
-// costuma preferir o WhatsApp. Os dois caminhos ficam lado a lado.
+// O contato comercial concentra a jornada de quem chega pelos anúncios.
 const paths = [
   {
-    title: 'Vagas e oportunidades',
-    text: 'Para recrutadores e empresas contratando desenvolvedor Full Stack.',
-    links: [
-      { label: 'LinkedIn', href: siteConfig.linkedin, platform: 'linkedin', external: true },
-      { label: siteConfig.email, href: `mailto:${siteConfig.email}` },
-    ],
-  },
-  {
-    title: 'Projetos freelance',
-    text: 'Para quem precisa de um sistema web, uma API ou uma interface.',
+    title: 'Projetos para empresas',
+    text: 'Para criar ou melhorar um site, sistema web, automação ou aplicação de IA.',
     links: [
       { label: `WhatsApp ${siteConfig.whatsappDisplay}`, href: `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent('Olá, Ronael! Vi seu site e quero conversar sobre um projeto.')}`, whatsapp: true, external: true },
-      { label: 'GitHub', href: siteConfig.github, platform: 'github', external: true },
+      { label: siteConfig.email, href: `mailto:${siteConfig.email}` },
     ],
   },
 ]
@@ -114,10 +105,10 @@ function Contact() {
     <section id="contato" className={`${styles.section} reveal`} aria-labelledby="contact-title">
       <div className={styles.container}>
         <div className={styles.information}>
-          <p className={styles.eyebrow}>04 / Vamos conversar</p>
+          <p className={styles.eyebrow}>Vamos conversar</p>
           <h2 id="contact-title">Seu próximo projeto começa com uma conversa.</h2>
           <p className={styles.subtitle}>
-            Respondo pessoalmente. Escolha o canal que for mais prático para você ou use o formulário.
+            Conte o que você precisa e como trabalha hoje. Respondo pessoalmente para entender o projeto e combinar os próximos passos.
           </p>
 
           <div className={styles.paths}>
@@ -147,7 +138,7 @@ function Contact() {
 
         <div className={styles.formCard}>
           <header className={styles.formHeader}>
-            <h3>Enviar mensagem</h3>
+            <h3>Conte sobre seu projeto</h3>
             <p>A mensagem abre no WhatsApp já preenchida, pronta para enviar.</p>
           </header>
 
@@ -182,7 +173,7 @@ function Contact() {
 
             <div className={styles.field}>
               <label htmlFor="contact-message">Mensagem</label>
-              <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="Conte sobre a vaga ou o projeto em poucas linhas." {...fieldAccessibility('message')} />
+              <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} rows="5" required placeholder="O que você quer construir ou melhorar? Conte um pouco sobre o seu objetivo." {...fieldAccessibility('message')} />
               {errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}
             </div>
 

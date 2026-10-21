@@ -60,10 +60,9 @@ export function initializeAnalytics() {
   }
 }
 
-// Um visitante que abre o WhatsApp é um lead, mesmo que clique no botão do
-// topo, no do hero e no flutuante durante a mesma visita. O transaction_id
-// abaixo é o mesmo nos três cliques, então o Google Ads registra uma
-// conversão só e o lance automático não é treinado com volume inflado.
+// Esta ação mede intenção de contato (clique), não mensagem enviada ou venda.
+// O transaction_id permite ao Google Ads deduplicar cliques na mesma sessão.
+// Configure esta ação com um nome explícito, como "Clique no WhatsApp".
 const leadIdStorageKey = 'ronas_lead_id'
 
 export function getLeadId() {
@@ -118,17 +117,20 @@ export function pushWhatsAppDataLayerEvent(location, leadId) {
 }
 
 export function trackWhatsAppClick(location) {
-  // Abrir o WhatsApp é o momento em que o visitante vira lead — por isso,
-  // além do evento no GA4, isso também dispara a conversão do Google Ads e
-  // o evento "Lead" do Meta Pixel, quando cada um estiver configurado.
-  // O evento do GA4 continua sendo enviado a cada clique — ele serve para
-  // entender qual botão traz mais contato. Só a conversão do Ads e o Lead da
-  // Meta é que são deduplicados pelo id da visita.
+  // Mede a abertura do canal. A confirmação de contato qualificado ou venda
+  // depende de acompanhamento no atendimento e não é inferida pelo site.
   trackEvent('whatsapp_click', {
     location,
     link_url: whatsappUrl,
   })
-  trackGoogleAdsConversion({ location })
+  // Mantém o evento alinhado ao snippet oficial da ação "Contato" no
+  // Google Ads. O valor é apenas o valor padrão da conversão configurada;
+  // não representa receita ou venda confirmada.
+  trackGoogleAdsConversion({
+    location,
+    value: 1,
+    currency: 'BRL',
+  })
   trackPixelEvent('Lead', { content_name: location }, { eventID: getLeadId() })
   pushWhatsAppDataLayerEvent(location, getLeadId())
 }

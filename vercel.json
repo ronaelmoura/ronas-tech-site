@@ -6,7 +6,7 @@
   "redirects": [
     {
       "source": "/criacao-de-sites",
-      "destination": "/",
+      "destination": "/servicos/sites-profissionais",
       "permanent": true
     },
     {
@@ -16,17 +16,22 @@
     },
     {
       "source": "/landing-pages",
-      "destination": "/",
+      "destination": "/servicos/landing-pages",
       "permanent": true
     },
     {
       "source": "/automacao-para-pequenos-negocios",
-      "destination": "/",
+      "destination": "/servicos/automacao-de-processos",
       "permanent": true
     },
     {
       "source": "/sistemas-web",
-      "destination": "/",
+      "destination": "/servicos/sistemas-web",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/criacao-de-sites",
+      "destination": "/servicos/sites-profissionais",
       "permanent": true
     },
     {

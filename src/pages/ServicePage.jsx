@@ -1,23 +1,36 @@
 import { useEffect, useState } from 'react'
 import { siteConfig } from '../config/siteConfig'
 import styles from './ServicePage.module.css'
+import { trackWhatsAppClick } from '../utils/analytics'
 
 const services = {
   'sites-profissionais': {
     eyebrow: '01 · Sites Profissionais',
-    title: 'Um site profissional que trabalha pelo seu negócio.',
-    intro: 'Tenha um site rápido, claro e fácil de usar, com as informações que seus clientes precisam para entrar em contato.',
+    title: 'Criação de sites profissionais que geram confiança.',
+    intro: 'Tenha um site rápido, responsivo e fácil de usar, com as informações que seus clientes precisam para confiar e entrar em contato.',
     problem: 'Muitas empresas perdem contatos porque o site está desatualizado, confuso ou não funciona bem no celular.',
     solution: 'Criamos o site de acordo com os serviços da empresa, com versão para celular, informações organizadas e canais de contato.',
     deliverables: ['Layout responsivo para celular, tablet e desktop', 'Integração com WhatsApp e formulários', 'Estrutura preparada para SEO', 'Performance e acessibilidade', 'Publicação e configuração inicial'],
+    faq: [
+      ['Quanto custa criar um site profissional?', 'O investimento depende da quantidade de páginas, conteúdo e integrações. Antes do desenvolvimento, você recebe uma proposta com escopo, prazo e valor definidos.'],
+      ['O site funciona bem no celular?', 'Sim. O projeto é construído e testado para celular, tablet e computador, com navegação clara e botões de contato fáceis de usar.'],
+      ['Domínio, hospedagem e publicação estão incluídos?', 'A proposta informa o que será configurado e os custos externos envolvidos. Também podemos orientar ou executar a publicação inicial.'],
+      ['O site já fica preparado para o Google?', 'Entregamos estrutura semântica, títulos, descrições, sitemap, desempenho e indexação técnica. O crescimento orgânico também depende de conteúdo, concorrência e autoridade ao longo do tempo.'],
+    ],
   },
   'landing-pages': {
     eyebrow: '02 · Landing Pages',
-    title: 'Uma página direta para divulgar um produto, serviço ou campanha.',
-    intro: 'Uma página enxuta, com informações na ordem certa e uma chamada clara para o próximo passo.',
+    title: 'Criação de landing pages focadas em conversão.',
+    intro: 'Landing pages profissionais, rápidas e responsivas para apresentar sua oferta com clareza e apoiar campanhas no Google Ads.',
     problem: 'Seu anúncio gera visitas, mas a página não deixa claro o que você oferece, por que a pessoa deveria confiar ou qual ação deve tomar.',
-    solution: 'Criamos páginas objetivas, rápidas e orientadas à conversão, alinhando mensagem, estrutura, prova e chamada para ação.',
+    solution: 'Criamos páginas objetivas e orientadas à conversão, alinhando anúncio, mensagem, prova, chamada para ação e medição dos contatos.',
     deliverables: ['Estrutura de conversão', 'Copy e hierarquia visual orientadas ao objetivo', 'Formulário ou WhatsApp', 'Design responsivo', 'Medição e eventos básicos'],
+    faq: [
+      ['Quanto custa uma landing page?', 'O valor varia conforme a oferta, o conteúdo, as integrações e a medição necessária. Você recebe escopo, prazo e investimento definidos antes do início.'],
+      ['A página pode ser usada no Google Ads?', 'Sim. A estrutura pode ser alinhada ao anúncio, à palavra-chave e à ação esperada, com carregamento rápido e experiência adequada no celular.'],
+      ['É possível medir cliques no WhatsApp e formulários?', 'Sim. Configuramos eventos básicos e, quando você fornece os acessos necessários, integramos a página às ferramentas de medição da campanha.'],
+      ['Em quanto tempo a landing page fica pronta?', 'O prazo depende do conteúdo e das integrações. Projetos mais diretos costumam avançar rapidamente depois da aprovação do escopo e do envio dos materiais.'],
+    ],
   },
   'ia-para-empresas': {
     eyebrow: '03 · IA para Empresas',
@@ -59,15 +72,17 @@ function ServicePage({ slug }) {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = `${service?.eyebrow?.replace(/^\\d+ · /, '') || 'Serviço'} | Ronas Tech`
+    document.title = `${service?.eyebrow?.replace(/^\d+ · /, '') || 'Serviço'} | Ronas Tech`
   }, [service?.eyebrow])
 
   if (!service) return null
 
-  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Olá, Ronael! Quero conversar sobre o serviço de ${service.eyebrow.replace(/^\\d+ · /, '')}.`)}`
+  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Olá, Ronael! Quero conversar sobre o serviço de ${service.eyebrow.replace(/^\d+ · /, '')}.`)}`
 
   return (
-    <main className={styles.page}>
+    <>
+    <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+    <main id="conteudo-principal" className={styles.page}>
       <header className={styles.nav}>
         <a href="/" className={styles.logo}><img src={siteConfig.logoPath} alt="" width="40" height="38" /><span>{siteConfig.companyName}</span></a>
         <a href="/" className={styles.back}>← Voltar para o início</a>
@@ -79,13 +94,14 @@ function ServicePage({ slug }) {
           <h1>{service.title}</h1>
           <p className={styles.intro}>{service.intro}</p>
           <div className={styles.actions}>
-            <a className={styles.primary} href={whatsappUrl} target="_blank" rel="noopener noreferrer">Solicitar orçamento <span>→</span></a>
+            <a className={styles.primary} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-ronas-cta={`service_${slug}_hero`} onClick={() => trackWhatsAppClick(`service_${slug}_hero`)}>Solicitar orçamento <span>→</span></a>
             <a className={styles.secondary} href="#como-funciona">Como funciona</a>
           </div>
+          <p className={styles.contactNote}>Atendimento direto com Ronael Moura. Escopo, prazo e investimento definidos antes de começar.</p>
         </div>
         <div className={styles.heroCard}>
           <small>RONAS TECH / SERVIÇO</small>
-          <strong>{service.eyebrow.replace(/^\\d+ · /, '')}</strong>
+          <strong>{service.eyebrow.replace(/^\d+ · /, '')}</strong>
           <div className={styles.line}><span /> Entendimento do problema</div>
           <div className={styles.line}><span /> Desenvolvimento da solução</div>
           <div className={styles.line}><span /> Implementação e evolução</div>
@@ -93,7 +109,7 @@ function ServicePage({ slug }) {
       </section>
 
       <section className={styles.problem}>
-        <div><p className={styles.label}>O problema</p><h2>Quando uma tarefa simples começa a tomar tempo demais da equipe.</h2></div>
+        <div><p className={styles.label}>O problema</p><h2>{['sites-profissionais', 'landing-pages'].includes(slug) ? 'Seu cliente precisa entender o que você oferece.' : 'Sua rotina pode funcionar melhor.'}</h2></div>
         <p>{service.problem}</p>
       </section>
 
@@ -106,13 +122,30 @@ function ServicePage({ slug }) {
         <header><p className={styles.label}>O que podemos entregar</p><h2>O que entra no projeto depende do que sua empresa precisa.</h2></header>
         <div className={styles.items}>
           {service.deliverables.map((item, index) => (
-            <button key={item} className={styles.item} type="button" onClick={() => setOpen(open === index ? null : index)}>
-              <span>0{index + 1}</span><strong>{item}</strong><i>{open === index ? '−' : '+'}</i>
-              {open === index && <em>A entrega é definida conforme o processo e o objetivo do projeto.</em>}
+            <button key={item} className={styles.item} type="button" aria-expanded={open === index} aria-controls={open === index ? `deliverable-${index}` : undefined} onClick={() => setOpen(open === index ? null : index)}>
+              <span>0{index + 1}</span><strong>{item}</strong><i aria-hidden="true">{open === index ? '−' : '+'}</i>
+              {open === index && <em id={`deliverable-${index}`}>A entrega é definida conforme o processo e o objetivo do projeto.</em>}
             </button>
           ))}
         </div>
       </section>
+
+      {service.faq && (
+        <section className={styles.faq} aria-labelledby="service-faq-title">
+          <header>
+            <p className={styles.label}>Dúvidas comuns</p>
+            <h2 id="service-faq-title">O que você precisa saber antes de começar.</h2>
+          </header>
+          <div className={styles.faqList}>
+            {service.faq.map(([question, answer]) => (
+              <details key={question}>
+                <summary>{question}</summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section id="como-funciona" className={styles.process}>
         <p className={styles.label}>Como funciona</p>
@@ -125,13 +158,19 @@ function ServicePage({ slug }) {
         </div>
       </section>
 
+      <aside className={styles.proof} aria-label="Conheça o responsável pelo projeto">
+        <div><p className={styles.label}>Quem constrói com você</p><h2>Ronael Moura, da conversa à entrega.</h2><p>Desenvolvedor Full Stack formado pelo SENAI. Conheça os projetos, explore as soluções e veja como o trabalho é feito.</p></div>
+        <a className={styles.secondary} href="/#projetos">Conhecer os projetos</a>
+      </aside>
       <section className={styles.cta}>
         <p className={styles.label}>Vamos conversar?</p>
         <h2>Conte o que sua empresa precisa resolver.</h2>
         <p>Você não precisa saber qual tecnologia usar. Conte o que está acontecendo e avaliamos o caminho mais adequado.</p>
-        <a className={styles.primary} href={whatsappUrl} target="_blank" rel="noopener noreferrer">Falar com a Ronas Tech <span>→</span></a>
+        <a className={styles.primary} href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-ronas-cta={`service_${slug}_footer`} onClick={() => trackWhatsAppClick(`service_${slug}_footer`)}>Falar com a Ronas Tech <span>→</span></a>
       </section>
     </main>
+    <footer className={styles.footer}><span>Ronas Tech · Tianguá, Ceará · Atendimento remoto</span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a><a href="/politica-de-privacidade">Privacidade</a><a href="/termos-de-uso">Termos de uso</a></footer>
+    </>
   )
 }
 

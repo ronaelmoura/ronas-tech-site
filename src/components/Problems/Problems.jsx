@@ -1,11 +1,9 @@
-import Icon from '../Icon/Icon'
-
 const problems = [
-  ['01', 'TEMPO', 'Sua equipe faz a mesma tarefa todos os dias.', 'Automação', 'repeat'],
-  ['02', 'OPERAÇÃO', 'Sua rotina ainda depende de planilhas e controles manuais.', 'Sistema web', 'layout'],
-  ['03', 'INTEGRAÇÃO', 'Suas informações estão espalhadas em ferramentas diferentes.', 'Integrações', 'link'],
-  ['04', 'PRESENÇA', 'Sua empresa é melhor do que a experiência digital mostra.', 'Site / Landing Page', 'globe'],
-  ['05', 'IA', 'Você quer usar IA, mas ainda não encontrou uma aplicação prática.', 'IA aplicada', 'sparkles'],
+  ['01', 'Tempo', 'Sua equipe faz a mesma tarefa todos os dias.', 'Automação'],
+  ['02', 'Operação', 'Sua rotina ainda depende de planilhas e controles manuais.', 'Sistema web'],
+  ['03', 'Integração', 'Suas informações estão espalhadas em ferramentas diferentes.', 'Integrações'],
+  ['04', 'Presença', 'Sua empresa é melhor do que a experiência digital mostra.', 'Site ou landing page'],
+  ['05', 'Inteligência', 'Você quer usar IA, mas ainda não encontrou uma aplicação prática.', 'IA aplicada'],
 ]
 
 function Problems() {
@@ -23,20 +21,30 @@ function Problems() {
           </div>
         </header>
 
-        <div className="problems-grid">
-          {problems.map(([number, type, title, answer, icon]) => (
-            <article className="problem-card" key={number}>
-              <div className="problem-card-top"><span>{number}</span><b>{type}</b></div>
-              <div className="problem-icon"><Icon name={icon} size={23} /></div>
-              <h3>{title}</h3>
-              <div className="problem-answer"><small>CAMINHO POSSÍVEL</small><p>{answer}</p></div>
-              <a href="#contato">Conversar sobre isso <span>→</span></a>
-            </article>
+        <ol className="problems-list" aria-label="Problemas que podemos ajudar a resolver">
+          {problems.map(([number, type, title, answer]) => (
+            <li className="problem-row" key={number}>
+              <div className="problem-index" aria-hidden="true">{number}</div>
+              <article className="problem-content">
+                <p>{type}</p>
+                <h3>{title}</h3>
+              </article>
+              <div className="problem-connection" aria-hidden="true"><span /></div>
+              <div className="problem-answer">
+                <small>Caminho possível</small>
+                <strong>{answer}</strong>
+              </div>
+              <a className="problem-link" href="#contato" aria-label={`Conversar sobre ${title}`}>
+                <span>Conversar</span><b aria-hidden="true">↗</b>
+              </a>
+            </li>
           ))}
-        </div>
+        </ol>
 
         <div className="problems-bridge">
-          <i /><div><strong>Você traz o contexto → a gente encontra o caminho → construímos a solução</strong><span>Sem começar pelo código. Primeiro entendemos o que realmente precisa mudar.</span></div>
+          <span className="problems-bridge-label">Próximo passo</span>
+          <div><strong>Você traz o contexto. A Ronas Tech encontra o caminho.</strong><span>Primeiro entendemos o que precisa mudar. Depois definimos a solução.</span></div>
+          <a href="#solucoes">Ver as soluções <span aria-hidden="true">↓</span></a>
         </div>
       </div>
     </section>

@@ -1,15 +1,5 @@
+import StudioHome from "./components/StudioHome/StudioHome";
 import { useEffect, useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import Services from "./components/Services/Services";
-import Problems from "./components/Problems/Problems";
-import HowItWorks from "./components/HowItWorks/HowItWorks";
-import WhyRonasTech from "./components/WhyRonasTech/WhyRonasTech";
-import Portfolio from "./components/Portfolio/Portfolio";
-import Technologies from "./components/Technologies/Technologies";
-import About from "./components/About/About";
-import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
 import CookieNotice from "./components/CookieNotice/CookieNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
@@ -22,8 +12,6 @@ import ServicePage from "./pages/ServicePage";
 import RonasOficinaPage from "./pages/RonasOficinaPage";
 import OficinaAccountPage from "./pages/OficinaAccountPage";
 import { spreadsheetProductsByPath } from "./data/spreadsheetProducts";
-import "./components/Services/Services.css";
-import "./components/Problems/Problems.css";
 
 const legalPages = {
   "/politica-de-privacidade": PrivacyPolicy,
@@ -145,19 +133,7 @@ function App({ pathname: pathnameProp }) {
           Pular para o conteúdo principal
         </a>
         <HomeMotion />
-        <Navbar />
-        <main id="conteudo-principal" className="home">
-          <Hero />
-          <Problems />
-          <Services />
-          <HowItWorks />
-          <WhyRonasTech />
-          <Portfolio />
-          <Technologies />
-          <About />
-          <Contact />
-        </main>
-        <Footer />
+        <StudioHome />
       </>
     );
 

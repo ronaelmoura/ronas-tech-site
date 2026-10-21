@@ -1,62 +1,22 @@
 import Icon from '../Icon/Icon'
 
 const groups = [
-  {
-    number: '01', label: 'PRESENÇA', title: 'Sua empresa precisa ser encontrada e entendida.',
-    text: 'Experiências digitais que apresentam seu negócio com clareza e levam o visitante até a próxima ação.',
-    color: 'blue', links: [['Sites profissionais','sites-profissionais'], ['Landing pages','landing-pages']], icon: 'globe',
-  },
-  {
-    number: '02', label: 'OPERAÇÃO', title: 'Sua rotina precisa de uma ferramenta que acompanhe o trabalho.',
-    text: 'Sistemas, dashboards e APIs para organizar informações e transformar controles espalhados em uma operação mais clara.',
-    color: 'violet', links: [['Sistemas web','sistemas-web'], ['Dashboards e integrações','dashboards-e-integracoes']], icon: 'layout',
-  },
-  {
-    number: '03', label: 'AUTOMAÇÃO', title: 'O trabalho repetitivo não deveria ocupar o tempo da equipe.',
-    text: 'Fluxos conectados para reduzir tarefas manuais, integrar ferramentas e fazer processos acontecerem com menos intervenção.',
-    color: 'cyan', links: [['Automação de processos','automacao-de-processos']], icon: 'workflow',
-  },
-  {
-    number: '04', label: 'INTELIGÊNCIA', title: 'IA precisa resolver uma tarefa real — não só aparecer no projeto.',
-    text: 'Aplicações práticas de IA para consultar informações, apoiar decisões, atender clientes ou automatizar partes da rotina.',
-    color: 'pink', links: [['IA para empresas','ia-para-empresas']], icon: 'sparkles',
-  },
+  { icon: 'globe', label: 'Presença digital', title: 'Um site à altura do seu negócio.', text: 'Apresente seus serviços com clareza e facilite o caminho de quem quer contratar você.', links: [['Sites profissionais', 'sites-profissionais'], ['Landing pages', 'landing-pages']] },
+  { icon: 'layout', label: 'Sistemas e integrações', title: 'Sua operação, bem organizada.', text: 'Reúna informações, acompanhe o trabalho e conecte ferramentas em um sistema feito para sua rotina.', links: [['Sistemas web', 'sistemas-web'], ['Dashboards e integrações', 'dashboards-e-integracoes']] },
+  { icon: 'workflow', label: 'Automação de processos', title: 'Menos repetição. Mais tempo útil.', text: 'Conecte as etapas do trabalho e reduza tarefas manuais que ocupam o dia da sua equipe.', links: [['Conhecer automações', 'automacao-de-processos']] },
+  { icon: 'sparkles', label: 'Inteligência artificial', title: 'IA com uma função bem definida.', text: 'Use suas informações para apoiar atendimentos, consultar conteúdos e simplificar tarefas específicas.', links: [['IA para empresas', 'ia-para-empresas']] },
 ]
 
-function Services() {
-  return (
-    <section id="solucoes" className="services-section" aria-labelledby="services-title">
-      <div className="services-container">
-        <header className="services-heading">
-          <div>
-            <p className="services-eyebrow">O que podemos construir</p>
-            <h2 id="services-title">Quatro caminhos. Uma pergunta: o que precisa funcionar melhor?</h2>
-          </div>
-          <div className="services-intro">
-            <strong>Não precisa escolher um serviço antes de falar com a gente.</strong>
-            <span>A solução nasce do problema — e pode combinar mais de uma dessas frentes.</span>
-          </div>
-        </header>
-
-        <div className="services-grid services-grid-four">
-          {groups.map((group) => (
-            <article className={`service-card service-card-${group.color}`} key={group.number}>
-              <div className="service-top"><span className="service-number">{group.number}</span><span className="service-type">{group.label}</span></div>
-              <div className="service-icon"><Icon name={group.icon} size={24} /></div>
-              <h3>{group.title}</h3>
-              <p>{group.text}</p>
-              <div className="service-links">{group.links.map(([label, slug]) => <a key={slug} href={`/servicos/${slug}`}>{label}<span>↗</span></a>)}</div>
-            </article>
-          ))}
-        </div>
-
-        <div className="services-bottom">
-          <span>PROBLEMA → CAMINHO → SOLUÇÃO</span><i />
-          <strong>Uma tecnologia só entra quando ajuda a resolver o problema.</strong>
-          <a href="#contato">Descobrir o que faz sentido →</a>
-        </div>
-      </div>
-    </section>
-  )
+export default function Services() {
+  return <section id="solucoes" className="services-section" aria-labelledby="services-title">
+    <div className="services-container">
+      <header className="services-heading"><div><p className="services-eyebrow">O que podemos construir</p><h2 id="services-title">Tecnologia que faz sentido para você.</h2></div><p className="services-intro">Não precisa chegar com a solução pronta. Começamos pelo seu desafio e escolhemos o caminho juntos.</p></header>
+      <div className="services-index">{groups.map(group => <article className="service-row" key={group.label}>
+        <div className="service-identity"><span className="service-icon"><Icon name={group.icon} size={24} /></span><p>{group.label}</p></div>
+        <div className="service-copy"><h3>{group.title}</h3><p>{group.text}</p></div>
+        <nav className="service-links" aria-label={`Serviços de ${group.label.toLowerCase()}`}>{group.links.map(([label, slug]) => <a key={slug} href={`/servicos/${slug}`}>{label}<Icon name="arrowUpRight" size={18} /></a>)}</nav>
+      </article>)}</div>
+      <div className="services-bottom"><p>Seu desafio combina mais de uma dessas frentes?</p><a href="#contato">Vamos encontrar o caminho <Icon name="arrowUpRight" size={18} /></a></div>
+    </div>
+  </section>
 }
-export default Services

@@ -11,7 +11,7 @@ const projects = [
     solution:
       'Sistema web publicado com acesso protegido, abertura e acompanhamento de chamados, controle de prioridade e status e painéis para usuários e administradores.',
     highlights: [
-      '122 testes automatizados',
+      'Painéis para usuários e administradores',
       'Autenticação e permissões por perfil',
       'CI e deploy em produção',
     ],
@@ -39,6 +39,7 @@ const projects = [
     status: 'Em desenvolvimento',
     projectUrl: '/boxmotor',
     actionLabel: 'Conhecer o BoxMotor',
+    showcase: true,
     visual: 'workshop',
   },
   {
@@ -107,7 +108,7 @@ function ExternalIcon() {
   )
 }
 
-function ProjectVisual({ type }) {
+export function ProjectVisual({ type }) {
   if (type === 'dashboard') {
     return (
       <div className={styles.dashboardMockup} aria-hidden="true">
@@ -189,23 +190,15 @@ function ProjectVisual({ type }) {
 
   if (type === 'workshop') {
     return (
-      <div className={styles.workshopMockup} aria-hidden="true">
-        <div className={styles.workshopTopbar}>
-          <span>BOXMOTOR / OFICINA</span>
-          <i>OS 0248</i>
-        </div>
-        <div className={styles.workshopVehicle}>
-          <small>VEÍCULO EM ATENDIMENTO</small>
-          <strong>Honda Civic · QWE-4A21</strong>
-          <span>Revisão do sistema de freios</span>
-        </div>
-        <div className={styles.workshopFlow}>
-          <span><b>01</b> Orçamento enviado</span>
-          <span><b>02</b> Cliente autorizou</span>
-          <span><b>03</b> Serviço em execução</span>
-        </div>
-        <div className={styles.workshopStatus}><i /> Autorização registrada</div>
-      </div>
+      <img
+        className={styles.productScreenshot}
+        src="/images/boxmotor-dashboard-desktop.png"
+        alt="Prévia do painel do BoxMotor, com ordens de serviço, indicadores e atividades da oficina"
+        width="1258"
+        height="1247"
+        loading="lazy"
+        decoding="async"
+      />
     )
   }
 
@@ -235,7 +228,7 @@ function ProjectCard({ project }) {
   const isInternalProject = project.projectUrl?.startsWith('/')
   return (
     <article
-      className={`${styles.card} ${project.featured ? styles.featured : ''}`}
+      className={`${styles.card} ${project.featured ? styles.featured : ''} ${project.showcase ? styles.showcase : ''}`}
     >
       <div className={styles.visual}>
         {project.featured && (
@@ -324,10 +317,10 @@ function Portfolio() {
     >
       <div className={styles.container}>
         <header className={styles.heading}>
-          <p className={styles.eyebrow}>01 / Projetos selecionados</p>
-          <h2 id="portfolio-title">Código que resolve.<br />Projetos que demonstram.</h2>
+          <p className={styles.eyebrow}>Projetos selecionados</p>
+          <h2 id="portfolio-title">Veja o que essas ideias<br />viram na prática.</h2>
           <p className={styles.subtitle}>
-            Frontend, backend e produto apresentados com contexto, decisões de
+            Conheça o desafio, a solução e o estágio de cada projeto. Explore as decisões de
             engenharia e links para você avaliar a entrega.
           </p>
         </header>

@@ -3,14 +3,14 @@ import { siteConfig } from '../../config/siteConfig'
 import styles from './Navbar.module.css'
 import Icon from '../Icon/Icon'
 
-// A ordem dos itens acompanha a ordem da página: projetos primeiro, porque
-// é o que recrutadores e clientes vêm avaliar.
+// A navegação acompanha a jornada de descoberta até o contato.
 const navigationItems = [
+  { label: 'Serviços', href: '#solucoes' },
   { label: 'Projetos', href: '#projetos' },
-  { label: 'Stack', href: '#stack' },
+  { label: 'Como funciona', href: '#como-funciona' },
+  { label: 'Produtos', href: '/produtos-digitais' },
   { label: 'BoxMotor', href: '/boxmotor' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
 ]
 
 function Navbar() {
@@ -21,7 +21,7 @@ function Navbar() {
   const navigationRef = useRef(null)
 
   useEffect(() => {
-    const desktop = window.matchMedia('(min-width: 841px)')
+    const desktop = window.matchMedia('(min-width: 1101px)')
     const handleResize = () => { if (desktop.matches) setIsMenuOpen(false) }
     desktop.addEventListener('change', handleResize)
     return () => desktop.removeEventListener('change', handleResize)
@@ -38,16 +38,23 @@ function Navbar() {
     if (!isMenuOpen) return undefined
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    const main = document.querySelector('main')
-    const footer = document.querySelector('.site-footer')
-    if (main) main.inert = true
-    if (footer) footer.inert = true
-    const focusTimer = setTimeout(() => firstLinkRef.current?.focus(), 320)
+    // Isolate every background branch, including cookie controls outside the home.
+    const background = []
+    let branch = navigationRef.current.closest('header')
+    while (branch && branch !== document.body) {
+      for (const sibling of branch.parentElement.children) {
+        if (sibling !== branch) {
+          background.push([sibling, sibling.inert])
+          sibling.inert = true
+        }
+      }
+      branch = branch.parentElement
+    }
+    const focusFrame = requestAnimationFrame(() => firstLinkRef.current?.focus())
     return () => {
-      clearTimeout(focusTimer)
+      cancelAnimationFrame(focusFrame)
       document.body.style.overflow = previousOverflow
-      if (main) main.inert = false
-      if (footer) footer.inert = false
+      background.forEach(([element, inert]) => { element.inert = inert })
     }
   }, [isMenuOpen])
 
@@ -69,7 +76,19 @@ function Navbar() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isMenuOpen])
 
-  const closeMenu = () => setIsMenuOpen(false)
+  const closeMenu = (event) => {
+    if (!isMenuOpen) return
+    setIsMenuOpen(false)
+    const hash = event?.currentTarget.getAttribute('href')
+    requestAnimationFrame(() => {
+      const target = hash?.startsWith('#') ? document.getElementById(hash.slice(1)) : null
+      if (target) {
+        target.setAttribute('tabindex', '-1')
+        target.focus({ preventScroll: true })
+        target.scrollIntoView({ behavior: 'instant' })
+      } else menuButtonRef.current?.focus()
+    })
+  }
 
   return <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
     <nav ref={navigationRef} className={styles.navbar} aria-label="Navegação principal">
@@ -77,7 +96,7 @@ function Navbar() {
       <div className={`${styles.menuBackdrop} ${isMenuOpen ? styles.open : ''}`} onClick={closeMenu} aria-hidden="true" />
       <div id="main-navigation" className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
         <ul className={styles.links}>{navigationItems.map(({ label, href }, index) => <li key={href}><a ref={index === 0 ? firstLinkRef : undefined} className={styles.link} href={href} onClick={closeMenu}>{label}</a></li>)}</ul>
-        <a className={styles.cta} href="#contato" onClick={closeMenu}>Falar comigo <Icon name="arrowUpRight" size={17} /></a>
+        <a className={styles.cta} href="#contato" onClick={closeMenu}>Falar sobre meu projeto <Icon name="arrowUpRight" size={17} /></a>
       </div>
       <button ref={menuButtonRef} className={`${styles.menuButton} ${isMenuOpen ? styles.open : ''}`} type="button" aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'} aria-controls="main-navigation" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((isOpen) => !isOpen)}><span /><span /><span /></button>
     </nav>
